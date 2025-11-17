@@ -89,6 +89,25 @@ const Navbar = () => {
           ]
         },
         {
+            key: "publicCouncils",
+            link: "/university/management/public-councils",
+            subItems: [
+              { key: "developmentCouncil", "link": "/university/management/public-councils/development-council" },
+              { key: "academicCouncil", "link": "/university/management/public-councils/academic-council" },
+              { key: "educationQualityCouncil", "link": "/university/management/public-councils/education-quality-council" },
+              { key: "educationalMethodologicalCouncil", "link": "/university/management/public-councils/educational-methodological-council" },
+              { key: "scientificTechnicalCouncil", "link": "/university/management/public-councils/scientific-technical-council" },
+              { key: "editorialBoard", "link": "/university/management/public-councils/editorial-board" },
+              { key: "admissionCommittee", "link": "/university/management/public-councils/admission-committee" },
+              { key: "socialSupportCommission", "link": "/university/management/public-councils/social-support-commission" },
+              { key: "bioethicalCommittee", "link": "/university/management/public-councils/bioethical-committee" },
+              { key: "councilOfYoungScientists", "link": "/university/management/public-councils/council-of-young-scientists" },
+              { key: "employersCouncil", "link": "/university/management/public-councils/employers-council" },
+              { key: "parentsAdvice", "link": "/university/management/public-councils/parents-advice" },
+              { key: "studentCouncil", "link": "/university/management/public-councils/student-council" }
+            ]
+          },
+        {
           key: 'departments',
           link: '/university/departments',
           subItems: [
