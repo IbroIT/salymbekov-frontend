@@ -228,5 +228,237 @@
     "galleryImage1": "University Opening Ceremony",
     "galleryImage2": "Student Research Exhibition",
     "galleryImage3": "International Conference"
+  },
+  "mission": {
+    "title": "Mission & Vision",
+    "subtitle": "Shaping the future through innovative education and research",
+    "stats": {
+      "students": "Students",
+      "programs": "Educational Programs",
+      "partners": "International Partners",
+      "graduates": "Successful Graduates"
+    },
+    "tabs": {
+      "missionTab": "Our Mission",
+      "visionTab": "Our Vision",
+      "valuesTab": "Our Values",
+      "goalsTab": "Strategic Goals"
+    },
+    "missionContent": {
+      "title": "Our Mission",
+      "alt": "University Mission",
+      "text1": "To provide high-quality education that empowers students to become innovative leaders and responsible global citizens through cutting-edge research and practical learning experiences.",
+      "text2": "We are committed to creating an inclusive learning environment that fosters critical thinking, creativity, and lifelong learning while addressing the challenges of our rapidly changing world."
+    },
+    "visionContent": {
+      "title": "Our Vision",
+      "alt": "University Vision",
+      "text1": "To be a globally recognized center of excellence in education and research, driving innovation and sustainable development in our region and beyond.",
+      "text2": "We envision a future where our graduates lead positive change in their communities, industries, and the world through knowledge, innovation, and ethical leadership."
+    },
+    "valuesContent": {
+      "title": "Our Values",
+      "alt": "University Values",
+      "text1": "Our core values guide everything we do and shape our university culture.",
+      "text2": "These principles define who we are and how we work together to achieve our mission."
+    },
+    "goalsContent": {
+      "title": "Strategic Goals",
+      "alt": "Strategic Goals",
+      "text1": "Our strategic roadmap for achieving excellence and making a lasting impact.",
+      "text2": "We have set ambitious yet achievable goals to guide our development over the coming years."
+    },
+    "values": {
+      "value1": {
+        "title": "Excellence",
+        "description": "We strive for the highest standards in education, research, and all aspects of university life."
+      },
+      "value2": {
+        "title": "Innovation",
+        "description": "We embrace creativity and new ideas to solve complex challenges and drive progress."
+      },
+      "value3": {
+        "title": "Integrity",
+        "description": "We act with honesty, fairness, and ethical principles in all our endeavors."
+      },
+      "value4": {
+        "title": "Collaboration",
+        "description": "We believe in the power of teamwork and partnerships to achieve greater impact."
+      },
+      "value5": {
+        "title": "Diversity",
+        "description": "We celebrate different perspectives and create an inclusive environment for all."
+      },
+      "value6": {
+        "title": "Responsibility",
+        "description": "We are committed to sustainable development and social responsibility."
+      }
+    },
+    "goals": {
+      "academicGoals": {
+        "title": "Academic Excellence",
+        "item1": "Develop innovative curriculum aligned with industry needs",
+        "item2": "Enhance teaching quality and student support services",
+        "item3": "Expand interdisciplinary programs and research opportunities"
+      },
+      "researchGoals": {
+        "title": "Research Innovation",
+        "item1": "Establish world-class research centers and laboratories",
+        "item2": "Increase research funding and publication output",
+        "item3": "Foster industry-academia collaboration projects"
+      },
+      "internationalGoals": {
+        "title": "Global Engagement",
+        "item1": "Expand international partnerships and exchange programs",
+        "item2": "Increase international student enrollment and diversity",
+        "item3": "Participate in global research networks and conferences"
+      },
+      "communityGoals": {
+        "title": "Community Impact",
+        "item1": "Develop community outreach and social responsibility programs",
+        "item2": "Support regional economic development initiatives",
+        "item3": "Promote lifelong learning and professional development"
+      }
+    },
+    "strategicGoals": {
+      "title": "Our Strategic Objectives",
+      "subtitle": "Ambitious goals driving our journey towards excellence",
+      "timeline": "Target Timeline",
+      "goal1": {
+        "icon": "🎓",
+        "title": "Educational Innovation",
+        "description": "Implement cutting-edge teaching methodologies and digital learning platforms",
+        "timeline": "2024-2026"
+      },
+      "goal2": {
+        "icon": "🔬",
+        "title": "Research Excellence",
+        "description": "Establish 5 new research centers and increase publications by 50%",
+        "timeline": "2024-2027"
+      },
+      "goal3": {
+        "icon": "🌍",
+        "title": "Global Recognition",
+        "description": "Achieve international accreditation and enter global rankings",
+        "timeline": "2024-2028"
+      },
+      "goal4": {
+        "icon": "🏛️",
+        "title": "Infrastructure Development",
+        "description": "Build new campus facilities and upgrade existing infrastructure",
+        "timeline": "2024-2025"
+      },
+      "goal5": {
+        "icon": "🤝",
+        "title": "Industry Partnerships",
+        "description": "Establish strategic partnerships with 50 leading companies",
+        "timeline": "2024-2026"
+      },
+      "goal6": {
+        "icon": "💼",
+        "title": "Career Development",
+        "description": "Achieve 95% graduate employment rate within 6 months",
+        "timeline": "2024-2027"
+      }
+    },
+    "cta": {
+      "title": "Join Our Mission",
+      "subtitle": "Be part of our journey to shape the future of education and make a lasting impact",
+      "button1": "Apply Now",
+      "button2": "Learn More"
+    }
+  },
+  "vacancies": {
+    "title": "Career Opportunities",
+    "subtitle": "Join our team of professionals and contribute to shaping the future of education",
+    "heroAlt": "University Careers",
+    "whyWorkWithUs": "Why Work With Us?",
+    "benefitsSubtitle": "We offer competitive benefits and a supportive work environment",
+    "searchPlaceholder": "Search positions...",
+    "applyNow": "Apply Now",
+    "viewDetails": "View Details",
+    "noVacancies": "No vacancies found",
+    "tryDifferentSearch": "Try adjusting your search or filter criteria",
+    "applyForPosition": "Apply for Position",
+    "salary": "Salary",
+    "deadline": "Application deadline",
+    "currency": "KGS",
+    "experience": "experience",
+    "years": "years",
+    "categories": {
+      "allCategories": "All Categories",
+      "academic": "Academic",
+      "research": "Research",
+      "administrative": "Administrative",
+      "technical": "Technical",
+      "international": "International"
+    },
+    "types": {
+      "fullTime": "Full Time",
+      "partTime": "Part Time",
+      "contract": "Contract"
+    },
+    "departments": [
+      "Computer Science Department",
+      "Business School",
+      "Research Center",
+      "International Office",
+      "Administration"
+    ],
+    "benefits": {
+      "benefit1": {
+        "icon": "💰",
+        "title": "Competitive Salary",
+        "description": "Attractive compensation package with regular reviews"
+      },
+      "benefit2": {
+        "icon": "🏥",
+        "title": "Health Insurance",
+        "description": "Comprehensive medical coverage for you and your family"
+      },
+      "benefit3": {
+        "icon": "🎓",
+        "title": "Professional Development",
+        "description": "Opportunities for continuous learning and growth"
+      },
+      "benefit4": {
+        "icon": "🏖️",
+        "title": "Work-Life Balance",
+        "description": "Flexible working hours and generous vacation policy"
+      }
+    },
+    "positions": {
+      "professor": {
+        "title": "Professor of Computer Science",
+        "description": "We are seeking an experienced professor to lead research and teaching in computer science."
+      },
+      "assistantProfessor": {
+        "title": "Assistant Professor of Business",
+        "description": "Join our business school faculty to teach and conduct research in management."
+      },
+      "researcher": {
+        "title": "Senior Researcher",
+        "description": "Lead innovative research projects in our state-of-the-art laboratories."
+      }
+    },
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "position": "Position",
+      "coverLetter": "Cover Letter",
+      "coverLetterPlaceholder": "Tell us why you are interested in this position and what makes you a good candidate...",
+      "resume": "Resume/CV",
+      "fileTypes": "Accepted formats: PDF, DOC, DOCX (max 5MB)",
+      "submitApplication": "Submit Application",
+      "cancel": "Cancel"
+    },
+    "applicationSuccess": "Your application has been submitted successfully!",
+    "cta": {
+      "title": "Didn't Find Your Dream Job?",
+      "subtitle": "Send us your CV and we'll contact you when suitable positions become available",
+      "contactHR": "Contact HR",
+      "sendCV": "Send Your CV"
+    }
   }
 }

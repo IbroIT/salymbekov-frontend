@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-
-// Импортируйте ваши изображения
 import HistoryImage1 from '../../assets/history/history1.jpg';
 import HistoryImage2 from '../../assets/history/history2.jpg';
 import HistoryImage3 from '../../assets/history/history3.jpg';
 import UniversityCampus from '../../assets/history/campus.jpg';
 import FounderPhoto from '../../assets/history/founder.jpg';
-
 const History = () => {
   const { t } = useTranslation();
   const [activeYear, setActiveYear] = useState(2020);
-
   const milestones = [
     { year: 2018, key: 'milestone1' },
     { year: 2019, key: 'milestone2' },
@@ -22,14 +18,12 @@ const History = () => {
     { year: 2023, key: 'milestone6' },
     { year: 2024, key: 'milestone7' }
   ];
-
   const features = [
     { icon: '🎓', key: 'feature1' },
     { icon: '🏫', key: 'feature2' },
     { icon: '🌍', key: 'feature3' },
     { icon: '🔬', key: 'feature4' }
   ];
-
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveYear(prev => {
@@ -37,10 +31,8 @@ const History = () => {
         return milestones[(currentIndex + 1) % milestones.length].year;
       });
     }, 4000);
-
     return () => clearInterval(interval);
   }, []);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-12">
       {/* Hero Section */}
@@ -58,7 +50,6 @@ const History = () => {
             {t('history.subtitle')}
           </p>
         </motion.div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -71,7 +62,6 @@ const History = () => {
               className="rounded-2xl shadow-2xl w-full h-auto object-cover"
             />
           </motion.div>
-          
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -87,7 +77,6 @@ const History = () => {
             <p className="text-lg text-gray-600 leading-relaxed">
               {t('history.aboutText2')}
             </p>
-            
             <div className="grid grid-cols-2 gap-4 mt-8">
               {features.map((feature, index) => (
                 <motion.div
@@ -110,7 +99,6 @@ const History = () => {
           </motion.div>
         </div>
       </section>
-
       {/* Timeline Section */}
       <section className="bg-white py-16 mb-16">
         <div className="container mx-auto px-6">
@@ -127,11 +115,9 @@ const History = () => {
               {t('history.timelineSubtitle')}
             </p>
           </motion.div>
-
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-blue-200 h-full top-0"></div>
-            
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
                 <motion.div
@@ -169,7 +155,6 @@ const History = () => {
                       </p>
                     </motion.div>
                   </div>
-
                   {/* Year marker */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
                     <motion.div
@@ -184,7 +169,6 @@ const History = () => {
                       {milestone.year}
                     </motion.div>
                   </div>
-
                   {/* Spacer */}
                   <div className="w-1/2"></div>
                 </motion.div>
@@ -193,7 +177,6 @@ const History = () => {
           </div>
         </div>
       </section>
-
       {/* Founder Section */}
       <section className="container mx-auto px-6 mb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -213,7 +196,6 @@ const History = () => {
               <p className="text-blue-100">{t('history.founderPosition')}</p>
             </div>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -229,7 +211,6 @@ const History = () => {
             <p className="text-lg text-gray-600 leading-relaxed">
               {t('history.founderText2')}
             </p>
-            
             <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600">
               <p className="text-blue-800 italic text-lg">
                 "{t('history.founderQuote')}"
@@ -238,7 +219,6 @@ const History = () => {
           </motion.div>
         </div>
       </section>
-
       {/* Gallery Section */}
       <section className="container mx-auto px-6">
         <motion.div
@@ -254,7 +234,6 @@ const History = () => {
             {t('history.gallerySubtitle')}
           </p>
         </motion.div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[HistoryImage1, HistoryImage2, HistoryImage3].map((image, index) => (
             <motion.div
@@ -282,5 +261,4 @@ const History = () => {
     </div>
   );
 };
-
 export default History;

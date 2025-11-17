@@ -5,8 +5,15 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
 import Contact from './pages/Contact'
+import FounderMessage from './pages/FounderMessage'
+import MaterialBaseGallery from './pages/MaterialBaseGallery'
+import Footer from './pages/Footer'
 
 // Lazy imports for university
+
+const NewsHome = lazy(() => import('./pages/university/HomeNewsSection'))
+const NewsPage = lazy(() => import('./pages/university/NewsPage'))
+const NewsDetail = lazy(() => import('./pages/university/NewsDetail'))
 const Appeal = lazy(() => import('./pages/university/Appeal'))
 const History = lazy(() => import('./pages/university/History'))
 const Mission = lazy(() => import('./pages/university/Mission'))
@@ -130,10 +137,15 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path='/news' element={<NewsPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
-          {/* University routes */}
+          <Route path='/founderMessege' element={<FounderMessage />} />
+          <Route path='/MaterialBaseGallery' element={<MaterialBaseGallery />} />
+          {} 
+          <Route path='/news/NewsHome' element={<NewsHome />} />
+          <Route path="/university/news/:id" element={<NewsDetail />} />
           <Route path="/university/appeal" element={<Appeal />} />
           <Route path="/university/history" element={<History />} />
           <Route path="/university/mission" element={<Mission />} />
@@ -178,7 +190,7 @@ const App = () => {
           <Route path="/university/cooperation/universities" element={<UniversitiesCoop />} />
           <Route path="/university/cooperation/clinics" element={<ClinicsCoop />} />
           <Route path="/university/brandbook" element={<Brandbook />} />
-          {/* Education routes */}
+          {}
           <Route path="/education/ait" element={<AIT />} />
           <Route path="/education/ait/about" element={<AboutAIT />} />
           <Route path="/education/ait/leadership" element={<LeadershipAIT />} />
@@ -190,14 +202,14 @@ const App = () => {
           <Route path="/education/business-school" element={<BusinessSchoolEdu />} />
           <Route path="/education/postgrad" element={<Postgrad />} />
           <Route path="/education/center" element={<Center />} />
-          {/* Add more education routes */}
-          {/* Clinical routes */}
+          {}
+          {}
           <Route path="/clinical/lazmed" element={<Lazmed />} />
           <Route path="/clinical/dordoi" element={<Dordoi />} />
           <Route path="/clinical/doc-clinic" element={<DocClinic />} />
           <Route path="/clinical/doc-hospital" element={<DocHospital />} />
           <Route path="/clinical/agreements" element={<Agreements />} />
-          {/* Science routes */}
+          {}
           <Route path="/science/management/scientific-council" element={<ScientificCouncil />} />
           <Route path="/science/management/bioethics" element={<Bioethics />} />
           <Route path="/science/management/young-scientists" element={<YoungScientists />} />
@@ -209,12 +221,12 @@ const App = () => {
           <Route path="/science/student-science" element={<StudentScience />} />
           <Route path="/science/labs" element={<Labs />} />
           <Route path="/science/management" element={<ManagementScience />} />
-          {/* Student routes */}
+          {}
           <Route path="/student/communities" element={<StudentCommunities />} />
           <Route path="/student/resources" element={<Resources />} />
           <Route path="/student/schedules" element={<Schedules />} />
           <Route path="/student/conditions" element={<Conditions />} />
-          {/* Applicant routes */}
+          {}
           <Route path="/applicant/commission" element={<Commission />} />
           <Route path="/applicant/rules" element={<Rules />} />
           <Route path="/applicant/directions" element={<Directions />} />
@@ -226,11 +238,12 @@ const App = () => {
           <Route path="/applicant/schedule" element={<ScheduleApp />} />
           <Route path="/applicant/transfer" element={<Transfer />} />
           <Route path="/applicant/scholarships" element={<Scholarships />} />
-          {/* Infrastructure routes */}
+          {}
           <Route path="/infrastructure/locations" element={<Locations />} />
           <Route path="/infrastructure/partners" element={<Partners />} />
           <Route path="/infrastructure/*" element={<Home />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   )

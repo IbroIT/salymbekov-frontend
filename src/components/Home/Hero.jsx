@@ -34,7 +34,7 @@ const Hero = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Слайды */}
+      {}
       <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
         {slides.map((slide) => (
           <div key={slide.id} className="w-full h-screen shrink-0 relative">
@@ -49,7 +49,7 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Кнопки навигации */}
+      {}
       <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2"
@@ -63,7 +63,7 @@ const Hero = () => {
         &#10095;
       </button>
 
-      {/* Индикаторы */}
+      {}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {slides.map((_, index) => (
           <button
@@ -78,3 +78,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

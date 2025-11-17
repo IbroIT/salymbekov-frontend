@@ -1,15 +1,15 @@
-import React from 'react';
 import Hero from '../components/Home/Hero';
-import { useTranslation } from 'react-i18next';
-import News from './university/News'
-import NewsDetail from './university/NewsDetail';
+import FounderMessage from './FounderMessage';
+import MaterialBaseGallery from './MaterialBaseGallery';
+import HomeNews from './university/HomeNewsSection'
 
 const Home = () => {
   return (
     <div>
       <Hero />
-      <News />
-      <NewsDetail />
+      <FounderMessage/>
+      <HomeNews />
+      <MaterialBaseGallery />
     </div>
   );
 };
