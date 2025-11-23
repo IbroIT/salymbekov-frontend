@@ -72,7 +72,7 @@ const Navbar = () => {
       // Колонка 1
       {
         label: 'Обращение учредителя',
-        path: '/university/founder-message'
+        path: '/university/Appeal'
       },
       {
         label: 'История',
@@ -96,105 +96,130 @@ const Navbar = () => {
       },
       {
         label: 'Брэндбук',
-        path: '/university/brandbook'
+        path: 'https://salymbekov.com/wp-content/uploads/2023/10/brjendbuk_organized_new.pdf'
       },
 
       // Колонка 2
       {
         label: '🏛️ Структура университета',
-        path: '/university/structure',
+        path: '',
         children: [
-          { label: 'Университет', path: '/university/structure' },
-          { label: 'Международный факультет медицины', path: '/university/structure' },
-          { label: 'Международный колледж IT и бизнеса', path: '/university/structure' }
+          { label: 'Университет', path: '/university/structure/University-main' },
+          { label: 'Международный факультет медицины', path: '/university/structure/International-Faculty' },
+          { label: 'Международный колледж IT и бизнеса', path: '/university/structure/it-college' }
         ]
       },
       {
         label: 'Учредительные документы',
-        path: '/university/founding-docs',
+        path: '',
         children: [
-          { label: 'Устав', path: '/university/founding-docs' },
-          { label: 'Лицензия', path: '/university/founding-docs' }
+          { label: 'Устав', path: '/university/founding-docs/charter' },
+          { label: 'Лицензии и свидетельства', path: '/university/founding-docs/licenses' },
+          { label: 'Акты', path: '/university/founding-docs/acts' }
         ]
       },
       {
         label: 'Органы управления',
-        path: '/university/management',
+        path: '',
         children: [
-          { label: 'Совет по развитию', path: '/university/management' },
-          { label: 'Учёный совет', path: '/university/management' }
+          { label: 'Учредитель', path: '/university/management/founder' },
+          { label: 'Президент', path: '/university/management/president' },
+          { label: 'Ректорат', path: '/university/management/rectorate' }
         ]
       },
       {
         label: 'Общественные советы',
-        path: '/university/management',
+        path: '',
         children: [
-          { label: 'Учебно-методический совет', path: '/university/management' },
-          { label: 'Научно-технический совет', path: '/university/management' }
+          { label: 'Совет развития', path: '/university/Councils/dev-council' },
+          { label: 'Ученый совет', path: '/university/Councils/acad-council' },
+          { label: 'Совет по качеству образования', path: '/university/Councils/edu-councils' },
+          { label: 'Учебно-методический совет', path: '/university/Councils/technical-council' },
+          { label: 'Научно-технический совет', path: '/university/Councils/scien-council' },
+          { label: 'Редакционный совет', path: '/university/Councils/edit-board' },
+          { label: 'Приемная комиссия', path: '/university/Councils/admis-committee' },
+          { label: 'Комиссия по социальной поддержке', path: '/university/Councils/commission-support' },
+          { label: 'Биоэтический комитет', path: '/university/Councils/bioethics-committee' },
+          { label: 'Совет молодых ученых', path: '/university/Councils/council-scients' },
+          { label: 'Совет работодателей', path: '/university/Councils/employers-council' },
+          { label: 'Совет родителей', path: '/university/Councils/parents-council' },
+          { label: 'Студенческий совет', path: '/university/Councils/student-council' }
         ]
       },
       {
         label: 'Структурные подразделения',
-        path: '/university/departments',
+        path: '',
         children: [
-          { label: 'Финансово-экономический отдел', path: '/university/departments' },
-          { label: 'Учебно-методический отдел', path: '/university/departments' }
+          { label: 'Финансово-экономический департамент', path: '/university/departments/financial' },
+          { label: 'Учебно-методический отдел', path: '/university/departments/science' },
+          { label: 'Департмент управления делами', path: '/university/departments/management' },
+          { label: 'Департмент HR и делопроизводства', path: '/university/departments/hr' },
+          { label: 'Департмент развития и качества образования', path: '/university/departments/quality' },
+          { label: 'Департмент науки и перспективных исследований', path: '/university/departments' },
+          { label: 'Международный отдел', path: '/university/departments/international' },
+          { label: 'Студенческий отдел кадров', path: '/university/departments/student' },
+          { label: 'Центр карьеры', path: '/university/departments/career' }
         ]
       },
 
       // Колонка 3
       {
         label: '✓ Аккредитация',
-        path: '/university/accreditation',
+        path: '',
         children: [
           {
             label: 'Национальная',
-            path: '/university/accreditation',
+            path: '',
             children: [
-              { label: 'На Дордое', path: '/university/accreditation' },
-              { label: 'На Юнусалиева', path: '/university/accreditation' }
+              { label: 'Аккредитация', path: '/university/accreditation/national' }
+             
             ]
           },
           {
             label: 'Международная',
-            path: '/university/accreditation',
+            path: '',
             children: [
-              { label: 'ASIIN', path: '/university/accreditation' },
-              { label: 'ACQUIN', path: '/university/accreditation' }
+              { label: 'Иституальная', path: '/university/accreditation/institutional' },
+              { label: 'Програмная Аккредитация', path: '/university/accreditation/program' }
             ]
           }
         ]
       },
       {
         label: 'Стратегические документы',
-        path: '/university/normative-docs',
+        path: '',
         children: [
-          { label: 'План развития', path: '/university/normative-docs' },
-          { label: 'Стратегия', path: '/university/normative-docs' }
+          { label: 'Видение', path: '/university/StrategicDocs/vision' },
+          { label: 'Положение', path: '/university/StrategicDocs/position' },
+          { label: 'Стратегический план развития', path: '/university/StrategicDocs/StrategicDevelopPlans' },
+          { label: 'Комплексные планы', path: 'https://salymbekov.com/wp-content/uploads/2022/05/5.9.4.-kompleksnyj-plan-meroprijatij-za-2021-2022-gg.pdf' },
+          { label: 'Учетная политика', path: '/university/StrategicDocs/AccountingPolicy' },
+          { label: 'Кадровая политика', path: '/university/StrategicDocs/HR-Policy' }
         ]
       },
       {
         label: 'Нормативные документы',
-        path: '/university/normative-docs',
+        path: '',
         children: [
-          { label: 'Положения', path: '/university/normative-docs' },
-          { label: 'Регламенты', path: '/university/normative-docs' }
+          { label: 'НПА КР', path: '/university/normative-docs/kr-acts' },
+          { label: 'НПА Университета', path: '/university/normative-docs/internal-acts' },
+        
         ]
       },
       {
         label: 'Система менеджмента качества',
-        path: '/university/appeal',
+        path: '',
         children: [
-          { label: 'Политика качества', path: '/university/appeal' },
-          { label: 'Процедуры', path: '/university/appeal' }
+          { label: 'Политика в области качества', path: '/university/QualityManagSystem/QualityPolity' },
+          { label: 'Мониторинг качества', path: '/university/QualityManagSystem/QualityMonitoring' }
         ]
       },
       {
         label: 'Сотрудничество',
-        path: '/university/cooperation',
+        path: '',
         children: [
-          { label: 'Партнёры', path: '/university/cooperation' },
-          { label: 'Соглашения', path: '/university/cooperation' }
+          { label: 'Сотрудничество с университетами', path: '/university/cooperation/universities' },
+          { label: 'Сотрудничество с клиниками', path: '/university/cooperation/clinics' }
         ]
       }
     ]

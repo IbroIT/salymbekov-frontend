@@ -89,7 +89,7 @@ const Rector = () => {
         {/* Кнопка для скачивания PDF */}
         <div className="max-w-4xl mx-auto mb-12">
           <a 
-            href="URL_PDF_ФАЙЛА_РЕКТОР" // Замените на реальный URL
+            href="https://salymbekov.com/wp-content/uploads/2023/03/rezjume-jesengeldi_2022.pdf" // Замените на реальный URL
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"

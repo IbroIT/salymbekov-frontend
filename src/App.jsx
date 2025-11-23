@@ -69,9 +69,38 @@ const KRActs = lazy(() => import('./pages/university/normativeDocs/KRActs'))
 const InternalActs = lazy(() => import('./pages/university/normativeDocs/InternalActs'))
 const QualitySystem = lazy(() => import('./pages/university/normativeDocs/QualitySystem'))
 
+
 // Cooperation sub
 const UniversitiesCoop = lazy(() => import('./pages/university/cooperation/Universities'))
 const ClinicsCoop = lazy(() => import('./pages/university/cooperation/Clinics'))
+
+
+// Councils imports
+const DevCouncil = lazy(() => import('./pages/university/Сouncils/DevCouncil'))
+const AcadCouncil = lazy(() => import('./pages/university/Сouncils/AcadCouncil'))
+const CommissionSupport = lazy(() => import('./pages/university/Сouncils/CommissionSupport'))
+const BioethicsCommittee = lazy(() => import('./pages/university/Сouncils/BioethicsCommittee'))
+const EmployersCouncil = lazy(() => import('./pages/university/Сouncils/EmployersCouncil'))
+const ParentsCouncil = lazy(() => import('./pages/university/Сouncils/ParentsCouncil'))
+const StudentCouncil = lazy(() => import('./pages/university/Сouncils/StudentCouncil'))
+const EduCouncils = lazy(() => import('./pages/university/Сouncils/EduCouncil'))
+const ScienCouncil = lazy(() => import('./pages/university/Сouncils/ScienCouncil'))
+const EditBoard = lazy(() => import('./pages/university/Сouncils/EditBoard'))
+const AdmisCommittee = lazy(() => import('./pages/university/Сouncils/AdmisCommittee'))
+const CouncilScients = lazy(() => import('./pages/university/Сouncils/CouncilScients'))
+const TechnicalCouncil = lazy(() => import('./pages/university/Сouncils/TechnicalCouncil'))
+
+// Srategic Docs imports
+const StrategicDevelopPlans = lazy(() => import('./pages/university/StrategicDocs/StrategicDevelopPlans'))
+const ComprehensivePlans = lazy(() => import('./pages/university/StrategicDocs/ComprehensivePlans'))
+const AccountingPolicy = lazy(() => import('./pages/university/StrategicDocs/AccountingPolicy'))
+const HRPolicy = lazy(() => import('./pages/university/StrategicDocs/HR-Policy'))
+const Vision = lazy(() => import('./pages/university/StrategicDocs/vision'))
+const Posision = lazy(() => import('./pages/university/StrategicDocs/position'))
+
+// Quality Management System imports
+const QualityPolity = lazy(() => import('./pages/university/QualityManagSystem/QualityPolity'))
+const QualityMonitoring = lazy(() => import('./pages/university/QualityManagSystem/QualityMonitoring'))
 
 // Education lazy imports
 const AboutAIT = lazy(() => import('./pages/education/ait/About'))
@@ -190,6 +219,30 @@ const App = () => {
           <Route path="/university/cooperation/universities" element={<UniversitiesCoop />} />
           <Route path="/university/cooperation/clinics" element={<ClinicsCoop />} />
           <Route path="/university/brandbook" element={<Brandbook />} />
+          <Route path="/university/Councils/dev-council" element={<DevCouncil />} />
+          <Route path="/university/Councils/acad-council" element={<AcadCouncil />} />
+          <Route path="/university/Councils/commission-support" element={<CommissionSupport />} />
+          <Route path="/university/Councils/bioethics-committee" element={<BioethicsCommittee />} />
+          <Route path="/university/Councils/employers-council" element={<EmployersCouncil />} />
+          <Route path="/university/Councils/parents-council" element={<ParentsCouncil />} />
+          <Route path="/university/Councils/student-council" element={<StudentCouncil />} />
+          <Route path="/university/Councils/edu-councils" element={<EduCouncils />} />
+          <Route path="/university/Councils/scien-council" element={<ScienCouncil />} />
+          <Route path="/university/Councils/edit-board" element={<EditBoard />} />
+          <Route path="/university/Councils/admis-committee" element={<AdmisCommittee />} />
+          <Route path="/university/Councils/council-scients" element={<CouncilScients />} />
+          <Route path="/university/Councils/technical-council" element={<TechnicalCouncil />} />
+          <Route path="/university/StrategicDocs/StrategicDevelopPlans" element={<StrategicDevelopPlans />} />
+          <Route path="/university/StrategicDocs/ComprehensivePlans" element={<ComprehensivePlans />} />
+          <Route path="/university/StrategicDocs/AccountingPolicy" element={<AccountingPolicy />} />
+          <Route path="/university/StrategicDocs/HR-Policy" element={<HRPolicy />} />
+          <Route path="/university/StrategicDocs/vision" element={<Vision />} />
+          <Route path="/university/StrategicDocs/position" element={<Posision />} />
+          <Route path="/university/QualityManagSystem/QualityPolity" element={<QualityPolity />} />
+          <Route path="/university/QualityManagSystem/QualityMonitoring" element={<QualityMonitoring />} />
+
+         
+
           {}
           <Route path="/education/ait" element={<AIT />} />
           <Route path="/education/ait/about" element={<AboutAIT />} />
