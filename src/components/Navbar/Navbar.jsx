@@ -457,15 +457,11 @@ const Navbar = () => {
               title: 'Американский институт технологий',
               items: [
                 { label: 'Об Институте', path: '/education/ait/about' },
-                { label: 'Руководство Института', path: '/education/ait/management' },
+                { label: 'Руководство Института', path: '/education/ait/leadership' },
                 { 
                   label: 'Дисциплины Института', 
-                  path: '/education/ait/disciplines',
-                  children: [
-                    { label: 'Общеобразовательные', path: '/education/ait/disciplines/general' },
-                    { label: 'Специальные', path: '/education/ait/disciplines/special' },
-                    { label: 'Элективные', path: '/education/ait/disciplines/elective' }
-                  ]
+                  path: '/education/ait/disciplines'
+                  
                 },
                 { label: 'Преподаватели', path: '/education/ait/teachers' },
                 { label: 'Контакты', path: '/education/ait/contacts' }
@@ -475,36 +471,39 @@ const Navbar = () => {
               icon: '💻',
               title: 'Международный колледж IT и бизнеса',
               items: [
-                { label: 'О колледже', path: '/education/it-college/about' },
-                { label: 'Директор', path: '/education/it-college/director' },
+                { label: 'О колледже', path: '/university/structure/it-college' },
+                { label: 'Директор', path: '/education/itCollege/director' },
                 { 
                   label: 'Специальности', 
-                  path: '/education/it-college/specialties',
+                  path: '',
                   children: [
-                    { label: 'Информационные технологии', path: '/education/it-college/specialties/it' },
-                    { label: 'Программирование', path: '/education/it-college/specialties/programming' },
-                    { label: 'Бизнес и менеджмент', path: '/education/it-college/specialties/business' },
-                    { label: 'Экономика', path: '/education/it-college/specialties/economics' }
+                    { label: 'Диплом в области компьютерных наук', path: '/education/itCollege/specialties/diplom-computer-science' },
+                    { label: 'Диплом в мультимедийных приложениях', path: '/education/itCollege/specialties/diplom-multi-applications' },
+                    { label: 'Диплом в области мобильных вычислений', path: '/education/itCollege/specialties/diplom-mobile-computing' }
+                    
                   ]
                 },
                 {
                   label: 'Программа двойного диплома',
-                  path: '/education/it-college/double',
-                  children: [
-                    { label: 'Lincoln University College', path: '/education/it-college/double/lincoln' },
-                    { label: 'Другие партнеры', path: '/education/it-college/double/partners' }
-                  ]
+                  path: '/education/itCollege/double-diploma',
+                  
+                },
+
+                {
+                  label: 'Lincoin University College',
+                  path: 'https://www.lincoln.edu.my/',
+                  
                 },
                 { 
                   label: 'Отделения', 
-                  path: '/education/it-college/departments',
+                  path: '',
                   children: [
-                    { label: 'IT отделение', path: '/education/it-college/departments/it' },
-                    { label: 'Бизнес отделение', path: '/education/it-college/departments/business' }
+                    { label: 'Общеобразовательных дисциплин', path: '/education/itCollege/departments/general' },
+                    { label: 'Информационных технологий', path: '/education/itCollege/departments/information' }
                   ]
                 },
-                { label: 'Педагогический совет', path: '/education/it-college/council' },
-                { label: 'Контакты и реквизиты', path: '/education/it-college/contacts' }
+                { label: 'Педагогический совет', path: '/education/itCollege/pedagogical-council' },
+                { label: 'Контакты и реквизиты', path: '/university/contacts' }
               ]
             }
           ]
@@ -516,18 +515,25 @@ const Navbar = () => {
               icon: '➕',
               title: 'Международный факультет Медицины',
               items: [
-                { label: 'О факультете', path: '/education/med-faculty/about' },
-                { label: 'Деканат', path: '/education/med-faculty/deanery' },
+                { label: 'О факультете', path: '/education/mfm/about' },
+                { label: 'Деканат', path: '',
+                  children: [
+                    { label: 'Декан', path: '/education/mfm/dekanat/dean' },
+                    { label: 'Учебный  план МФМ', path: '/education/mfm/dekanat/curriculum' },
+                    { label: 'Кафедры', path: '/education/mfm/dekanat/departments' }
+                  ]
+
+                },
                 { 
                   label: 'Программы', 
-                  path: '/education/med-faculty/programs',
+                  path: '',
                   children: [
-                    { label: 'Лечебное дело', path: '/education/med-faculty/programs/general' },
-                    { label: 'Стоматология', path: '/education/med-faculty/programs/dentistry' },
-                    { label: 'Фармация', path: '/education/med-faculty/programs/pharmacy' }
+                    { label: 'Лечебное дело 5 лет', path: '/education/mfm/programs/five-years' },
+                    { label: 'Лечебное дело 6 лет', path: '/education/mfm/programs/six-years' }
+                    
                   ]
                 },
-                { label: 'Контакты', path: '/education/med-faculty/contacts' }
+                { label: 'Контакты', path: '/university/contacts' }
               ]
             },
             {
@@ -539,15 +545,16 @@ const Navbar = () => {
                 { label: 'Менеджеры', path: '/education/business-school/managers' },
                 { 
                   label: 'Программы и курсы', 
-                  path: '/education/business-school/programs',
+                  path: '',
                   children: [
-                    { label: 'MBA программы', path: '/education/business-school/programs/mba' },
-                    { label: 'Бизнес-тренинги', path: '/education/business-school/programs/trainings' },
-                    { label: 'Краткосрочные курсы', path: '/education/business-school/programs/short' }
+                    { label: 'Смартик (5-7 лет)', path: '/education/business-school/programs/smartik' },
+                    { label: 'Будущие лидеры Кыргызстана (7-10 лет)', path: '/education/business-school/programs/future-leaders' },
+                    { label: 'Юные лидеры Кыргызстана (10-16 лет)', path: '/education/business-school/programs/young-leaders' },
+                    { label: 'Молодые лидеры Кыргызстана (от 16 лет)', path: '/education/business-school/programs/older-leaders' }
                   ]
                 },
                 { label: 'Тренеры и коучи', path: '/education/business-school/trainers' },
-                { label: 'Контакты', path: '/education/business-school/contacts' }
+                { label: 'Контакты', path: '/university/contacts' }
               ]
             }
           ]
@@ -559,9 +566,9 @@ const Navbar = () => {
               icon: '➕',
               title: 'Факультет последипломного образования',
               items: [
-                { label: 'Интернатура', path: '/education/postgrad/internatura' },
-                { label: 'Ординатура', path: '/education/postgrad/ordinatura' },
-                { label: 'Аспирантура', path: '/education/postgrad/aspirantura' },
+                { label: 'Интернатура', path: '/education/postgrad/internship' },
+                { label: 'Ординатура', path: '/education/postgrad/residency' },
+                { label: 'Аспирантура', path: '/education/postgrad/postgraduate' },
                 { label: 'PhD', path: '/education/postgrad/phd' },
                 {
                   label: 'Курсы повышения квалификации',
@@ -573,19 +580,10 @@ const Navbar = () => {
               icon: '🏫',
               title: 'Центр образования и инновации в г. Нарын',
               items: [
-                { label: 'О центре', path: '/education/naryn/about' },
-                { label: 'Директор Центра', path: '/education/naryn/director' },
-                { label: 'Менеджеры', path: '/education/naryn/managers' },
-                { 
-                  label: 'Программы и курсы', 
-                  path: '/education/naryn/programs',
-                  children: [
-                    { label: 'Образовательные программы', path: '/education/naryn/programs/educational' },
-                    { label: 'Тренинги', path: '/education/naryn/programs/trainings' },
-                    { label: 'Семинары', path: '/education/naryn/programs/seminars' }
-                  ]
-                },
-                { label: 'Контакты Центра', path: '/education/naryn/contacts' }
+                { label: 'О центре', path: '/education/center/about' },
+                { label: 'Директор Центра', path: '/education/center/director' },
+                { label: 'Менеджеры', path: '/education/center/managers' },
+                
               ]
             }
           ]
@@ -606,7 +604,7 @@ const Navbar = () => {
                 { label: 'Лазмед', path: '/clinical/lazmed' },
                 {
                   label: 'Дордой офтальмик сервис',
-                  path: '/clinical/dordoi-ophthalmic'
+                  path: '/clinical/dordoi'
                 },
                 { label: 'DOC university clinic', path: '/clinical/doc-clinic' },
                 { label: 'DOC university hospital', path: '/clinical/doc-hospital' }

@@ -6,8 +6,8 @@ const DoubleDiploma = () => {
 
   return (
     <div className="container mx-auto py-20">
-      <h1 className="text-4xl font-bold text-center">{t('education.itCollege.doubleDiploma.title')}</h1>
-      <p className="text-center mt-4">Content placeholder.</p>
+      <h1 className="text-4xl font-bold text-center">{t('404')}</h1>
+      <p className="text-center mt-4">Error</p>
     </div>
   );
 };
