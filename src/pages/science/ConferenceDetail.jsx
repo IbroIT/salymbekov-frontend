@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getConferenceById } from '../../data/conferences';
 
 const ConferenceDetail = () => {
   const { id } = useParams();
   const conf = getConferenceById(id);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   if (!conf) {
     return (
       <div className="min-h-screen flex items-center justify-center px-4">
         <div className="text-center">
           <p className="text-gray-500 mb-4">Конференция не найдена.</p>
-          <Link to="/science/conferences" className="text-blue-600 hover:underline">Вернуться к списку</Link>
+          <Link to="/science/events/conferences" className="text-blue-600 hover:underline">Вернуться к списку</Link>
         </div>
       </div>
     );
@@ -53,7 +54,7 @@ const ConferenceDetail = () => {
               </div>
             )}
             <div className="mt-8">
-              <Link to="/science/conferences" className="inline-block text-sm px-4 py-2 bg-white border border-gray-300 rounded hover:bg-gray-100">← Все конференции</Link>
+              <Link to="/science/events/conferences" className="inline-block text-sm px-4 py-2 bg-white border border-gray-300 rounded hover:bg-gray-100">← Все конференции</Link>
             </div>
           </div>
           <aside className="w-full md:w-72 flex-shrink-0">
@@ -62,7 +63,13 @@ const ConferenceDetail = () => {
               {conf.gallery && conf.gallery.length > 0 ? (
                 <div className="grid grid-cols-2 gap-2">
                   {conf.gallery.map((g,i) => (
-                    <img key={i} src={g} alt={`Фото ${i+1}`} className="rounded object-cover h-24 w-full" />
+                    <img 
+                      key={i} 
+                      src={g} 
+                      alt={`Фото ${i+1}`} 
+                      className="rounded object-cover h-24 w-full cursor-pointer hover:opacity-75 transition-opacity" 
+                      onClick={() => setSelectedImage(g)}
+                    />
                   ))}
                 </div>
               ) : (
@@ -72,6 +79,29 @@ const ConferenceDetail = () => {
           </aside>
         </div>
       </div>
+
+      {/* Модальное окно для просмотра фото */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-7xl max-h-full">
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-gray-300 z-10"
+            >
+              ×
+            </button>
+            <img
+              src={selectedImage}
+              alt="Увеличенное фото"
+              className="max-w-full max-h-[90vh] object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -651,7 +651,7 @@ const Navbar = () => {
                   label: 'Студенческая наука', 
                   path: '/science/student-science',
                   children: [
-                    { label: 'Студенческое научное объединение', path: '/science/student-science/association' },
+                    { label: 'Студенческое научное объединение', path: '/science/student-society' },
                     { label: 'Научные кружки', path: '/science/student-science/clubs' },
                     { label: 'Студенческие конференции', path: '/science/student-science/conferences' }
                   ]
