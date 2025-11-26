@@ -20,6 +20,7 @@ import {
   FaDownload,
   FaSearch,
   FaStar,
+  FaCheckCircle,
   FaUniversity
 } from "react-icons/fa";
 import { useTranslation } from "react-i18next";

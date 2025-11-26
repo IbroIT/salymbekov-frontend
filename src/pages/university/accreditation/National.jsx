@@ -1,85 +1,316 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+// components/UniversityRegulationsPage.jsx
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { 
+  FaChevronDown,
+  FaBook,
+  FaGraduationCap,
+  FaUserGraduate,
+  FaCalendarAlt,
+  FaBalanceScale,
+  FaFileAlt,
+  FaDownload,
+  FaArrowRight,
+  FaUniversity,
+  FaAward,
+  FaShieldAlt,
+  FaCheckCircle
+} from "react-icons/fa";
 
-const Accreditation = () => {
+const UniversityNationalPage = () => {
   const { t } = useTranslation();
-  const [showCertificate, setShowCertificate] = useState(false);
+  const [openSections, setOpenSections] = useState({});
 
-  const handleShowCertificate = () => {
-    setShowCertificate(true);
+  const toggleSection = (sectionId) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [sectionId]: !prev[sectionId]
+    }));
   };
 
-  const handleCloseCertificate = () => {
-    setShowCertificate(false);
-  };
+  const sections = [
+    {
+      id: 1,
+      title: t('universityRegulations.section1.title'),
+      content: t('universityRegulations.section1.content'),
+      icon: <FaBook className="text-white" size={20} />,
+      color: "bg-[#023E8A]"
+    },
+    {
+      id: 2,
+      title: t('universityRegulations.section2.title'),
+      content: t('universityRegulations.section2.content'),
+      icon: <FaGraduationCap className="text-white" size={20} />,
+      color: "bg-[#0077B6]"
+    },
+    {
+      id: 3,
+      title: t('universityRegulations.section3.title'),
+      content: t('universityRegulations.section3.content'),
+      icon: <FaUserGraduate className="text-white" size={20} />,
+      color: "bg-[#0096C7]"
+    },
+    {
+      id: 4,
+      title: t('universityRegulations.section4.title'),
+      content: t('universityRegulations.section4.content'),
+      icon: <FaBalanceScale className="text-white" size={20} />,
+      color: "bg-[#00B4D8]"
+    },
+    {
+      id: 5,
+      title: t('universityRegulations.section5.title'),
+      content: t('universityRegulations.section5.content'),
+      icon: <FaCalendarAlt className="text-white" size={20} />,
+      color: "bg-[#023E8A]"
+    },
+    {
+      id: 6,
+      title: t('universityRegulations.section6.title'),
+      content: t('universityRegulations.section6.content'),
+      icon: <FaFileAlt className="text-white" size={20} />,
+      color: "bg-[#0077B6]"
+    }
+  ];
+
+  const stats = [
+    { number: "50+", label: t('universityRegulations.stats.documents'), icon: <FaFileAlt className="text-[#023E8A]" /> },
+    { number: "100%", label: t('universityRegulations.stats.compliance'), icon: <FaCheckCircle className="text-[#023E8A]" /> },
+    { number: "24/7", label: t('universityRegulations.stats.access'), icon: <FaShieldAlt className="text-[#023E8A]" /> },
+    { number: "2024", label: t('universityRegulations.stats.updated'), icon: <FaAward className="text-[#023E8A]" /> }
+  ];
+
+  const features = [
+    {
+      icon: <FaUniversity className="text-white" size={24} />,
+      title: t('universityRegulations.features.academic.title'),
+      description: t('universityRegulations.features.academic.description'),
+      color: "bg-[#023E8A]"
+    },
+    {
+      icon: <FaUserGraduate className="text-white" size={24} />,
+      title: t('universityRegulations.features.students.title'),
+      description: t('universityRegulations.features.students.description'),
+      color: "bg-[#0077B6]"
+    },
+    {
+      icon: <FaBalanceScale className="text-white" size={24} />,
+      title: t('universityRegulations.features.ethics.title'),
+      description: t('universityRegulations.features.ethics.description'),
+      color: "bg-[#0096C7]"
+    },
+    {
+      icon: <FaGraduationCap className="text-white" size={24} />,
+      title: t('universityRegulations.features.quality.title'),
+      description: t('universityRegulations.features.quality.description'),
+      color: "bg-[#00B4D8]"
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header Section с фоновым изображением */}
-      <section className="relative py-20">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url("https://coolbackgrounds.imgix.net/1ImfDgm1Ze4X2YS2CRiQxN/a426817af36443afa06274e55836b3e3/pure-blue-background-0000ff.jpg?w=3840&q=60&auto=format,compress")` }} // Замените на реальный URL
-        >
-          <div className="absolute inset-0 bg-black opacity-50"></div>
-        </div>
-        <div className="relative container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">{t('accreditation.hero.title')}</h1>
-        </div>
-      </section>
-
-      {/* Основной контент */}
-      <div className="container mx-auto px-6 py-12">
-        <div className="max-w-4xl mx-auto">
-          {/* Основной текст с темным и большим шрифтом */}
-          <div className="mb-8">
-            <p className="text-gray-900 text-2xl md:text-3xl font-bold leading-relaxed">
-              {t('accreditation.mainText')}
-            </p>
-          </div>
-
-          {/* Дополнительный текст с обычным шрифтом */}
-          <div className="mb-12">
-            <p className="text-gray-700 text-lg leading-relaxed">
-              {t('accreditation.description')}
-            </p>
-          </div>
-
-          {/* Кнопка Сертификат */}
-          <div className="text-center">
-            <button
-              onClick={handleShowCertificate}
-              className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
-            >
-              {t('accreditation.certificateButton')}
-            </button>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+      {/* Анимированный фон */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full opacity-5"
+            style={{
+              width: Math.random() * 100 + 50,
+              height: Math.random() * 100 + 50,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: `linear-gradient(135deg, #023E8A, #0077B6)`
+            }}
+            animate={{
+              y: [0, -40, 0],
+              opacity: [0.03, 0.1, 0.03],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{
+              duration: 8 + Math.random() * 8,
+              repeat: Infinity,
+              delay: Math.random() * 5
+            }}
+          />
+        ))}
       </div>
 
-      {/* Модальное окно с сертификатом */}
-      {showCertificate && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
-          onClick={handleCloseCertificate}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
+        {/* Герой секция */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          <div className="relative max-w-4xl max-h-full">
-            <button 
-              className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300 transition-colors"
-              onClick={handleCloseCertificate}
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
+          >
+            <FaUniversity className="text-xl" />
+            <span className="font-semibold">{t('universityRegulations.badge')}</span>
+          </motion.div>
+
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
+            {t('universityRegulations.title')}
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            {t('universityRegulations.subtitle')}
+          </p>
+        </motion.div>
+
+        {/* Статистика */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
             >
-              ✕
-            </button>
-            <img 
-              src="https://salymbekov.com/wp-content/uploads/2023/04/institucionalnaja-akkreditacija_page-0003.jpg" // Замените на реальный URL
-              alt={t('accreditation.certificateAlt')}
-              className="max-w-full max-h-screen object-contain"
-            />
+              <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                {stat.icon}
+              </div>
+              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-2">
+                {stat.number}
+              </div>
+              <div className="text-gray-600 font-medium">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Ключевые особенности */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mb-16"
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              {t('universityRegulations.featuresTitle')}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {t('universityRegulations.featuresSubtitle')}
+            </p>
           </div>
-        </div>
-      )}
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group text-center"
+              >
+                <div className={`w-16 h-16 ${feature.color} rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Секции регламента */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mb-20"
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              {t('universityRegulations.regulationsTitle')}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {t('universityRegulations.regulationsSubtitle')}
+            </p>
+          </div>
+
+          <div className="grid gap-6">
+            {sections.map((section, index) => (
+              <motion.div
+                key={section.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.01 }}
+                className="bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                <motion.button
+                  onClick={() => toggleSection(section.id)}
+                  className="w-full px-8 py-6 text-left transition-colors duration-200 flex items-center justify-between hover:bg-gray-50"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`w-12 h-12 ${section.color} rounded-xl flex items-center justify-center`}>
+                      {section.icon}
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-2xl font-bold text-gray-800">
+                        {section.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <motion.div
+                    animate={{ rotate: openSections[section.id] ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-[#023E8A]"
+                  >
+                    <FaChevronDown className="text-xl" />
+                  </motion.div>
+                </motion.button>
+                
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: openSections[section.id] ? "auto" : 0,
+                    opacity: openSections[section.id] ? 1 : 0
+                  }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-8 pb-8">
+                    <div className="pl-16">
+                      <div className="prose max-w-none text-gray-700 text-lg leading-relaxed whitespace-pre-line">
+                        {section.content}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Призыв к действию */}
+       
+      </div>
     </div>
   );
 };
 
-export default Accreditation;
+export default UniversityNationalPage;

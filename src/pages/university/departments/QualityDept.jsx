@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+
 import { 
   FaAward,
   FaChartLine,
@@ -20,7 +21,9 @@ import {
   FaEnvelope,
   FaCalendarAlt,
   FaDownload,
-  FaSearch
+  FaSearch,
+  FaBuilding,
+  FaGlobeAmericas // Импортируем из react-icons/fa вместо fa6
 } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
@@ -39,171 +42,171 @@ const QualityDept = () => {
       number: "ISO 9001", 
       label: t('quality.stats.certification'), 
       icon: <FaAward className="text-[#023E8A]" />,
-      description: t('quality.stats.certificationDesc')
+      description: t('quality.stats.certificationDesc') || "Международная сертификация качества"
     },
     { 
       number: "98%", 
       label: t('quality.stats.satisfaction'), 
       icon: <FaStar className="text-[#023E8A]" />,
-      description: t('quality.stats.satisfactionDesc')
+      description: t('quality.stats.satisfactionDesc') || "Удовлетворенность студентов"
     },
     { 
       number: "15+", 
       label: t('quality.stats.audits'), 
       icon: <FaClipboardCheck className="text-[#023E8A]" />,
-      description: t('quality.stats.auditsDesc')
+      description: t('quality.stats.auditsDesc') || "Ежегодных аудитов"
     },
     { 
       number: "100%", 
       label: t('quality.stats.compliance'), 
       icon: <FaCheckCircle className="text-[#023E8A]" />,
-      description: t('quality.stats.complianceDesc')
+      description: t('quality.stats.complianceDesc') || "Соответствие стандартам"
     }
   ];
 
   const qualityPrinciples = [
     {
       icon: <FaEye className="text-white" size={24} />,
-      title: t('quality.principles.transparency.title'),
-      description: t('quality.principles.transparency.description'),
+      title: t('quality.principles.transparency.title') || "Прозрачность",
+      description: t('quality.principles.transparency.description') || "Открытость всех процессов и процедур",
       color: "bg-[#023E8A]"
     },
     {
       icon: <FaChartLine className="text-white" size={24} />,
-      title: t('quality.principles.continuous.title'),
-      description: t('quality.principles.continuous.description'),
+      title: t('quality.principles.continuous.title') || "Непрерывное улучшение",
+      description: t('quality.principles.continuous.description') || "Постоянное совершенствование процессов",
       color: "bg-[#0077B6]"
     },
     {
       icon: <FaUsers className="text-white" size={24} />,
-      title: t('quality.principles.stakeholder.title'),
-      description: t('quality.principles.stakeholder.description'),
+      title: t('quality.principles.stakeholder.title') || "Ориентация на стейкхолдеров",
+      description: t('quality.principles.stakeholder.description') || "Учет интересов всех участников",
       color: "bg-[#0096C7]"
     },
     {
       icon: <FaShieldAlt className="text-white" size={24} />,
-      title: t('quality.principles.accountability.title'),
-      description: t('quality.principles.accountability.description'),
+      title: t('quality.principles.accountability.title') || "Подотчетность",
+      description: t('quality.principles.accountability.description') || "Ответственность за результаты",
       color: "bg-[#00B4D8]"
     }
   ];
 
   const qualityStandards = [
     {
-      standard: t('quality.standards.academic.title'),
-      description: t('quality.standards.academic.description'),
-      status: t('quality.standards.academic.status'),
-      lastAudit: t('quality.standards.academic.lastAudit'),
+      standard: t('quality.standards.academic.title') || "Академические стандарты",
+      description: t('quality.standards.academic.description') || "Стандарты образовательных программ",
+      status: t('quality.standards.academic.status') || "Активен",
+      lastAudit: t('quality.standards.academic.lastAudit') || "Январь 2024",
       compliance: "98%",
       icon: <FaGraduationCap className="text-2xl" />,
       color: "from-blue-500 to-cyan-500",
       requirements: [
-        t('quality.standards.academic.requirements.curriculum'),
-        t('quality.standards.academic.requirements.faculty'),
-        t('quality.standards.academic.requirements.assessment')
+        t('quality.standards.academic.requirements.curriculum') || "Обновление учебных планов",
+        t('quality.standards.academic.requirements.faculty') || "Квалификация преподавателей",
+        t('quality.standards.academic.requirements.assessment') || "Система оценивания"
       ]
     },
     {
-      standard: t('quality.standards.international.title'),
-      description: t('quality.standards.international.description'),
-      status: t('quality.standards.international.status'),
-      lastAudit: t('quality.standards.international.lastAudit'),
+      standard: t('quality.standards.international.title') || "Международные стандарты",
+      description: t('quality.standards.international.description') || "Соответствие мировым требованиям",
+      status: t('quality.standards.international.status') || "Активен",
+      lastAudit: t('quality.standards.international.lastAudit') || "Март 2024",
       compliance: "95%",
       icon: <FaGlobeAmericas className="text-2xl" />,
       color: "from-green-500 to-emerald-500",
       requirements: [
-        t('quality.standards.international.requirements.accreditation'),
-        t('quality.standards.international.requirements.partnerships'),
-        t('quality.standards.international.requirements.recognition')
+        t('quality.standards.international.requirements.accreditation') || "Международная аккредитация",
+        t('quality.standards.international.requirements.partnerships') || "Партнерства с вузами",
+        t('quality.standards.international.requirements.recognition') || "Признание дипломов"
       ]
     },
     {
-      standard: t('quality.standards.management.title'),
-      description: t('quality.standards.management.description'),
-      status: t('quality.standards.management.status'),
-      lastAudit: t('quality.standards.management.lastAudit'),
+      standard: t('quality.standards.management.title') || "Стандарты управления",
+      description: t('quality.standards.management.description') || "Система менеджмента качества",
+      status: t('quality.standards.management.status') || "Активен",
+      lastAudit: t('quality.standards.management.lastAudit') || "Декабрь 2023",
       compliance: "99%",
       icon: <FaCog className="text-2xl" />,
       color: "from-purple-500 to-pink-500",
       requirements: [
-        t('quality.standards.management.requirements.processes'),
-        t('quality.standards.management.requirements.documentation'),
-        t('quality.standards.management.requirements.improvement')
+        t('quality.standards.management.requirements.processes') || "Оптимизация процессов",
+        t('quality.standards.management.requirements.documentation') || "Документооборот",
+        t('quality.standards.management.requirements.improvement') || "Процессы улучшения"
       ]
     }
   ];
 
   const auditSchedule = [
     {
-      type: t('quality.audit.internal.title'),
-      date: t('quality.audit.internal.date'),
-      scope: t('quality.audit.internal.scope'),
+      type: t('quality.audit.internal.title') || "Внутренний аудит",
+      date: t('quality.audit.internal.date') || "15.01.2024",
+      scope: t('quality.audit.internal.scope') || "Академические процессы",
       status: "completed",
-      results: t('quality.audit.internal.results')
+      results: t('quality.audit.internal.results') || "Соответствует требованиям"
     },
     {
-      type: t('quality.audit.external.title'),
-      date: t('quality.audit.external.date'),
-      scope: t('quality.audit.external.scope'),
+      type: t('quality.audit.external.title') || "Внешний аудит",
+      date: t('quality.audit.external.date') || "20.03.2024",
+      scope: t('quality.audit.external.scope') || "Система менеджмента качества",
       status: "upcoming",
-      results: t('quality.audit.external.results')
+      results: t('quality.audit.external.results') || "Запланирован"
     },
     {
-      type: t('quality.audit.accreditation.title'),
-      date: t('quality.audit.accreditation.date'),
-      scope: t('quality.audit.accreditation.scope'),
+      type: t('quality.audit.accreditation.title') || "Аккредитационный аудит",
+      date: t('quality.audit.accreditation.date') || "10.06.2024",
+      scope: t('quality.audit.accreditation.scope') || "Образовательные программы",
       status: "planned",
-      results: t('quality.audit.accreditation.results')
+      results: t('quality.audit.accreditation.results') || "В процессе подготовки"
     }
   ];
 
   const improvementInitiatives = [
     {
-      initiative: t('quality.improvements.digital.title'),
-      description: t('quality.improvements.digital.description'),
+      initiative: t('quality.improvements.digital.title') || "Цифровая трансформация",
+      description: t('quality.improvements.digital.description') || "Внедрение цифровых технологий в образовательный процесс",
       progress: 85,
-      timeline: t('quality.improvements.digital.timeline'),
-      impact: t('quality.improvements.digital.impact'),
+      timeline: t('quality.improvements.digital.timeline') || "2023-2024",
+      impact: t('quality.improvements.digital.impact') || "Высокий",
       icon: <FaRocket className="text-lg" />
     },
     {
-      initiative: t('quality.improvements.faculty.title'),
-      description: t('quality.improvements.faculty.description'),
+      initiative: t('quality.improvements.faculty.title') || "Развитие преподавателей",
+      description: t('quality.improvements.faculty.description') || "Повышение квалификации преподавательского состава",
       progress: 70,
-      timeline: t('quality.improvements.faculty.timeline'),
-      impact: t('quality.improvements.faculty.impact'),
+      timeline: t('quality.improvements.faculty.timeline') || "2023-2025",
+      impact: t('quality.improvements.faculty.impact') || "Средний",
       icon: <FaUsers className="text-lg" />
     },
     {
-      initiative: t('quality.improvements.infrastructure.title'),
-      description: t('quality.improvements.infrastructure.description'),
+      initiative: t('quality.improvements.infrastructure.title') || "Инфраструктура",
+      description: t('quality.improvements.infrastructure.description') || "Модернизация учебных помещений и оборудования",
       progress: 60,
-      timeline: t('quality.improvements.infrastructure.timeline'),
-      impact: t('quality.improvements.infrastructure.impact'),
+      timeline: t('quality.improvements.infrastructure.timeline') || "2024-2026",
+      impact: t('quality.improvements.infrastructure.impact') || "Высокий",
       icon: <FaBuilding className="text-lg" />
     }
   ];
 
   const certifications = [
     {
-      name: t('quality.certifications.iso9001.title'),
-      issuer: t('quality.certifications.iso9001.issuer'),
-      validUntil: t('quality.certifications.iso9001.validUntil'),
-      scope: t('quality.certifications.iso9001.scope'),
+      name: t('quality.certifications.iso9001.title') || "ISO 9001:2015",
+      issuer: t('quality.certifications.iso9001.issuer') || "International Standards Organization",
+      validUntil: t('quality.certifications.iso9001.validUntil') || "Декабрь 2025",
+      scope: t('quality.certifications.iso9001.scope') || "Система менеджмента качества",
       status: "active"
     },
     {
-      name: t('quality.certifications.accreditation.title'),
-      issuer: t('quality.certifications.accreditation.issuer'),
-      validUntil: t('quality.certifications.accreditation.validUntil'),
-      scope: t('quality.certifications.accreditation.scope'),
+      name: t('quality.certifications.accreditation.title') || "Государственная аккредитация",
+      issuer: t('quality.certifications.accreditation.issuer') || "Министерство образования",
+      validUntil: t('quality.certifications.accreditation.validUntil') || "Июнь 2026",
+      scope: t('quality.certifications.accreditation.scope') || "Образовательная деятельность",
       status: "active"
     },
     {
-      name: t('quality.certifications.international.title'),
-      issuer: t('quality.certifications.international.issuer'),
-      validUntil: t('quality.certifications.international.validUntil'),
-      scope: t('quality.certifications.international.scope'),
+      name: t('quality.certifications.international.title') || "Международная аккредитация",
+      issuer: t('quality.certifications.international.issuer') || "International Accreditation Council",
+      validUntil: t('quality.certifications.international.validUntil') || "В процессе",
+      scope: t('quality.certifications.international.scope') || "Все образовательные программы",
       status: "pending"
     }
   ];
@@ -211,17 +214,23 @@ const QualityDept = () => {
   const contactInfo = {
     phone: "+996 778 99 88 66",
     email: "quality@salymbekov.com",
-    hours: t('quality.contact.hours'),
-    location: t('quality.contact.location')
+    hours: t('quality.contact.hours') || "Пн-Пт: 9:00-18:00",
+    location: t('quality.contact.location') || "г. Бишкек, ул. Тыныстанова 34"
   };
 
   const tabs = [
-    { id: "standards", label: t('quality.tabs.standards'), icon: <FaAward /> },
-    { id: "audits", label: t('quality.tabs.audits'), icon: <FaClipboardCheck /> },
-    { id: "improvements", label: t('quality.tabs.improvements'), icon: <FaChartLine /> }
+    { id: "standards", label: t('quality.tabs.standards') || "Стандарты", icon: <FaAward /> },
+    { id: "audits", label: t('quality.tabs.audits') || "Аудиты", icon: <FaClipboardCheck /> },
+    { id: "improvements", label: t('quality.tabs.improvements') || "Улучшения", icon: <FaChartLine /> }
   ];
 
   const years = ["2025", "2024", "2023"];
+
+  // Функции для перевода с fallback значениями
+  const getTranslation = (key, fallback) => {
+    const translation = t(key);
+    return translation !== key ? translation : fallback;
+  };
 
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
@@ -269,14 +278,14 @@ const QualityDept = () => {
             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
           >
             <FaMedal className="text-xl" />
-            <span className="font-semibold">{t('quality.badge')}</span>
+            <span className="font-semibold">{getTranslation('quality.badge', 'Отдел качества')}</span>
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-            {t('quality.title')}
+            {getTranslation('quality.title', 'Система качества')}
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {t('quality.subtitle')}
+            {getTranslation('quality.subtitle', 'Обеспечение высоких стандартов образования и непрерывное улучшение процессов')}
           </p>
         </motion.div>
 
@@ -323,10 +332,10 @@ const QualityDept = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">
-              {t('quality.principles.title')}
+              {getTranslation('quality.principles.title', 'Наши принципы качества')}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {t('quality.principles.subtitle')}
+              {getTranslation('quality.principles.subtitle', 'Основополагающие принципы, которые руководят нашей работой')}
             </p>
           </div>
 
@@ -368,10 +377,10 @@ const QualityDept = () => {
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-6">
                 <div>
                   <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                    {t('quality.qualitySystem')}
+                    {getTranslation('quality.qualitySystem', 'Система менеджмента качества')}
                   </h2>
                   <p className="text-gray-600">
-                    {t('quality.selectYear')}
+                    {getTranslation('quality.selectYear', 'Выберите год для просмотра данных')}
                   </p>
                 </div>
                 
@@ -425,7 +434,7 @@ const QualityDept = () => {
                   className="space-y-8"
                 >
                   <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                    {t('quality.standards.title')} {selectedYear}
+                    {getTranslation('quality.standards.title', 'Стандарты качества')} {selectedYear}
                   </h3>
                   <div className="grid lg:grid-cols-3 gap-6">
                     {qualityStandards.map((standard, index) => (
@@ -450,15 +459,15 @@ const QualityDept = () => {
                         
                         <div className="space-y-3 mb-4">
                           <div className="flex justify-between items-center text-sm">
-                            <span className="text-gray-600">{t('quality.standards.status')}</span>
+                            <span className="text-gray-600">{getTranslation('quality.standards.status', 'Статус')}</span>
                             <span className="font-semibold text-green-600">{standard.status}</span>
                           </div>
                           <div className="flex justify-between items-center text-sm">
-                            <span className="text-gray-600">{t('quality.standards.lastAudit')}</span>
+                            <span className="text-gray-600">{getTranslation('quality.standards.lastAudit', 'Последний аудит')}</span>
                             <span className="font-semibold text-[#023E8A]">{standard.lastAudit}</span>
                           </div>
                           <div className="flex justify-between items-center text-sm">
-                            <span className="text-gray-600">{t('quality.standards.compliance')}</span>
+                            <span className="text-gray-600">{getTranslation('quality.standards.compliance', 'Соответствие')}</span>
                             <span className="font-semibold text-[#023E8A]">{standard.compliance}</span>
                           </div>
                         </div>
@@ -477,7 +486,7 @@ const QualityDept = () => {
                           whileTap={{ scale: 0.95 }}
                           className="w-full border-2 border-[#023E8A] text-[#023E8A] py-2 rounded-xl font-semibold hover:bg-[#023E8A] hover:text-white transition-colors"
                         >
-                          {t('quality.standards.details')}
+                          {getTranslation('quality.standards.details', 'Подробнее')}
                         </motion.button>
                       </motion.div>
                     ))}
@@ -492,7 +501,7 @@ const QualityDept = () => {
                   className="space-y-6"
                 >
                   <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                    {t('quality.audit.title')}
+                    {getTranslation('quality.audit.title', 'График аудитов')}
                   </h3>
                   <div className="space-y-4">
                     {auditSchedule.map((audit, index) => (
@@ -519,7 +528,8 @@ const QualityDept = () => {
                                 ? "bg-blue-100 text-blue-700"
                                 : "bg-gray-100 text-gray-600"
                             }`}>
-                              {t(`quality.audit.status.${audit.status}`)}
+                              {audit.status === "completed" ? "Завершен" : 
+                               audit.status === "upcoming" ? "Предстоящий" : "Запланирован"}
                             </span>
                           </div>
                           <p className="text-gray-600 text-sm mb-2">
@@ -535,7 +545,7 @@ const QualityDept = () => {
                             whileHover={{ scale: 1.05 }}
                             className="text-[#023E8A] text-sm font-semibold mt-2 flex items-center gap-1 lg:justify-end"
                           >
-                            {t('quality.audit.report')}
+                            {getTranslation('quality.audit.report', 'Отчет')}
                             <FaArrowRight className="text-xs" />
                           </motion.button>
                         </div>
@@ -552,7 +562,7 @@ const QualityDept = () => {
                   className="space-y-6"
                 >
                   <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                    {t('quality.improvements.title')}
+                    {getTranslation('quality.improvements.title', 'Инициативы по улучшению')}
                   </h3>
                   <div className="grid md:grid-cols-3 gap-6">
                     {improvementInitiatives.map((initiative, index) => (
@@ -580,7 +590,7 @@ const QualityDept = () => {
                         {/* Прогресс бар */}
                         <div className="mb-4">
                           <div className="flex justify-between text-sm text-gray-600 mb-2">
-                            <span>{t('quality.improvements.progress')}</span>
+                            <span>{getTranslation('quality.improvements.progress', 'Прогресс')}</span>
                             <span>{initiative.progress}%</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
@@ -629,7 +639,7 @@ const QualityDept = () => {
               <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center">
                 <FaAward className="text-[#023E8A] text-xl" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-800">{t('quality.certifications.title')}</h3>
+              <h3 className="text-2xl font-bold text-gray-800">{getTranslation('quality.certifications.title', 'Сертификации')}</h3>
             </div>
             
             <div className="space-y-4">
@@ -652,13 +662,13 @@ const QualityDept = () => {
                         ? "bg-green-100 text-green-700" 
                         : "bg-yellow-100 text-yellow-700"
                     }`}>
-                      {t(`quality.certifications.status.${cert.status}`)}
+                      {cert.status === "active" ? "Активен" : "В процессе"}
                     </span>
                   </div>
                   <div className="text-sm text-gray-600 space-y-1">
-                    <p><strong>{t('quality.certifications.issuer')}:</strong> {cert.issuer}</p>
-                    <p><strong>{t('quality.certifications.validUntil')}:</strong> {cert.validUntil}</p>
-                    <p><strong>{t('quality.certifications.scope')}:</strong> {cert.scope}</p>
+                    <p><strong>{getTranslation('quality.certifications.issuer', 'Организация')}:</strong> {cert.issuer}</p>
+                    <p><strong>{getTranslation('quality.certifications.validUntil', 'Действует до')}:</strong> {cert.validUntil}</p>
+                    <p><strong>{getTranslation('quality.certifications.scope', 'Область действия')}:</strong> {cert.scope}</p>
                   </div>
                 </motion.div>
               ))}
@@ -670,7 +680,7 @@ const QualityDept = () => {
               className="w-full mt-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2"
             >
               <FaDownload />
-              {t('quality.certifications.downloadAll')}
+              {getTranslation('quality.certifications.downloadAll', 'Скачать все сертификаты')}
             </motion.button>
           </motion.div>
 
@@ -683,7 +693,7 @@ const QualityDept = () => {
               <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
                 <FaHandshake className="text-white text-xl" />
               </div>
-              <h3 className="text-2xl font-bold">{t('quality.contact.title')}</h3>
+              <h3 className="text-2xl font-bold">{getTranslation('quality.contact.title', 'Контакты')}</h3>
             </div>
             
             <div className="space-y-4">
@@ -696,7 +706,7 @@ const QualityDept = () => {
                   <FaPhone className="text-white text-sm" />
                 </div>
                 <div>
-                  <p className="text-white/80 text-sm">{t('quality.contact.phone')}</p>
+                  <p className="text-white/80 text-sm">{getTranslation('quality.contact.phone', 'Телефон')}</p>
                   <p className="font-semibold">{contactInfo.phone}</p>
                 </div>
               </motion.div>
@@ -711,7 +721,7 @@ const QualityDept = () => {
                   <FaEnvelope className="text-white text-sm" />
                 </div>
                 <div>
-                  <p className="text-white/80 text-sm">{t('quality.contact.email')}</p>
+                  <p className="text-white/80 text-sm">{getTranslation('quality.contact.email', 'Email')}</p>
                   <p className="font-semibold">{contactInfo.email}</p>
                 </div>
               </motion.div>
@@ -726,7 +736,7 @@ const QualityDept = () => {
                   <FaCalendarAlt className="text-white text-sm" />
                 </div>
                 <div>
-                  <p className="text-white/80 text-sm">{t('quality.contact.hours')}</p>
+                  <p className="text-white/80 text-sm">{getTranslation('quality.contact.hours', 'Часы работы')}</p>
                   <p className="font-semibold">{contactInfo.hours}</p>
                 </div>
               </motion.div>
@@ -737,7 +747,7 @@ const QualityDept = () => {
                 className="w-full bg-white text-[#023E8A] py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 mt-6"
               >
                 <FaSearch />
-                {t('quality.contact.consultation')}
+                {getTranslation('quality.contact.consultation', 'Запрос на консультацию')}
               </motion.button>
             </div>
           </motion.div>

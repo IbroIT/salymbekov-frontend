@@ -189,8 +189,7 @@ const Navbar = () => {
         label: 'Стратегические документы',
         path: '',
         children: [
-          { label: 'Видение', path: '/university/StrategicDocs/vision' },
-          { label: 'Положение', path: '/university/StrategicDocs/position' },
+          { label: 'Видение', path: '/university/StrategicDocs/StrategicVision' },
           { label: 'Стратегический план развития', path: '/university/StrategicDocs/StrategicDevelopPlans' },
           { label: 'Комплексные планы', path: 'https://salymbekov.com/wp-content/uploads/2022/05/5.9.4.-kompleksnyj-plan-meroprijatij-za-2021-2022-gg.pdf' },
           { label: 'Учетная политика', path: '/university/StrategicDocs/AccountingPolicy' },

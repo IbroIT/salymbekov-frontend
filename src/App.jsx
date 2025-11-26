@@ -95,7 +95,7 @@ const StrategicDevelopPlans = lazy(() => import('./pages/university/StrategicDoc
 const ComprehensivePlans = lazy(() => import('./pages/university/StrategicDocs/ComprehensivePlans'))
 const AccountingPolicy = lazy(() => import('./pages/university/StrategicDocs/AccountingPolicy'))
 const HRPolicy = lazy(() => import('./pages/university/StrategicDocs/HR-Policy'))
-const Vision = lazy(() => import('./pages/university/StrategicDocs/vision'))
+const StrategicVision = lazy(() => import('./pages/university/StrategicDocs/StrategicVision'))
 const Posision = lazy(() => import('./pages/university/StrategicDocs/position'))
 
 // Quality Management System imports
@@ -277,7 +277,7 @@ const App = () => {
           <Route path="/university/StrategicDocs/ComprehensivePlans" element={<ComprehensivePlans />} />
           <Route path="/university/StrategicDocs/AccountingPolicy" element={<AccountingPolicy />} />
           <Route path="/university/StrategicDocs/HR-Policy" element={<HRPolicy />} />
-          <Route path="/university/StrategicDocs/vision" element={<Vision />} />
+          <Route path="/university/StrategicDocs/StrategicVision" element={<StrategicVision />} />
           <Route path="/university/StrategicDocs/position" element={<Posision />} />
           <Route path="/university/QualityManagSystem/QualityPolity" element={<QualityPolity />} />
           <Route path="/university/QualityManagSystem/QualityMonitoring" element={<QualityMonitoring />} />

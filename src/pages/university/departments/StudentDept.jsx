@@ -21,7 +21,8 @@ import {
   FaGraduationCap,
   FaLaptop,
   FaMusic,
-  FaFutbol
+  FaFutbol,
+  FaClock // ДОБАВЛЕН НЕДОСТАЮЩИЙ ИМПОРТ
 } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
@@ -38,134 +39,134 @@ const StudentDept = () => {
   const studentStats = [
     { 
       number: "5K+", 
-      label: t('student.stats.students'), 
+      label: t('student.stats.students') || "Студентов", 
       icon: <FaUserGraduate className="text-[#023E8A]" />,
-      description: t('student.stats.studentsDesc')
+      description: t('student.stats.studentsDesc') || "Активных студентов в университете"
     },
     { 
       number: "50+", 
-      label: t('student.stats.clubs'), 
+      label: t('student.stats.clubs') || "Клубов", 
       icon: <FaUsers className="text-[#023E8A]" />,
-      description: t('student.stats.clubsDesc')
+      description: t('student.stats.clubsDesc') || "Студенческих клубов и организаций"
     },
     { 
       number: "100%", 
-      label: t('student.stats.support'), 
+      label: t('student.stats.support') || "Поддержка", 
       icon: <FaHeart className="text-[#023E8A]" />,
-      description: t('student.stats.supportDesc')
+      description: t('student.stats.supportDesc') || "Гарантия поддержки для каждого студента"
     },
     { 
       number: "24/7", 
-      label: t('student.stats.assistance'), 
+      label: t('student.stats.assistance') || "Помощь", 
       icon: <FaShieldAlt className="text-[#023E8A]" />,
-      description: t('student.stats.assistanceDesc')
+      description: t('student.stats.assistanceDesc') || "Круглосуточная помощь и консультации"
     }
   ];
 
   const studentServices = [
     {
       icon: <FaHome className="text-white" size={24} />,
-      title: t('student.services.accommodation.title'),
-      description: t('student.services.accommodation.description'),
-      contact: t('student.services.accommodation.contact'),
-      hours: t('student.services.accommodation.hours'),
+      title: t('student.services.accommodation.title') || "Проживание",
+      description: t('student.services.accommodation.description') || "Комфортабельные общежития и помощь с размещением",
+      contact: t('student.services.accommodation.contact') || "+996 778 99 88 11",
+      hours: t('student.services.accommodation.hours') || "Пн-Пт: 9:00-18:00",
       color: "bg-[#023E8A]"
     },
     {
       icon: <FaUtensils className="text-white" size={24} />,
-      title: t('student.services.catering.title'),
-      description: t('student.services.catering.description'),
-      contact: t('student.services.catering.contact'),
-      hours: t('student.services.catering.hours'),
+      title: t('student.services.catering.title') || "Питание",
+      description: t('student.services.catering.description') || "Студенческие столовые и кафе на территории кампуса",
+      contact: t('student.services.catering.contact') || "+996 778 99 88 22",
+      hours: t('student.services.catering.hours') || "Ежедневно: 8:00-20:00",
       color: "bg-[#0077B6]"
     },
     {
       icon: <FaBook className="text-white" size={24} />,
-      title: t('student.services.academic.title'),
-      description: t('student.services.academic.description'),
-      contact: t('student.services.academic.contact'),
-      hours: t('student.services.academic.hours'),
+      title: t('student.services.academic.title') || "Академическая поддержка",
+      description: t('student.services.academic.description') || "Консультации по учебным вопросам и тьюторство",
+      contact: t('student.services.academic.contact') || "+996 778 99 88 33",
+      hours: t('student.services.academic.hours') || "Пн-Пт: 10:00-17:00",
       color: "bg-[#0096C7]"
     },
     {
       icon: <FaHeart className="text-white" size={24} />,
-      title: t('student.services.health.title'),
-      description: t('student.services.health.description'),
-      contact: t('student.services.health.contact'),
-      hours: t('student.services.health.hours'),
+      title: t('student.services.health.title') || "Медицинская помощь",
+      description: t('student.services.health.description') || "Медицинский центр и психологическая поддержка",
+      contact: t('student.services.health.contact') || "+996 778 99 88 44",
+      hours: t('student.services.health.hours') || "Круглосуточно",
       color: "bg-[#00B4D8]"
     }
   ];
 
   const studentClubs = [
     {
-      name: t('student.clubs.tech.title'),
-      description: t('student.clubs.tech.description'),
+      name: t('student.clubs.tech.title') || "Технологический клуб",
+      description: t('student.clubs.tech.description') || "Исследование новых технологий и разработка проектов",
       members: "150",
-      meetings: t('student.clubs.tech.meetings'),
-      president: t('student.clubs.tech.president'),
+      meetings: t('student.clubs.tech.meetings') || "Вторник, Четверг 18:00",
+      president: t('student.clubs.tech.president') || "Айгерим Садыкова",
       icon: <FaLaptop className="text-2xl" />,
       color: "from-blue-500 to-cyan-500",
       activities: [
-        t('student.clubs.tech.activities.hackathons'),
-        t('student.clubs.tech.activities.workshops'),
-        t('student.clubs.tech.activities.projects')
+        t('student.clubs.tech.activities.hackathons') || "Хакатоны",
+        t('student.clubs.tech.activities.workshops') || "Воркшопы",
+        t('student.clubs.tech.activities.projects') || "Проекты"
       ]
     },
     {
-      name: t('student.clubs.sports.title'),
-      description: t('student.clubs.sports.description'),
+      name: t('student.clubs.sports.title') || "Спортивный клуб",
+      description: t('student.clubs.sports.description') || "Спортивные мероприятия и тренировки",
       members: "200",
-      meetings: t('student.clubs.sports.meetings'),
-      president: t('student.clubs.sports.president'),
+      meetings: t('student.clubs.sports.meetings') || "Понедельник, Среда, Пятница 17:00",
+      president: t('student.clubs.sports.president') || "Нурлан Алиев",
       icon: <FaFutbol className="text-2xl" />,
       color: "from-green-500 to-emerald-500",
       activities: [
-        t('student.clubs.sports.activities.tournaments'),
-        t('student.clubs.sports.activities.training'),
-        t('student.clubs.sports.activities.competitions')
+        t('student.clubs.sports.activities.tournaments') || "Турниры",
+        t('student.clubs.sports.activities.training') || "Тренировки",
+        t('student.clubs.sports.activities.competitions') || "Соревнования"
       ]
     },
     {
-      name: t('student.clubs.arts.title'),
-      description: t('student.clubs.arts.description'),
+      name: t('student.clubs.arts.title') || "Творческий клуб",
+      description: t('student.clubs.arts.description') || "Искусство, музыка и творческие проекты",
       members: "120",
-      meetings: t('student.clubs.arts.meetings'),
-      president: t('student.clubs.arts.president'),
+      meetings: t('student.clubs.arts.meetings') || "Понедельник, Четверг 19:00",
+      president: t('student.clubs.arts.president') || "Айдана Кыдырова",
       icon: <FaMusic className="text-2xl" />,
       color: "from-purple-500 to-pink-500",
       activities: [
-        t('student.clubs.arts.activities.performances'),
-        t('student.clubs.arts.activities.exhibitions'),
-        t('student.clubs.arts.activities.masterclasses')
+        t('student.clubs.arts.activities.performances') || "Выступления",
+        t('student.clubs.arts.activities.exhibitions') || "Выставки",
+        t('student.clubs.arts.activities.masterclasses') || "Мастер-классы"
       ]
     }
   ];
 
   const events = [
     {
-      title: t('student.events.orientation.title'),
-      date: t('student.events.orientation.date'),
-      time: t('student.events.orientation.time'),
-      location: t('student.events.orientation.location'),
+      title: t('student.events.orientation.title') || "День первокурсника",
+      date: t('student.events.orientation.date') || "15 сентября 2024",
+      time: t('student.events.orientation.time') || "10:00 - 16:00",
+      location: t('student.events.orientation.location') || "Главный корпус",
       type: "orientation",
       status: "upcoming",
       participants: "500+"
     },
     {
-      title: t('student.events.career.title'),
-      date: t('student.events.career.date'),
-      time: t('student.events.career.time'),
-      location: t('student.events.career.location'),
+      title: t('student.events.career.title') || "Карьерный день",
+      date: t('student.events.career.date') || "20 октября 2024",
+      time: t('student.events.career.time') || "9:00 - 18:00",
+      location: t('student.events.career.location') || "Конференц-зал",
       type: "career",
       status: "upcoming",
       participants: "300+"
     },
     {
-      title: t('student.events.cultural.title'),
-      date: t('student.events.cultural.date'),
-      time: t('student.events.cultural.time'),
-      location: t('student.events.cultural.location'),
+      title: t('student.events.cultural.title') || "Культурный фестиваль",
+      date: t('student.events.cultural.date') || "5 ноября 2024",
+      time: t('student.events.cultural.time') || "14:00 - 22:00",
+      location: t('student.events.cultural.location') || "Студенческий парк",
       type: "cultural",
       status: "ongoing",
       participants: "200+"
@@ -174,26 +175,26 @@ const StudentDept = () => {
 
   const supportResources = [
     {
-      resource: t('student.support.counseling.title'),
-      description: t('student.support.counseling.description'),
-      availability: t('student.support.counseling.availability'),
-      contact: t('student.support.counseling.contact'),
+      resource: t('student.support.counseling.title') || "Психологическая консультация",
+      description: t('student.support.counseling.description') || "Профессиональная психологическая помощь и поддержка",
+      availability: t('student.support.counseling.availability') || "Пн-Пт: 10:00-18:00",
+      contact: t('student.support.counseling.contact') || "+996 778 99 88 55",
       icon: <FaComments className="text-lg" />,
       urgent: true
     },
     {
-      resource: t('student.support.legal.title'),
-      description: t('student.support.legal.description'),
-      availability: t('student.support.legal.availability'),
-      contact: t('student.support.legal.contact'),
+      resource: t('student.support.legal.title') || "Юридическая помощь",
+      description: t('student.support.legal.description') || "Консультации по правовым вопросам и документам",
+      availability: t('student.support.legal.availability') || "Вт, Чт: 14:00-17:00",
+      contact: t('student.support.legal.contact') || "+996 778 99 88 66",
       icon: <FaShieldAlt className="text-lg" />,
       urgent: false
     },
     {
-      resource: t('student.support.financial.title'),
-      description: t('student.support.financial.description'),
-      availability: t('student.support.financial.availability'),
-      contact: t('student.support.financial.contact'),
+      resource: t('student.support.financial.title') || "Финансовая поддержка",
+      description: t('student.support.financial.description') || "Информация о стипендиях и финансовой помощи",
+      availability: t('student.support.financial.availability') || "Пн-Ср: 11:00-16:00",
+      contact: t('student.support.financial.contact') || "+996 778 99 88 77",
       icon: <FaChartLine className="text-lg" />,
       urgent: false
     }
@@ -202,49 +203,49 @@ const StudentDept = () => {
   const achievementCategories = [
     {
       id: "all",
-      name: t('student.achievements.categories.all'),
+      name: t('student.achievements.categories.all') || "Все",
       count: 15
     },
     {
       id: "academic",
-      name: t('student.achievements.categories.academic'),
+      name: t('student.achievements.categories.academic') || "Академические",
       count: 8
     },
     {
       id: "sports",
-      name: t('student.achievements.categories.sports'),
+      name: t('student.achievements.categories.sports') || "Спортивные",
       count: 4
     },
     {
       id: "arts",
-      name: t('student.achievements.categories.arts'),
+      name: t('student.achievements.categories.arts') || "Творческие",
       count: 3
     }
   ];
 
   const achievements = [
     {
-      student: t('student.achievements.items.championship.student'),
-      achievement: t('student.achievements.items.championship.achievement'),
+      student: t('student.achievements.items.championship.student') || "Нурлан Алиев",
+      achievement: t('student.achievements.items.championship.achievement') || "Чемпион по баскетболу",
       category: "sports",
-      date: t('student.achievements.items.championship.date'),
-      description: t('student.achievements.items.championship.description'),
+      date: t('student.achievements.items.championship.date') || "Май 2024",
+      description: t('student.achievements.items.championship.description') || "Победа в национальном чемпионате",
       icon: <FaAward className="text-lg" />
     },
     {
-      student: t('student.achievements.items.research.student'),
-      achievement: t('student.achievements.items.research.achievement'),
+      student: t('student.achievements.items.research.student') || "Айгерим Садыкова",
+      achievement: t('student.achievements.items.research.achievement') || "Лучшая исследовательская работа",
       category: "academic",
-      date: t('student.achievements.items.research.date'),
-      description: t('student.achievements.items.research.description'),
+      date: t('student.achievements.items.research.date') || "Апрель 2024",
+      description: t('student.achievements.items.research.description') || "Публикация в международном журнале",
       icon: <FaGraduationCap className="text-lg" />
     },
     {
-      student: t('student.achievements.items.art.student'),
-      achievement: t('student.achievements.items.art.achievement'),
+      student: t('student.achievements.items.art.student') || "Айдана Кыдырова",
+      achievement: t('student.achievements.items.art.achievement') || "Гран-при художественного конкурса",
       category: "arts",
-      date: t('student.achievements.items.art.date'),
-      description: t('student.achievements.items.art.description'),
+      date: t('student.achievements.items.art.date') || "Март 2024",
+      description: t('student.achievements.items.art.description') || "Победа в международном конкурсе искусств",
       icon: <FaStar className="text-lg" />
     }
   ];
@@ -252,20 +253,26 @@ const StudentDept = () => {
   const contactInfo = {
     phone: "+996 778 99 88 44",
     email: "students@salymbekov.com",
-    hours: t('student.contact.hours'),
-    location: t('student.contact.location'),
-    emergency: t('student.contact.emergency')
+    hours: t('student.contact.hours') || "Пн-Пт: 9:00-18:00",
+    location: t('student.contact.location') || "г. Бишкек, ул. Тыныстанова 34",
+    emergency: t('student.contact.emergency') || "+996 778 99 88 99 (круглосуточно)"
   };
 
   const tabs = [
-    { id: "services", label: t('student.tabs.services'), icon: <FaHome /> },
-    { id: "clubs", label: t('student.tabs.clubs'), icon: <FaUsers /> },
-    { id: "events", label: t('student.tabs.events'), icon: <FaCalendarAlt /> }
+    { id: "services", label: t('student.tabs.services') || "Сервисы", icon: <FaHome /> },
+    { id: "clubs", label: t('student.tabs.clubs') || "Клубы", icon: <FaUsers /> },
+    { id: "events", label: t('student.tabs.events') || "События", icon: <FaCalendarAlt /> }
   ];
 
   const filteredAchievements = selectedCategory === "all" 
     ? achievements 
     : achievements.filter(achievement => achievement.category === selectedCategory);
+
+  // Функция для безопасного получения переводов
+  const getTranslation = (key, fallback) => {
+    const translation = t(key);
+    return translation !== key ? translation : fallback;
+  };
 
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
@@ -313,14 +320,14 @@ const StudentDept = () => {
             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
           >
             <FaUserGraduate className="text-xl" />
-            <span className="font-semibold">{t('student.badge')}</span>
+            <span className="font-semibold">{getTranslation('student.badge', 'Студенческий отдел')}</span>
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-            {t('student.title')}
+            {getTranslation('student.title', 'Студенческая жизнь')}
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {t('student.subtitle')}
+            {getTranslation('student.subtitle', 'Создаем комфортную среду для обучения и развития')}
           </p>
         </motion.div>
 
@@ -367,10 +374,10 @@ const StudentDept = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">
-              {t('student.services.title')}
+              {getTranslation('student.services.title', 'Студенческие сервисы')}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {t('student.services.subtitle')}
+              {getTranslation('student.services.subtitle', 'Все необходимое для комфортной учебы и жизни')}
             </p>
           </div>
 
@@ -422,10 +429,10 @@ const StudentDept = () => {
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-6">
                 <div>
                   <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                    {t('student.studentLife')}
+                    {getTranslation('student.studentLife', 'Студенческая жизнь')}
                   </h2>
                   <p className="text-gray-600">
-                    {t('student.chooseActivity')}
+                    {getTranslation('student.chooseActivity', 'Выберите активность для просмотра')}
                   </p>
                 </div>
               </div>
@@ -460,7 +467,7 @@ const StudentDept = () => {
                   className="space-y-8"
                 >
                   <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                    {t('student.support.title')}
+                    {getTranslation('student.support.title', 'Поддержка студентов')}
                   </h3>
                   <div className="grid md:grid-cols-3 gap-6">
                     {supportResources.map((resource, index) => (
@@ -486,7 +493,7 @@ const StudentDept = () => {
                             </h4>
                             {resource.urgent && (
                               <span className="text-xs text-red-600 bg-red-100 px-2 py-1 rounded">
-                                {t('student.support.urgent')}
+                                {getTranslation('student.support.urgent', 'Срочно')}
                               </span>
                             )}
                           </div>
@@ -519,7 +526,7 @@ const StudentDept = () => {
                   className="space-y-8"
                 >
                   <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                    {t('student.clubs.title')}
+                    {getTranslation('student.clubs.title', 'Студенческие клубы')}
                   </h3>
                   <div className="grid lg:grid-cols-3 gap-6">
                     {studentClubs.map((club, index) => (
@@ -544,15 +551,15 @@ const StudentDept = () => {
                         
                         <div className="space-y-3 mb-4">
                           <div className="flex justify-between items-center text-sm">
-                            <span className="text-gray-600">{t('student.clubs.members')}</span>
+                            <span className="text-gray-600">{getTranslation('student.clubs.members', 'Участники')}</span>
                             <span className="font-semibold text-[#023E8A]">{club.members}</span>
                           </div>
                           <div className="flex justify-between items-center text-sm">
-                            <span className="text-gray-600">{t('student.clubs.meetings')}</span>
+                            <span className="text-gray-600">{getTranslation('student.clubs.meetings', 'Встречи')}</span>
                             <span className="font-semibold text-[#023E8A]">{club.meetings}</span>
                           </div>
                           <div className="flex justify-between items-center text-sm">
-                            <span className="text-gray-600">{t('student.clubs.president')}</span>
+                            <span className="text-gray-600">{getTranslation('student.clubs.president', 'Президент')}</span>
                             <span className="font-semibold text-[#023E8A]">{club.president}</span>
                           </div>
                         </div>
@@ -571,7 +578,7 @@ const StudentDept = () => {
                           whileTap={{ scale: 0.95 }}
                           className="w-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white py-2 rounded-xl font-semibold flex items-center justify-center gap-2"
                         >
-                          {t('student.clubs.join')}
+                          {getTranslation('student.clubs.join', 'Присоединиться')}
                           <FaArrowRight className="text-sm" />
                         </motion.button>
                       </motion.div>
@@ -587,7 +594,7 @@ const StudentDept = () => {
                   className="space-y-6"
                 >
                   <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                    {t('student.events.title')}
+                    {getTranslation('student.events.title', 'События')}
                   </h3>
                   <div className="space-y-4">
                     {events.map((event, index) => (
@@ -614,14 +621,15 @@ const StudentDept = () => {
                                 ? "bg-green-100 text-green-700"
                                 : "bg-gray-100 text-gray-600"
                             }`}>
-                              {t(`student.events.status.${event.status}`)}
+                              {event.status === "upcoming" ? "Предстоящий" : 
+                               event.status === "ongoing" ? "Текущий" : "Завершен"}
                             </span>
                           </div>
                           <div className="text-sm text-gray-600 space-y-1">
-                            <p><strong>{t('student.events.date')}:</strong> {event.date}</p>
-                            <p><strong>{t('student.events.time')}:</strong> {event.time}</p>
-                            <p><strong>{t('student.events.location')}:</strong> {event.location}</p>
-                            <p><strong>{t('student.events.participants')}:</strong> {event.participants}</p>
+                            <p><strong>{getTranslation('student.events.date', 'Дата')}:</strong> {event.date}</p>
+                            <p><strong>{getTranslation('student.events.time', 'Время')}:</strong> {event.time}</p>
+                            <p><strong>{getTranslation('student.events.location', 'Место')}:</strong> {event.location}</p>
+                            <p><strong>{getTranslation('student.events.participants', 'Участники')}:</strong> {event.participants}</p>
                           </div>
                         </div>
                         <div className="text-right">
@@ -629,7 +637,7 @@ const StudentDept = () => {
                             whileHover={{ scale: 1.05 }}
                             className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-2 rounded-xl font-semibold flex items-center gap-2 lg:justify-end"
                           >
-                            {t('student.events.register')}
+                            {getTranslation('student.events.register', 'Зарегистрироваться')}
                             <FaArrowRight className="text-xs" />
                           </motion.button>
                         </div>
@@ -659,7 +667,7 @@ const StudentDept = () => {
               <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center">
                 <FaAward className="text-[#023E8A] text-xl" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-800">{t('student.achievements.title')}</h3>
+              <h3 className="text-2xl font-bold text-gray-800">{getTranslation('student.achievements.title', 'Достижения студентов')}</h3>
             </div>
 
             {/* Фильтр категорий */}
@@ -722,7 +730,7 @@ const StudentDept = () => {
               <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
                 <FaHandshake className="text-white text-xl" />
               </div>
-              <h3 className="text-2xl font-bold">{t('student.contact.title')}</h3>
+              <h3 className="text-2xl font-bold">{getTranslation('student.contact.title', 'Контакты')}</h3>
             </div>
             
             <div className="space-y-4">
@@ -735,7 +743,7 @@ const StudentDept = () => {
                   <FaPhone className="text-white text-sm" />
                 </div>
                 <div>
-                  <p className="text-white/80 text-sm">{t('student.contact.phone')}</p>
+                  <p className="text-white/80 text-sm">{getTranslation('student.contact.phone', 'Телефон')}</p>
                   <p className="font-semibold">{contactInfo.phone}</p>
                 </div>
               </motion.div>
@@ -750,7 +758,7 @@ const StudentDept = () => {
                   <FaEnvelope className="text-white text-sm" />
                 </div>
                 <div>
-                  <p className="text-white/80 text-sm">{t('student.contact.email')}</p>
+                  <p className="text-white/80 text-sm">{getTranslation('student.contact.email', 'Email')}</p>
                   <p className="font-semibold">{contactInfo.email}</p>
                 </div>
               </motion.div>
@@ -765,7 +773,7 @@ const StudentDept = () => {
                   <FaMapMarkerAlt className="text-white text-sm" />
                 </div>
                 <div>
-                  <p className="text-white/80 text-sm">{t('student.contact.location')}</p>
+                  <p className="text-white/80 text-sm">{getTranslation('student.contact.location', 'Адрес')}</p>
                   <p className="font-semibold">{contactInfo.location}</p>
                 </div>
               </motion.div>
@@ -773,7 +781,7 @@ const StudentDept = () => {
               <div className="p-4 bg-red-500/20 rounded-xl border border-red-300 mt-4">
                 <p className="text-white/90 text-sm flex items-center gap-2">
                   <FaShieldAlt className="text-red-300" />
-                  <strong>{t('student.contact.emergencyTitle')}:</strong> {contactInfo.emergency}
+                  <strong>{getTranslation('student.contact.emergencyTitle', 'Экстренная связь')}:</strong> {contactInfo.emergency}
                 </p>
               </div>
 
@@ -783,7 +791,7 @@ const StudentDept = () => {
                 className="w-full bg-white text-[#023E8A] py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 mt-6"
               >
                 <FaComments />
-                {t('student.contact.appointment')}
+                {getTranslation('student.contact.appointment', 'Записаться на консультацию')}
               </motion.button>
             </div>
           </motion.div>
