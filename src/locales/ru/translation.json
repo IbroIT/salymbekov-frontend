@@ -1,17 +1,4 @@
 {
-  "navbar": {
-    "home": "Главная",
-    "university": "Университет",
-    "education": "Образование",
-    "clinicalBase": "Клиническая база",
-    "science": "Наука",
-    "student": "Студент",
-    "applicant": "Абитуриент",
-    "infrastructure": "Инфраструктура университета",
-    "language": "Язык",
-    "viewAll": "Посмотреть все",
-    "close": "Закрыть"
-  },
   "universitySub": {
     "appeal": "Обращение учредителя",
     "appealDesc": "Прочитайте вдохновляющее послание нашего учредителя",
@@ -7592,68 +7579,208 @@
       "visit": "Записаться на экскурсию",
       "learnMore": "Узнать о программах"
     }
+  },
+  "navbar": {
+    "university": "УНИВЕРСИТЕТ",
+    "education": "ОБРАЗОВАНИЕ",
+    "clinical": "КЛИНИЧЕСКАЯ БАЗА",
+    "science": "НАУКА",
+    "student": "СТУДЕНТУ",
+    "applicant": "АБИТУРИЕНТУ",
+    "search": "Поиск...",
+    "menu": "Меню"
+  },
+  "university": {
+    "founderAppeal": "Обращение учредителя",
+    "history": "История",
+    "mission": "Миссия и цели",
+    "videos": "Видеоролики",
+    "vacancies": "Вакансии",
+    "contacts": "Контакты",
+    "brandbook": "Брэндбук",
+    "structure": "Структура университета",
+    "structureAndManagement": "Структура и управление",
+    "docsAndCooperation": "Документы и сотрудничество",
+    "foundingDocs": "Учредительные документы",
+    "charter": "Устав",
+    "licenses": "Лицензии и свидетельства",
+    "acts": "Акты",
+    "management": "Органы управления",
+    "founder": "Учредитель",
+    "president": "Президент",
+    "rectorate": "Ректорат",
+    "councils": "Общественные советы",
+    "devCouncil": "Совет развития",
+    "acadCouncil": "Ученый совет",
+    "eduCouncil": "Совет по качеству образования",
+    "techCouncil": "Учебно-методический совет",
+    "scienCouncil": "Научно-технический совет",
+    "editBoard": "Редакционный совет",
+    "admisCommittee": "Приемная комиссия",
+    "supportCommission": "Комиссия по социальной поддержке",
+    "bioethicsCommittee": "Биоэтический комитет",
+    "youngScientists": "Совет молодых ученых",
+    "employersCouncil": "Совет работодателей",
+    "parentsCouncil": "Совет родителей",
+    "studentCouncil": "Студенческий совет",
+    "departments": "Структурные подразделения",
+    "financialDept": "Финансово-экономический департамент",
+    "scienceDept": "Учебно-методический отдел",
+    "managementDept": "Департмент управления делами",
+    "hrDept": "Департмент HR и делопроизводства",
+    "qualityDept": "Департмент развития и качества образования",
+    "researchDept": "Департмент науки и перспективных исследований",
+    "internationalDept": "Международный отдел",
+    "studentDept": "Студенческий отдел кадров",
+    "careerCenter": "Центр карьеры",
+    "accreditation": "Аккредитация",
+    "national": "Национальная",
+    "international": "Международная",
+    "institutional": "Иституальная",
+    "programAccreditation": "Програмная Аккредитация",
+    "strategicDocs": "Стратегические документы",
+    "vision": "Видение",
+    "strategicPlan": "Стратегический план развития",
+    "comprehensivePlans": "Комплексные планы",
+    "accountingPolicy": "Учетная политика",
+    "hrPolicy": "Кадровая политика",
+    "normativeDocs": "Нормативные документы",
+    "krActs": "НПА КР",
+    "internalActs": "НПА Университета",
+    "qualityManagement": "Система менеджмента качества",
+    "qualityPolicy": "Политика в области качества",
+    "qualityMonitoring": "Мониторинг качества",
+    "cooperation": "Сотрудничество",
+    "universitiesCoop": "Сотрудничество с университетами",
+    "clinicsCoop": "Сотрудничество с клиниками"
+  },
+  "education": {
+    "ait": "Американский институт технологий",
+    "aitLeadership": "Руководство Института",
+    "aitDisciplines": "Дисциплины Института",
+    "itCollege": "Международный колледж IT и бизнеса",
+    "mfm": "Международный факультет Медицины",
+    "businessSchool": "Бизнес школа Салымбекова",
+    "postgraduate": "Факультет последипломного образования",
+    "narynCenter": "Центр образования и инноваций в г. Нарын",
+    "deanOffice": "Деканат",
+    "mfmCurriculum": "Учебный план МФМ",
+    "departments": "Кафедры",
+    "medicine5Years": "Лечебное дело 5 лет",
+    "medicine6Years": "Лечебное дело 6 лет",
+    "programsAndCourses": "Программы и курсы",
+    "smartik": "Смартик (5-7 лет)",
+    "futureLeaders": "Будущие лидеры Кыргызстана (7-10 лет)",
+    "youngLeaders": "Юные лидеры Кыргызстана (10-16 лет)",
+    "olderLeaders": "Молодые лидеры Кыргызстана (от 16 лет)",
+    "pedagogicalCouncil": "Педагогический совет",
+    "contactsAndRequisites": "Контакты и реквизиты",
+    "computerScience": "Диплом в области компьютерных наук",
+    "multimediaApps": "Диплом в мультимедийных приложениях",
+    "mobileComputing": "Диплом в области мобильных вычислений",
+    "generalDisciplines": "Общеобразовательных дисциплин",
+    "itDepartment": "Информационных технологий"
+  },
+  "common": {
+    "about": "О",
+    "leadership": "Руководство",
+    "disciplines": "Дисциплины",
+    "teachers": "Преподаватели",
+    "director": "Директор",
+    "specialties": "Специальности",
+    "departments": "Отделения",
+    "dean": "Декан",
+    "programs": "Программы",
+    "courses": "Курсы",
+    "internship": "Интернатура",
+    "residency": "Ординатура",
+    "postgraduate": "Аспирантура",
+    "phd": "PhD"
+  },
+  "clinical": {
+    "ownBases": "Собственные клинические базы",
+    "lazmed": "Лазмед",
+    "dordoiOphthalmic": "Дордой офтальмик сервис",
+    "docClinic": "DOC university clinic",
+    "docHospital": "DOC university hospital",
+    "agreements": "Соглашения с клиниками"
+  },
+  "science": {
+    "management": "Органы управления",
+    "scientificCouncil": "Научно-технический совет",
+    "bioethics": "Биоэтический комитет",
+    "youngScientists": "Совет молодых ученых",
+    "researchDepartment": "Департамент науки и перспективных исследований",
+    "journal": "Научный журнал",
+    "periodicals": "Периодические издания",
+    "library": "Научная библиотека",
+    "labs": "Лаборатории и центры",
+    "honoredProfessors": "Почетные профессора и лекторы",
+    "events": "Мероприятия",
+    "conferences": "Конференции",
+    "masterClasses": "Мастер классы",
+    "roundTables": "Круглые столы",
+    "studentScience": "Студенческая наука",
+    "studentSociety": "Студенческое научное объединение",
+    "scienceClubs": "Научные кружки",
+    "studentConferences": "Студенческие конференции",
+    "researchProjects": "Научные проекты",
+    "urology": "Урология",
+    "gynecology": "Гинекология",
+    "ophthalmology": "Офтальмология",
+    "oncology": "Онкология"
+  },
+  "student": {
+    "communities": "Студенческие сообщества",
+    "council": "Студенческий совет",
+    "scienceSociety": "Студенческое научное объединение",
+    "debateClub": "Дебатный клуб",
+    "tutorMovement": "Тьюторское движение",
+    "creativeClubs": "Творческие коллективы и кружки",
+    "schedules": "Учебные графики",
+    "studySchedule": "График учебного процесса",
+    "modulesSchedule": "Графики модулей и экзаменов",
+    "practiceSchedule": "Графики производственной практики",
+    "mfmSchedule": "Расписание МФМ",
+    "collegeSchedule": "Расписание колледжа",
+    "resources": "Ресурсная база",
+    "instructions": "Инструкция и положения",
+    "infoSystem": "Информационная система",
+    "eLibrary": "Электронная библиотека",
+    "eduResources": "Образовательные ресурсы",
+    "opportunities": "Условия и возможности",
+    "medicalCenter": "Медицинский центр",
+    "dormitory": "Общежитие",
+    "socialSupport": "Социальная поддержка студентов",
+    "electiveCourses": "Курсы по выбору",
+    "academicMobility": "Академическая мобильность",
+    "psychologicalSupport": "Психологическая поддержка",
+    "serviceCenter": "Центр обслуживания студентов",
+    "adaptationPrograms": "Адаптационные программы"
+  },
+  "applicant": {
+    "admissionCommittee": "Приемная комиссия",
+    "directions": "Направления подготовки",
+    "tuitionCost": "Стоимость обучения",
+    "admissionProcedure": "Порядок приема",
+    "requiredDocuments": "Необходимые документы",
+    "admissionRules": "Положение приема",
+    "admissionSchedule": "График отбора и зачисления",
+    "rulesAndPlan": "Правила и план приема",
+    "ortAdmission": "Прием по ОРТ",
+    "careerGuidance": "Профориентация",
+    "transferProcedure": "Порядок перевода",
+    "transferDocuments": "Необходимые документы",
+    "transferRules": "Положение перевода",
+    "transferSchedule": "График перевода",
+    "scholarships": "Стипендии и льготы",
+    "studentScholarships": "Стипендии студентам",
+    "officialDealers": "Официальные дилеры",
+    "adaptationProgram": "Адаптационная программа",
+    "infrastructure": "Инфраструктура университета"
   }
 
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -1,17 +1,4 @@
 {
-  "navbar": {
-    "home": "Home",
-    "university": "University",
-    "education": "Education",
-    "clinicalBase": "Clinical Base",
-    "science": "Science",
-    "student": "Student",
-    "applicant": "Applicant",
-    "infrastructure": "Infrastructure",
-    "language": "Language",
-    "viewAll": "View All",
-    "close": "Close"
-  },
   "universitySub": {
     "appeal": "Founder's Appeal",
     "appealDesc": "Read the inspiring message from our founder",
@@ -491,14 +478,6 @@
       "locationTitle": "Location"
     }
   },
-  "university": {
-    "structure": {
-      "universityMain": {
-        "title": "University Structure",
-        "downloadButton": "Download University Structure (PDF)"
-      }
-    }
-  },
   "medicalFaculty": {
     "hero": {
       "title": "Higher School of Medicine"
@@ -748,10 +727,274 @@
     "documentsTitle": "Main Documents of the University:",
     "registrationCertificate": "Certificate of state registration of legal entity, registration number 183722-3301-U-e, TIN 01206201910192, OKPO code 30405869, series GRYu No. 0057882 dated June 12, 2019, issued by the Chui-Bishkek Department of Justice of the Kyrgyz Republic.",
     "imageAlt": "State registration certificate"
+  },
+  "navbar": {
+    "university": "UNIVERSITY",
+    "education": "EDUCATION",
+    "clinical": "CLINICAL BASE",
+    "science": "SCIENCE",
+    "student": "FOR STUDENTS",
+    "applicant": "FOR APPLICANTS",
+    "search": "Search...",
+    "menu": "Menu"
+  },
+  "university": {
+    "founderAppeal": "Founder's Address",
+    "history": "History",
+    "mission": "Mission and Goals",
+    "videos": "Videos",
+    "vacancies": "Vacancies",
+    "contacts": "Contacts",
+    "brandbook": "Brandbook",
+    "structure": "University Structure",
+    "foundingDocs": "Founding Documents",
+    "management": "Governing Bodies",
+    "councils": "Public Councils",
+    "departments": "Structural Units",
+    "accreditation": "Accreditation",
+    "strategicDocs": "Strategic Documents",
+    "normativeDocs": "Regulatory Documents",
+    "qualityManagement": "Quality Management System",
+    "cooperation": "Cooperation"
+  },
+  "education": {
+    "ait": "American Institute of Technology",
+    "itCollege": "International College of IT and Business",
+    "mfm": "International Faculty of Medicine",
+    "businessSchool": "Salymbekov Business School",
+    "postgraduate": "Postgraduate Education Faculty",
+    "narynCenter": "Education and Innovation Center in Naryn"
+  },
+  "common": {
+    "about": "About",
+    "leadership": "Leadership",
+    "disciplines": "Disciplines",
+    "teachers": "Teachers",
+    "director": "Director",
+    "specialties": "Specialties",
+    "departments": "Departments",
+    "dean": "Dean",
+    "programs": "Programs",
+    "courses": "Courses",
+    "internship": "Internship",
+    "residency": "Residency",
+    "postgraduate": "Postgraduate",
+    "phd": "PhD"
+  },
+  "navbar": {
+    "university": "UNIVERSITY",
+    "education": "EDUCATION",
+    "clinical": "CLINICAL BASE",
+    "science": "SCIENCE",
+    "student": "FOR STUDENTS",
+    "applicant": "FOR APPLICANTS",
+    "search": "Search...",
+    "menu": "Menu"
+  },
+  "university": {
+    "founderAppeal": "Founder's Address",
+    "history": "History",
+    "mission": "Mission and Goals",
+    "videos": "Videos",
+    "vacancies": "Vacancies",
+    "contacts": "Contacts",
+    "brandbook": "Brandbook",
+    "structure": "University Structure",
+    "structureAndManagement": "Structure and Management",
+    "docsAndCooperation": "Documents and Cooperation",
+    "foundingDocs": "Founding Documents",
+    "charter": "Charter",
+    "licenses": "Licenses and Certificates",
+    "acts": "Acts",
+    "management": "Governing Bodies",
+    "founder": "Founder",
+    "president": "President",
+    "rectorate": "Rectorate",
+    "councils": "Public Councils",
+    "devCouncil": "Development Council",
+    "acadCouncil": "Academic Council",
+    "eduCouncil": "Education Quality Council",
+    "techCouncil": "Educational and Methodological Council",
+    "scienCouncil": "Scientific and Technical Council",
+    "editBoard": "Editorial Board",
+    "admisCommittee": "Admission Committee",
+    "supportCommission": "Social Support Commission",
+    "bioethicsCommittee": "Bioethics Committee",
+    "youngScientists": "Young Scientists Council",
+    "employersCouncil": "Employers Council",
+    "parentsCouncil": "Parents Council",
+    "studentCouncil": "Student Council",
+    "departments": "Structural Units",
+    "financialDept": "Financial and Economic Department",
+    "scienceDept": "Educational and Methodological Department",
+    "managementDept": "Management Department",
+    "hrDept": "HR and Records Management Department",
+    "qualityDept": "Education Development and Quality Department",
+    "researchDept": "Science and Advanced Research Department",
+    "internationalDept": "International Department",
+    "studentDept": "Student Personnel Department",
+    "careerCenter": "Career Center",
+    "accreditation": "Accreditation",
+    "national": "National",
+    "international": "International",
+    "institutional": "Institutional",
+    "programAccreditation": "Program Accreditation",
+    "strategicDocs": "Strategic Documents",
+    "vision": "Vision",
+    "strategicPlan": "Strategic Development Plan",
+    "comprehensivePlans": "Comprehensive Plans",
+    "accountingPolicy": "Accounting Policy",
+    "hrPolicy": "HR Policy",
+    "normativeDocs": "Regulatory Documents",
+    "krActs": "Kyrgyz Republic Regulations",
+    "internalActs": "University Regulations",
+    "qualityManagement": "Quality Management System",
+    "qualityPolicy": "Quality Policy",
+    "qualityMonitoring": "Quality Monitoring",
+    "cooperation": "Cooperation",
+    "universitiesCoop": "Cooperation with Universities",
+    "clinicsCoop": "Cooperation with Clinics"
+  },
+  "education": {
+    "ait": "American Institute of Technology",
+    "aitLeadership": "Institute Leadership",
+    "aitDisciplines": "Institute Disciplines",
+    "itCollege": "International College of IT and Business",
+    "mfm": "International Faculty of Medicine",
+    "businessSchool": "Salymbekov Business School",
+    "postgraduate": "Postgraduate Education Faculty",
+    "narynCenter": "Education and Innovation Center in Naryn",
+    "deanOffice": "Dean's Office",
+    "mfmCurriculum": "MFM Curriculum",
+    "departments": "Departments",
+    "medicine5Years": "General Medicine 5 years",
+    "medicine6Years": "General Medicine 6 years",
+    "programsAndCourses": "Programs and Courses",
+    "smartik": "Smartik (5-7 years)",
+    "futureLeaders": "Future Leaders of Kyrgyzstan (7-10 years)",
+    "youngLeaders": "Young Leaders of Kyrgyzstan (10-16 years)",
+    "olderLeaders": "Older Leaders of Kyrgyzstan (16+ years)",
+    "pedagogicalCouncil": "Pedagogical Council",
+    "contactsAndRequisites": "Contacts and Requisites",
+    "computerScience": "Diploma in Computer Science",
+    "multimediaApps": "Diploma in Multimedia Applications",
+    "mobileComputing": "Diploma in Mobile Computing",
+    "generalDisciplines": "General Education Disciplines",
+    "itDepartment": "Information Technology"
+  },
+  "common": {
+    "about": "About",
+    "leadership": "Leadership",
+    "disciplines": "Disciplines",
+    "teachers": "Teachers",
+    "director": "Director",
+    "specialties": "Specialties",
+    "departments": "Departments",
+    "dean": "Dean",
+    "programs": "Programs",
+    "courses": "Courses",
+    "internship": "Internship",
+    "residency": "Residency",
+    "postgraduate": "Postgraduate",
+    "phd": "PhD"
+  },
+  "clinical": {
+    "ownBases": "Own Clinical Bases",
+    "lazmed": "Lazmed",
+    "dordoiOphthalmic": "Dordoi Ophthalmic Service",
+    "docClinic": "DOC University Clinic",
+    "docHospital": "DOC University Hospital",
+    "agreements": "Agreements with Clinics"
+  },
+  "science": {
+    "management": "Governing Bodies",
+    "scientificCouncil": "Scientific and Technical Council",
+    "bioethics": "Bioethics Committee",
+    "youngScientists": "Young Scientists Council",
+    "researchDepartment": "Science and Advanced Research Department",
+    "journal": "Scientific Journal",
+    "periodicals": "Periodicals",
+    "library": "Scientific Library",
+    "labs": "Laboratories and Centers",
+    "honoredProfessors": "Honored Professors and Lecturers",
+    "events": "Events",
+    "conferences": "Conferences",
+    "masterClasses": "Master Classes",
+    "roundTables": "Round Tables",
+    "studentScience": "Student Science",
+    "studentSociety": "Student Scientific Society",
+    "scienceClubs": "Scientific Clubs",
+    "studentConferences": "Student Conferences",
+    "researchProjects": "Research Projects",
+    "urology": "Urology",
+    "gynecology": "Gynecology",
+    "ophthalmology": "Ophthalmology",
+    "oncology": "Oncology"
+  },
+  "student": {
+    "communities": "Student Communities",
+    "council": "Student Council",
+    "scienceSociety": "Student Scientific Society",
+    "debateClub": "Debate Club",
+    "tutorMovement": "Tutor Movement",
+    "creativeClubs": "Creative Groups and Clubs",
+    "schedules": "Academic Schedules",
+    "studySchedule": "Academic Process Schedule",
+    "modulesSchedule": "Modules and Exams Schedule",
+    "practiceSchedule": "Practical Training Schedule",
+    "mfmSchedule": "MFM Schedule",
+    "collegeSchedule": "College Schedule",
+    "resources": "Resource Base",
+    "instructions": "Instructions and Regulations",
+    "infoSystem": "Information System",
+    "eLibrary": "Electronic Library",
+    "eduResources": "Educational Resources",
+    "opportunities": "Conditions and Opportunities",
+    "medicalCenter": "Medical Center",
+    "dormitory": "Dormitory",
+    "socialSupport": "Student Social Support",
+    "electiveCourses": "Elective Courses",
+    "academicMobility": "Academic Mobility",
+    "psychologicalSupport": "Psychological Support",
+    "serviceCenter": "Student Service Center",
+    "adaptationPrograms": "Adaptation Programs"
+  },
+  "applicant": {
+    "admissionCommittee": "Admission Committee",
+    "directions": "Study Programs",
+    "tuitionCost": "Tuition Cost",
+    "admissionProcedure": "Admission Procedure",
+    "requiredDocuments": "Required Documents",
+    "admissionRules": "Admission Regulations",
+    "admissionSchedule": "Selection and Enrollment Schedule",
+    "rulesAndPlan": "Rules and Admission Plan",
+    "ortAdmission": "Admission by ORT",
+    "careerGuidance": "Career Guidance",
+    "transferProcedure": "Transfer Procedure",
+    "transferDocuments": "Required Documents",
+    "transferRules": "Transfer Regulations",
+    "transferSchedule": "Transfer Schedule",
+    "scholarships": "Scholarships and Benefits",
+    "studentScholarships": "Student Scholarships",
+    "officialDealers": "Official Dealers",
+    "adaptationProgram": "Adaptation Program",
+    "infrastructure": "University Infrastructure"
   }
 
+  
+}
 
-  }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

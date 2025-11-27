@@ -1,23 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Logo1 from '../../assets/Logo.png';
 
 const Navbar = () => {
   const location = useLocation();
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
-  const [lang, setLang] = useState('ru');
+  const [lang, setLang] = useState(i18n.language);
   const [expanded, setExpanded] = useState({});
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const hideTimer = useRef(null);
   const searchInputRef = useRef(null);
 
   const changeLang = (code) => {
-    setLang(code);
-    // если используешь i18next, здесь нужно вызывать i18n.changeLanguage(code)
-    // i18n.changeLanguage(code);
+    i18n.changeLanguage(code);
   };
+
+  useEffect(() => {
+    setLang(i18n.language);
+  }, [i18n.language]);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 0);
@@ -58,173 +62,164 @@ const Navbar = () => {
   };
 
   const topItems = [
-    { key: 'university', path: '/university', label: 'УНИВЕРСИТЕТ' },
-    { key: 'education', path: '/education', label: 'ОБРАЗОВАНИЕ' },
-    { key: 'clinical', path: '/clinical', label: 'КЛИНИЧЕСКАЯ БАЗА' },
-    { key: 'science', path: '/science', label: 'НАУКА' },
-    { key: 'student', path: '/student', label: 'СТУДЕНТУ' },
-    { key: 'applicant', path: '/applicants', label: 'АБИТУРИЕНТУ' }
+    { key: 'university', path: '/university', label: t('navbar.university') },
+    { key: 'education', path: '/education', label: t('navbar.education') },
+    { key: 'clinical', path: '/clinical', label: t('navbar.clinical') },
+    { key: 'science', path: '/science', label: t('navbar.science') },
+    { key: 'student', path: '/student', label: t('navbar.student') },
+    { key: 'applicant', path: '/applicants', label: t('navbar.applicant') }
   ];
 
-  // ========== НОВАЯ СТРУКТУРА МЕНЮ "УНИВЕРСИТЕТ" ==========
   const menuTree = {
     university: [
-      // Колонка 1
       {
-        label: 'Обращение учредителя',
+        label: t('university.founderAppeal'),
         path: '/university/Appeal'
       },
       {
-        label: 'История',
+        label: t('university.history'),
         path: '/university/history'
       },
       {
-        label: 'Миссия и цели',
+        label: t('university.mission'),
         path: '/university/mission'
       },
       {
-        label: 'Видеоролики',
+        label: t('university.videos'),
         path: '/university/videos'
       },
       {
-        label: 'Вакансии',
+        label: t('university.vacancies'),
         path: '/university/vacancies'
       },
       {
-        label: 'Контакты',
+        label: t('university.contacts'),
         path: '/university/contacts'
       },
       {
-        label: 'Брэндбук',
+        label: t('university.brandbook'),
         path: 'https://salymbekov.com/wp-content/uploads/2023/10/brjendbuk_organized_new.pdf'
       },
-
-      // Колонка 2
       {
-        label: '🏛️ Структура университета',
+        label: `🏛️ ${t('university.structure')}`,
         path: '',
         children: [
-          { label: 'Университет', path: '/university/structure/University-main' },
-          { label: 'Международный факультет медицины', path: '/university/structure/International-Faculty' },
-          { label: 'Международный колледж IT и бизнеса', path: '/university/structure/it-college' }
+          { label: t('navbar.university'), path: '/university/structure/University-main' },
+          { label: t('education.mfm'), path: '/university/structure/International-Faculty' },
+          { label: t('education.itCollege'), path: '/university/structure/it-college' }
         ]
       },
       {
-        label: 'Учредительные документы',
+        label: t('university.foundingDocs'),
         path: '',
         children: [
-          { label: 'Устав', path: '/university/founding-docs/charter' },
-          { label: 'Лицензии и свидетельства', path: '/university/founding-docs/licenses' },
-          { label: 'Акты', path: '/university/founding-docs/acts' }
+          { label: t('university.charter'), path: '/university/founding-docs/charter' },
+          { label: t('university.licenses'), path: '/university/founding-docs/licenses' },
+          { label: t('university.acts'), path: '/university/founding-docs/acts' }
         ]
       },
       {
-        label: 'Органы управления',
+        label: t('university.management'),
         path: '',
         children: [
-          { label: 'Учредитель', path: '/university/management/founder' },
-          { label: 'Президент', path: '/university/management/president' },
-          { label: 'Ректорат', path: '/university/management/rectorate' }
+          { label: t('university.founder'), path: '/university/management/founder' },
+          { label: t('university.president'), path: '/university/management/president' },
+          { label: t('university.rectorate'), path: '/university/management/rectorate' }
         ]
       },
       {
-        label: 'Общественные советы',
+        label: t('university.councils'),
         path: '',
         children: [
-          { label: 'Совет развития', path: '/university/Councils/dev-council' },
-          { label: 'Ученый совет', path: '/university/Councils/acad-council' },
-          { label: 'Совет по качеству образования', path: '/university/Councils/edu-councils' },
-          { label: 'Учебно-методический совет', path: '/university/Councils/technical-council' },
-          { label: 'Научно-технический совет', path: '/university/Councils/scien-council' },
-          { label: 'Редакционный совет', path: '/university/Councils/edit-board' },
-          { label: 'Приемная комиссия', path: '/university/Councils/admis-committee' },
-          { label: 'Комиссия по социальной поддержке', path: '/university/Councils/commission-support' },
-          { label: 'Биоэтический комитет', path: '/university/Councils/bioethics-committee' },
-          { label: 'Совет молодых ученых', path: '/university/Councils/council-scients' },
-          { label: 'Совет работодателей', path: '/university/Councils/employers-council' },
-          { label: 'Совет родителей', path: '/university/Councils/parents-council' },
-          { label: 'Студенческий совет', path: '/university/Councils/student-council' }
+          { label: t('university.devCouncil'), path: '/university/Councils/dev-council' },
+          { label: t('university.acadCouncil'), path: '/university/Councils/acad-council' },
+          { label: t('university.eduCouncil'), path: '/university/Councils/edu-councils' },
+          { label: t('university.techCouncil'), path: '/university/Councils/technical-council' },
+          { label: t('university.scienCouncil'), path: '/university/Councils/scien-council' },
+          { label: t('university.editBoard'), path: '/university/Councils/edit-board' },
+          { label: t('university.admisCommittee'), path: '/university/Councils/admis-committee' },
+          { label: t('university.supportCommission'), path: '/university/Councils/commission-support' },
+          { label: t('university.bioethicsCommittee'), path: '/university/Councils/bioethics-committee' },
+          { label: t('university.youngScientists'), path: '/university/Councils/council-scients' },
+          { label: t('university.employersCouncil'), path: '/university/Councils/employers-council' },
+          { label: t('university.parentsCouncil'), path: '/university/Councils/parents-council' },
+          { label: t('university.studentCouncil'), path: '/university/Councils/student-council' }
         ]
       },
       {
-        label: 'Структурные подразделения',
+        label: t('university.departments'),
         path: '',
         children: [
-          { label: 'Финансово-экономический департамент', path: '/university/departments/financial' },
-          { label: 'Учебно-методический отдел', path: '/university/departments/science' },
-          { label: 'Департмент управления делами', path: '/university/departments/management' },
-          { label: 'Департмент HR и делопроизводства', path: '/university/departments/hr' },
-          { label: 'Департмент развития и качества образования', path: '/university/departments/quality' },
-          { label: 'Департмент науки и перспективных исследований', path: '/university/departments' },
-          { label: 'Международный отдел', path: '/university/departments/international' },
-          { label: 'Студенческий отдел кадров', path: '/university/departments/student' },
-          { label: 'Центр карьеры', path: '/university/departments/career' }
+          { label: t('university.financialDept'), path: '/university/departments/financial' },
+          { label: t('university.scienceDept'), path: '/university/departments/science' },
+          { label: t('university.managementDept'), path: '/university/departments/management' },
+          { label: t('university.hrDept'), path: '/university/departments/hr' },
+          { label: t('university.qualityDept'), path: '/university/departments/quality' },
+          { label: t('university.researchDept'), path: '/university/departments' },
+          { label: t('university.internationalDept'), path: '/university/departments/international' },
+          { label: t('university.studentDept'), path: '/university/departments/student' },
+          { label: t('university.careerCenter'), path: '/university/departments/career' }
         ]
       },
-
-      // Колонка 3
       {
-        label: '✓ Аккредитация',
+        label: `✓ ${t('university.accreditation')}`,
         path: '',
         children: [
           {
-            label: 'Национальная',
+            label: t('university.national'),
             path: '',
             children: [
-              { label: 'Аккредитация', path: '/university/accreditation/national' }
-             
+              { label: t('university.accreditation'), path: '/university/accreditation/national' }
             ]
           },
           {
-            label: 'Международная',
+            label: t('university.international'),
             path: '',
             children: [
-              { label: 'Иституальная', path: '/university/accreditation/institutional' },
-              { label: 'Програмная Аккредитация', path: '/university/accreditation/program' }
+              { label: t('university.institutional'), path: '/university/accreditation/institutional' },
+              { label: t('university.programAccreditation'), path: '/university/accreditation/program' }
             ]
           }
         ]
       },
       {
-        label: 'Стратегические документы',
+        label: t('university.strategicDocs'),
         path: '',
         children: [
-          { label: 'Видение', path: '/university/StrategicDocs/StrategicVision' },
-          { label: 'Стратегический план развития', path: '/university/StrategicDocs/StrategicDevelopPlans' },
-          { label: 'Комплексные планы', path: 'https://salymbekov.com/wp-content/uploads/2022/05/5.9.4.-kompleksnyj-plan-meroprijatij-za-2021-2022-gg.pdf' },
-          { label: 'Учетная политика', path: '/university/StrategicDocs/AccountingPolicy' },
-          { label: 'Кадровая политика', path: '/university/StrategicDocs/HR-Policy' }
+          { label: t('university.vision'), path: '/university/StrategicDocs/StrategicVision' },
+          { label: t('university.strategicPlan'), path: '/university/StrategicDocs/StrategicDevelopPlans' },
+          { label: t('university.comprehensivePlans'), path: 'https://salymbekov.com/wp-content/uploads/2022/05/5.9.4.-kompleksnyj-plan-meroprijatij-za-2021-2022-gg.pdf' },
+          { label: t('university.accountingPolicy'), path: '/university/StrategicDocs/AccountingPolicy' },
+          { label: t('university.hrPolicy'), path: '/university/StrategicDocs/HR-Policy' }
         ]
       },
       {
-        label: 'Нормативные документы',
+        label: t('university.normativeDocs'),
         path: '',
         children: [
-          { label: 'НПА КР', path: '/university/normative-docs/kr-acts' },
-          { label: 'НПА Университета', path: '/university/normative-docs/internal-acts' },
-        
+          { label: t('university.krActs'), path: '/university/normative-docs/kr-acts' },
+          { label: t('university.internalActs'), path: '/university/normative-docs/internal-acts' },
         ]
       },
       {
-        label: 'Система менеджмента качества',
+        label: t('university.qualityManagement'),
         path: '',
         children: [
-          { label: 'Политика в области качества', path: '/university/QualityManagSystem/QualityPolity' },
-          { label: 'Мониторинг качества', path: '/university/QualityManagSystem/QualityMonitoring' }
+          { label: t('university.qualityPolicy'), path: '/university/QualityManagSystem/QualityPolity' },
+          { label: t('university.qualityMonitoring'), path: '/university/QualityManagSystem/QualityMonitoring' }
         ]
       },
       {
-        label: 'Сотрудничество',
+        label: t('university.cooperation'),
         path: '',
         children: [
-          { label: 'Сотрудничество с университетами', path: '/university/cooperation/universities' },
-          { label: 'Сотрудничество с клиниками', path: '/university/cooperation/clinics' }
+          { label: t('university.universitiesCoop'), path: '/university/cooperation/universities' },
+          { label: t('university.clinicsCoop'), path: '/university/cooperation/clinics' }
         ]
       }
     ]
   };
 
-  // ========== РЕНДЕРЕР ПУНКТОВ МЕНЮ (РЕКУРСИВНЫЙ, С КЛИКОМ) ==========
   const renderMenuItems = (items, parentKey = '') => (
     <ul style={{ listStyle: 'none', margin: 0, padding: 0, backgroundColor: '#ffffff' }}>
       {items.map((item, index) => {
@@ -317,7 +312,6 @@ const Navbar = () => {
     </ul>
   );
 
-  // ========== РЕНДЕРЕР МЕГАМЕНЮ "УНИВЕРСИТЕТ" ==========
   const renderUniversityMegaMenu = () => {
     const items = menuTree.university;
     const visible = activeMenu === 'university';
@@ -378,7 +372,7 @@ const Navbar = () => {
                     marginBottom: '12px'
                   }}
                 >
-                  Университет
+                  {t('navbar.university')}
                 </h3>
                 <div
                   style={{
@@ -401,7 +395,7 @@ const Navbar = () => {
                     backgroundColor: '#ffffff'
                   }}
                 >
-                  Структура и управление
+                  {t('university.structureAndManagement')}
                 </h3>
                 <div
                   style={{
@@ -424,7 +418,7 @@ const Navbar = () => {
                     backgroundColor: '#ffffff'
                   }}
                 >
-                  Документы и сотрудничество
+                  {t('university.docsAndCooperation')}
                 </h3>
                 <div
                   style={{
@@ -443,9 +437,7 @@ const Navbar = () => {
     );
   };
 
-  // ========== СТАРЫЕ МЕГАМЕНЮ (ОБРАЗОВАНИЕ, КЛИНИЧЕСКАЯ БАЗА и т.д.) ==========
   const megaMenus = {
-    // ================== ОБРАЗОВАНИЕ ==================
     education: {
       cols: [
         {
@@ -453,50 +445,47 @@ const Navbar = () => {
           groups: [
             {
               icon: '🏛',
-              title: 'Американский институт технологий',
+              title: t('education.ait'),
               items: [
-                { label: 'Об Институте', path: '/education/ait/about' },
-                { label: 'Руководство Института', path: '/education/ait/leadership' },
+                { label: `${t('common.about')} ${t('education.ait')}`, path: '/education/ait/about' },
+                { label: t('education.aitLeadership'), path: '/education/ait/leadership' },
                 { 
-                  label: 'Дисциплины Института', 
+                  label: t('education.aitDisciplines'), 
                   path: '/education/ait/disciplines'
-                  
                 },
-                { label: 'Преподаватели', path: '/education/ait/teachers' },
-                { label: 'Контакты', path: '/education/ait/contacts' }
+                { label: t('common.teachers'), path: '/education/ait/teachers' },
+                { label: t('university.contacts'), path: '/education/ait/contacts' }
               ]
             },
             {
               icon: '💻',
-              title: 'Международный колледж IT и бизнеса',
+              title: t('education.itCollege'),
               items: [
-                { label: 'О колледже', path: '/university/structure/it-college' },
-                { label: 'Директор', path: '/education/itCollege/director' },
+                { label: `${t('common.about')} ${t('education.itCollege')}`, path: '/university/structure/it-college' },
+                { label: t('common.director'), path: '/education/itCollege/director' },
                 { 
-                  label: 'Специальности', 
+                  label: t('common.specialties'), 
                   path: '',
                   children: [
-                    { label: 'Диплом в области компьютерных наук', path: '/education/itCollege/specialties/diplom-computer-science' },
-                    { label: 'Диплом в мультимедийных приложениях', path: '/education/itCollege/specialties/diplom-multi-applications' },
-                    { label: 'Диплом в области мобильных вычислений', path: '/education/itCollege/specialties/diplom-mobile-computing' }
-                    
+                    { label: t('education.computerScience'), path: '/education/itCollege/specialties/diplom-computer-science' },
+                    { label: t('education.multimediaApps'), path: '/education/itCollege/specialties/diplom-multi-applications' },
+                    { label: t('education.mobileComputing'), path: '/education/itCollege/specialties/diplom-mobile-computing' }
                   ]
                 },
                 {
-                  label: 'Lincoin University College',
+                  label: 'Lincoln University College',
                   path: 'https://www.lincoln.edu.my/',
-                  
                 },
                 { 
-                  label: 'Отделения', 
+                  label: t('common.departments'), 
                   path: '',
                   children: [
-                    { label: 'Общеобразовательных дисциплин', path: '/education/itCollege/departments/general' },
-                    { label: 'Информационных технологий', path: '/education/itCollege/departments/information' }
+                    { label: t('education.generalDisciplines'), path: '/education/itCollege/departments/general' },
+                    { label: t('education.itDepartment'), path: '/education/itCollege/departments/information' }
                   ]
                 },
-                { label: 'Педагогический совет', path: '/education/itCollege/pedagogical-council' },
-                { label: 'Контакты и реквизиты', path: '/university/contacts' }
+                { label: t('education.pedagogicalCouncil'), path: '/education/itCollege/pedagogical-council' },
+                { label: t('education.contactsAndRequisites'), path: '/university/contacts' }
               ]
             }
           ]
@@ -506,47 +495,44 @@ const Navbar = () => {
           groups: [
             {
               icon: '➕',
-              title: 'Международный факультет Медицины',
+              title: t('education.mfm'),
               items: [
-                { label: 'О факультете', path: '/education/mfm/about' },
-                { label: 'Деканат', path: '',
+                { label: `${t('common.about')} ${t('education.mfm')}`, path: '/education/mfm/about' },
+                { label: t('education.deanOffice'), path: '',
                   children: [
-                    { label: 'Декан', path: '/education/mfm/dekanat/dean' },
-                    { label: 'Учебный  план МФМ', path: '/education/mfm/dekanat/curriculum' },
-                    { label: 'Кафедры', path: '/education/mfm/dekanat/departments' }
+                    { label: t('common.dean'), path: '/education/mfm/dekanat/dean' },
+                    { label: t('education.mfmCurriculum'), path: '/education/mfm/dekanat/curriculum' },
+                    { label: t('education.departments'), path: '/education/mfm/dekanat/departments' }
                   ]
-
                 },
                 { 
-                  label: 'Программы', 
+                  label: t('common.programs'), 
                   path: '',
                   children: [
-                    { label: 'Лечебное дело 5 лет', path: '/education/mfm/programs/five-years' },
-                    { label: 'Лечебное дело 6 лет', path: '/education/mfm/programs/six-years' }
-                    
+                    { label: t('education.medicine5Years'), path: '/education/mfm/programs/five-years' },
+                    { label: t('education.medicine6Years'), path: '/education/mfm/programs/six-years' }
                   ]
                 },
-                { label: 'Контакты', path: '/university/contacts' }
+                { label: t('university.contacts'), path: '/university/contacts' }
               ]
             },
             {
               icon: '📊',
-              title: 'Бизнес школа Салымбекова',
+              title: t('education.businessSchool'),
               items: [
-                { label: 'О бизнес школе', path: '/education/business-school/about' },
-                { label: 'Директор', path: '/education/business-school/director' },
-              
+                { label: `${t('common.about')} ${t('education.businessSchool')}`, path: '/education/business-school/about' },
+                { label: t('common.director'), path: '/education/business-school/director' },
                 { 
-                  label: 'Программы и курсы', 
+                  label: t('education.programsAndCourses'), 
                   path: '',
                   children: [
-                    { label: 'Смартик (5-7 лет)', path: '/education/business-school/programs/smartik' },
-                    { label: 'Будущие лидеры Кыргызстана (7-10 лет)', path: '/education/business-school/programs/future-leaders' },
-                    { label: 'Юные лидеры Кыргызстана (10-16 лет)', path: '/education/business-school/programs/young-leaders' },
-                    { label: 'Молодые лидеры Кыргызстана (от 16 лет)', path: '/education/business-school/programs/older-leaders' }
+                    { label: t('education.smartik'), path: '/education/business-school/programs/smartik' },
+                    { label: t('education.futureLeaders'), path: '/education/business-school/programs/future-leaders' },
+                    { label: t('education.youngLeaders'), path: '/education/business-school/programs/young-leaders' },
+                    { label: t('education.olderLeaders'), path: '/education/business-school/programs/older-leaders' }
                   ]
                 },
-                { label: 'Контакты', path: '/university/contacts' }
+                { label: t('university.contacts'), path: '/university/contacts' }
               ]
             }
           ]
@@ -556,23 +542,20 @@ const Navbar = () => {
           groups: [
             {
               icon: '➕',
-              title: 'Факультет последипломного образования',
+              title: t('education.postgraduate'),
               items: [
-                { label: 'Интернатура', path: '/education/postgrad/internship' },
-                { label: 'Ординатура', path: '/education/postgrad/residency' },
-                { label: 'Аспирантура', path: '/education/postgrad/postgraduate' },
-                { label: 'PhD', path: '/education/postgrad/phd' },
-               
+                { label: t('common.internship'), path: '/education/postgrad/internship' },
+                { label: t('common.residency'), path: '/education/postgrad/residency' },
+                { label: t('common.postgraduate'), path: '/education/postgrad/postgraduate' },
+                { label: t('common.phd'), path: '/education/postgrad/phd' },
               ]
             },
             {
               icon: '🏫',
-              title: 'Центр образования и инновации в г. Нарын',
+              title: t('education.narynCenter'),
               items: [
-                { label: 'О центре', path: '/education/center/about' },
-                { label: 'Контакты', path: '/university/contacts' },
-      
-                
+                { label: `${t('common.about')} ${t('education.narynCenter')}`, path: '/education/center/about' },
+                { label: t('university.contacts'), path: '/university/contacts' },
               ]
             }
           ]
@@ -580,7 +563,6 @@ const Navbar = () => {
       ]
     },
 
-    // ================== КЛИНИЧЕСКАЯ БАЗА ==================
     clinical: {
       cols: [
         {
@@ -588,23 +570,23 @@ const Navbar = () => {
           groups: [
             {
               icon: null,
-              title: 'Собственные клинические базы',
+              title: t('clinical.ownBases'),
               items: [
-                { label: 'Лазмед', path: '/clinical/lazmed' },
+                { label: t('clinical.lazmed'), path: '/clinical/lazmed' },
                 {
-                  label: 'Дордой офтальмик сервис',
+                  label: t('clinical.dordoiOphthalmic'),
                   path: '/clinical/dordoi'
                 },
-                { label: 'DOC university clinic', path: '/clinical/doc-clinic' },
-                { label: 'DOC university hospital', path: '/clinical/doc-hospital' }
+                { label: t('clinical.docClinic'), path: '/clinical/doc-clinic' },
+                { label: t('clinical.docHospital'), path: '/clinical/doc-hospital' }
               ]
             },
             {
               icon: null,
-              title: 'Соглашения с клиниками',
+              title: t('clinical.agreements'),
               items: [
                 {
-                  label: 'Соглашения с клиниками',
+                  label: t('clinical.agreements'),
                   path: '/clinical/agreements'
                 }
               ]
@@ -614,7 +596,6 @@ const Navbar = () => {
       ]
     },
 
-    // ================== НАУКА ==================
     science: {
       cols: [
         {
@@ -625,19 +606,19 @@ const Navbar = () => {
               title: '',
               items: [
                 { 
-                  label: 'Органы управления', 
+                  label: t('science.management'), 
                   path: '/science/management',
                   children: [
-                    { label: 'Научно-технический совет', path: '/science/management/scientific-technical-council' },
-                    { label: 'Биоэтический комитет', path: '/science/management/bioethics' },
-                    { label: 'Совет молодых ученых', path: '/science/management/young-scientists' },
-                    { label: 'Департамент науки и перспективных исследований', path: '/science/management/department' }
+                    { label: t('science.scientificCouncil'), path: '/science/management/scientific-technical-council' },
+                    { label: t('science.bioethics'), path: '/science/management/bioethics' },
+                    { label: t('science.youngScientists'), path: '/science/management/young-scientists' },
+                    { label: t('science.researchDepartment'), path: '/science/management/department' }
                   ]
                 },
-                { label: 'Научный журнал', path: '/science/publications/journal' },
-                { label: 'Периодические издания', path: '/science/publications/periodicals' },
-                { label: 'Научная библиотека', path: '/science/library' },
-                { label: 'Лаборатории и центры', path: '/science/labs' }
+                { label: t('science.journal'), path: '/science/publications/journal' },
+                { label: t('science.periodicals'), path: '/science/publications/periodicals' },
+                { label: t('science.library'), path: '/science/library' },
+                { label: t('science.labs'), path: '/science/labs' }
               ]
             }
           ]
@@ -649,32 +630,32 @@ const Navbar = () => {
               icon: null,
               title: '',
               items: [
-                { label: 'Почетные профессора и лекторы', path: '/science/professors' },
+                { label: t('science.honoredProfessors'), path: '/science/professors' },
                 { 
-                  label: 'Мероприятия', 
+                  label: t('science.events'), 
                   path: '/science/events',
                   children: [
-                    { label: 'Конференции', path: '/science/events/conferences' },
-                    { label: 'Мастер классы', path: '/science/events/master-classes' },
-                    { label: 'Круглые столы', path: '/science/events/round-tables' }
+                    { label: t('science.conferences'), path: '/science/events/conferences' },
+                    { label: t('science.masterClasses'), path: '/science/events/master-classes' },
+                    { label: t('science.roundTables'), path: '/science/events/round-tables' }
                   ]
                 },
                 { 
-                  label: 'Студенческая наука', 
+                  label: t('science.studentScience'), 
                   path: '/science/student-science',
                   children: [
-                    { label: 'Студенческое научное объединение', path: '/science/student-society' },
-                    { label: 'Научные кружки', path: '/science/student-science/clubs' },
-                    { label: 'Студенческие конференции', path: '/science/student-science/conferences' }
+                    { label: t('science.studentSociety'), path: '/science/student-society' },
+                    { label: t('science.scienceClubs'), path: '/science/student-science/clubs' },
+                    { label: t('science.studentConferences'), path: '/science/student-science/conferences' }
                   ]
                 },
                 { 
-                  label: 'Научные проекты', 
+                  label: t('science.researchProjects'), 
                   children: [
-                    { label: 'Урология' },
-                    { label: 'Гинекология' },
-                    { label: 'Офтальмология' },
-                    { label: 'Онкология' }
+                    { label: t('science.urology') },
+                    { label: t('science.gynecology') },
+                    { label: t('science.ophthalmology') },
+                    { label: t('science.oncology') }
                   ]
                 }
               ]
@@ -684,7 +665,6 @@ const Navbar = () => {
       ]
     },
 
-    // ================== СТУДЕНТУ ==================
     student: {
       cols: [
         {
@@ -692,97 +672,96 @@ const Navbar = () => {
           groups: [
             {
               icon: null,
-              title: 'Студенческие сообщества',
+              title: t('student.communities'),
               items: [
-                { label: 'Студенческий совет', path: '/student/community/council' },
+                { label: t('student.council'), path: '/student/community/council' },
                 {
-                  label: 'Студенческое научное объединение',
+                  label: t('student.scienceSociety'),
                   path: '/student/community/science'
                 },
-                { label: 'Дебатный клуб', path: '/student/community/debate' },
-                { label: 'Тьюторское движение', path: '/student/community/tutor' },
+                { label: t('student.debateClub'), path: '/student/community/debate' },
+                { label: t('student.tutorMovement'), path: '/student/community/tutor' },
                 {
-                  label: 'Творческие коллективы и кружки',
+                  label: t('student.creativeClubs'),
                   path: '/student/community/clubs'
                 }
               ]
             },
             {
               icon: null,
-              title: 'Учебные графики',
+              title: t('student.schedules'),
               items: [
                 {
-                  label: 'График учебного процесса',
+                  label: t('student.studySchedule'),
                   path: '/student/schedule/study'
                 },
                 {
-                  label: 'Графики модулей и экзаменов',
+                  label: t('student.modulesSchedule'),
                   path: '/student/schedule/modules'
                 },
                 {
-                  label: 'Графики производственной практики',
+                  label: t('student.practiceSchedule'),
                   path: '/student/schedule/practice'
                 },
-                { label: 'Расписание МФМ', path: '/student/schedule/mfm' },
-                { label: 'Расписание колледжа', path: '/student/schedule/college' }
+                { label: t('student.mfmSchedule'), path: '/student/schedule/mfm' },
+                { label: t('student.collegeSchedule'), path: '/student/schedule/college' }
               ]
             }
           ]
         },
-
         {
           type: 'multiGroup',
           groups: [
             {
               icon: null,
-              title: 'Ресурсная база',
+              title: t('student.resources'),
               items: [
                 {
-                  label: 'Инструкция и положения',
+                  label: t('student.instructions'),
                   path: '/student/resources/instructions'
                 },
                 {
-                  label: 'Информационная система',
+                  label: t('student.infoSystem'),
                   path: '/student/resources/infosystem'
                 },
                 {
-                  label: 'Электронная библиотека',
+                  label: t('student.eLibrary'),
                   path: '/student/resources/elib'
                 },
                 {
-                  label: 'Образовательные ресурсы',
+                  label: t('student.eduResources'),
                   path: '/student/resources/edu-resources'
                 }
               ]
             },
             {
               icon: null,
-              title: 'Условия и возможности',
+              title: t('student.opportunities'),
               items: [
                 {
-                  label: 'Медицинский центр',
+                  label: t('student.medicalCenter'),
                   path: '/student/opportunities/medical'
                 },
-                { label: 'Общежитие', path: '/student/opportunities/dorm' },
+                { label: t('student.dormitory'), path: '/student/opportunities/dorm' },
                 {
-                  label: 'Социальная поддержка студентов',
+                  label: t('student.socialSupport'),
                   path: '/student/opportunities/social'
                 },
-                { label: 'Курсы по выбору', path: '/student/opportunities/courses' },
+                { label: t('student.electiveCourses'), path: '/student/opportunities/courses' },
                 {
-                  label: 'Академическая мобильность',
+                  label: t('student.academicMobility'),
                   path: '/student/opportunities/mobility'
                 },
                 {
-                  label: 'Психологическая поддержка',
+                  label: t('student.psychologicalSupport'),
                   path: '/student/opportunities/psychology'
                 },
                 {
-                  label: 'Центр обслуживания студентов',
+                  label: t('student.serviceCenter'),
                   path: '/student/opportunities/service-center'
                 },
                 {
-                  label: 'Адаптационные программы',
+                  label: t('student.adaptationPrograms'),
                   path: '/student/opportunities/adaptation'
                 }
               ]
@@ -792,7 +771,6 @@ const Navbar = () => {
       ]
     },
 
-    // ================== АБИТУРИЕНТУ ==================
     applicant: {
       cols: [
         {
@@ -800,7 +778,7 @@ const Navbar = () => {
           groups: [
             {
               icon: null,
-              title: 'Приемная комиссия',
+              title: t('applicant.admissionCommittee'),
               items: []
             },
             {
@@ -808,129 +786,107 @@ const Navbar = () => {
               title: '',
               items: [
                 {
-                  label: 'Направления подготовки',
+                  label: t('applicant.directions'),
                   path: '/applicants/directions'
                 },
                 {
-                  label: 'Стоимость обучения',
+                  label: t('applicant.tuitionCost'),
                   path: '/applicants/cost'
                 }
               ]
             },
             {
               icon: null,
-              title: 'Порядок приема',
+              title: t('applicant.admissionProcedure'),
               items: [
                 {
-                  label: 'Необходимые документы',
+                  label: t('applicant.requiredDocuments'),
                   path: '/applicants/admission/documents'
                 },
                 {
-                  label: 'Положение приема',
+                  label: t('applicant.admissionRules'),
                   path: '/applicants/admission/rules'
                 },
                 {
-                  label: 'График отбора и зачисления',
+                  label: t('applicant.admissionSchedule'),
                   path: '/applicants/admission/schedule'
                 }
               ]
             }
           ]
         },
-
         {
           type: 'multiGroup',
           groups: [
             {
               icon: null,
-              title: 'Правила и план приема',
+              title: t('applicant.rulesAndPlan'),
               items: [
                 {
-                  label: 'Прием по ОРТ',
+                  label: t('applicant.ortAdmission'),
                   path: '/applicants/ort'
                 },
                 {
-                  label: 'Профориентация',
+                  label: t('applicant.careerGuidance'),
                   path: '/applicants/career-guidance'
                 }
               ]
             },
             {
               icon: null,
-              title: 'Порядок перевода',
+              title: t('applicant.transferProcedure'),
               items: [
                 {
-                  label: 'Необходимые документы',
+                  label: t('applicant.transferDocuments'),
                   path: '/applicants/transfer/documents'
                 },
                 {
-                  label: 'Положение перевода',
+                  label: t('applicant.transferRules'),
                   path: '/applicants/transfer/rules'
                 },
                 {
-                  label: 'График перевода',
+                  label: t('applicant.transferSchedule'),
                   path: '/applicants/transfer/schedule'
                 }
               ]
             }
           ]
         },
-
         {
           type: 'multiGroup',
           groups: [
             {
               icon: null,
-              title: 'Стипендии и льготы',
+              title: t('applicant.scholarships'),
               items: [
-                { label: 'Стипендии студентам', path: '/applicants/scholarships' }
+                { label: t('applicant.studentScholarships'), path: '/applicants/scholarships' }
               ]
             },
             {
               icon: null,
-              title: 'Официальные дилеры',
+              title: t('applicant.officialDealers'),
               items: [
-                { label: 'Официальные дилеры', path: '/applicants/dealers' }
+                { label: t('applicant.officialDealers'), path: '/applicants/dealers' }
               ]
             },
             {
               icon: null,
-              title: 'Адаптационная программа',
+              title: t('applicant.adaptationProgram'),
               items: [
                 {
-                  label: 'Адаптационная программа',
+                  label: t('applicant.adaptationProgram'),
                   path: '/applicants/adaptation'
                 }
               ]
             },
             {
               icon: null,
-              title: 'Инфраструктура университета',
+              title: t('applicant.infrastructure'),
               items: [
                 {
-                  label: 'Инфраструктура университета',
+                  label: t('applicant.infrastructure'),
                   path: '/applicants/infrastructure'
                 }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-
-    // ================== ИНФРАСТРУКТУРА ==================
-    infrastructure: {
-      cols: [
-        {
-          type: 'multiGroup',
-          groups: [
-            {
-              icon: null,
-              title: 'Инфраструктура',
-              items: [
-                { label: 'Локации', path: '/infrastructure/locations' },
-                { label: 'Общежития', path: '/infrastructure/dorms' },
-                { label: 'Спорт', path: '/infrastructure/sport' }
               ]
             }
           ]
@@ -940,18 +896,15 @@ const Navbar = () => {
   };
 
   const renderMega = (menuKey) => {
-    // Для "university" используем новый рендерер
     if (menuKey === 'university') {
       return renderUniversityMegaMenu();
     }
 
-    // Для остальных — старый код
     const data = megaMenus[menuKey];
     if (!data || !data.cols || data.cols.length === 0) return null;
 
     const visible = activeMenu === menuKey;
     
-    // Не рендерим вообще, если меню неактивно
     if (!visible) return null;
 
     return (
@@ -994,7 +947,6 @@ const Navbar = () => {
               }}
             >
               {data.cols.map((col, idx) => {
-                // Колонка с несколькими блоками
                 if (col.type === 'multiGroup') {
                   return (
                     <div key={idx}>
@@ -1003,7 +955,6 @@ const Navbar = () => {
                           key={group.title}
                           style={{ marginBottom: gIdx === 0 ? '22px' : 0 }}
                         >
-                          {/* Заголовок с иконкой и линией */}
                           <h3
                             style={{
                               margin: 0,
@@ -1028,7 +979,6 @@ const Navbar = () => {
                             }}
                           />
 
-                          {/* Список ссылок */}
                           <ul
                             style={{
                               listStyle: 'none',
@@ -1089,7 +1039,6 @@ const Navbar = () => {
                                     )}
                                   </div>
 
-                                  {/* Вложенные пункты */}
                                   {hasChildren && isOpen && (
                                     <ul
                                       style={{
@@ -1220,8 +1169,8 @@ const Navbar = () => {
                       type="button"
                       onClick={() => changeLang(code)}
                       style={{
-                        color: code === lang ? '#000000' : '#4b5563',
-                        textDecoration: code === lang ? 'underline' : 'none',
+                        color: code === i18n.language ? '#000000' : '#4b5563',
+                        textDecoration: code === i18n.language ? 'underline' : 'none',
                         border: 'none',
                         background: 'transparent',
                         cursor: 'pointer',
@@ -1230,12 +1179,12 @@ const Navbar = () => {
                         fontWeight: 'inherit'
                       }}
                       onMouseEnter={(e) => {
-                        if (code !== lang) {
+                        if (code !== i18n.language) {
                           e.currentTarget.style.color = '#0B4C8C';
                         }
                       }}
                       onMouseLeave={(e) => {
-                        if (code !== lang) {
+                        if (code !== i18n.language) {
                           e.currentTarget.style.color = '#4b5563';
                         }
                       }}
@@ -1263,7 +1212,7 @@ const Navbar = () => {
                   <input
                     ref={searchInputRef}
                     type="text"
-                    placeholder="Поиск..."
+                    placeholder={t('navbar.search')}
                     style={{
                       border: 'none',
                       background: 'transparent',
@@ -1312,7 +1261,7 @@ const Navbar = () => {
                     cursor: 'pointer',
                     padding: 0
                   }}
-                  aria-label="Поиск"
+                  aria-label={t('navbar.search')}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = '#0B4C8C';
                   }}
@@ -1343,7 +1292,7 @@ const Navbar = () => {
                 cursor: 'pointer'
               }}
               className="lg:hidden"
-              aria-label="Меню"
+              aria-label={t('navbar.menu')}
               onClick={() => setIsMobileOpen(v => !v)}
             >
               <div style={{ width: '1.5rem', height: '1.25rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
