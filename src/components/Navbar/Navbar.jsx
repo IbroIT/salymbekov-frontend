@@ -62,159 +62,159 @@ const Navbar = () => {
   };
 
   const topItems = [
-    { key: 'university', path: '/university', label: t('navbar.university') },
-    { key: 'education', path: '/education', label: t('navbar.education') },
-    { key: 'clinical', path: '/clinical', label: t('navbar.clinical') },
-    { key: 'science', path: '/science', label: t('navbar.science') },
-    { key: 'student', path: '/student', label: t('navbar.student') },
-    { key: 'applicant', path: '/applicants', label: t('navbar.applicant') }
+    { key: 'university', path: '/university', label: t('navbarSUB.university') },
+    { key: 'education', path: '/education', label: t('navbarSUB.education') },
+    { key: 'clinical', path: '/clinical', label: t('navbarSUB.clinical') },
+    { key: 'science', path: '/science', label: t('navbarSUB.science') },
+    { key: 'student', path: '/student', label: t('navbarSUB.student') },
+    { key: 'applicant', path: '/applicants', label: t('navbarSUB.applicant') }
   ];
 
   const menuTree = {
     university: [
       {
-        label: t('university.founderAppeal'),
+        label: t('universitySUB.founderAppeal'),
         path: '/university/Appeal'
       },
       {
-        label: t('university.history'),
+        label: t('universitySUB.history'),
         path: '/university/history'
       },
       {
-        label: t('university.mission'),
+        label: t('universitySUB.mission'),
         path: '/university/mission'
       },
       {
-        label: t('university.videos'),
+        label: t('universitySUB.videos'),
         path: '/university/videos'
       },
       {
-        label: t('university.vacancies'),
+        label: t('universitySUB.vacancies'),
         path: '/university/vacancies'
       },
       {
-        label: t('university.contacts'),
+        label: t('universitySUB.contacts'),
         path: '/university/contacts'
       },
       {
-        label: t('university.brandbook'),
+        label: t('universitySUB.brandbook'),
         path: 'https://salymbekov.com/wp-content/uploads/2023/10/brjendbuk_organized_new.pdf'
       },
       {
-        label: `🏛️ ${t('university.structure')}`,
+        label: `🏛️ ${t('universitySUB.structure')}`,
         path: '',
         children: [
-          { label: t('navbar.university'), path: '/university/structure/University-main' },
-          { label: t('education.mfm'), path: '/university/structure/International-Faculty' },
-          { label: t('education.itCollege'), path: '/university/structure/it-college' }
+          { label: t('navbarSUB.university'), path: '/university/structure/University-main' },
+          { label: t('educationSUB.mfm'), path: '/university/structure/International-Faculty' },
+          { label: t('educationSUB.itCollege'), path: '/university/structure/it-college' }
         ]
       },
       {
-        label: t('university.foundingDocs'),
+        label: t('universitySUB.foundingDocs'),
         path: '',
         children: [
-          { label: t('university.charter'), path: '/university/founding-docs/charter' },
-          { label: t('university.licenses'), path: '/university/founding-docs/licenses' },
-          { label: t('university.acts'), path: '/university/founding-docs/acts' }
+          { label: t('universitySUB.charter'), path: '/university/founding-docs/charter' },
+          { label: t('universitySUB.licenses'), path: '/university/founding-docs/licenses' },
+          { label: t('universitySUB.acts'), path: '/university/founding-docs/acts' }
         ]
       },
       {
-        label: t('university.management'),
+        label: t('universitySUB.management'),
         path: '',
         children: [
-          { label: t('university.founder'), path: '/university/management/founder' },
-          { label: t('university.president'), path: '/university/management/president' },
-          { label: t('university.rectorate'), path: '/university/management/rectorate' }
+          { label: t('universitySUB.founder'), path: '/university/management/founder' },
+          { label: t('universitySUB.president'), path: '/university/management/president' },
+          { label: t('universitySUB.rectorate'), path: '/university/management/rectorate' }
         ]
       },
       {
-        label: t('university.councils'),
+        label: t('universitySUB.councils'),
         path: '',
         children: [
-          { label: t('university.devCouncil'), path: '/university/Councils/dev-council' },
-          { label: t('university.acadCouncil'), path: '/university/Councils/acad-council' },
-          { label: t('university.eduCouncil'), path: '/university/Councils/edu-councils' },
-          { label: t('university.techCouncil'), path: '/university/Councils/technical-council' },
-          { label: t('university.scienCouncil'), path: '/university/Councils/scien-council' },
-          { label: t('university.editBoard'), path: '/university/Councils/edit-board' },
-          { label: t('university.admisCommittee'), path: '/university/Councils/admis-committee' },
-          { label: t('university.supportCommission'), path: '/university/Councils/commission-support' },
-          { label: t('university.bioethicsCommittee'), path: '/university/Councils/bioethics-committee' },
-          { label: t('university.youngScientists'), path: '/university/Councils/council-scients' },
-          { label: t('university.employersCouncil'), path: '/university/Councils/employers-council' },
-          { label: t('university.parentsCouncil'), path: '/university/Councils/parents-council' },
-          { label: t('university.studentCouncil'), path: '/university/Councils/student-council' }
+          { label: t('universitySUB.devCouncil'), path: '/university/Councils/dev-council' },
+          { label: t('universitySUB.acadCouncil'), path: '/university/Councils/acad-council' },
+          { label: t('universitySUB.eduCouncil'), path: '/university/Councils/edu-councils' },
+          { label: t('universitySUB.techCouncil'), path: '/university/Councils/technical-council' },
+          { label: t('universitySUB.scienCouncil'), path: '/university/Councils/scien-council' },
+          { label: t('universitySUB.editBoard'), path: '/university/Councils/edit-board' },
+          { label: t('universitySUB.admisCommittee'), path: '/university/Councils/admis-committee' },
+          { label: t('universitySUB.supportCommission'), path: '/university/Councils/commission-support' },
+          { label: t('universitySUB.bioethicsCommittee'), path: '/university/Councils/bioethics-committee' },
+          { label: t('universitySUB.youngScientists'), path: '/university/Councils/council-scients' },
+          { label: t('universitySUB.employersCouncil'), path: '/university/Councils/employers-council' },
+          { label: t('universitySUB.parentsCouncil'), path: '/university/Councils/parents-council' },
+          { label: t('universitySUB.studentCouncil'), path: '/university/Councils/student-council' }
         ]
       },
       {
-        label: t('university.departments'),
+        label: t('universitySUB.departments'),
         path: '',
         children: [
-          { label: t('university.financialDept'), path: '/university/departments/financial' },
-          { label: t('university.scienceDept'), path: '/university/departments/science' },
-          { label: t('university.managementDept'), path: '/university/departments/management' },
-          { label: t('university.hrDept'), path: '/university/departments/hr' },
-          { label: t('university.qualityDept'), path: '/university/departments/quality' },
-          { label: t('university.researchDept'), path: '/university/departments' },
-          { label: t('university.internationalDept'), path: '/university/departments/international' },
-          { label: t('university.studentDept'), path: '/university/departments/student' },
-          { label: t('university.careerCenter'), path: '/university/departments/career' }
+          { label: t('universitySUB.financialDept'), path: '/university/departments/financial' },
+          { label: t('universitySUB.scienceDept'), path: '/university/departments/science' },
+          { label: t('universitySUB.managementDept'), path: '/university/departments/management' },
+          { label: t('universitySUB.hrDept'), path: '/university/departments/hr' },
+          { label: t('universitySUB.qualityDept'), path: '/university/departments/quality' },
+          { label: t('universitySUB.researchDept'), path: '/university/departments' },
+          { label: t('universitySUB.internationalDept'), path: '/university/departments/international' },
+          { label: t('universitySUB.studentDept'), path: '/university/departments/student' },
+          { label: t('universitySUB.careerCenter'), path: '/university/departments/career' }
         ]
       },
       {
-        label: `✓ ${t('university.accreditation')}`,
+        label: `✓ ${t('universitySUB.accreditation')}`,
         path: '',
         children: [
           {
-            label: t('university.national'),
+            label: t('universitySUB.national'),
             path: '',
             children: [
-              { label: t('university.accreditation'), path: '/university/accreditation/national' }
+              { label: t('universitySUB.accreditation'), path: '/university/accreditation/national' }
             ]
           },
           {
-            label: t('university.international'),
+            label: t('universitySUB.international'),
             path: '',
             children: [
-              { label: t('university.institutional'), path: '/university/accreditation/institutional' },
-              { label: t('university.programAccreditation'), path: '/university/accreditation/program' }
+              { label: t('universitySUB.institutional'), path: '/university/accreditation/institutional' },
+              { label: t('universitySUB.programAccreditation'), path: '/university/accreditation/program' }
             ]
           }
         ]
       },
       {
-        label: t('university.strategicDocs'),
+        label: t('universitySUB.strategicDocs'),
         path: '',
         children: [
-          { label: t('university.vision'), path: '/university/StrategicDocs/StrategicVision' },
-          { label: t('university.strategicPlan'), path: '/university/StrategicDocs/StrategicDevelopPlans' },
-          { label: t('university.comprehensivePlans'), path: 'https://salymbekov.com/wp-content/uploads/2022/05/5.9.4.-kompleksnyj-plan-meroprijatij-za-2021-2022-gg.pdf' },
-          { label: t('university.accountingPolicy'), path: '/university/StrategicDocs/AccountingPolicy' },
-          { label: t('university.hrPolicy'), path: '/university/StrategicDocs/HR-Policy' }
+          { label: t('universitySUB.vision'), path: '/university/StrategicDocs/StrategicVision' },
+          { label: t('universitySUB.strategicPlan'), path: '/university/StrategicDocs/StrategicDevelopPlans' },
+          { label: t('universitySUB.comprehensivePlans'), path: 'https://salymbekov.com/wp-content/uploads/2022/05/5.9.4.-kompleksnyj-plan-meroprijatij-za-2021-2022-gg.pdf' },
+          { label: t('universitySUB.accountingPolicy'), path: '/university/StrategicDocs/AccountingPolicy' },
+          { label: t('universitySUB.hrPolicy'), path: '/university/StrategicDocs/HR-Policy' }
         ]
       },
       {
-        label: t('university.normativeDocs'),
+        label: t('universitySUB.normativeDocs'),
         path: '',
         children: [
-          { label: t('university.krActs'), path: '/university/normative-docs/kr-acts' },
-          { label: t('university.internalActs'), path: '/university/normative-docs/internal-acts' },
+          { label: t('universitySUB.krActs'), path: '/university/normative-docs/kr-acts' },
+          { label: t('universitySUB.internalActs'), path: '/university/normative-docs/internal-acts' },
         ]
       },
       {
-        label: t('university.qualityManagement'),
+        label: t('universitySUB.qualityManagement'),
         path: '',
         children: [
-          { label: t('university.qualityPolicy'), path: '/university/QualityManagSystem/QualityPolity' },
-          { label: t('university.qualityMonitoring'), path: '/university/QualityManagSystem/QualityMonitoring' }
+          { label: t('universitySUB.qualityPolicy'), path: '/university/QualityManagSystem/QualityPolity' },
+          { label: t('universitySUB.qualityMonitoring'), path: '/university/QualityManagSystem/QualityMonitoring' }
         ]
       },
       {
-        label: t('university.cooperation'),
+        label: t('universitySUB.cooperation'),
         path: '',
         children: [
-          { label: t('university.universitiesCoop'), path: '/university/cooperation/universities' },
-          { label: t('university.clinicsCoop'), path: '/university/cooperation/clinics' }
+          { label: t('universitySUB.universitiesCoop'), path: '/university/cooperation/universities' },
+          { label: t('universitySUB.clinicsCoop'), path: '/university/cooperation/clinics' }
         ]
       }
     ]
@@ -445,31 +445,31 @@ const Navbar = () => {
           groups: [
             {
               icon: '🏛',
-              title: t('education.ait'),
+              title: t('educationSUB.ait'),
               items: [
-                { label: `${t('common.about')} ${t('education.ait')}`, path: '/education/ait/about' },
-                { label: t('education.aitLeadership'), path: '/education/ait/leadership' },
+                { label: `${t('commonSUB.about')} ${t('education.ait')}`, path: '/educationSUB/ait/about' },
+                { label: t('educationSUB.aitLeadership'), path: '/educationSUB/ait/leadership' },
                 { 
-                  label: t('education.aitDisciplines'), 
-                  path: '/education/ait/disciplines'
+                  label: t('educationSUB.aitDisciplines'), 
+                  path: '/educationSUB/ait/disciplines'
                 },
-                { label: t('common.teachers'), path: '/education/ait/teachers' },
-                { label: t('university.contacts'), path: '/education/ait/contacts' }
+                { label: t('commonSUB.teachers'), path: '/educationSUB/ait/teachers' },
+                { label: t('universitySUB.contacts'), path: '/educationSUB/ait/contacts' }
               ]
             },
             {
               icon: '💻',
-              title: t('education.itCollege'),
+              title: t('educationSUB.itCollege'),
               items: [
-                { label: `${t('common.about')} ${t('education.itCollege')}`, path: '/university/structure/it-college' },
-                { label: t('common.director'), path: '/education/itCollege/director' },
+                { label: `${t('commonSUB.about')} ${t('educationSUB.itCollege')}`, path: '/universitySUB/structure/it-college' },
+                { label: t('commonSUB.director'), path: '/educationSUB/itCollege/director' },
                 { 
-                  label: t('common.specialties'), 
+                  label: t('commonSUB.specialties'), 
                   path: '',
                   children: [
-                    { label: t('education.computerScience'), path: '/education/itCollege/specialties/diplom-computer-science' },
-                    { label: t('education.multimediaApps'), path: '/education/itCollege/specialties/diplom-multi-applications' },
-                    { label: t('education.mobileComputing'), path: '/education/itCollege/specialties/diplom-mobile-computing' }
+                    { label: t('educationSUB.computerScience'), path: '/educationSUB/itCollege/specialties/diplom-computer-science' },
+                    { label: t('educationSUB.multimediaApps'), path: '/educationSUB/itCollege/specialties/diplom-multi-applications' },
+                    { label: t('educationSUB.mobileComputing'), path: '/educationSUB/itCollege/specialties/diplom-mobile-computing' }
                   ]
                 },
                 {
@@ -477,15 +477,15 @@ const Navbar = () => {
                   path: 'https://www.lincoln.edu.my/',
                 },
                 { 
-                  label: t('common.departments'), 
+                  label: t('commonSUB.departments'), 
                   path: '',
                   children: [
-                    { label: t('education.generalDisciplines'), path: '/education/itCollege/departments/general' },
-                    { label: t('education.itDepartment'), path: '/education/itCollege/departments/information' }
+                    { label: t('educationSUB.generalDisciplines'), path: '/educationSUB/itCollege/departments/general' },
+                    { label: t('educationSUB.itDepartment'), path: '/educationSUB/itCollege/departments/information' }
                   ]
                 },
-                { label: t('education.pedagogicalCouncil'), path: '/education/itCollege/pedagogical-council' },
-                { label: t('education.contactsAndRequisites'), path: '/university/contacts' }
+                { label: t('educationSUB.pedagogicalCouncil'), path: '/educationSUB/itCollege/pedagogical-council' },
+                { label: t('educationSUB.contactsAndRequisites'), path: '/universitySUB/contacts' }
               ]
             }
           ]
@@ -495,44 +495,44 @@ const Navbar = () => {
           groups: [
             {
               icon: '➕',
-              title: t('education.mfm'),
+              title: t('educationSUB.mfm'),
               items: [
-                { label: `${t('common.about')} ${t('education.mfm')}`, path: '/education/mfm/about' },
-                { label: t('education.deanOffice'), path: '',
+                { label: `${t('commonSUB.about')} ${t('educationSUB.mfm')}`, path: '/education/mfm/about' },
+                { label: t('educationSUB.deanOffice'), path: '',
                   children: [
-                    { label: t('common.dean'), path: '/education/mfm/dekanat/dean' },
-                    { label: t('education.mfmCurriculum'), path: '/education/mfm/dekanat/curriculum' },
-                    { label: t('education.departments'), path: '/education/mfm/dekanat/departments' }
+                    { label: t('commonSUB.dean'), path: '/education/mfm/dekanat/dean' },
+                    { label: t('educationSUB.mfmCurriculum'), path: '/education/mfm/dekanat/curriculum' },
+                    { label: t('educationSUB.departments'), path: '/education/mfm/dekanat/departments' }
                   ]
                 },
                 { 
-                  label: t('common.programs'), 
+                  label: t('commonSUB.programs'), 
                   path: '',
                   children: [
-                    { label: t('education.medicine5Years'), path: '/education/mfm/programs/five-years' },
-                    { label: t('education.medicine6Years'), path: '/education/mfm/programs/six-years' }
+                    { label: t('educationSUB.medicine5Years'), path: '/education/mfm/programs/five-years' },
+                    { label: t('educationSUB.medicine6Years'), path: '/education/mfm/programs/six-years' }
                   ]
                 },
-                { label: t('university.contacts'), path: '/university/contacts' }
+                { label: t('universitySUB.contacts'), path: '/university/contacts' }
               ]
             },
             {
               icon: '📊',
-              title: t('education.businessSchool'),
+              title: t('educationSUB.businessSchool'),
               items: [
-                { label: `${t('common.about')} ${t('education.businessSchool')}`, path: '/education/business-school/about' },
-                { label: t('common.director'), path: '/education/business-school/director' },
+                { label: `${t('commonSUB.about')} ${t('educationSUB.businessSchool')}`, path: '/education/business-school/about' },
+                { label: t('commonSUB.director'), path: '/education/business-school/director' },
                 { 
-                  label: t('education.programsAndCourses'), 
+                  label: t('educationSUB.programsAndCourses'), 
                   path: '',
                   children: [
-                    { label: t('education.smartik'), path: '/education/business-school/programs/smartik' },
-                    { label: t('education.futureLeaders'), path: '/education/business-school/programs/future-leaders' },
-                    { label: t('education.youngLeaders'), path: '/education/business-school/programs/young-leaders' },
-                    { label: t('education.olderLeaders'), path: '/education/business-school/programs/older-leaders' }
+                    { label: t('educationSUB.smartik'), path: '/education/business-school/programs/smartik' },
+                    { label: t('educationSUB.futureLeaders'), path: '/education/business-school/programs/future-leaders' },
+                    { label: t('educationSUB.youngLeaders'), path: '/education/business-school/programs/young-leaders' },
+                    { label: t('educationSUB.olderLeaders'), path: '/education/business-school/programs/older-leaders' }
                   ]
                 },
-                { label: t('university.contacts'), path: '/university/contacts' }
+                { label: t('universitySUB.contacts'), path: '/university/contacts' }
               ]
             }
           ]
@@ -542,20 +542,20 @@ const Navbar = () => {
           groups: [
             {
               icon: '➕',
-              title: t('education.postgraduate'),
+              title: t('educationSUB.postgraduate'),
               items: [
-                { label: t('common.internship'), path: '/education/postgrad/internship' },
-                { label: t('common.residency'), path: '/education/postgrad/residency' },
-                { label: t('common.postgraduate'), path: '/education/postgrad/postgraduate' },
-                { label: t('common.phd'), path: '/education/postgrad/phd' },
+                { label: t('commonSUB.internship'), path: '/education/postgrad/internship' },
+                { label: t('commonSUB.residency'), path: '/education/postgrad/residency' },
+                { label: t('commonSUB.postgraduate'), path: '/education/postgrad/postgraduate' },
+                { label: t('commonSUB.phd'), path: '/education/postgrad/phd' },
               ]
             },
             {
               icon: '🏫',
-              title: t('education.narynCenter'),
+              title: t('educationSUB.narynCenter'),
               items: [
-                { label: `${t('common.about')} ${t('education.narynCenter')}`, path: '/education/center/about' },
-                { label: t('university.contacts'), path: '/university/contacts' },
+                { label: `${t('commonSUB.about')} ${t('educationSUB.narynCenter')}`, path: '/education/center/about' },
+                { label: t('universitySUB.contacts'), path: '/university/contacts' },
               ]
             }
           ]
@@ -570,23 +570,23 @@ const Navbar = () => {
           groups: [
             {
               icon: null,
-              title: t('clinical.ownBases'),
+              title: t('clinicalSUB.ownBases'),
               items: [
-                { label: t('clinical.lazmed'), path: '/clinical/lazmed' },
+                { label: t('clinicalSUB.lazmed'), path: '/clinical/lazmed' },
                 {
-                  label: t('clinical.dordoiOphthalmic'),
+                  label: t('clinicalSUB.dordoiOphthalmic'),
                   path: '/clinical/dordoi'
                 },
-                { label: t('clinical.docClinic'), path: '/clinical/doc-clinic' },
-                { label: t('clinical.docHospital'), path: '/clinical/doc-hospital' }
+                { label: t('clinicalSUB.docClinic'), path: '/clinical/doc-clinic' },
+                { label: t('clinicalSUB.docHospital'), path: '/clinical/doc-hospital' }
               ]
             },
             {
               icon: null,
-              title: t('clinical.agreements'),
+              title: t('clinicalSUB.agreements'),
               items: [
                 {
-                  label: t('clinical.agreements'),
+                  label: t('clinicalSUB.agreements'),
                   path: '/clinical/agreements'
                 }
               ]
@@ -606,19 +606,19 @@ const Navbar = () => {
               title: '',
               items: [
                 { 
-                  label: t('science.management'), 
+                  label: t('scienceSUB.management'), 
                   path: '/science/management',
                   children: [
-                    { label: t('science.scientificCouncil'), path: '/science/management/scientific-technical-council' },
-                    { label: t('science.bioethics'), path: '/science/management/bioethics' },
-                    { label: t('science.youngScientists'), path: '/science/management/young-scientists' },
-                    { label: t('science.researchDepartment'), path: '/science/management/department' }
+                    { label: t('scienceSUB.scientificCouncil'), path: '/science/management/scientific-technical-council' },
+                    { label: t('scienceSUB.bioethics'), path: '/science/management/bioethics' },
+                    { label: t('scienceSUB.youngScientists'), path: '/science/management/young-scientists' },
+                    { label: t('scienceSUB.researchDepartment'), path: '/science/management/department' }
                   ]
                 },
-                { label: t('science.journal'), path: '/science/publications/journal' },
-                { label: t('science.periodicals'), path: '/science/publications/periodicals' },
-                { label: t('science.library'), path: '/science/library' },
-                { label: t('science.labs'), path: '/science/labs' }
+                { label: t('scienceSUB.journal'), path: '/science/publications/journal' },
+                { label: t('scienceSUB.periodicals'), path: '/science/publications/periodicals' },
+                { label: t('scienceSUB.library'), path: '/science/library' },
+                { label: t('scienceSUB.labs'), path: '/science/labs' }
               ]
             }
           ]
@@ -630,32 +630,32 @@ const Navbar = () => {
               icon: null,
               title: '',
               items: [
-                { label: t('science.honoredProfessors'), path: '/science/professors' },
+                { label: t('scienceSUB.honoredProfessors'), path: '/science/professors' },
                 { 
-                  label: t('science.events'), 
+                  label: t('scienceSUB.events'), 
                   path: '/science/events',
                   children: [
-                    { label: t('science.conferences'), path: '/science/events/conferences' },
-                    { label: t('science.masterClasses'), path: '/science/events/master-classes' },
-                    { label: t('science.roundTables'), path: '/science/events/round-tables' }
+                    { label: t('scienceSUB.conferences'), path: '/science/events/conferences' },
+                    { label: t('scienceSUB.masterClasses'), path: '/science/events/master-classes' },
+                    { label: t('scienceSUB.roundTables'), path: '/science/events/round-tables' }
                   ]
                 },
                 { 
-                  label: t('science.studentScience'), 
+                  label: t('scienceSUB.studentScience'), 
                   path: '/science/student-science',
                   children: [
-                    { label: t('science.studentSociety'), path: '/science/student-society' },
-                    { label: t('science.scienceClubs'), path: '/science/student-science/clubs' },
-                    { label: t('science.studentConferences'), path: '/science/student-science/conferences' }
+                    { label: t('scienceSUB.studentSociety'), path: '/science/student-society' },
+                    { label: t('scienceSUB.scienceClubs'), path: '/science/student-science/clubs' },
+                    { label: t('scienceSUB.studentConferences'), path: '/science/student-science/conferences' }
                   ]
                 },
                 { 
-                  label: t('science.researchProjects'), 
+                  label: t('scienceSUB.researchProjects'), 
                   children: [
-                    { label: t('science.urology') },
-                    { label: t('science.gynecology') },
-                    { label: t('science.ophthalmology') },
-                    { label: t('science.oncology') }
+                    { label: t('scienceSUB.urology') },
+                    { label: t('scienceSUB.gynecology') },
+                    { label: t('scienceSUB.ophthalmology') },
+                    { label: t('scienceSUB.oncology') }
                   ]
                 }
               ]
@@ -672,39 +672,39 @@ const Navbar = () => {
           groups: [
             {
               icon: null,
-              title: t('student.communities'),
+              title: t('studentSUB.communities'),
               items: [
-                { label: t('student.council'), path: '/student/community/council' },
+                { label: t('studentSUB.council'), path: '/student/community/council' },
                 {
                   label: t('student.scienceSociety'),
                   path: '/student/community/science'
                 },
-                { label: t('student.debateClub'), path: '/student/community/debate' },
-                { label: t('student.tutorMovement'), path: '/student/community/tutor' },
+                { label: t('studentSUB.debateClub'), path: '/student/community/debate' },
+                { label: t('studentSUB.tutorMovement'), path: '/student/community/tutor' },
                 {
-                  label: t('student.creativeClubs'),
+                  label: t('studentSUB.creativeClubs'),
                   path: '/student/community/clubs'
                 }
               ]
             },
             {
               icon: null,
-              title: t('student.schedules'),
+              title: t('studentSUB.schedules'),
               items: [
                 {
-                  label: t('student.studySchedule'),
+                  label: t('studentSUB.studySchedule'),
                   path: '/student/schedule/study'
                 },
                 {
-                  label: t('student.modulesSchedule'),
+                  label: t('studentSUB.modulesSchedule'),
                   path: '/student/schedule/modules'
                 },
                 {
-                  label: t('student.practiceSchedule'),
+                  label: t('studentSUB.practiceSchedule'),
                   path: '/student/schedule/practice'
                 },
-                { label: t('student.mfmSchedule'), path: '/student/schedule/mfm' },
-                { label: t('student.collegeSchedule'), path: '/student/schedule/college' }
+                { label: t('studentSUB.mfmSchedule'), path: '/student/schedule/mfm' },
+                { label: t('studentSUB.collegeSchedule'), path: '/student/schedule/college' }
               ]
             }
           ]
@@ -714,54 +714,54 @@ const Navbar = () => {
           groups: [
             {
               icon: null,
-              title: t('student.resources'),
+              title: t('studentSUB.resources'),
               items: [
                 {
-                  label: t('student.instructions'),
+                  label: t('studentSUB.instructions'),
                   path: '/student/resources/instructions'
                 },
                 {
-                  label: t('student.infoSystem'),
+                  label: t('studentSUB.infoSystem'),
                   path: '/student/resources/infosystem'
                 },
                 {
-                  label: t('student.eLibrary'),
+                  label: t('studentSUB.eLibrary'),
                   path: '/student/resources/elib'
                 },
                 {
-                  label: t('student.eduResources'),
+                  label: t('studentSUB.eduResources'),
                   path: '/student/resources/edu-resources'
                 }
               ]
             },
             {
               icon: null,
-              title: t('student.opportunities'),
+              title: t('studentSUB.opportunities'),
               items: [
                 {
-                  label: t('student.medicalCenter'),
+                  label: t('studentSUB.medicalCenter'),
                   path: '/student/opportunities/medical'
                 },
-                { label: t('student.dormitory'), path: '/student/opportunities/dorm' },
+                { label: t('studentSUB.dormitory'), path: '/student/opportunities/dorm' },
                 {
-                  label: t('student.socialSupport'),
+                  label: t('studentSUB.socialSupport'),
                   path: '/student/opportunities/social'
                 },
-                { label: t('student.electiveCourses'), path: '/student/opportunities/courses' },
+                { label: t('studentSUB.electiveCourses'), path: '/student/opportunities/courses' },
                 {
-                  label: t('student.academicMobility'),
+                  label: t('studentSUB.academicMobility'),
                   path: '/student/opportunities/mobility'
                 },
                 {
-                  label: t('student.psychologicalSupport'),
+                  label: t('studentSUB.psychologicalSupport'),
                   path: '/student/opportunities/psychology'
                 },
                 {
-                  label: t('student.serviceCenter'),
+                  label: t('studentSUB.serviceCenter'),
                   path: '/student/opportunities/service-center'
                 },
                 {
-                  label: t('student.adaptationPrograms'),
+                  label: t('studentSUB.adaptationPrograms'),
                   path: '/student/opportunities/adaptation'
                 }
               ]
@@ -778,7 +778,7 @@ const Navbar = () => {
           groups: [
             {
               icon: null,
-              title: t('applicant.admissionCommittee'),
+              title: t('applicantSUB.admissionCommittee'),
               items: []
             },
             {
@@ -786,29 +786,29 @@ const Navbar = () => {
               title: '',
               items: [
                 {
-                  label: t('applicant.directions'),
+                  label: t('applicantSUB.directions'),
                   path: '/applicants/directions'
                 },
                 {
-                  label: t('applicant.tuitionCost'),
+                  label: t('applicantSUB.tuitionCost'),
                   path: '/applicants/cost'
                 }
               ]
             },
             {
               icon: null,
-              title: t('applicant.admissionProcedure'),
+              title: t('applicantSUB.admissionProcedure'),
               items: [
                 {
-                  label: t('applicant.requiredDocuments'),
+                  label: t('applicantSUB.requiredDocuments'),
                   path: '/applicants/admission/documents'
                 },
                 {
-                  label: t('applicant.admissionRules'),
+                  label: t('applicantSUB.admissionRules'),
                   path: '/applicants/admission/rules'
                 },
                 {
-                  label: t('applicant.admissionSchedule'),
+                  label: t('applicantSUB.admissionSchedule'),
                   path: '/applicants/admission/schedule'
                 }
               ]
@@ -820,32 +820,32 @@ const Navbar = () => {
           groups: [
             {
               icon: null,
-              title: t('applicant.rulesAndPlan'),
+              title: t('applicantSUB.rulesAndPlan'),
               items: [
                 {
-                  label: t('applicant.ortAdmission'),
+                  label: t('applicantSUB.ortAdmission'),
                   path: '/applicants/ort'
                 },
                 {
-                  label: t('applicant.careerGuidance'),
+                  label: t('applicantSUB.careerGuidance'),
                   path: '/applicants/career-guidance'
                 }
               ]
             },
             {
               icon: null,
-              title: t('applicant.transferProcedure'),
+              title: t('applicantSUB.transferProcedure'),
               items: [
                 {
-                  label: t('applicant.transferDocuments'),
+                  label: t('applicantSUB.transferDocuments'),
                   path: '/applicants/transfer/documents'
                 },
                 {
-                  label: t('applicant.transferRules'),
+                  label: t('applicantSUB.transferRules'),
                   path: '/applicants/transfer/rules'
                 },
                 {
-                  label: t('applicant.transferSchedule'),
+                  label: t('applicantSUB.transferSchedule'),
                   path: '/applicants/transfer/schedule'
                 }
               ]
@@ -857,34 +857,34 @@ const Navbar = () => {
           groups: [
             {
               icon: null,
-              title: t('applicant.scholarships'),
+              title: t('applicantSUB.scholarships'),
               items: [
-                { label: t('applicant.studentScholarships'), path: '/applicants/scholarships' }
+                { label: t('applicantSUB.studentScholarships'), path: '/applicants/scholarships' }
               ]
             },
             {
               icon: null,
-              title: t('applicant.officialDealers'),
+              title: t('applicantSUB.officialDealers'),
               items: [
-                { label: t('applicant.officialDealers'), path: '/applicants/dealers' }
+                { label: t('applicantSUB.officialDealers'), path: '/applicants/dealers' }
               ]
             },
             {
               icon: null,
-              title: t('applicant.adaptationProgram'),
+              title: t('applicantSUB.adaptationProgram'),
               items: [
                 {
-                  label: t('applicant.adaptationProgram'),
+                  label: t('applicantSUB.adaptationProgram'),
                   path: '/applicants/adaptation'
                 }
               ]
             },
             {
               icon: null,
-              title: t('applicant.infrastructure'),
+              title: t('applicantSUB.infrastructure'),
               items: [
                 {
-                  label: t('applicant.infrastructure'),
+                  label: t('applicantSUB.infrastructure'),
                   path: '/applicants/infrastructure'
                 }
               ]

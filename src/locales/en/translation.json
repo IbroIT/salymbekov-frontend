@@ -519,24 +519,6 @@
       "description2": "We firmly believe that the set goals and objectives will be implemented through the implementation of the educational program and the active development of international relations. The faculty, as an open educational structure of the university, develops comprehensive international partnerships with other universities, government agencies and the public. The process of integration of the faculty, as well as the university itself, into the world educational space is developing through participation in various international scientific and educational programs."
     }
   },
-  "itBusinessCollege": {
-    "hero": {
-      "title": "International College of IT and Business"
-    },
-    "invitationText": "«Salymbekov University» and «Lincoln University» of Malaysia invite applicants to the International College of IT and Business to gain knowledge in programming.",
-    "mainImageAlt": "International College of IT and Business",
-    "description1": "International College of IT and Business offers modern education in the field of information technology and business.",
-    "description2": "We train specialists in demand in the modern labor market, with relevant knowledge and practical skills.",
-    "description3": "Our educational programs are developed taking into account the requirements of modern IT companies and business structures.",
-    "admissionText": "We accept applicants on the basis of 9th and 11th grades.",
-    "phoneNumbers": {
-      "title": "Numbers for information:",
-      "whatsapp": "0505 658518 W/A write on WhatsApp",
-      "number1": "0776 658518",
-      "number2": "0558 658518",
-      "number3": ""
-    }
-  },
   "businessSchool": {
     "hero": {
       "title": "Salymbekov Business School"
@@ -781,7 +763,7 @@
     "postgraduate": "Postgraduate",
     "phd": "PhD"
   },
-  "navbar": {
+  "navbarSUB": {
     "university": "UNIVERSITY",
     "education": "EDUCATION",
     "clinical": "CLINICAL BASE",
@@ -791,7 +773,7 @@
     "search": "Search...",
     "menu": "Menu"
   },
-  "university": {
+  "universitySUB": {
     "founderAppeal": "Founder's Address",
     "history": "History",
     "mission": "Mission and Goals",
@@ -855,7 +837,7 @@
     "universitiesCoop": "Cooperation with Universities",
     "clinicsCoop": "Cooperation with Clinics"
   },
-  "education": {
+  "educationSUB": {
     "ait": "American Institute of Technology",
     "aitLeadership": "Institute Leadership",
     "aitDisciplines": "Institute Disciplines",
@@ -882,7 +864,7 @@
     "generalDisciplines": "General Education Disciplines",
     "itDepartment": "Information Technology"
   },
-  "common": {
+  "commonSUB": {
     "about": "About",
     "leadership": "Leadership",
     "disciplines": "Disciplines",
@@ -898,7 +880,7 @@
     "postgraduate": "Postgraduate",
     "phd": "PhD"
   },
-  "clinical": {
+  "clinicalSUB": {
     "ownBases": "Own Clinical Bases",
     "lazmed": "Lazmed",
     "dordoiOphthalmic": "Dordoi Ophthalmic Service",
@@ -906,7 +888,7 @@
     "docHospital": "DOC University Hospital",
     "agreements": "Agreements with Clinics"
   },
-  "science": {
+  "scienceSUB": {
     "management": "Governing Bodies",
     "scientificCouncil": "Scientific and Technical Council",
     "bioethics": "Bioethics Committee",
@@ -931,7 +913,7 @@
     "ophthalmology": "Ophthalmology",
     "oncology": "Oncology"
   },
-  "student": {
+  "studentSUB": {
     "communities": "Student Communities",
     "council": "Student Council",
     "scienceSociety": "Student Scientific Society",
@@ -959,7 +941,7 @@
     "serviceCenter": "Student Service Center",
     "adaptationPrograms": "Adaptation Programs"
   },
-  "applicant": {
+  "applicantSUB": {
     "admissionCommittee": "Admission Committee",
     "directions": "Study Programs",
     "tuitionCost": "Tuition Cost",
@@ -979,7 +961,626 @@
     "officialDealers": "Official Dealers",
     "adaptationProgram": "Adaptation Program",
     "infrastructure": "University Infrastructure"
+  },
+
+  "appeal": {
+    "badge": "Founder's Appeal",
+    "title": "Founder's Appeal",
+    "subtitle": "Vision for the Future of Education in Kyrgyzstan",
+    "introduction": {
+      "paragraph1": "In the vision of every Kyrgyzstani who hopes for a better future, by 2030 Kyrgyzstan will become a competitive country with a diversified economy, high per capita income, and a full and active member of the global community. To achieve this, we must focus on our main wealth - human resources.",
+      "paragraph2": "The driving force of the economy, the enlightened elite, consists of scientists, teachers, investors, entrepreneurs, and workers who create knowledge, finance and develop businesses, provide the economy with labor, and create the foundation for competitiveness at the global level.",
+      "paragraph3": "Providing citizens with the opportunity to acquire world-class knowledge and skills, and the ability for critical thinking is one of the university's strategic priorities."
+    },
+    "developmentAreas": {
+      "title": "Strategic Development Directions",
+      "subtitle": "Key areas for transforming the educational system",
+      "education": {
+        "title": "Secondary Education System",
+        "description": "Which will allow young people to enter leading universities worldwide, reduce the knowledge gap, and ensure a smooth transition to higher professional education."
+      },
+      "research": {
+        "title": "National Research Centers",
+        "description": "Which will allow domestic scientists to be at the epicenter of solving the most pressing problems, and the state to utilize the internal resources of the academy of sciences."
+      },
+      "vocational": {
+        "title": "Vocational and Technical Education System",
+        "description": "Which will prepare a workforce with the technical skills necessary for a competitive and successful economy."
+      },
+      "higherEducation": {
+        "title": "Higher Education System",
+        "description": "Enabling the training of leaders and highly qualified specialists necessary for the country's growth and socio-economic development."
+      }
+    },
+    "practicalResults": {
+      "title": "Practical Results",
+      "description": "Today, the aforementioned reforms are only possible through practical results, as models of reform. An example of the development trajectory for secondary education is the university's business school 'Salymbekov Business School' with several projects such as 'MLK', 'BLK', 'YLK'."
+    },
+    "businessSchool": {
+      "title": "Salymbekov Business School",
+      "description": "The business school is an institution providing comprehensive education with a modern approach. It has a unique educational program, a recognizable brand, and a community of qualified trainers and teachers. Salymbekov School provides quality and affordable additional education in the areas: 'School of Leadership', 'School of Business and Management', 'STEM School', 'Language School' and 'School of Intensive Development'. The business school has 10 independent branches in all regions of the country, operating on the principle of social entrepreneurship in education."
+    },
+    "universityMission": {
+      "title": "University Mission",
+      "subtitle": "Strategic vision and development goals",
+      "benefits": {
+        "quality": {
+          "title": "International Standards",
+          "description": "The university should become one of the first universities to bring Kyrgyzstan's higher education system to the world level in terms of the quality of knowledge provided."
+        },
+        "international": {
+          "title": "Global Cooperation",
+          "description": "The dynamic academic and research culture of the university will attract the attention of the country's best scientists and teachers, and generate interest from foreign universities."
+        },
+        "research": {
+          "title": "Scientific Research",
+          "description": "The educational process, integrated with research activities and production, becomes a model for other universities."
+        },
+        "innovation": {
+          "title": "Innovations in Education",
+          "description": "The university should possess academic freedom and autonomy, becoming a generator of knowledge for economic growth and prosperity of the country."
+        }
+      }
+    },
+    "founder": {
+      "title": "University Founder",
+      "name": "Askar Salymbekov",
+      "role": "Founder and Ideologist"
+    }
+  },
+  "mission": {
+    "badge": "Our Mission",
+    "title": "University Mission",
+    "subtitle": "Training modern personnel capable of implementing creative initiatives and innovative ideas for the benefit of society",
+    "missionTitle": "University Mission",
+    "missionQuote": "Training modern personnel capable of implementing creative initiatives and innovative ideas for the benefit of society.",
+    "missionText1": "Founded in 2019, Salymbekov University is a direct continuation of previously launched educational projects of the Askar Salymbekov Public Foundation established in 2012, which identified the most important areas for stimulating the development of human resources, education, science and the formation of a new generation of enlightened youth.",
+    "missionText2": "The Foundation has implemented many large projects related to training schoolchildren and students, publishing books, conducting seminars, round tables, forums and other platforms for various companies, organizations and educational institutions, as well as events with international lecturers. All these projects have allowed to train and educate more than 25 thousand people.",
+    "mlkTitle": "Young Leaders of Kyrgyzstan",
+    "mlkImageAlt": "Askar Salymbekov with MLK graduates {{number}}",
+    "mlkThumbnailAlt": "Thumbnail {{number}}",
+    "mlkDescription": "In 2014, the Foundation launched a successful educational project for youth - the Public School 'Young Leaders of Kyrgyzstan', which had a huge positive effect on the new generation. Its unique, unparalleled comprehensive courses of trainings and motivational classes gave students and youth the opportunity to master so-called 'Soft skills', new knowledge and skills for personal growth and leadership qualities formation.",
+    "strategicGoalsTitle": "Strategic Goals",
+    "strategicGoalsSubtitle": "Based on our mission, we set ambitious strategic goals for ourselves",
+    "strategicGoals": {
+      "education": {
+        "title": "Quality Education",
+        "description": "Providing education and training highly qualified personnel in areas demanded by the labor market and in accordance with international quality education standards."
+      },
+      "humanResources": {
+        "title": "Human Resources Development",
+        "description": "Development of human resources, education system and healthcare of the country by opening modern and innovative educational and medical institutions."
+      },
+      "innovation": {
+        "title": "Innovative University",
+        "description": "Transforming the University into one of the first-class, innovative and modern educational organizations in the country with a strong material and technical base."
+      }
+    },
+    "priorityGoalsTitle": "University Priority Goals",
+    "priorityGoals": {
+      "it": {
+        "title": "IT Sphere",
+        "description": "Training specialists in the field of information technology"
+      },
+      "business": {
+        "title": "Business Management",
+        "description": "Education in the field of management and entrepreneurship"
+      },
+      "agriculture": {
+        "title": "Agriculture",
+        "description": "Development of the agricultural sector through education"
+      },
+      "technical": {
+        "title": "Professional Technical Education",
+        "description": "Training of technical specialists"
+      },
+      "medical": {
+        "title": "Medical Education",
+        "description": "Training medical personnel according to international standards"
+      }
+    },
+    "medicalFaculty": {
+      "title": "Medical Faculty",
+      "description": "Training highly qualified medical personnel in demand in our country and abroad according to international standards",
+      "kyrgyzstan": {
+        "title": "KYRGYZSTAN",
+        "description": "For domestic healthcare"
+      },
+      "nearAbroad": {
+        "title": "NEAR ABROAD COUNTRIES",
+        "description": "For regional cooperation"
+      },
+      "farAbroad": {
+        "title": "FAR ABROAD COUNTRIES",
+        "description": "For international recognition"
+      }
+    },
+    "expectedResultsTitle": "Expected Learning Outcomes",
+    "expectedResults": {
+      "result1": "Ability to apply knowledge of basic natural, humanitarian, social, fundamental and clinical disciplines in the practical activities of a healthcare worker;",
+      "result2": "Ability to clearly express thoughts, debate within the framework of mastered competencies in state, official and English languages using medical terminology;",
+      "result3": "Acquiring teamwork skills in international teams, making decisions and taking responsibility as a leader and team member;",
+      "result4": "Knowledge of main forms and methods of disease prevention, sanitary and educational work with the population;",
+      "result5": "Ability to use modern information technologies for searching, analyzing, processing and presenting information to the public;",
+      "result6": "Possession of skills for moral, cultural and professional self-improvement;",
+      "result7": "Knowledge, ability to apply and present to the public acquired general scientific, professional knowledge and instrumental skills;",
+      "result8": "Demonstration of professional competencies in medical, scientific and teaching activities in organizations - potential employers."
+    }
+  },
+  "videos": {
+    "badge": "Video Gallery",
+    "title": "Videos about the College",
+    "subtitle": "Immerse yourself in the atmosphere of Salymbekov University through our videos",
+    "stats": {
+      "videos": "Videos",
+      "views": "Views",
+      "projects": "Projects",
+      "categories": "Categories"
+    },
+    "search": {
+      "placeholder": "Search videos..."
+    },
+    "filters": {
+      "all": "All Videos",
+      "interviews": "Interviews",
+      "projects": "Projects",
+      "events": "Events"
+    },
+    "featured": "Featured",
+    "views": "views",
+    "watch": "Watch Video",
+    "mainVideos": {
+      "video1": {
+        "title": "Tour of Salymbekov University",
+        "description": "Full virtual tour of the modern college campus. Learn about our laboratories, library, classrooms and infrastructure that makes learning comfortable and effective.",
+        "date": "January 15, 2024"
+      },
+      "video2": {
+        "title": "Open Day 2024",
+        "description": "Recording of the traditional open day at Salymbekov University. Meeting with teachers, students, presentation of educational programs and answers to applicants' questions.",
+        "date": "March 20, 2024"
+      },
+      "video3": {
+        "title": "Interview with the College Director",
+        "description": "Exclusive interview with the director of Salymbekov University about modern trends in education, college development prospects and new educational programs.",
+        "date": "February 5, 2024"
+      }
+    }
+  },
+  "appeal": {
+    "badge": "Founder's Address",
+    "title": "Founder's Address",
+    "subtitle": "Vision for the future of education in Kyrgyzstan",
+    "introduction": {
+      "paragraph1": "In the vision of every Kyrgyzstani who hopes for a better future, by 2030 Kyrgyzstan will become a competitive country with a diversified economy, high per capita income, and a full and active member of the global community. To achieve this, it is necessary to focus on the main wealth - human resources.",
+      "paragraph2": "The driving force of the economy, the enlightened elite are scientists, teachers, investors, entrepreneurs and workers who create knowledge, finance and develop business, provide the economy with labor and create the foundation for competitiveness at the global level.",
+      "paragraph3": "To provide citizens with the opportunity to master world-class knowledge and skills, critical thinking abilities - this is one of the strategic priorities of the university."
+    },
+    "areas": {
+      "education": {
+        "title": "Secondary Education System",
+        "description": "Which will allow young people to enter leading universities of the world, reduce the knowledge gap and ensure a smooth transition to higher professional education."
+      },
+      "research": {
+        "title": "National Research Centers",
+        "description": "Which will allow domestic scientists to be at the epicenter of solving the most acute problems, and the state to use the internal resources of the academy of sciences."
+      },
+      "vocational": {
+        "title": "Vocational Education System",
+        "description": "Which will prepare a workforce for the country with the technical skills necessary for a competitive and successful economy."
+      },
+      "higherEducation": {
+        "title": "Higher Education System",
+        "description": "Allowing to train leaders and highly qualified specialists necessary for the growth and socio-economic development of the country."
+      }
+    },
+    "developmentAreas": {
+      "title": "Strategic Development Directions",
+      "subtitle": "Key areas for transforming the educational system"
+    },
+    "practicalResults": {
+      "title": "Practical Results",
+      "description": "To date, the above reforms are possible only through practical results, as models of reforms. As an example of the development trajectory for secondary education, the university has the 'Salymbekov Business School' with a number of projects such as 'MLK', 'BLK', 'YLK'."
+    },
+    "businessSchool": {
+      "title": "Salymbekov Business School",
+      "description": "The business school is an institution providing comprehensive training with a modern approach. It has a unique educational program, a recognizable brand, a community of qualified trainers and teachers. Salymbekov School provides quality and affordable additional education in the areas: 'leadership school', 'business and management school', 'STEM school', 'language school' and 'intensive development school'. The business school has 10 independent branches in all regions of the country, which operate on the principle of social entrepreneurship in education."
+    },
+    "universityMission": {
+      "title": "University Mission",
+      "subtitle": "Strategic vision and development goals"
+    },
+    "founder": {
+      "title": "University Founder",
+      "name": "Askar Salymbekov",
+      "role": "Founder and Ideologist"
+    },
+    "benefits": {
+      "quality": {
+        "title": "International Standards",
+        "description": "The university should become one of the first universities to bring the higher education system of Kyrgyzstan to the world level in terms of the quality of knowledge provided."
+      },
+      "international": {
+        "title": "Global Cooperation",
+        "description": "The dynamic academic and research culture of the university will attract the attention of the best scientists and teachers of the country, and arouse interest among foreign universities."
+      },
+      "research": {
+        "title": "Scientific Research",
+        "description": "The educational process integrated with research activities and production becomes a model for other universities."
+      },
+      "innovation": {
+        "title": "Education Innovation",
+        "description": "The university should have academic freedom and autonomy, becoming a generator of knowledge for economic growth and prosperity of the country."
+      }
+    }
+  },
+  "vacancies": {
+    "badge": "Join Our Team",
+    "title": "Career Opportunities",
+    "subtitle": "Join our innovative team and create the future together. Discover exciting opportunities that match your skills and ambitions.",
+    "stats": {
+      "openPositions": "Open Positions",
+      "departments": "Departments",
+      "happiness": "Employee Satisfaction",
+      "countries": "Countries"
+    },
+    "search": {
+      "placeholder": "Search jobs, departments, keywords..."
+    },
+    "filters": {
+      "all": "All Jobs",
+      "tech": "Technology",
+      "design": "Design",
+      "marketing": "Marketing",
+      "management": "Management"
+    },
+    "featured": "Featured",
+    "applications": "Applications",
+    "apply": "Apply",
+    "showMore": "More Details",
+    "showLess": "Less Details",
+    "posted": "Posted",
+    "views": "views",
+    "requirements": "Requirements",
+    "benefitsTitle": "Benefits",
+    "whyJoin": "Why Join Our Team?",
+    "whyJoinDescription": "We create an environment where talents flourish and innovation happens every day.",
+    "cta": {
+      "title": "Ready to Start Your Journey?",
+      "description": "Take the first step towards an exciting career with us. Explore our vacancies and find the perfect one for you.",
+      "applyNow": "Apply Now",
+      "learnMore": "Learn About Culture"
+    },
+    "jobs": {
+      "seniorFrontend": {
+        "title": "Senior Frontend Developer",
+        "department": "Technology",
+        "type": "Full-time",
+        "location": "Remote",
+        "salary": "$90,000 - $120,000",
+        "experience": "5+ years",
+        "description": "We are looking for an experienced Frontend Developer to join our core product team to create the next generation of our platform.",
+        "requirements": [
+          "5+ years of experience in frontend development",
+          "Deep knowledge of React, Vue or Angular",
+          "Experience with TypeScript and modern CSS",
+          "Understanding of UI/UX principles",
+          "Experience with testing frameworks"
+        ],
+        "benefits": [
+          "Flexible work schedule",
+          "Professional development budget",
+          "Health insurance",
+          "Remote work options",
+          "Team building events"
+        ],
+        "posted": "2 days ago"
+      },
+      "uxDesigner": {
+        "title": "Senior UX Designer",
+        "department": "Design",
+        "type": "Full-time",
+        "location": "Hybrid",
+        "salary": "$85,000 - $110,000",
+        "experience": "4+ years",
+        "description": "Create exceptional user experiences and shape the future of our design system and user interface.",
+        "requirements": [
+          "4+ years of UX design experience",
+          "Proficiency in Figma, Sketch or Adobe XD",
+          "Strong portfolio of design projects",
+          "Understanding of user research methods",
+          "Experience with design systems"
+        ],
+        "benefits": [
+          "Creative freedom",
+          "Latest design tools",
+          "Conference participation",
+          "Mentorship program",
+          "Wellness benefits"
+        ],
+        "posted": "a week ago"
+      },
+      "productManager": {
+        "title": "Product Manager",
+        "department": "Product",
+        "type": "Full-time",
+        "location": "In-office",
+        "salary": "$100,000 - $130,000",
+        "experience": "6+ years",
+        "description": "Lead product strategy and implementation for our flagship products, working closely with engineering and design teams.",
+        "requirements": [
+          "6+ years of product management experience",
+          "Technical background or understanding",
+          "Experience with agile methodologies",
+          "Strong analytical skills",
+          "Excellent communication skills"
+        ],
+        "benefits": [
+          "Leadership development",
+          "Stock options",
+          "Comprehensive benefits",
+          "Career growth opportunities",
+          "International team"
+        ],
+        "posted": "3 days ago"
+      },
+      "backendDeveloper": {
+        "title": "Backend Developer",
+        "department": "Technology",
+        "type": "Full-time",
+        "location": "Remote",
+        "salary": "$95,000 - $125,000",
+        "experience": "4+ years",
+        "description": "Build scalable backend systems and APIs that power our platform and serve millions of users worldwide.",
+        "requirements": [
+          "4+ years of backend development",
+          "Experience with Node.js, Python or Java",
+          "Knowledge of databases and SQL",
+          "Understanding of microservices",
+          "Experience with cloud platforms"
+        ],
+        "benefits": [
+          "Remote work culture",
+          "Technical training",
+          "Open source contributions",
+          "Hardware budget",
+          "Flexible PTO"
+        ],
+        "posted": "5 days ago"
+      }
+    },
+    "benefits": {
+      "career": {
+        "title": "Career Growth",
+        "description": "Clear career paths and professional development opportunities"
+      },
+      "learning": {
+        "title": "Learning & Development",
+        "description": "Continuous learning through workshops, courses and conferences"
+      },
+      "wellbeing": {
+        "title": "Employee Care",
+        "description": "Comprehensive medical benefits and wellness programs"
+      },
+      "team": {
+        "title": "Great Team",
+        "description": "Collaborative environment with talented professionals"
+      }
+    }
+  },
+  "contacts": {
+    "badge": "Contact Us",
+    "title": "Contacts",
+    "subtitle": "We are always ready to answer your questions and help you achieve your educational goals",
+    "bankDetails": {
+      "title": "Bank Details",
+      "institution": "Educational Institution",
+      "institutionName": "Salymbekov University College",
+      "legalAddress": "Legal Address",
+      "actualAddress": "Actual Address",
+      "inn": "Tax Identification Number (INN)",
+      "bank": "Bank",
+      "bik": "BIK",
+      "account": "Account Number"
+    },
+    "map": {
+      "iframeTitle": "University Location on Map",
+      "locationTitle": "Our Location"
+    },
+    "ourContacts": {
+      "title": "Our Contacts",
+      "subtitle": "Get in touch with us through any convenient method",
+      "phone": {
+        "title": "Phone",
+        "description": "Call us for consultation"
+      },
+      "email": {
+        "title": "Email",
+        "description": "Write to us by email"
+      },
+      "address": {
+        "title": "Address",
+        "description": "Visit us at our office"
+      },
+      "hours": {
+        "title": "Working Hours",
+        "description": "We are available on weekdays"
+      }
+    },
+    "cta": {
+      "title": "Ready to start your education?",
+      "description": "Contact us today and get a free consultation on our programs"
+    }
+  },
+  "university": {
+    "structure": {
+      "badge": "University Structure",
+      "title": "University Structure",
+      "subtitle": "Modern educational structure designed for quality education and innovative research",
+      "backgroundImageAlt": "University academic structure and campus",
+      "downloadDescription": "Download the complete university structure diagram in PDF format for detailed information",
+      "imageTitle": "Structure Diagram {{number}}",
+      "cta": {
+        "title": "Ready to Explore Our University?",
+        "description": "Discover our educational programs, meet our faculty, and become part of our innovative academic community"
+      },
+      "universityMain": {
+        "title": "University Structure",
+        "downloadButton": "Download Structure PDF",
+        "image1Alt": "Overall university organizational structure and departments",
+        "image2Alt": "Academic departments and faculty organization chart",
+        "image3Alt": "Research centers and administrative divisions structure"
+      },
+      "features": {
+        "academic": {
+          "title": "Academic Structure",
+          "description": "Comprehensive educational departments and faculties providing world-class education across various disciplines"
+        },
+        "administrative": {
+          "title": "Administrative Divisions",
+          "description": "Efficient administrative framework supporting academic operations and student services"
+        },
+        "research": {
+          "title": "Research Centers",
+          "description": "Innovative research institutes and laboratories driving scientific discovery and technological advancement"
+        }
+      }
+    }
+  },
+  "internationalFaculty": {
+    "badge": "International Faculty",
+    "hero": {
+      "title": "Higher School of Medicine",
+      "subtitle": "World-class international medical education"
+    },
+    "higherSchoolButton": "Higher School of Medicine",
+    "stats": {
+      "professors": "Professors",
+      "students": "Students",
+      "labs": "Laboratories",
+      "hospitals": "Clinical Bases"
+    },
+    "whyChoose": "Why Choose Our Faculty?",
+    "whyChooseDescription": "Modern education, international standards and practical training",
+    "benefits": {
+      "international": {
+        "title": "International Standards",
+        "description": "Education according to world standards with international accreditation"
+      },
+      "education": {
+        "title": "Quality Education",
+        "description": "Modern curricula and experienced teachers"
+      },
+      "practice": {
+        "title": "Practical Training",
+        "description": "Clinical practice in leading medical institutions"
+      },
+      "care": {
+        "title": "Student Care",
+        "description": "Comfortable learning conditions and comprehensive support"
+      }
+    },
+    "about": {
+      "title": "About the Faculty",
+      "description1": "Salymbekov University Higher School of Medicine is a modern educational institution offering international level medical education. Our faculty combines the best world practices and innovative approaches to learning.",
+      "description2": "We train highly qualified medical professionals capable of working anywhere in the world. Our educational program is developed taking into account international standards and the requirements of modern healthcare.",
+      "description3": "The faculty actively implements innovative technologies in the educational process, including virtual simulators, telemedicine and digital platforms for distance learning."
+    },
+    "staff": {
+      "title": "Teaching Staff",
+      "description1": "Our faculty brings together leading medical specialists from different countries of the world. Teachers have international work experience and scientific achievements.",
+      "description2": "More than 70% of the teaching staff have academic degrees and titles, many have completed internships at leading medical universities in Europe, the USA and Asia.",
+      "description3": "Every year we invite foreign professors to give lectures and conduct master classes, which ensures constant exchange of knowledge and advanced teaching methods."
+    },
+    "facilities": {
+      "title": "Infrastructure and Equipment",
+      "description1": "The faculty is equipped with modern equipment and technologies for quality medical education:",
+      "list": {
+        "item1": "Modern anatomical laboratories",
+        "item2": "Simulation training center",
+        "item3": "Research laboratories",
+        "item4": "Computer classes",
+        "item5": "Multimedia lecture halls",
+        "item6": "Library with international resources",
+        "item7": "Clinical training centers",
+        "item8": "Research centers"
+      },
+      "description2": "All laboratories and classrooms meet international standards and provide comfortable conditions for learning and research.",
+      "description3": "In 2024, a new academic building with state-of-the-art equipment for microsurgery and robotic medicine is planned to be opened."
+    },
+    "values": {
+      "title": "Values and Mission",
+      "description1": "Our mission is to train competitive medical professionals with deep knowledge, practical skills and high moral qualities.",
+      "description2": "We strive for excellence in education, scientific research and clinical practice, following the principles of evidence-based medicine and ethical standards.",
+      "description3": "The core values of the faculty: professionalism, innovation, social responsibility and continuous development throughout professional career."
+    },
+    "policy": {
+      "title": "International Policy",
+      "description1": "The faculty actively develops international cooperation with leading medical universities and research centers around the world.",
+      "description2": "We offer student exchange programs, joint research projects and the opportunity to undergo clinical practice in foreign medical institutions.",
+      "description3": "Every year we participate in international conferences and scientific symposia, which allows our students and teachers to stay updated on the latest achievements in world medicine."
+    },
+    "cta": {
+      "title": "Ready to Become Part of Our Community?",
+      "description": "Join the Higher School of Medicine and start your journey to a successful medical career",
+      "applyNow": "Apply Now"
+    }
+  },
+  "itBusinessCollege": {
+    "badge": "IT and Business College",
+    "hero": {
+      "title": "IT and Business College",
+      "imageAlt": "Modern computer classrooms of IT college"
+    },
+    "subtitle": "Become a sought-after IT specialist with practical skills",
+    "invitationText": "We invite graduates of 9th and 11th grades to get quality IT education with guaranteed employment. Start your career in the most promising industry!",
+    "features": {
+      "modernEquipment": {
+        "title": "Modern Equipment",
+        "description": "Training on the latest computers and specialized software"
+      },
+      "professionalTeachers": {
+        "title": "Professional Teachers",
+        "description": "Experienced IT specialists and practicing developers as teachers"
+      },
+      "practicalSkills": {
+        "title": "Practical Skills",
+        "description": "80% of study time - practice and real projects"
+      }
+    },
+    "mainImageAlt": "University rector in IT college",
+    "description1": "IT and Business College Salymbekov University is a modern educational institution training specialists for the digital economy. We offer training programs that meet the requirements of the modern IT market.",
+    "description2": "Our students receive not only theoretical knowledge but also practical skills by working on real projects. The college cooperates with leading IT companies in Kyrgyzstan, which ensures successful employment for our graduates.",
+    "description3": "College education lasts 2 years 10 months in full-time form. Upon completion, you receive a state diploma with the qualification 'Programming Technician' and the opportunity to continue studies at the university under an accelerated program.",
+    "admissionText": "Apply for Admission",
+    "phoneNumbers": {
+      "whatsapp": "WhatsApp for consultations",
+      "number1": "Main phone",
+      "number2": "Admissions office",
+      "number3": "IT Education Department"
+    },
+    "gallery": {
+      "title": "College Life",
+      "subtitle": "Classrooms, events and student life of IT college",
+      "imageAlt": "Photo from IT college life {{number}}"
+    },
+    "cta": {
+      "title": "Start your IT career today!",
+      "description": "Apply for admission and become a sought-after IT specialist in 3 years",
+      "callNow": "Call for consultation"
+    }
   }
+
+
+
+
+
+
+
+
+
+
+
 
   
 }
