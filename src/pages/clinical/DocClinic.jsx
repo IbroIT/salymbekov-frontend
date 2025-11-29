@@ -10,7 +10,7 @@ const scrollingImages = Object.values(
 
 const DocClinic = () => {
   const { t } = useTranslation();
-
+  
   const animatedBalls = useMemo(() => {
     return [...Array(8)].map((_, i) => ({
       id: i,
@@ -64,9 +64,9 @@ const DocClinic = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6 max-w-5xl drop-shadow-xl"
           >
             <span className="bg-linear-to-r from-indigo-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              {t('clinical.docClinic.title', 'Университетская клиника')}
+              {t('clinical.docClinic.hero.titlePart1', 'Университетская клиника')}
             </span>{' '}
-            {t('clinical.docClinic.subtitle', 'DOC University Clinic')}
+            {t('clinical.docClinic.hero.titlePart2', 'DOC University Clinic')}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -74,14 +74,14 @@ const DocClinic = () => {
             transition={{ delay: 0.25, duration: 0.7 }}
             className="text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed"
           >
-            {t('clinical.docClinic.description', 'Новый многопрофильный медицинский центр, предоставляющий качественные медицинские услуги в соответствии с государственными и международными стандартами.')}
+            {t('clinical.docClinic.hero.description', 'Новый многопрофильный медицинский центр, предоставляющий качественные медицинские услуги в соответствии с государственными и международными стандартами.')}
           </motion.p>
           <div className="mt-8 flex flex-wrap gap-3">
             {[
-              t('clinical.docClinic.tags.multidisciplinary', 'Многопрофильная клиника'),
-              t('clinical.docClinic.tags.equipment', 'Современное оборудование'),
-              t('clinical.docClinic.tags.staff', 'Квалифицированный персонал'),
-              t('clinical.docClinic.tags.standards', 'Международные стандарты')
+              t('clinical.docClinic.hero.tags.multidisciplinary', 'Многопрофильная клиника'),
+              t('clinical.docClinic.hero.tags.equipment', 'Современное оборудование'),
+              t('clinical.docClinic.hero.tags.staff', 'Квалифицированный персонал'),
+              t('clinical.docClinic.hero.tags.standards', 'Международные стандарты')
             ].map((tag, i) => (
               <span key={i} className="bg-white/15 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full text-sm font-medium">
                 {tag}

@@ -224,7 +224,7 @@ const OnlineReg = () => {
                                     </p>
                                  </div>
                               </div>
-                              
+
                               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
                                  <iframe
                                     src={video.embedUrl}

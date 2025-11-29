@@ -17,75 +17,75 @@ const Lazmed = () => {
   const services = useMemo(() => [
     {
       key: 'laserSurgery',
-      title: t('clinical.lazmed.services.laserSurgery.title', 'Лазерная хирургия'),
+      title: t('lazmed.services.laserSurgery.title', 'Лазерная хирургия'),
       icon: 'M12 2a10 10 0 1010 10A10 10 0 0012 2z',
-      description: t('clinical.lazmed.services.laserSurgery.description', 'Уникальные свойства лазерного излучения помогают в борьбе как с эстетическими несовершенствами (бородавки, родинки), так и со сложными заболеваниями — например, деформациями стопы. Лазерные методики безопасны и точны.')
+      description: t('lazmed.services.laserSurgery.description', 'Уникальные свойства лазерного излучения помогают в борьбе как с эстетическими несовершенствами (бородавки, родинки), так и со сложными заболеваниями — например, деформациями стопы. Лазерные методики безопасны и точны.')
     },
     {
       key: 'laparoscopy',
-      title: t('clinical.lazmed.services.laparoscopy.title', 'Лапароскопическая хирургия'),
+      title: t('lazmed.services.laparoscopy.title', 'Лапароскопическая хирургия'),
       icon: 'M3 3h18v18H3z',
-      description: t('clinical.lazmed.services.laparoscopy.description', 'Современный метод оперативного вмешательства через небольшие разрезы (0,5–1,5 см). Минимальное повреждение тканей, более быстрая реабилитация и короткий срок выписки.')
+      description: t('lazmed.services.laparoscopy.description', 'Современный метод оперативного вмешательства через небольшие разрезы (0,5–1,5 см). Минимальное повреждение тканей, более быстрая реабилитация и короткий срок выписки.')
     },
     {
       key: 'plastic',
-      title: t('clinical.lazmed.services.plastic.title', 'Пластическая хирургия'),
+      title: t('lazmed.services.plastic.title', 'Пластическая хирургия'),
       icon: 'M12 22s8-4 8-10V6',
-      description: t('clinical.lazmed.services.plastic.description', 'Пластическая хирургия позволяет корректировать форму носа, ушей, бровей, подбородка, губ; устранять морщины и дефекты фигуры. Используются точные методики для долговременного результата.')
+      description: t('lazmed.services.plastic.description', 'Пластическая хирургия позволяет корректировать форму носа, ушей, бровей, подбородка, губ; устранять морщины и дефекты фигуры. Используются точные методики для долговременного результата.')
     },
     {
       key: 'dermatology',
-      title: t('clinical.lazmed.services.dermatology.title', 'Диагностика и лечение кожи'),
+      title: t('lazmed.services.dermatology.title', 'Диагностика и лечение кожи'),
       icon: 'M12 2l6 6-6 6-6-6 6-6z',
-      description: t('clinical.lazmed.services.dermatology.description', 'Комплексная диагностика кожных заболеваний с индивидуальным планом лечения (медикаментозная терапия, физиотерапия, лазерные методики и косметологические решения).')
+      description: t('lazmed.services.dermatology.description', 'Комплексная диагностика кожных заболеваний с индивидуальным планом лечения (медикаментозная терапия, физиотерапия, лазерные методики и косметологические решения).')
     },
     {
       key: 'ent',
-      title: t('clinical.lazmed.services.ent.title', 'ЛОР (ухо-горло-нос)'),
+      title: t('lazmed.services.ent.title', 'ЛОР (ухо-горло-нос)'),
       icon: 'M7 7h10v10H7z',
-      description: t('clinical.lazmed.services.ent.description', 'Диагностика и лечение заболеваний уха, горла и носа — важные направления, требующие точного подхода из-за анатомической близости к головному мозгу. Проводится комплексное лечение с учетом современных стандартов.')
+      description: t('lazmed.services.ent.description', 'Диагностика и лечение заболеваний уха, горла и носа — важные направления, требующие точного подхода из-за анатомической близости к головному мозгу. Проводится комплексное лечение с учетом современных стандартов.')
     },
     {
       key: 'urology',
-      title: t('clinical.lazmed.services.urology.title', 'Урология'),
+      title: t('lazmed.services.urology.title', 'Урология'),
       icon: 'M12 3v18',
-      description: t('clinical.lazmed.services.urology.description', 'Консервативное и оперативное урологическое лечение. Включает индивидуальное медикаментозное лечение с учётом чувствительности к антибиотикам и современные лазерные методы.')
+      description: t('lazmed.services.urology.description', 'Консервативное и оперативное урологическое лечение. Включает индивидуальное медикаментозное лечение с учётом чувствительности к антибиотикам и современные лазерные методы.')
     },
     {
       key: 'massage',
-      title: t('clinical.lazmed.services.massage.title', 'Массаж'),
+      title: t('lazmed.services.massage.title', 'Массаж'),
       icon: 'M4 12h16',
-      description: t('clinical.lazmed.services.massage.description', 'Широкий спектр массажных техник — до 15 видов массажа, направленных на восстановление и улучшение состояния опорно-двигательной системы и общего самочувствия.')
+      description: t('lazmed.services.massage.description', 'Широкий спектр массажных техник — до 15 видов массажа, направленных на восстановление и улучшение состояния опорно-двигательной системы и общего самочувствия.')
     },
     {
       key: 'manual',
-      title: t('clinical.lazmed.services.manual.title', 'Мануальная терапия'),
+      title: t('lazmed.services.manual.title', 'Мануальная терапия'),
       icon: 'M12 8v8',
-      description: t('clinical.lazmed.services.manual.description', 'Мануальная терапия — лечение руками при проблемах позвоночника, суставов, головных болей и нарушениях осанки. Эффективный метод для восстановления баланса в организме.')
+      description: t('lazmed.services.manual.description', 'Мануальная терапия — лечение руками при проблемах позвоночника, суставов, головных болей и нарушениях осанки. Эффективный метод для восстановления баланса в организме.')
     },
     {
       key: 'ultrasound',
-      title: t('clinical.lazmed.services.ultrasound.title', '3D/4D УЗИ'),
+      title: t('lazmed.services.ultrasound.title', '3D/4D УЗИ'),
       icon: 'M5 12h14',
-      description: t('clinical.lazmed.services.ultrasound.description', 'Современная ультразвуковая диагностика в 3D/4D-режиме позволяет увидеть объёмное изображение плода в реальном времени, а цветовая доплерография оценивает кровоток и состояние плода.')
+      description: t('lazmed.services.ultrasound.description', 'Современная ультразвуковая диагностика в 3D/4D-режиме позволяет увидеть объёмное изображение плода в реальном времени, а цветовая доплерография оценивает кровоток и состояние плода.')
     },
     {
       key: 'laboratory',
-      title: t('clinical.lazmed.services.laboratory.title', 'Лаборатория'),
+      title: t('lazmed.services.laboratory.title', 'Лаборатория'),
       icon: 'M12 4l6 6-6 6-6-6 6-6z',
-      description: t('clinical.lazmed.services.laboratory.description', 'Кабинет современной лабораторной диагностики с широким спектром исследований и быстрыми результатами — основа качественной медицинской помощи.')
+      description: t('lazmed.services.laboratory.description', 'Кабинет современной лабораторной диагностики с широким спектром исследований и быстрыми результатами — основа качественной медицинской помощи.')
     },
     {
       key: 'gynecology',
-      title: t('clinical.lazmed.services.gynecology.title', 'Гинекология'),
+      title: t('lazmed.services.gynecology.title', 'Гинекология'),
       icon: 'M10 8h4v8h-4z',
-      description: t('clinical.lazmed.services.gynecology.description', 'Профессиональная женская консультация, комплексная диагностика и передовые методы лечения гинекологических заболеваний, включая лазерные технологии.')
+      description: t('lazmed.services.gynecology.description', 'Профессиональная женская консультация, комплексная диагностика и передовые методы лечения гинекологических заболеваний, включая лазерные технологии.')
     },
     {
       key: 'therapy',
-      title: t('clinical.lazmed.services.therapy.title', 'Терапия'),
+      title: t('lazmed.services.therapy.title', 'Терапия'),
       icon: 'M12 2a10 10 0 100 20 10 10 0 000-20z',
-      description: t('clinical.lazmed.services.therapy.description', 'Первичная медицинская помощь, диагностика заболеваний, назначение лечения и направление к узким специалистам при необходимости.')
+      description: t('lazmed.services.therapy.description', 'Первичная медицинская помощь, диагностика заболеваний, назначение лечения и направление к узким специалистам при необходимости.')
     }
   ], [t]);
 
@@ -142,7 +142,7 @@ const Lazmed = () => {
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 tracking-tight drop-shadow-xl max-w-5xl"
             >
-              <span className="bg-linear-to-r from-indigo-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">{t('clinical.lazmed.title', 'Клиника Лазерной Медицины — Лазмед')}</span>
+              <span className="bg-linear-to-r from-indigo-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">{t('lazmed.heroTitle', 'Клиника Лазерной Медицины — Лазмед')}</span>
             </motion.h1>
 
             <motion.p
@@ -151,18 +151,8 @@ const Lazmed = () => {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-lg md:text-xl opacity-95 max-w-2xl mx-auto lg:mx-0 text-slate-100"
             >
-              {t('clinical.lazmed.subtitle', 'Современная клиника лазерной и эстетической медицины — передовые методики, комфорт и индивидуальный подход.')}
+              {t('lazmed.description', 'Современная клиника лазерной и эстетической медицины — передовые методики, комфорт и индивидуальный подход.')}
             </motion.p>
-
-            <div className="mt-8 flex items-center justify-center lg:justify-start gap-6">
-              <div className="hidden md:flex items-center gap-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm text-white/90 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" className="opacity-90"><path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                <div className="text-left">
-                  <div className="font-semibold">{t('clinical.lazmed.tags.experience', 'Опыт — более 15 лет')}</div>
-                  <div className="text-xs text-white/60">{t('clinical.lazmed.tags.experienceDesc', 'Профессиональные врачи и проверенные методики')}</div>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="hidden lg:block w-1/2" />
@@ -175,23 +165,23 @@ const Lazmed = () => {
         {/* ABOUT */}
         <section className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">{t('clinical.lazmed.about.title', 'О клинике "Лазмед"')}</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">{t('lazmed.aboutTitle', 'О клинике "Лазмед"')}</h2>
             <div className="text-slate-700 text-lg leading-relaxed max-w-prose space-y-4">
               <p>
-                {t('clinical.lazmed.about.text1', 'Медицинская клиника «Лазмед» оборудована современным медицинским оборудованием и была основана в 2010 году с ориентацией на предоставление высококачественных профессиональных медицинских услуг для населения. Клиника является передовым медицинским учреждением при Университете Салымбекова и сочетает высокий профессионализм врачей с индивидуальным подходом к пациентам.')}
+                {t('lazmed.aboutText1', 'Медицинская клиника «Лазмед» оборудована современным медицинским оборудованием и была основана в 2010 году с ориентацией на предоставление высококачественных профессиональных медицинских услуг для населения. Клиника является передовым медицинским учреждением при Университете Салымбекова и сочетает высокий профессионализм врачей с индивидуальным подходом к пациентам.')}
               </p>
 
               <p>
-                {t('clinical.lazmed.about.text2', 'На базе клиники функционирует современный операционный блок, рассчитанная на 7 человек послеоперационная палата, перевязочная, ординаторская, массажный кабинет, процедурный кабинет, кабинеты врачей по специализациям (гинеколог, ЛОР, уролог, дерматокосметолог), а также служебные помещения (сестра-хозяйка и др.).')}
+                {t('lazmed.aboutText2', 'На базе клиники функционирует современный операционный блок, рассчитанная на 7 человек послеоперационная палата, перевязочная, ординаторская, массажный кабинет, процедурный кабинет, кабинеты врачей по специализациям (гинеколог, ЛОР, уролог, дерматокосметолог), а также служебные помещения (сестра-хозяйка и др.).')}
               </p>
 
               <p>
-                {t('clinical.lazmed.about.text3', 'Наша цель — предоставить пациенту комплексный путь от диагностики до реабилитации, используя сертифицированное оборудование и современные клинические протоколы лечения.')}
+                {t('lazmed.aboutText3', 'Наша цель — предоставить пациенту комплексный путь от диагностики до реабилитации, используя сертифицированное оборудование и современные клинические протоколы лечения.')}
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3 mt-2">
-              {[t('clinical.lazmed.tags.qualified', 'Опытные врачи'), t('clinical.lazmed.tags.equipment', 'Современное оборудование'), t('clinical.lazmed.tags.approach', 'Индивидуальный подход')].map((tag, i) => (
+              {[t('lazmed.tag1', 'Опытные врачи'), t('lazmed.tag2', 'Современное оборудование'), t('lazmed.tag3', 'Индивидуальный подход')].map((tag, i) => (
                 <span key={i} className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1.5 rounded-full text-sm font-medium text-white/90 shadow-sm">{tag}</span>
               ))}
             </div>
@@ -204,11 +194,11 @@ const Lazmed = () => {
                   <img src={DoctorImg} alt="Шалтакова Гулбу Чаловна" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2 leading-snug wrap-break-word">{t('clinical.lazmed.director.title', 'Шалтакова Гулбу Чаловна — основатель клиники')}</h3>
-                  <p className="text-slate-700 text-base md:text-lg wrap-break-word">{t('clinical.lazmed.director.position', 'Хирург, кандидат медицинских наук, высококвалифицированный врач в области лазерной медицины и эстетики.')}</p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2 leading-snug wrap-break-word">{t('lazmed.directorTitle', 'Шалтакова Гулбу Чаловна — основатель клиники')}</h3>
+                  <p className="text-slate-700 text-base md:text-lg wrap-break-word">{t('lazmed.directorPosition', 'Хирург, кандидат медицинских наук, высококвалифицированный врач в области лазерной медицины и эстетики.')}</p>
                   <div className="mt-4 space-y-3 text-slate-700 text-sm md:text-base leading-relaxed">
-                    <p className="wrap-break-word">{t('clinical.lazmed.director.text1', 'Главный врач клиники, инициатор создания Лазмед и один из ведущих специалистов по лазерной терапии. Обладает большим опытом хирургической практики и занимается внедрением современных методик лечения и эстетической медицины.')}</p>
-                    <p className="wrap-break-word">{t('clinical.lazmed.director.text2', 'Под её руководством клиника развила профильные направления: лазерная хирургия, гинекологические и урологические услуги, дермато-косметологическая помощь, диагностические и лабораторные исследования.')}</p>
+                    <p className="wrap-break-word">{t('lazmed.directorText1', 'Главный врач клиники, инициатор создания Лазмед и один из ведущих специалистов по лазерной терапии. Обладает большим опытом хирургической практики и занимается внедрением современных методик лечения и эстетической медицины.')}</p>
+                    <p className="wrap-break-word">{t('lazmed.directorText2', 'Под её руководством клиника развила профильные направления: лазерная хирургия, гинекологические и урологические услуги, дермато-косметологическая помощь, диагностические и лабораторные исследования.')}</p>
                   </div>
                 </div>
               </div>
@@ -218,8 +208,8 @@ const Lazmed = () => {
         {/* SERVICES */}
         <section id="services" className="space-y-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <h2 className="text-3xl md:text-4xl font-extrabold bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">{t('clinical.lazmed.services.title', 'Процедуры и услуги')}</h2>
-            <p className="text-slate-600 max-w-prose">{t('clinical.lazmed.services.description', 'Все процедуры выполняются с соблюдением стандартов безопасности и качества.')}</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">{t('lazmed.servicesTitle', 'Процедуры и услуги')}</h2>
+            <p className="text-slate-600 max-w-prose">{t('lazmed.servicesDesc', 'Все процедуры выполняются с соблюдением стандартов безопасности и качества.')}</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -249,8 +239,8 @@ const Lazmed = () => {
         {/* SCROLLING GALLERY */}
         {scrollingImages.length > 0 && (
           <section className="mt-4">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">{t('clinical.lazmed.gallery.title', 'Результаты и атмосфера')}</h3>
-            <p className="text-slate-600 mb-4 max-w-prose">{t('clinical.lazmed.gallery.description', 'Фото из клиники и примеры состояний после проведённых процедур. Пролистайте галерею горизонтально.')}</p>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">{t('lazmed.galleryTitle', 'Результаты и атмосфера')}</h3>
+            <p className="text-slate-600 mb-4 max-w-prose">{t('lazmed.galleryDesc', 'Фото из клиники и примеры состояний после проведённых процедур. Пролистайте галерею горизонтально.')}</p>
             <div className="relative">
               {/* Градиентные маски по краям */}
               <div className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-linear-to-r from-white to-transparent z-10"></div>
@@ -277,21 +267,21 @@ const Lazmed = () => {
 
         {/* EQUIPMENT */}
         <section className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-lg border border-slate-200">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">{t('clinical.lazmed.equipment.title', 'Современное оборудование')}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">{t('lazmed.equipmentTitle', 'Современное оборудование')}</h2>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              t('clinical.lazmed.equipment.item1', 'Гинекологические установки и оборудование'),
-              t('clinical.lazmed.equipment.item2', 'Кольпоскопы (видеокольпоскопия)'),
-              t('clinical.lazmed.equipment.item3', 'Вакуумный роликовый массажный аппарат'),
-              t('clinical.lazmed.equipment.item4', 'Лапароскопический аппарат для оперативного доступа'),
-              t('clinical.lazmed.equipment.item5', 'Лазерные установки (удаление бородавок, папиллом, кондилом)'),
-              t('clinical.lazmed.equipment.item6', 'Аппараты искусственной вентиляции лёгких (ИВЛ)'),
-              t('clinical.lazmed.equipment.item7', 'Дефибрилляторы и кардиомониторы')
+              'Гинекологические установки и оборудование',
+              'Кольпоскопы (видеокольпоскопия)',
+              'Вакуумный роликовый массажный аппарат',
+              'Лапароскопический аппарат для оперативного доступа',
+              'Лазерные установки (удаление бородавок, папиллом, кондилом)',
+              'Аппараты искусственной вентиляции лёгких (ИВЛ)',
+              'Дефибрилляторы и кардиомониторы'
             ].map((item, i) => (
               <div key={i} className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-slate-200 hover:shadow-md transition">
                 <h4 className="font-semibold text-slate-800">{item}</h4>
-                <p className="text-sm text-slate-600 mt-2">{t('clinical.lazmed.equipment.description', 'Высокоточное оборудование от мировых производителей, соответствующее международным стандартам.')}</p>
+                <p className="text-sm text-slate-600 mt-2">{t('lazmed.equipmentDesc', 'Высокоточное оборудование от мировых производителей, соответствующее международным стандартам.')}</p>
               </div>
             ))}
           </div>
@@ -300,15 +290,15 @@ const Lazmed = () => {
         {/* CONTACTS */}
         <section id="contacts" className="grid md:grid-cols-2 gap-8 items-center bg-white/80 backdrop-blur-sm p-8 rounded-3xl border border-slate-200">
           <div>
-            <h2 className="text-3xl font-bold mb-4 bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">{t('clinical.lazmed.contacts.title', 'Контакты и запись')}</h2>
-            <p className="text-slate-700 text-lg">{t('clinical.lazmed.contacts.description', 'Приём ведётся по записи. Мы готовы ответить на вопросы и подобрать удобное время для приёма.')}</p>
+            <h2 className="text-3xl font-bold mb-4 bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">{t('lazmed.contactsTitle', 'Контакты и запись')}</h2>
+            <p className="text-slate-700 text-lg">{t('lazmed.contactsDesc', 'Приём ведётся по записи. Мы готовы ответить на вопросы и подобрать удобное время для приёма.')}</p>
 
             <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <div className="p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm flex items-start gap-3">
                 <FiMapPin className="text-indigo-600 mt-1" />
                 <div className="flex-1">
-                  <p className="font-semibold">{t('clinical.lazmed.contacts.address', 'Адрес')}</p>
-                  <p className="text-slate-600">{t('clinical.lazmed.contacts.addressValue', 'г. Бишкек, мкр. Кок-Жар, ул. 7 апреля, 3/1')}</p>
+                  <p className="font-semibold">{t('lazmed.addressLabel', 'Адрес')}</p>
+                  <p className="text-slate-600">{t('lazmed.addressValue', 'г. Бишкек, мкр. Кок-Жар, ул. 7 апреля, 3/1')}</p>
                   <div className="flex flex-wrap gap-3 mt-3">
                     <a
                       href="https://2gis.kg/bishkek/search/%D0%BB%D0%B0%D0%B7%D0%BC%D0%B5%D0%B4%20%D0%BA%D0%BB%D0%B8%D0%BD%D0%B8%D0%BA%D0%B0/firm/70000001019365186/74.634708%2C42.850922?m=74.5812%2C42.870338%2F14.62"
@@ -341,25 +331,25 @@ const Lazmed = () => {
               <div className="p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm flex items-start gap-3">
                 <FiPhone className="text-rose-600 mt-1" />
                 <div>
-                  <p className="font-semibold">{t('clinical.lazmed.contacts.phone', 'Телефон')}</p>
-                  <p className="text-slate-600">{t('clinical.lazmed.contacts.phoneValue1', '+996 (312) 88‒13‒46')}</p>
-                  <p className="text-slate-600">{t('clinical.lazmed.contacts.phoneValue2', '+996 (774) 88-13-46')}</p>
+                  <p className="font-semibold">{t('lazmed.phoneLabel', 'Телефон')}</p>
+                  <p className="text-slate-600">+996 (312) 88‒13‒46</p>
+                  <p className="text-slate-600">+996 (774) 88-13-46</p>
                 </div>
               </div>
 
               <div className="p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm flex items-start gap-3">
                 <FiGlobe className="text-cyan-600 mt-1" />
                 <div>
-                  <p className="font-semibold">{t('clinical.lazmed.contacts.website', 'Веб-сайт')}</p>
-                  <p className="text-slate-600 underline">{t('clinical.lazmed.contacts.websiteValue', 'www.lasmed.kg')}</p>
+                  <p className="font-semibold">{t('lazmed.websiteLabel', 'Веб-сайт')}</p>
+                  <p className="text-slate-600 underline">www.lasmed.kg</p>
                 </div>
               </div>
 
               <div className="p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm flex items-start gap-3">
                 <FiClock className="text-yellow-600 mt-1" />
                 <div>
-                  <p className="font-semibold">{t('clinical.lazmed.contacts.hours', 'Режим работы')}</p>
-                  <p className="text-slate-600">{t('clinical.lazmed.contacts.hoursValue', 'Пн–Пт: 09:00–18:00 · Сб: 09:00–14:00')}</p>
+                  <p className="font-semibold">{t('lazmed.scheduleLabel', 'Режим работы')}</p>
+                  <p className="text-slate-600">{t('lazmed.scheduleValue', 'Пн–Пт: 09:00–18:00 · Сб: 09:00–14:00')}</p>
                 </div>
               </div>
             </div>

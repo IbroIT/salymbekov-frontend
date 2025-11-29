@@ -10,7 +10,16 @@ const scrollingImages = Object.values(
 
 const DocHospital = () => {
   const { t } = useTranslation();
-
+  
+  const tags = useMemo(() => [
+    'Многопрофильная клиника',
+    'Современное оборудование',
+    'Квалифицированный персонал',
+    'Международные стандарты',
+    'Университетская база',
+    'Качество услуг'
+  ], []);
+  
   const animatedBalls = useMemo(() => {
     return [...Array(8)].map((_, i) => ({
       id: i,
@@ -69,7 +78,7 @@ const DocHospital = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6 max-w-5xl drop-shadow-xl"
           >
             <span className="bg-linear-to-r from-blue-200 via-indigo-100 to-cyan-100 bg-clip-text text-transparent">
-              {t('clinical.docHospital.title', 'DOC University Hospital')}
+              {t('clinical.docHospital.hero.title', 'DOC University Hospital')}
             </span>
           </motion.h1>
 
@@ -79,31 +88,8 @@ const DocHospital = () => {
             transition={{ delay: 0.25, duration: 0.7 }}
             className="text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed mb-8"
           >
-            {t('clinical.docHospital.description', 'Университетская клиника «DOC University Clinic» является новым многопрофильным медицинским центром, предоставляющий качественные медицинские услуги для широких слоев в соответствии с государственными и международными стандартами. Согласно лицензии данная клиника имеет право проводить диагностику и лечение терапевтических, кардиологических, пульмонологических, педиатрических, неврологических и стоматологических заболеваний терапевтического профиля, диагностика, консервативное и оперативное лечение хирургических, гинекологических, урологических и лор заболеваний с оказанием анестезиологических и реанимационных пособий, проведение функциональной диагностики (УЗИ) в амбулаторных и стационарных условиях. Клиника полностью готова для оказания вышеперечисленных медицинских услуг для граждан страны.')}
+            {t('clinical.docHospital.hero.description', 'Университетская клиника «DOC University Clinic» является новым многопрофильным медицинским центром, предоставляющий качественные медицинские услуги для широких слоев в соответствии с государственными и международными стандартами. Согласно лицензии данная клиника имеет право проводить диагностику и лечение терапевтических, кардиологических, пульмонологических, педиатрических, неврологических и стоматологических заболеваний терапевтического профиля, диагностика, консервативное и оперативное лечение хирургических, гинекологических, урологических и лор заболеваний с оказанием анестезиологических и реанимационных пособий, проведение функциональной диагностики (УЗИ) в амбулаторных и стационарных условиях. Клиника полностью готова для оказания вышеперечисленных медицинских услуг для граждан страны.')}
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.7 }}
-            className="flex flex-wrap gap-3"
-          >
-            {[
-              t('clinical.docHospital.tags.multidisciplinary', 'Многопрофильная клиника'),
-              t('clinical.docHospital.tags.equipment', 'Современное оборудование'),
-              t('clinical.docHospital.tags.staff', 'Квалифицированный персонал'),
-              t('clinical.docHospital.tags.standards', 'Международные стандарты'),
-              t('clinical.docHospital.tags.university', 'Университетская база'),
-              t('clinical.docHospital.tags.quality', 'Качество услуг')
-            ].map((tag, i) => (
-              <span
-                key={i}
-                className="bg-white/15 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full text-sm font-medium hover:bg-white/25 transition-colors duration-300"
-              >
-                {tag}
-              </span>
-            ))}
-          </motion.div>
         </div>
 
         {/* Декоративная волна внизу */}

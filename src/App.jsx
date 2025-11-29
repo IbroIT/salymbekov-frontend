@@ -362,7 +362,7 @@ const App = () => {
           <Route path="/education/business-school" element={<BusinessSchoolEdu />} />
           <Route path="/education/postgrad" element={<Postgrad />} />
           <Route path="/education/center" element={<Center />} />
-          <Route path="/education/itCollege/director" element={<Director/>} />
+          <Route path="/education/itCollege/director" element={<Director />} />
           <Route path="/education/itCollege/departments/general" element={<General />} />
           <Route path="/education/itCollege/departments/information" element={<Information />} />
           <Route path="/education/itCollege/specialties/diplom-computer-science" element={<DiplomComScience />} />
@@ -486,7 +486,7 @@ const App = () => {
           <Route path="/applicants/career-guidance/knowledge-osh" element={<KnowledgeOsh />} />
           <Route path="/applicants/career-guidance/cooperation" element={<ApplicantCooperation />} />
           <Route path="/applicants/career-guidance/meeting" element={<Meeting />} />
-          
+
           {/* Event pages routes */}
           <Route path="/applicants/orientation/teachers-day" element={<TeachersDay />} />
           <Route path="/applicants/orientation/state-language-day" element={<StateLanguageDay />} />
@@ -494,12 +494,12 @@ const App = () => {
           <Route path="/applicants/orientation/medical-mission" element={<MedicalMission />} />
           <Route path="/applicants/orientation/graduation-2025" element={<Graduation2025 />} />
           <Route path="/applicants/orientation/diploma-award" element={<DiplomaAward />} />
-          
+
           {/* News pages routes */}
           <Route path="/applicants/career-guidance/news/eurasian-congress" element={<EurasianCongress />} />
           <Route path="/applicants/career-guidance/news/it-security-meeting" element={<ITSecurityMeeting />} />
           <Route path="/applicants/career-guidance/news/pai-chai-visit" element={<PaiChaiVisit />} />
-          
+
           <Route path="/applicants/admission/documents" element={<Documents />} />
           <Route path="/applicants/admission/rules" element={<AdmissionReg />} />
           <Route path="/applicants/admission/schedule" element={<ScheduleApp />} />
@@ -524,7 +524,7 @@ const App = () => {
           <Route path="/infrastructure/locations" element={<Locations />} />
           <Route path="/infrastructure/partners" element={<Partners />} />
           <Route path="/infrastructure/*" element={<Home />} />
-         
+
         </Routes>
         <Footer />
       </div>

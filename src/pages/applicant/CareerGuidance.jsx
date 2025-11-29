@@ -186,231 +186,231 @@ const CareerGuidance = () => {
                 <h3 className="text-3xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-8">
                   {t('careerGuidance.universityEvents')}
                 </h3>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* День учителя */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <Link to="/applicants/orientation/teachers-day" className="block group">
-                    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src="/src/assets/applicant/orientatioin/events/1.jpg"
-                          alt="День учителя"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
-                          <FiCalendar className="w-4 h-4" />
-                          <span>15.10.2025</span>
+                  {/* День учителя */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    <Link to="/applicants/orientation/teachers-day" className="block group">
+                      <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div className="relative h-48 overflow-hidden">
+                          <img
+                            src="/src/assets/applicant/orientatioin/events/1.jpg"
+                            alt="День учителя"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                          <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
+                            <FiCalendar className="w-4 h-4" />
+                            <span>15.10.2025</span>
+                          </div>
+                        </div>
+                        <div className="p-5">
+                          <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                            {t('careerGuidance.eventsList.teachersDay.title')}
+                          </h3>
+                          <p className="text-gray-600 text-sm mb-4">
+                            {t('careerGuidance.eventsList.teachersDay.location')}
+                          </p>
+                          <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
+                            <span>{t('careerGuidance.readMore')}</span>
+                            <FiArrowRight className="w-4 h-4" />
+                          </div>
                         </div>
                       </div>
-                      <div className="p-5">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                          {t('careerGuidance.eventsList.teachersDay.title')}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-4">
-                          {t('careerGuidance.eventsList.teachersDay.location')}
-                        </p>
-                        <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
-                          <span>{t('careerGuidance.readMore')}</span>
-                          <FiArrowRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
+                    </Link>
+                  </motion.div>
 
-                {/* День государственного языка */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Link to="/applicants/orientation/state-language-day" className="block group">
-                    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src="/src/assets/applicant/orientatioin/events/2.jpg"
-                          alt="День государственного языка"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
-                          <FiCalendar className="w-4 h-4" />
-                          <span>15.10.2025</span>
+                  {/* День государственного языка */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <Link to="/applicants/orientation/state-language-day" className="block group">
+                      <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div className="relative h-48 overflow-hidden">
+                          <img
+                            src="/src/assets/applicant/orientatioin/events/2.jpg"
+                            alt="День государственного языка"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                          <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
+                            <FiCalendar className="w-4 h-4" />
+                            <span>15.10.2025</span>
+                          </div>
+                        </div>
+                        <div className="p-5">
+                          <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                            {t('careerGuidance.eventsList.stateLanguageDay.title')}
+                          </h3>
+                          <p className="text-gray-600 text-sm mb-4">
+                            {t('careerGuidance.eventsList.stateLanguageDay.location')}
+                          </p>
+                          <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
+                            <span>{t('careerGuidance.readMore')}</span>
+                            <FiArrowRight className="w-4 h-4" />
+                          </div>
                         </div>
                       </div>
-                      <div className="p-5">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                          {t('careerGuidance.eventsList.stateLanguageDay.title')}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-4">
-                          {t('careerGuidance.eventsList.stateLanguageDay.location')}
-                        </p>
-                        <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
-                          <span>{t('careerGuidance.readMore')}</span>
-                          <FiArrowRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
+                    </Link>
+                  </motion.div>
 
-                {/* Визит Культурного центра Бэксан */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <Link to="/applicants/orientation/korean-center" className="block group">
-                    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src="/src/assets/applicant/orientatioin/events/3.jpg"
-                          alt="Визит Культурного центра Бэксан"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
-                          <FiCalendar className="w-4 h-4" />
-                          <span>13.10.2025</span>
+                  {/* Визит Культурного центра Бэксан */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    <Link to="/applicants/orientation/korean-center" className="block group">
+                      <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div className="relative h-48 overflow-hidden">
+                          <img
+                            src="/src/assets/applicant/orientatioin/events/3.jpg"
+                            alt="Визит Культурного центра Бэксан"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                          <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
+                            <FiCalendar className="w-4 h-4" />
+                            <span>13.10.2025</span>
+                          </div>
+                        </div>
+                        <div className="p-5">
+                          <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                            {t('careerGuidance.eventsList.koreanCenter.title')}
+                          </h3>
+                          <p className="text-gray-600 text-sm mb-4">
+                            {t('careerGuidance.eventsList.koreanCenter.location')}
+                          </p>
+                          <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
+                            <span>{t('careerGuidance.readMore')}</span>
+                            <FiArrowRight className="w-4 h-4" />
+                          </div>
                         </div>
                       </div>
-                      <div className="p-5">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                          {t('careerGuidance.eventsList.koreanCenter.title')}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-4">
-                          {t('careerGuidance.eventsList.koreanCenter.location')}
-                        </p>
-                        <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
-                          <span>{t('careerGuidance.readMore')}</span>
-                          <FiArrowRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
+                    </Link>
+                  </motion.div>
 
-                {/* Международная медицинская миссия */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  <Link to="/applicants/orientation/medical-mission" className="block group">
-                    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src="/src/assets/applicant/orientatioin/events/4.jpg"
-                          alt="Международная медицинская миссия"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
-                          <FiCalendar className="w-4 h-4" />
-                          <span>27.06.2025</span>
+                  {/* Международная медицинская миссия */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                    <Link to="/applicants/orientation/medical-mission" className="block group">
+                      <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div className="relative h-48 overflow-hidden">
+                          <img
+                            src="/src/assets/applicant/orientatioin/events/4.jpg"
+                            alt="Международная медицинская миссия"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                          <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
+                            <FiCalendar className="w-4 h-4" />
+                            <span>27.06.2025</span>
+                          </div>
+                        </div>
+                        <div className="p-5">
+                          <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                            {t('careerGuidance.eventsList.medicalMission.title')}
+                          </h3>
+                          <p className="text-gray-600 text-sm mb-4">
+                            {t('careerGuidance.eventsList.medicalMission.location')}
+                          </p>
+                          <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
+                            <span>{t('careerGuidance.readMore')}</span>
+                            <FiArrowRight className="w-4 h-4" />
+                          </div>
                         </div>
                       </div>
-                      <div className="p-5">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                          {t('careerGuidance.eventsList.medicalMission.title')}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-4">
-                          {t('careerGuidance.eventsList.medicalMission.location')}
-                        </p>
-                        <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
-                          <span>{t('careerGuidance.readMore')}</span>
-                          <FiArrowRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
+                    </Link>
+                  </motion.div>
 
-                {/* Выпускной 2025 */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  viewport={{ once: true }}
-                >
-                  <Link to="/applicants/orientation/graduation-2025" className="block group">
-                    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src="/src/assets/applicant/orientatioin/events/5.jpg"
-                          alt="Выпускной 2025"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
-                          <FiCalendar className="w-4 h-4" />
-                          <span>26.06.2025</span>
+                  {/* Выпускной 2025 */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    viewport={{ once: true }}
+                  >
+                    <Link to="/applicants/orientation/graduation-2025" className="block group">
+                      <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div className="relative h-48 overflow-hidden">
+                          <img
+                            src="/src/assets/applicant/orientatioin/events/5.jpg"
+                            alt="Выпускной 2025"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                          <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
+                            <FiCalendar className="w-4 h-4" />
+                            <span>26.06.2025</span>
+                          </div>
+                        </div>
+                        <div className="p-5">
+                          <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                            {t('careerGuidance.eventsList.graduation2025.title')}
+                          </h3>
+                          <p className="text-gray-600 text-sm mb-4">
+                            {t('careerGuidance.eventsList.graduation2025.location')}
+                          </p>
+                          <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
+                            <span>{t('careerGuidance.readMore')}</span>
+                            <FiArrowRight className="w-4 h-4" />
+                          </div>
                         </div>
                       </div>
-                      <div className="p-5">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                          {t('careerGuidance.eventsList.graduation2025.title')}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-4">
-                          {t('careerGuidance.eventsList.graduation2025.location')}
-                        </p>
-                        <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
-                          <span>{t('careerGuidance.readMore')}</span>
-                          <FiArrowRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
+                    </Link>
+                  </motion.div>
 
-                {/* Вручение дипломов */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <Link to="/applicants/orientation/diploma-award" className="block group">
-                    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src="/src/assets/applicant/orientatioin/events/6.jpg"
-                          alt="Вручение дипломов"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
-                          <FiCalendar className="w-4 h-4" />
-                          <span>19.06.2025</span>
+                  {/* Вручение дипломов */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    <Link to="/applicants/orientation/diploma-award" className="block group">
+                      <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div className="relative h-48 overflow-hidden">
+                          <img
+                            src="/src/assets/applicant/orientatioin/events/6.jpg"
+                            alt="Вручение дипломов"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                          <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
+                            <FiCalendar className="w-4 h-4" />
+                            <span>19.06.2025</span>
+                          </div>
+                        </div>
+                        <div className="p-5">
+                          <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                            {t('careerGuidance.eventsList.diplomaAward.title')}
+                          </h3>
+                          <p className="text-gray-600 text-sm mb-4">
+                            {t('careerGuidance.eventsList.diplomaAward.location')}
+                          </p>
+                          <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
+                            <span>{t('careerGuidance.readMore')}</span>
+                            <FiArrowRight className="w-4 h-4" />
+                          </div>
                         </div>
                       </div>
-                      <div className="p-5">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                          {t('careerGuidance.eventsList.diplomaAward.title')}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-4">
-                          {t('careerGuidance.eventsList.diplomaAward.location')}
-                        </p>
-                        <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
-                          <span>{t('careerGuidance.readMore')}</span>
-                          <FiArrowRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              </div>
-            </motion.div>
+                    </Link>
+                  </motion.div>
+                </div>
+              </motion.div>
             )}
 
             {/* Секция новостей - показываем только при клике на кнопку "Новости" */}
@@ -424,7 +424,7 @@ const CareerGuidance = () => {
                 <h3 className="text-3xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-8">
                   {t('careerGuidance.universityNews')}
                 </h3>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {newsItems.slice(0, 3).map((news, index) => (
                     <motion.div
@@ -479,65 +479,65 @@ const CareerGuidance = () => {
                 viewport={{ once: true }}
                 className="mt-16"
               >
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-8">
-                {t('careerGuidance.orientationPrograms')}
-              </h3>
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-8">
+                  {t('careerGuidance.orientationPrograms')}
+                </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {events.map((event, index) => (
-                  <motion.div
-                    key={event.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Link to={event.link}>
-                      <motion.div
-                        whileHover={{ scale: 1.02, y: -5 }}
-                        className="relative group h-[400px] rounded-3xl overflow-hidden shadow-2xl cursor-pointer"
-                      >
-                        <div className="absolute inset-0">
-                          <img
-                            src={event.image}
-                            alt={event.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            onError={(e) => {
-                              e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(event.title);
-                            }}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-                        </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {events.map((event, index) => (
+                    <motion.div
+                      key={event.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Link to={event.link}>
+                        <motion.div
+                          whileHover={{ scale: 1.02, y: -5 }}
+                          className="relative group h-[400px] rounded-3xl overflow-hidden shadow-2xl cursor-pointer"
+                        >
+                          <div className="absolute inset-0">
+                            <img
+                              src={event.image}
+                              alt={event.title}
+                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                              onError={(e) => {
+                                e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(event.title);
+                              }}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                          </div>
 
-                        <div className="relative h-full flex flex-col justify-end p-8">
-                          <div>
-                            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-200 transition-colors">
-                              {event.title}
-                            </h3>
-                            <div className="flex items-center text-gray-300">
-                              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                              </svg>
-                              <span className="text-lg">{event.date}</span>
+                          <div className="relative h-full flex flex-col justify-end p-8">
+                            <div>
+                              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-200 transition-colors">
+                                {event.title}
+                              </h3>
+                              <div className="flex items-center text-gray-300">
+                                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span className="text-lg">{event.date}</span>
+                              </div>
                             </div>
                           </div>
-                        </div>
 
-                        <motion.div
-                          initial={{ opacity: 0, x: -10 }}
-                          whileHover={{ opacity: 1, x: 0 }}
-                          className="absolute bottom-8 right-8 text-white"
-                        >
-                          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
+                          <motion.div
+                            initial={{ opacity: 0, x: -10 }}
+                            whileHover={{ opacity: 1, x: 0 }}
+                            className="absolute bottom-8 right-8 text-white"
+                          >
+                            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </motion.div>
                         </motion.div>
-                      </motion.div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             )}
           </div>
         </div>
