@@ -21,40 +21,40 @@ const ClinicalBase = () => {
    const clinics = [
       {
          id: 1,
-         title: t('clinical.clinicalBase.lazmed.title', 'Лазмед'),
-         description: t('clinical.clinicalBase.lazmed.description', 'Современная клиника лазерной медицины и эстетической хирургии'),
+         title: t('clinicalBaseSub.lazmed', 'Лазмед'),
+         description: t('clinicalBaseSub.lazmedDesc', 'Современная клиника лазерной медицины и эстетической хирургии'),
          icon: FiZap,
          link: '/clinical/lazmed',
          color: 'from-blue-500 to-cyan-500'
       },
       {
          id: 2,
-         title: t('clinical.clinicalBase.dordoiOphthalmic.title', 'Дордой офтальмик сервис'),
-         description: t('clinical.clinicalBase.dordoiOphthalmic.description', 'Специализированный центр по офтальмологии с передовыми технологиями лечения глазных заболеваний'),
+         title: t('clinicalBaseSub.dordoi', 'Дордой офтальмик сервис'),
+         description: t('clinicalBaseSub.dordoiDesc', 'Специализированный центр по офтальмологии с передовыми технологиями лечения глазных заболеваний'),
          icon: FiEye,
          link: '/clinical/dordoi-ophthalmic',
          color: 'from-blue-500 to-cyan-500'
       },
       {
          id: 3,
-         title: t('clinical.clinicalBase.docClinic.title', 'DOC university clinic'),
-         description: t('clinical.clinicalBase.docClinic.description', 'Многопрофильная университетская клиника с современным оборудованием и квалифицированными специалистами'),
+         title: t('clinicalBaseSub.docClinic', 'DOC university clinic'),
+         description: t('clinicalBaseSub.docClinicDesc', 'Многопрофильная университетская клиника с современным оборудованием и квалифицированными специалистами'),
          icon: FiHeart,
          link: '/clinical/doc-clinic',
          color: 'from-blue-500 to-cyan-500'
       },
       {
          id: 4,
-         title: t('clinical.clinicalBase.docHospital.title', 'DOC university hospital'),
-         description: t('clinical.clinicalBase.docHospital.description', 'Стационарное лечение с широким спектром медицинских услуг'),
+         title: t('clinicalBaseSub.docHospital', 'DOC university hospital'),
+         description: t('clinicalBaseSub.docHospitalDesc', 'Стационарное лечение с широким спектром медицинских услуг'),
          icon: FiActivity,
          link: '/clinical/doc-hospital',
          color: 'from-blue-500 to-cyan-500'
       },
       {
          id: 5,
-         title: t('clinical.clinicalBase.agreements.title', 'Соглашения с клиниками'),
-         description: t('clinical.clinicalBase.agreements.description', 'Информация о партнерских соглашениях и договорах клинической базы'),
+         title: t('clinicalBaseSub.agreements', 'Соглашения с клиниками'),
+         description: t('clinicalBaseSub.agreementsDesc', 'Информация о партнерских соглашениях и договорах клинической базы'),
          icon: FiFileText,
          link: '/clinical/agreements',
          color: 'from-blue-500 to-cyan-500'
@@ -122,11 +122,8 @@ const ClinicalBase = () => {
                   className="text-center mb-16"
                >
                   <h1 className="text-5xl font-bold text-gray-900 mb-4">
-                     {t('clinical.clinicalBase.title', 'Клиническая база')}
+                     {t('navbarSUB.clinical', 'Клиническая база')}
                   </h1>
-                  <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                     {t('clinical.clinicalBase.subtitle', 'Современные медицинские учреждения для практической подготовки студентов и оказания качественных медицинских услуг населению')}
-                  </p>
                </motion.div>
 
                {/* Clinics Grid */}
@@ -182,7 +179,7 @@ const ClinicalBase = () => {
                                     {/* Learn More Link */}
                                     <div className="flex items-center justify-between">
                                        <span className={`text-sm font-semibold bg-gradient-to-r ${clinic.color} bg-clip-text text-transparent`}>
-                                          {t('clinical.clinicalBase.learnMore', 'Подробнее')}
+                                          Подробнее
                                        </span>
                                        <motion.div
                                           animate={{ x: [0, 5, 0] }}
@@ -204,44 +201,6 @@ const ClinicalBase = () => {
                         </motion.div>
                      );
                   })}
-               </motion.div>
-
-               {/* Additional Info Section */}
-               <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="bg-white rounded-2xl shadow-lg p-8"
-               >
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-                     {t('clinical.clinicalBase.advantages.title', 'Преимущества нашей клинической базы')}
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                     <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-sm">
-                        <div className="text-5xl font-bold text-blue-600 mb-2">
-                           {t('clinical.clinicalBase.advantages.experience', '20+')}
-                        </div>
-                        <p className="text-gray-600 font-medium">
-                           {t('clinical.clinicalBase.advantages.experienceText', 'лет опыта работы')}
-                        </p>
-                     </div>
-                     <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-sm">
-                        <div className="text-5xl font-bold text-blue-600 mb-2">
-                           {t('clinical.clinicalBase.advantages.specialists', '100+')}
-                        </div>
-                        <p className="text-gray-600 font-medium">
-                           {t('clinical.clinicalBase.advantages.specialistsText', 'квалифицированных специалистов')}
-                        </p>
-                     </div>
-                     <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-sm">
-                        <div className="text-5xl font-bold text-blue-600 mb-2">
-                           {t('clinical.clinicalBase.advantages.equipment', '100%')}
-                        </div>
-                        <p className="text-gray-600 font-medium">
-                           {t('clinical.clinicalBase.advantages.equipmentText', 'современное оборудование')}
-                        </p>
-                     </div>
-                  </div>
                </motion.div>
             </div>
          </div>

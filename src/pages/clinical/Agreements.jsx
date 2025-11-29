@@ -14,15 +14,15 @@ const Agreements = () => {
 
   const agreements = [
     {
-      title: t('clinical.agreements.contracts.azijaMed', 'Договор Азия Мед (Каркыра Мед)'),
+      title: t('clinical.agreements.contracts.asiaMed', 'Договор Азия Мед (Каркыра Мед)'),
       file: DogovorAzija
     },
     {
-      title: t('clinical.agreements.contracts.jeosMedDop', 'ОсОО ЭОС-Мед (допсоглашение)'),
+      title: t('clinical.agreements.contracts.eosMedAdditional', 'ОсОО ЭОС-Мед (допсоглашение)'),
       file: OsooJeosMedDop
     },
     {
-      title: t('clinical.agreements.contracts.jeosMedMain', 'ОсОО ЭОС-Мед (основной)'),
+      title: t('clinical.agreements.contracts.eosMedMain', 'ОсОО ЭОС-Мед (основной)'),
       file: OsooJeosMedOsnovnoj
     },
     {
@@ -30,7 +30,7 @@ const Agreements = () => {
       file: LcdAndromedDoc
     },
     {
-      title: t('clinical.agreements.contracts.jeosPlus', 'ОсОО ЭОС ПЛЮС'),
+      title: t('clinical.agreements.contracts.eosPlus', 'ОсОО ЭОС ПЛЮС'),
       file: OsooJeosPljus
     }
   ];
@@ -93,7 +93,7 @@ const Agreements = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6 max-w-4xl mx-auto drop-shadow-xl"
           >
             <span className="bg-linear-to-r from-indigo-200 via-blue-100 to-cyan-100 bg-clip-text text-transparent">
-              {t('clinical.agreements.title', 'Эксклюзивные соглашения')}
+              {t('clinical.agreements.heroTitle', 'Эксклюзивные соглашения')}
             </span>
           </motion.h1>
 
@@ -103,7 +103,7 @@ const Agreements = () => {
             transition={{ delay: 0.25, duration: 0.7 }}
             className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8"
           >
-            {t('clinical.agreements.subtitle', 'Эксклюзивные соглашения с клиниками — партнёрства для обеспечения качественной медицинской помощи.')}
+            {t('clinical.agreements.heroDescription', 'Эксклюзивные соглашения с клиниками — партнёрства для обеспечения качественной медицинской помощи.')}
           </motion.p>
 
           <motion.div

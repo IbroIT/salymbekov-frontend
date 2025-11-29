@@ -340,8 +340,8 @@ const Infrastructure = () => {
         <button
           onClick={() => i18n.changeLanguage('ru')}
           className={`px-4 py-2 rounded-full transition-all duration-300 ${i18n.language === 'ru'
-              ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
-              : 'text-gray-600 hover:bg-gray-100'
+            ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
+            : 'text-gray-600 hover:bg-gray-100'
             }`}
         >
           RU
@@ -349,8 +349,8 @@ const Infrastructure = () => {
         <button
           onClick={() => i18n.changeLanguage('kg')}
           className={`px-4 py-2 rounded-full transition-all duration-300 ${i18n.language === 'kg'
-              ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
-              : 'text-gray-600 hover:bg-gray-100'
+            ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
+            : 'text-gray-600 hover:bg-gray-100'
             }`}
         >
           KG
@@ -358,8 +358,8 @@ const Infrastructure = () => {
         <button
           onClick={() => i18n.changeLanguage('en')}
           className={`px-4 py-2 rounded-full transition-all duration-300 ${i18n.language === 'en'
-              ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
-              : 'text-gray-600 hover:bg-gray-100'
+            ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
+            : 'text-gray-600 hover:bg-gray-100'
             }`}
         >
           EN

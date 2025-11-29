@@ -179,57 +179,57 @@ const Cooperation = () => {
                 </div>
               </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl shadow-xl p-10 mb-12"
-          >
-            <h3 className="text-3xl font-bold text-[#023E8A] mb-8 flex items-center gap-3">
-              <FiCheckCircle className="w-8 h-8" />
-              Ключевые направления сотрудничества
-            </h3>
-            <div className="space-y-5">
-              {[
-                {
-                  title: 'Профориентация',
-                  desc: 'Организация профориентационных мероприятий, дней открытых дверей и карьерных консультаций для учащихся'
-                },
-                {
-                  title: 'Образовательные программы',
-                  desc: 'Проведение подготовительных курсов, олимпиад и интеллектуальных конкурсов для школьников'
-                },
-                {
-                  title: 'Мастер-классы',
-                  desc: 'Регулярные мастер-классы от преподавателей университета по IT-технологиям, медицине и бизнесу'
-                },
-                {
-                  title: 'Льготы для выпускников',
-                  desc: 'Специальные условия поступления и скидки на обучение для выпускников школы-гимназии №68'
-                },
-                {
-                  title: 'Обмен опытом',
-                  desc: 'Совместные научно-методические семинары и обмен передовым педагогическим опытом'
-                },
-                {
-                  title: 'Практика студентов',
-                  desc: 'Организация педагогической практики студентов университета на базе школы-гимназии'
-                }
-              ].map((point, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow"
-                >
-                  <h4 className="text-xl font-bold text-[#0077B6] mb-2">{point.title}</h4>
-                  <p className="text-gray-700">{point.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl shadow-xl p-10 mb-12"
+              >
+                <h3 className="text-3xl font-bold text-[#023E8A] mb-8 flex items-center gap-3">
+                  <FiCheckCircle className="w-8 h-8" />
+                  Ключевые направления сотрудничества
+                </h3>
+                <div className="space-y-5">
+                  {[
+                    {
+                      title: 'Профориентация',
+                      desc: 'Организация профориентационных мероприятий, дней открытых дверей и карьерных консультаций для учащихся'
+                    },
+                    {
+                      title: 'Образовательные программы',
+                      desc: 'Проведение подготовительных курсов, олимпиад и интеллектуальных конкурсов для школьников'
+                    },
+                    {
+                      title: 'Мастер-классы',
+                      desc: 'Регулярные мастер-классы от преподавателей университета по IT-технологиям, медицине и бизнесу'
+                    },
+                    {
+                      title: 'Льготы для выпускников',
+                      desc: 'Специальные условия поступления и скидки на обучение для выпускников школы-гимназии №68'
+                    },
+                    {
+                      title: 'Обмен опытом',
+                      desc: 'Совместные научно-методические семинары и обмен передовым педагогическим опытом'
+                    },
+                    {
+                      title: 'Практика студентов',
+                      desc: 'Организация педагогической практики студентов университета на базе школы-гимназии'
+                    }
+                  ].map((point, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow"
+                    >
+                      <h4 className="text-xl font-bold text-[#0077B6] mb-2">{point.title}</h4>
+                      <p className="text-gray-700">{point.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
 
               {images.length > 0 && (
                 <motion.div

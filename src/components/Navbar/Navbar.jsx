@@ -577,7 +577,7 @@ const Navbar = () => {
                 { label: t('clinicalSUB.lazmed'), path: '/clinical/lazmed' },
                 {
                   label: t('clinicalSUB.dordoiOphthalmic'),
-                  path: '/clinical/dordoi'
+                  path: '/clinical/dordoi-ophthalmic'
                 },
                 { label: t('clinicalSUB.docClinic'), path: '/clinical/doc-clinic' },
                 { label: t('clinicalSUB.docHospital'), path: '/clinical/doc-hospital' }

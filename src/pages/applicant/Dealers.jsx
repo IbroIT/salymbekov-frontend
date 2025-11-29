@@ -152,7 +152,7 @@ const Dealers = () => {
                     <p className="text-gray-600 mb-6 leading-relaxed">
                       {country.description}
                     </p>
-                    
+
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-500">
                         Нажмите для подробностей

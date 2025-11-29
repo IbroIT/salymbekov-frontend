@@ -73,6 +73,90 @@
     "center": "Education and Innovation Center (Naryn)",
     "centerDesc": "Regional education center in Naryn"
   },
+  "clinical": {
+    "agreements": {
+      "heroTitle": "Exclusive Agreements",
+      "heroDescription": "Exclusive agreements with clinics — partnerships to ensure quality medical care.",
+      "tags": {
+        "partnerships": "Partnerships",
+        "quality": "Quality of Treatment",
+        "expansion": "Expanding Opportunities",
+        "cooperation": "Cooperation",
+        "innovation": "Innovations"
+      },
+      "sectionTitle": "Contracts and Agreements",
+      "sectionDescription": "Official documents on cooperation with medical institutions",
+      "pdfDocument": "PDF document",
+      "openPdf": "Open PDF",
+      "contracts": {
+        "asiaMed": "Asia Med Agreement (Karkyra Med)",
+        "eosMedAdditional": "LLC EOS-Med (Additional Agreement)",
+        "eosMedMain": "LLC EOS-Med (Main Agreement)",
+        "andromedDoc": "LCD Andromed-DOC",
+        "eosPlus": "LLC EOS PLUS"
+      }
+    },
+    "docClinic": {
+      "hero": {
+        "titlePart1": "University Clinic",
+        "titlePart2": "DOC University Clinic",
+        "description": "A new multidisciplinary medical center providing quality medical services in accordance with state and international standards.",
+        "tags": {
+          "multidisciplinary": "Multidisciplinary clinic",
+          "equipment": "Modern equipment",
+          "staff": "Qualified staff",
+          "standards": "International standards"
+        }
+      },
+      "about": {
+        "title": "About the Clinic",
+        "text": "DOC University Clinic is a new multidisciplinary medical center providing quality medical services to broad segments of the population in accordance with state and international standards. According to the license, this clinic is authorized to conduct diagnosis and treatment of therapeutic, cardiological, pulmonological, pediatric, neurological and therapeutic dental diseases, diagnosis, conservative and surgical treatment of surgical, gynecological, urological and ENT diseases with anesthesiological and resuscitation support, and functional diagnostics (ultrasound) in outpatient and inpatient settings. The clinic is fully prepared to provide the above medical services to the country's citizens."
+      },
+      "director": {
+        "title": "Director",
+        "name": "Monolov Nurbek Kytaybekovich",
+        "position": "Candidate of Medical Sciences, PhD, Head of the Department of Clinical and Morphological Disciplines",
+        "quote": "Highly qualified medical staff combined with new innovative medical equipment is ready to provide the specified range of medical services and directions at a high professional level for citizens of Kyrgyzstan and will make a significant contribution to the development of the healthcare system and strengthening the health of the country's population."
+      },
+      "gallery": {
+        "title": "Clinic Atmosphere",
+        "description": "Photos of the clinic, equipment and medical offices. Horizontal gallery with smooth scrolling."
+      },
+      "contacts": {
+        "title": "Contact Information",
+        "address": "Address",
+        "addressValue": "Bishkek city",
+        "phone": "Phone",
+        "phoneValue": "Check on the map",
+        "hours": "Working Hours",
+        "hoursValue": "Mon-Fri: 09:00-18:00"
+      }
+    },
+    "docHospital": {
+      "hero": {
+        "title": "DOC University Hospital",
+        "description": "DOC University Clinic is a new multidisciplinary medical center providing quality medical services to broad segments of the population in accordance with state and international standards. According to the license, this clinic is authorized to conduct diagnosis and treatment of therapeutic, cardiological, pulmonological, pediatric, neurological and therapeutic dental diseases, diagnosis, conservative and surgical treatment of surgical, gynecological, urological and ENT diseases with anesthesiological and resuscitation support, and functional diagnostics (ultrasound) in outpatient and inpatient settings. The clinic is fully prepared to provide the above medical services to the country's citizens.",
+        "tags": [
+          "Multidisciplinary clinic",
+          "Modern equipment",
+          "Qualified staff",
+          "International standards",
+          "University base",
+          "Quality services"
+        ]
+      },
+      "director": {
+        "title": "Director",
+        "name": "Imanaliev Chingyz Mairambekovich",
+        "position": "Urologist, General Director of «DOC university clinic»",
+        "quote": "It should be noted that the clinic is part of the University's clinical base and is an indicator of its further development. Strengthening the clinical base not only enhances the country's healthcare system, but also makes a significant contribution to the development of higher medical education exports and attracting investments to the country."
+      },
+      "gallery": {
+        "title": "Clinic Atmosphere",
+        "description": "Photos of the clinic, equipment and medical offices. Horizontal gallery with smooth scrolling."
+      }
+    }
+  },
   "clinicalBaseSub": {
     "lazmed": "Lazmed",
     "lazmedDesc": "Advanced laser medicine clinic",
@@ -882,11 +966,179 @@
   },
   "clinicalSUB": {
     "ownBases": "Own Clinical Bases",
-    "lazmed": "Lazmed",
+    "lazmed": "Lazmed Clinic",
     "dordoiOphthalmic": "Dordoi Ophthalmic Service",
     "docClinic": "DOC University Clinic",
     "docHospital": "DOC University Hospital",
-    "agreements": "Agreements with Clinics"
+    "agreements": "Agreements with Clinics",
+    "lazmedDescription": "Modern multidisciplinary medical center providing high-quality medical services",
+    "lazmedAbout": "About Clinic",
+    "lazmedServices": "Services",
+    "lazmedDoctors": "Our Doctors",
+    "lazmedEquipment": "Equipment",
+    "lazmedContacts": "Contacts",
+    "lazmedAddress": "Address",
+    "lazmedPhone": "Phone",
+    "lazmedEmail": "Email",
+    "lazmedSchedule": "Working Hours",
+    "lazmedAppointment": "Make an Appointment",
+    "aboutTitle": "About \"Lazmed\" Clinic",
+    "servicesTitle": "Procedures and Services",
+    "servicesDesc": "All procedures are performed in accordance with safety and quality standards",
+    "equipmentTitle": "Modern Equipment",
+    "contactsTitle": "Contacts and Appointments",
+    "contactsDesc": "Reception is by appointment. We are ready to answer questions and select a convenient time for an appointment",
+    "directorTitle": "Shaltakova Gulbu Chalovna — Clinic Founder",
+    "directorPosition": "Surgeon, Candidate of Medical Sciences, highly qualified doctor in the field of laser medicine and aesthetics",
+    "directorText1": "Chief physician of the clinic, initiator of Lazmed creation and one of the leading specialists in laser therapy. Has extensive experience in surgical practice and is engaged in the implementation of modern treatment methods and aesthetic medicine",
+    "directorText2": "Under her leadership, the clinic developed specialized areas: laser surgery, gynecological and urological services, dermato-cosmetological care, diagnostic and laboratory research",
+    "aboutText1": "Lazmed Medical Clinic is equipped with modern medical equipment and was founded in 2010 with a focus on providing high-quality professional medical services to the population. The clinic is a leading medical institution at Salymbeko University and combines the high professionalism of doctors with an individual approach to patients",
+    "aboutText2": "The clinic has a modern operating unit, a postoperative ward for 7 people, a dressing room, a doctor's room, a massage room, a treatment room, doctors' offices by specialization (gynecologist, ENT, urologist, dermatocosmetologist), as well as service premises",
+    "aboutText3": "Our goal is to provide the patient with a comprehensive path from diagnosis to rehabilitation, using certified equipment and modern clinical treatment protocols",
+    "experienceYears": "Experience — over 15 years",
+    "experienceDesc": "Professional doctors and proven methods",
+    "tag1": "Experienced doctors",
+    "tag2": "Modern equipment",
+    "tag3": "Individual approach",
+    "galleryTitle": "Results and atmosphere",
+    "galleryDesc": "Photos from the clinic and examples of conditions after procedures. Scroll the gallery horizontally.",
+    "equipmentDesc": "High-precision equipment from world manufacturers, complying with international standards.",
+    "addressLabel": "Address",
+    "addressValue": "Bishkek, Kok-Zhar microdistrict, 7 Aprelya st., 3/1",
+    "phoneLabel": "Phone",
+    "websiteLabel": "Website",
+    "scheduleLabel": "Working hours",
+    "scheduleValue": "Mon–Fri: 09:00–18:00 · Sat: 09:00–14:00"
+  },
+  "lazmed": {
+    "heroTitle": "Laser Medicine Clinic — Lazmed",
+    "description": "Modern laser and aesthetic medicine clinic — advanced techniques, comfort and individual approach",
+    "experienceYears": "Experience — over 15 years",
+    "experienceDesc": "Professional doctors and proven methods",
+    "aboutTitle": "About \"Lasmed\" Clinic",
+    "aboutText1": "The medical clinic \"Lasmed\" was founded in 2010 with a focus on providing high-quality professional medical services to the population. The clinic is an advanced medical institution at Salymbekov University and combines high professionalism of doctors with an individual approach to patients.",
+    "aboutText2": "The clinic is equipped with modern medical equipment. It has a modern operating unit, a postoperative ward for 7 people, a dressing room, a doctors' room, a massage room, a treatment room, doctors' offices by specialty (gynecologist, ENT, urologist, dermatocosmetologist), as well as service premises.",
+    "aboutText3": "Our goal is to provide the patient with a comprehensive path from diagnosis to rehabilitation using certified equipment and modern clinical treatment protocols.",
+    "tag1": "Experienced doctors",
+    "tag2": "Modern equipment",
+    "tag3": "Individual approach",
+    "directorTitle": "Shaltakova Gulbu Chalovna — clinic founder",
+    "directorPosition": "Surgeon, Candidate of Medical Sciences, highly qualified doctor in laser medicine and aesthetics",
+    "directorText1": "Chief physician of the clinic, initiator of the creation of Lasmed and one of the leading specialists in laser therapy. Has extensive experience in surgical practice and is engaged in the introduction of modern treatment methods and aesthetic medicine.",
+    "directorText2": "Under her leadership, the clinic has developed specialized areas: laser surgery, gynecological and urological services, dermatocosmetic care, diagnostic and laboratory research.",
+    "servicesTitle": "Procedures and services",
+    "servicesDesc": "All procedures are performed in compliance with safety and quality standards",
+    "services": {
+      "laserSurgery": {
+        "title": "Laser Surgery",
+        "description": "Unique properties of laser radiation help fight both aesthetic imperfections (warts, moles) and complex diseases such as foot deformities. Laser methods are safe and accurate."
+      },
+      "laparoscopy": {
+        "title": "Laparoscopic Surgery",
+        "description": "Modern method of surgical intervention through small incisions (0.5-1.5 cm). Minimal tissue damage, faster rehabilitation and short hospital stay."
+      },
+      "plastic": {
+        "title": "Plastic Surgery",
+        "description": "Plastic surgery allows correcting the shape of the nose, ears, eyebrows, chin, lips; eliminating wrinkles and figure defects. Precise techniques are used for long-term results."
+      },
+      "dermatology": {
+        "title": "Skin Diagnostics and Treatment",
+        "description": "Comprehensive diagnostics of skin diseases with an individual treatment plan (medication therapy, physiotherapy, laser techniques and cosmetic solutions)."
+      },
+      "ent": {
+        "title": "ENT (Ear-Nose-Throat)",
+        "description": "Diagnosis and treatment of diseases of the ear, throat and nose are important areas requiring a precise approach due to anatomical proximity to the brain. Comprehensive treatment is carried out in accordance with modern standards."
+      },
+      "urology": {
+        "title": "Urology",
+        "description": "Conservative and operative urological treatment. Includes individual drug treatment taking into account sensitivity to antibiotics and modern laser methods."
+      },
+      "massage": {
+        "title": "Massage",
+        "description": "A wide range of massage techniques — up to 15 types of massage aimed at restoring and improving the condition of the musculoskeletal system and general well-being."
+      },
+      "manual": {
+        "title": "Manual Therapy",
+        "description": "Manual therapy is treatment with hands for problems of the spine, joints, headaches and posture disorders. An effective method for restoring balance in the body."
+      },
+      "ultrasound": {
+        "title": "3D/4D Ultrasound",
+        "description": "Modern ultrasound diagnostics in 3D/4D mode allows you to see a three-dimensional image of the fetus in real time, and color Doppler assesses blood flow and fetal condition."
+      },
+      "laboratory": {
+        "title": "Laboratory",
+        "description": "Modern laboratory diagnostics office with a wide range of studies and fast results is the basis of quality medical care."
+      },
+      "gynecology": {
+        "title": "Gynecology",
+        "description": "Professional women's consultation, comprehensive diagnostics and advanced methods of treatment of gynecological diseases, including laser technologies."
+      },
+      "therapy": {
+        "title": "Therapy",
+        "description": "Primary medical care, diagnosis of diseases, prescription of treatment and referral to narrow specialists if necessary."
+      }
+    },
+    "galleryTitle": "Results and atmosphere",
+    "galleryDesc": "Photos from the clinic and examples of conditions after the procedures. Scroll the gallery horizontally",
+    "equipmentTitle": "Modern equipment",
+    "equipmentDesc": "High-precision equipment from world manufacturers that meets international standards",
+    "contactsTitle": "Contacts and appointment",
+    "contactsDesc": "Admission is by appointment. We are ready to answer questions and choose a convenient time for your appointment",
+    "addressLabel": "Address",
+    "addressValue": "Bishkek, Kok-Jar district, 7 Aprelya street, 3/1",
+    "phoneLabel": "Phone",
+    "websiteLabel": "Website",
+    "scheduleLabel": "Working hours",
+    "scheduleValue": "Mon-Fri: 09:00-18:00 · Sat: 09:00-14:00"
+  },
+  "dordoi": {
+    "title": "Medical Center LLC",
+    "subtitle": "Eye Microsurgery «Dordoi-Ophthalmic Service»",
+    "description": "Modern ophthalmological care: eye microsurgery, innovative laser technologies, custom prosthetics and contact lenses.",
+    "tags": {
+      "trust": "High patient trust",
+      "equipment": "Unique equipment",
+      "prosthetics": "Custom eye prosthetics",
+      "phaco": "Modern phacoemulsifiers"
+    },
+    "director": {
+      "title": "Director",
+      "name": "Eshmambetov Asizbek Eshmambetovich",
+      "intro": "Eshmambetov Asizbek Eshmambetovich — Honored Healthcare Worker of the Kyrgyz Republic. Founder (1995) and permanent director of the Eye Microsurgery Medical Center «Dordoi-Ophthalmic-Service» and the only laboratory in Central Asia for manufacturing custom eye prosthetics.",
+      "history": "The Eye Microsurgery Center «Dordoi-Ophthalmic Service» was established in 1996. Today, the center successfully develops and provides almost all types of modern ophthalmological services, earning the trust of the population of Kyrgyzstan and neighboring countries.",
+      "equipment": "Equipment includes the ultrasonic phacoemulsifier LEGACI (USA) and the latest generation INFINITI (2016) device, which allows cataract removal without sutures with hospitalization of no more than one day.",
+      "labs": "Unique laboratories operate successfully: for manufacturing custom eye prosthetics and producing soft contact lenses. Since 2000, the center has been a profitable enterprise and was recognized by the Ministry of Health as the best medical institution among non-governmental structures.",
+      "technologies": "The use of microsurgical, laser and modern technologies allows bloodless plastic surgery to eliminate cosmetic defects of neoplasms with minimal risk of complications — an alternative to heavy operations under general anesthesia.",
+      "conferences": "Under the leadership of Asizbek Eshmambetov, together with the Department of Eye Diseases of the Kyrgyz State Medical Academy, Central Asian conferences on ophthalmology were organized for the first time in Kyrgyzstan (2002, 2007, 2011, 2015) with the participation of 250+ specialists from Russia, Ukraine, Kazakhstan, Uzbekistan, Tajikistan, Germany, Turkey, India, USA and Finland.",
+      "international": "The center maintains ties with international specialists: a professor from Kazakhstan and a prosthetist from Moscow work here. Regular internships for doctors and nurses ensure mastery of new techniques.",
+      "charity": "In 2016, a free complex of eye operations was provided to an institution for the elderly and people with disabilities (10–12 people)."
+    },
+    "services": {
+      "title": "Main Directions",
+      "description": "Modern standards and personalized treatment methods.",
+      "cataract": "Cataract Microsurgery",
+      "laser": "Laser Operations",
+      "diagnostics": "Vision Diagnostics",
+      "prosthetics": "Custom Eye Prosthetics",
+      "lenses": "Contact Lenses (Production)",
+      "rehabilitation": "Postoperative Rehabilitation"
+    },
+    "gallery": {
+      "title": "Atmosphere and Center Work",
+      "description": "Photos of equipment, operating rooms and procedure stages. Horizontal gallery with smooth scrolling."
+    },
+    "contacts": {
+      "title": "Contact Information",
+      "address": "Address",
+      "addressValue": "Bishkek, Fuchik str., 3/4",
+      "phones": "Phones",
+      "phone1": "+996 (312) 65 88 93",
+      "phone2": "+996 (500) 65 88 93",
+      "website": "Website",
+      "websiteValue": "eyeclinic.kg",
+      "hours": "Working hours",
+      "hoursValue": "Specify by phone (flexible surgery schedule)"
+    }
   },
   "scienceSUB": {
     "management": "Governing Bodies",
