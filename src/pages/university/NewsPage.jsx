@@ -46,7 +46,7 @@ const UniversityNews = () => {
         const categoriesData = await apiRequest(`/presscentre/categories/?lang=${i18n.language}`);
         
         // Загрузка новостей
-        const newsData = await apiRequest(`/presscentre/news/?lang=${i18n.language}`);
+        const newsData = await apiRequest(`/presscentre/news/?lang=${i18n.language}&limit=1000`);
 
         // Преобразование данных категорий
         const categoriesArray = categoriesData.results || categoriesData;

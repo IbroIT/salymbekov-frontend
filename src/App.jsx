@@ -70,6 +70,7 @@ const Center = lazy(() => import('./pages/education/Center'))
 const DocClinic = lazy(() => import('./pages/clinical/DocClinic'))
 const DocHospital = lazy(() => import('./pages/clinical/DocHospital'))
 const SimulationCenter = lazy(() => import('./pages/clinical/SimulationCenter'))
+const Startups = lazy(() => import('./pages/clinical/Startups'))
 
 // Science lazy imports
 const ScientificCouncil = lazy(() => import('./pages/science/management/ScientificCouncil'))
@@ -332,6 +333,7 @@ const App = () => {
             <Route path="/clinical/doc-clinic" element={<DocClinic />} />
             <Route path="/clinical/doc-hospital" element={<DocHospital />} />
             <Route path="/clinical/simulation-center" element={<SimulationCenter />} />
+            <Route path="/clinical/startups" element={<Startups />} />
 
             {/* Lazy Science */}
             <Route path="/science/management" element={<ManagementScience />} />

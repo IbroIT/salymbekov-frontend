@@ -228,7 +228,8 @@ const Navbar = () => {
           subItems: [
             { key: 'docClinic', link: '/clinical/doc-clinic' },
             { key: 'docHospital', link: '/clinical/doc-hospital' },
-            { key: 'simulationCenter', link: '/clinical/simulation-center' }
+            { key: 'simulationCenter', link: '/clinical/simulation-center' },
+            { key: 'startups', link: '/clinical/startups' }
           ]
         }
       ]

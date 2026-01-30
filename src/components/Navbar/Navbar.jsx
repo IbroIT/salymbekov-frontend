@@ -593,7 +593,7 @@ const Navbar = () => {
                 { label: 'Дордой офтальмик сервис', path: '/clinical/dordoi-ophthalmic' },
                 { label: 'DOC university clinic', path: '/clinical/doc-clinic' },
                 { label: 'DOC university hospital', path: '/clinical/doc-hospital' },
-
+                { label: 'Стартапы', path: '/clinical/startups' },
               ]
             },
             {

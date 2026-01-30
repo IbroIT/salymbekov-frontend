@@ -40,7 +40,7 @@ const NewsDetailPage = () => {
         setError(null);
 
         // Получаем новость по ID из списка всех новостей
-        const response = await apiRequest(`/presscentre/news/?lang=${i18n.language}`);
+        const response = await apiRequest(`/presscentre/news/?lang=${i18n.language}&limit=1000`);
         
         console.log('API Response:', response); // Для отладки
         
@@ -144,7 +144,7 @@ const NewsDetailPage = () => {
   // Загрузка связанных новостей
   const fetchRelatedNews = async (currentNews) => {
     try {
-      const response = await apiRequest(`/presscentre/news/?lang=${i18n.language}`);
+      const response = await apiRequest(`/presscentre/news/?lang=${i18n.language}&limit=1000`);
       
       console.log('Related news response:', response); // Для отладки
       

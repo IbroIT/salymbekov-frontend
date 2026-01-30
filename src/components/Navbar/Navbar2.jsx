@@ -241,7 +241,8 @@ const Navbar = () => {
     clinical: {
       items: [
         { key: 'docClinic', link: '/clinical/doc-clinic' },
-        { key: 'docHospital', link: '/clinical/doc-hospital' }
+        { key: 'docHospital', link: '/clinical/doc-hospital' },
+        { key: 'startups', link: '/clinical/startups' }
       ]
     },
     science: {
