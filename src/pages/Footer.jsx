@@ -27,16 +27,14 @@ const Footer = () => {
 
   const quickLinks = [
     { key: 'about', href: '/university/structure/University-main' },
-    { key: 'education', href: '/university/Appeal' },
     { key: 'science', href: '/science/labs' },
-    { key: 'contacts', href: '/university/contacts' }
+    { key: 'contacts', href: '/contacts' }
   ];
 
   const academicPrograms = [
     { key: 'ait', href: '/education/ait/about' },
     { key: 'mfm', href: '/education/mfm/about' },
-    { key: 'itCollege', href: '/university/structure/it-college' },
-    { key: 'businessSchool', href: '/education/business-school/about' }
+    { key: 'itCollege', href: '/university/structure/it-college' }
   ];
 
   const socialLinks = [
@@ -371,7 +369,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
             <p className="text-blue-200 text-xs sm:text-sm text-center md:text-left">
-              © 2025 Salymbekov University | {t('footer.rights')}
+              © 2026 Salymbekov University | {t('footer.rights')}
             </p>
             <div className="flex flex-wrap justify-center space-x-4 sm:space-x-6">
              
