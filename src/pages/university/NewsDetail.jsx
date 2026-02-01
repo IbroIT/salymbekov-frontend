@@ -17,6 +17,43 @@ const NewsDetailPage = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [relatedNews, setRelatedNews] = useState([]);
 
+  // Функция для загрузки всех новостей с пагинацией
+  const fetchAllNews = async (language) => {
+    let allNews = [];
+    let nextUrl = `/presscentre/news/?lang=${language}&limit=100`;
+    
+    while (nextUrl) {
+      const response = await apiRequest(nextUrl);
+      const currentNews = response.results || response || [];
+      allNews = [...allNews, ...currentNews];
+      
+      // Правильно обрабатываем URL для следующей страницы
+      if (response.next) {
+        // Извлекаем только относительный путь из полного URL
+        try {
+          const url = new URL(response.next);
+          let path = url.pathname + url.search;
+          if (path.startsWith('/api')) {
+            path = path.substring(4);
+          }
+          nextUrl = path;
+        } catch {
+          nextUrl = response.next.startsWith('/api') ? response.next.substring(4) : response.next;
+        }
+      } else {
+        nextUrl = null;
+      }
+      
+      // Защита от бесконечного цикла
+      if (allNews.length > 10000) {
+        console.warn('Слишком много новостей, прерываем загрузку');
+        break;
+      }
+    }
+    
+    return allNews;
+  };
+
   // Прокрутка к верху при загрузке
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,19 +76,24 @@ const NewsDetailPage = () => {
         setLoading(true);
         setError(null);
 
-        // Получаем новость по ID из списка всех новостей
-        const response = await apiRequest(`/presscentre/news/?lang=${i18n.language}&limit=1000`);
+        let newsItem = null;
         
-        console.log('API Response:', response); // Для отладки
+        // Сначала пробуем прямой запрос по ID
+        try {
+          const directResponse = await apiRequest(`/presscentre/news/${id}/?lang=${i18n.language}`);
+          if (directResponse && directResponse.id) {
+            newsItem = directResponse;
+            console.log('Новость получена прямым запросом:', newsItem);
+          }
+        } catch (directError) {
+          console.log('Прямой запрос не удался, ищем в списке:', directError.message);
+        }
         
-        let newsItem;
-        // Обработка разных форматов ответа API
-        if (response.results && Array.isArray(response.results)) {
-          newsItem = response.results.find(item => item.id.toString() === id);
-        } else if (Array.isArray(response)) {
-          newsItem = response.find(item => item.id.toString() === id);
-        } else {
-          throw new Error('Некорректный формат данных');
+        // Если прямой запрос не удался, ищем в списке всех новостей
+        if (!newsItem) {
+          const allNews = await fetchAllNews(i18n.language);
+          newsItem = allNews.find(item => item.id.toString() === id);
+          console.log('Поиск в списке всех новостей. Найдено:', !!newsItem);
         }
 
         if (!newsItem) {
@@ -144,31 +186,30 @@ const NewsDetailPage = () => {
   // Загрузка связанных новостей
   const fetchRelatedNews = async (currentNews) => {
     try {
-      const response = await apiRequest(`/presscentre/news/?lang=${i18n.language}&limit=1000`);
+      // Загружаем все новости для поиска связанных
+      const allNews = await fetchAllNews(i18n.language);
       
-      console.log('Related news response:', response); // Для отладки
+      console.log('Загружено для связанных новостей:', allNews.length); // Для отладки
       
-      let allNews;
-      if (response.results && Array.isArray(response.results)) {
-        allNews = response.results;
-      } else if (Array.isArray(response)) {
-        allNews = response;
-      } else {
-        allNews = [];
-      }
+      // Получаем идентификатор категории текущей новости
+      const currentCategoryId = currentNews.category?.id || currentNews.category_id || currentNews.category;
       
       // Фильтруем связанные новости (той же категории, исключая текущую)
       const related = allNews
-        .filter(item => 
-          item.id !== currentNews.id && 
-          (item.category === currentNews.category || 
-           item.category_id === currentNews.category_id)
-        )
+        .filter(item => {
+          if (item.id === currentNews.id) return false;
+          
+          const itemCategoryId = item.category?.id || item.category_id || item.category;
+          return itemCategoryId && currentCategoryId && 
+                 (itemCategoryId === currentCategoryId || 
+                  itemCategoryId.toString() === currentCategoryId.toString());
+        })
         .slice(0, 3);
       
+      console.log('Найдено связанных новостей:', related.length);
       setRelatedNews(related);
     } catch (err) {
-      console.error('Error fetching related news:', err);
+      console.error('Ошибка при загрузке связанных новостей:', err);
     }
   };
 

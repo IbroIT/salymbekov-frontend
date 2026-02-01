@@ -35,6 +35,46 @@ const UniversityNews = () => {
     }
   };
 
+  // Функция для загрузки всех новостей с пагинацией
+  const fetchAllNews = async (language) => {
+    let allNews = [];
+    let nextUrl = `/presscentre/news/?lang=${language}&limit=100`;
+    
+    while (nextUrl) {
+      const response = await apiRequest(nextUrl);
+      const currentNews = response.results || response || [];
+      allNews = [...allNews, ...currentNews];
+      
+      // Правильно обрабатываем URL для следующей страницы
+      if (response.next) {
+        // Извлекаем только относительный путь из полного URL
+        try {
+          const url = new URL(response.next);
+          // Убираем базовый /api путь, если он есть в начале pathname
+          let path = url.pathname + url.search;
+          if (path.startsWith('/api')) {
+            path = path.substring(4);
+          }
+          nextUrl = path;
+        } catch {
+          // Если это уже относительный URL
+          nextUrl = response.next.startsWith('/api') ? response.next.substring(4) : response.next;
+        }
+      } else {
+        nextUrl = null;
+      }
+      
+      // Защита от бесконечного цикла
+      if (allNews.length > 10000) {
+        console.warn('Слишком много новостей, прерываем загрузку');
+        break;
+      }
+    }
+    
+    console.log('Загружено новостей всего:', allNews.length);
+    return allNews;
+  };
+
   // Загрузка данных
   useEffect(() => {
     const fetchData = async () => {
@@ -45,11 +85,11 @@ const UniversityNews = () => {
         // Загрузка категорий
         const categoriesData = await apiRequest(`/presscentre/categories/?lang=${i18n.language}`);
         
-        // Загрузка новостей
-        const newsData = await apiRequest(`/presscentre/news/?lang=${i18n.language}&limit=1000`);
+        // Загрузка всех новостей с пагинацией
+        const newsArray = await fetchAllNews(i18n.language);
 
         // Преобразование данных категорий
-        const categoriesArray = categoriesData.results || categoriesData;
+        const categoriesArray = categoriesData.results || categoriesData || [];
         const transformedCategories = [
           { id: 'all', name: t('press.categories.all'), color: 'gray' },
           ...categoriesArray.map(cat => ({
@@ -59,27 +99,45 @@ const UniversityNews = () => {
           }))
         ];
 
-        // Преобразование данных новостей
-        const newsArray = newsData.results || newsData || [];
-        const transformedNews = Array.isArray(newsArray) ? newsArray.map(item => ({
-          id: item.id,
-          title: item.title,
-          date: new Date(item.published_at || item.created_at).toLocaleDateString(i18n.language, {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          }),
-          category: item.category?.id?.toString() || item.category_id?.toString() || '1',
-          category_name: item.category?.title || 'General',
-          image_url: item.image || null,
-          gallery: item.gallery || [], // Добавляем галерею
-          aspect_ratio: item.aspect_ratio || 'wide',
-          description: item.short_description || item.description?.substring(0, 200) + '...' || '',
-          full_description: item.description,
-          // Используем is_recommended из API, а не индекс
-          is_recommended: item.is_recommended || false,
-          created_at: item.published_at || item.created_at
-        })) : [];
+        // Преобразование данных новостей с улучшенной обработкой
+        const transformedNews = Array.isArray(newsArray) ? newsArray.map(item => {
+          // Более надежная обработка категории
+          let categoryId = null;
+          if (item.category) {
+            categoryId = typeof item.category === 'object' ? item.category.id : item.category;
+          } else if (item.category_id) {
+            categoryId = item.category_id;
+          }
+          
+          return {
+            id: item.id,
+            title: item.title || 'Без заголовка',
+            date: new Date(item.published_at || item.created_at).toLocaleDateString(i18n.language, {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            }),
+            category: categoryId ? categoryId.toString() : null,
+            category_name: (item.category?.title || item.category?.name) || 'Без категории',
+            image_url: item.image || null,
+            gallery: item.gallery || [],
+            aspect_ratio: item.aspect_ratio || 'wide',
+            description: item.short_description || (item.description ? item.description.substring(0, 200) + '...' : 'Нет описания'),
+            full_description: item.description || '',
+            is_recommended: Boolean(item.is_recommended),
+            created_at: item.published_at || item.created_at
+          };
+        }) : [];
+        
+        console.log('Преобразованные новости:', transformedNews.length);
+        if (transformedNews.length > 0) {
+          console.log('Пример новости:', {
+            id: transformedNews[0].id,
+            title: transformedNews[0].title.substring(0, 50) + '...',
+            category: transformedNews[0].category,
+            category_name: transformedNews[0].category_name
+          });
+        }
 
         // Сортировка новостей по дате (новые первыми)
         transformedNews.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
@@ -87,39 +145,36 @@ const UniversityNews = () => {
         setCategories(transformedCategories);
         setNewsData(transformedNews);
       } catch (err) {
-        console.error('Error fetching data:', err);
+        console.error('Ошибка при загрузке данных:', err);
+        console.error('Детали ошибки:', err.message, err.stack);
         setError(t('press.error.loading'));
-        // Fallback data
+        
+        // Расширенные демонстрационные данные для отладки
         setCategories([
           { id: 'all', name: t('press.categories.all'), color: 'gray' },
-          { id: '1', name: 'Пресс-релизы', color: 'blue' }
+          { id: '1', name: 'Пресс-релизы', color: 'blue' },
+          { id: '2', name: 'События', color: 'green' },
+          { id: '3', name: 'Достижения', color: 'purple' }
         ]);
-        setNewsData([
-          {
-            id: 1,
-            title: t('press.demo.title', 'Университет представляет новую образовательную программу'),
-            date: new Date().toLocaleDateString(i18n.language),
-            category: '1',
-            category_name: 'Пресс-релизы',
+        
+        const fallbackNews = [];
+        for (let i = 1; i <= 10; i++) {
+          fallbackNews.push({
+            id: i,
+            title: `Демо новость ${i}`,
+            date: new Date(Date.now() - i * 86400000).toLocaleDateString(i18n.language),
+            category: ((i % 3) + 1).toString(),
+            category_name: ['Пресс-релизы', 'События', 'Достижения'][i % 3],
             image_url: null,
-            description: t('press.demo.description', 'Новая программа подготовки специалистов в области медицины с современными технологиями обучения.'),
-            full_description: t('press.demo.fullText', 'Полный текст новости для демонстрации. Университет продолжает развивать образовательные программы и внедрять инновационные методы обучения.'),
-            is_recommended: true,
-            created_at: new Date().toISOString()
-          },
-          {
-            id: 2,
-            title: t('press.demo.title2', 'Открытие нового учебного корпуса'),
-            date: new Date(Date.now() - 86400000).toLocaleDateString(i18n.language), // вчера
-            category: '1',
-            category_name: 'Пресс-релизы',
-            image_url: null,
-            description: t('press.demo.description2', 'Университет открывает новый учебный корпус с современными лабораториями и аудиториями.'),
-            full_description: t('press.demo.fullText2', 'Полный текст новости о новом учебном корпусе.'),
-            is_recommended: false,
-            created_at: new Date(Date.now() - 86400000).toISOString() // вчера
-          }
-        ].sort((a, b) => new Date(b.created_at) - new Date(a.created_at)));
+            description: `Описание демонстрационной новости номер ${i}`,
+            full_description: `Полный текст демонстрационной новости номер ${i}`,
+            is_recommended: i <= 3,
+            created_at: new Date(Date.now() - i * 86400000).toISOString()
+          });
+        }
+        
+        setNewsData(fallbackNews.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)));
+        console.log('Использованы демонстрационные данные:', fallbackNews.length, 'новостей');
       } finally {
         setLoading(false);
       }
@@ -128,10 +183,28 @@ const UniversityNews = () => {
     fetchData();
   }, [i18n.language, t]);
 
-  // Фильтрация новостей по категории
+  // Улучшенная фильтрация новостей по категории
   const filteredNews = activeCategory === 'all' 
     ? newsData 
-    : newsData.filter(item => item.category === activeCategory);
+    : newsData.filter(item => {
+        // Проверяем различные варианты сравнения категории
+        const itemCategory = item.category;
+        if (!itemCategory) return false;
+        
+        return itemCategory === activeCategory || 
+               itemCategory.toString() === activeCategory ||
+               parseInt(itemCategory) === parseInt(activeCategory);
+      });
+      
+  // Логирование только при изменении активной категории или данных
+  useEffect(() => {
+    console.log('Активная категория:', activeCategory);
+    console.log('Всего новостей:', newsData.length);
+    console.log('Отфильтрованные новости:', filteredNews.length);
+    if (newsData.length > 0) {
+      console.log('Примеры категорий новостей:', newsData.slice(0, 3).map(item => ({ id: item.id, category: item.category, title: item.title.substring(0, 30) + '...' })));
+    }
+  }, [activeCategory, newsData.length, filteredNews.length]);
 
   // Разделение на рекомендованные и остальные новости
   const recommendedNews = filteredNews.filter(item => item.is_recommended);

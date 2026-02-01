@@ -12,3 +12,13 @@
   --color-blue-800: #07294A;
   --color-blue-900: #020B14;
 }
+
+/* CSS анимация для горизонтального скроллинга партнеров */
+@keyframes scrollHorizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
