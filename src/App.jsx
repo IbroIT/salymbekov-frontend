@@ -399,6 +399,7 @@ const App = () => {
             <Route path="/infrastructure/locations" element={<Locations />} />
             <Route path="/infrastructure/partners" element={<Partners />} />
             <Route path="/infrastructure/*" element={<Home />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </Suspense>
         <Footer />
