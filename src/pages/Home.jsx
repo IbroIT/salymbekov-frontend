@@ -5,7 +5,7 @@ import HomeNews from './university/HomeNewsSection';
 import PartnersSection from '../components/Home/PartnersSection';
 import VideoSection from '../components/Home/VideoSection';
 
-const Home = () => {
+const Home = ({ isSplashVisible = false }) => {
   return (
     <div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden'>
       {/* Анимированный фон */}
@@ -35,7 +35,7 @@ const Home = () => {
 
       {/* Основной контент */}
       <div className="relative z-10">
-        <Hero />
+        <Hero isSplashVisible={isSplashVisible} />
         <FounderMessage/>
         <HomeNews />
         <PartnersSection />

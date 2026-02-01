@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getBanners } from '../../api';
 
-const SimplePhotoSlider = () => {
+const SimplePhotoSlider = ({ isSplashVisible = false }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -59,7 +59,10 @@ const SimplePhotoSlider = () => {
 
   return (
     <div 
-      className="relative w-screen h-[90vh] bg-black overflow-hidden"
+      className={`relative w-screen h-[90vh] bg-black overflow-hidden
+        transition-all duration-1000 ease-out
+        ${isSplashVisible ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100'}
+      `}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

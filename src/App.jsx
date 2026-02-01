@@ -1,8 +1,9 @@
 
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar1'
 import ScrollToTop from './components/ScrollToTop'
+import SplashScreen from './components/SplashScreen'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -249,14 +250,46 @@ const AboutCenterEducation = lazy(() => import('./pages/education/center/About')
 
 
 const App = () => {
+  const [showSplash, setShowSplash] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem('splashAnimationShown');
+    }
+    return true;
+  });
+
+  // Новый стейт для управления анимацией входа контента
+  // Инициализируем обратным значением от showSplash (если сплэш есть, контент скрыт)
+  const [isContentHidden, setIsContentHidden] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem('splashAnimationShown');
+    }
+    return true;
+  });
+
+  const handleSplashExitStart = () => {
+    setIsContentHidden(false);
+  };
+
+  const handleSplashFinish = () => {
+    console.log('Splash screen finished');
+    setShowSplash(false);
+    setIsContentHidden(false); // На всякий случай дублируем
+  };
+
   return (
     <Router>
+      {showSplash && (
+        <SplashScreen 
+          onFinish={handleSplashFinish} 
+          onAnimationStartExit={handleSplashExitStart}
+        />
+      )}
       <ScrollToTop />
       <div className="min-h-screen bg-gray-100">
-        <Navbar />
+        <Navbar isSplashVisible={isContentHidden} />
         <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div>Загрузка...</div></div>}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home isSplashVisible={isContentHidden} />} />
             <Route path='/press/news' element={<NewsPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
@@ -371,7 +404,7 @@ const App = () => {
         <Footer />
       </div>
     </Router>
-  )
+  );
 }
 
 export default App

@@ -5,7 +5,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 import Logo1 from '../../assets/Logo.png';
 import Logo2 from '../../assets/Logo_white.png';
 
-const Navbar = () => {
+const Navbar = ({ isSplashVisible = false }) => {
   const { t } = useTranslation();
   const location = useLocation();
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -637,7 +637,9 @@ const Navbar = () => {
       {/* Main Navbar */}
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1000 ease-out 
+          ${isSplashVisible ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}
+          ${isScrolled
             ? 'h-16 bg-white/95 backdrop-blur-xl shadow-lg shadow-gray-900/5 border-b border-gray-100'
             : 'h-20 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 backdrop-blur-lg'
           }`}
