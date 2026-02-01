@@ -15,6 +15,25 @@ const UniversityNews = () => {
   const [newsData, setNewsData] = useState([]);
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [sortType, setSortType] = useState('date_desc'); // Новое состояние для сортировки
+  // Функция сортировки новостей
+  const sortNews = (newsArray, sortType) => {
+    const sortedNews = [...newsArray];
+    
+    switch (sortType) {
+      case 'date_desc':
+        return sortedNews.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      case 'date_asc':
+        return sortedNews.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+      case 'title_asc':
+        return sortedNews.sort((a, b) => a.title.localeCompare(b.title));
+      case 'title_desc':
+        return sortedNews.sort((a, b) => b.title.localeCompare(a.title));
+      default:
+        return sortedNews.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    }
+  };
+
   // Функция для получения CSS классов на основе aspect_ratio
   const getAspectRatioClasses = (aspectRatio) => {
     const baseClasses = "w-full bg-gradient-to-r from-blue-50 to-cyan-50 flex items-center justify-center";
@@ -195,20 +214,24 @@ const UniversityNews = () => {
                itemCategory.toString() === activeCategory ||
                parseInt(itemCategory) === parseInt(activeCategory);
       });
+
+  // Применяем сортировку к отфильтрованным новостям
+  const sortedFilteredNews = sortNews(filteredNews, sortType);
       
   // Логирование только при изменении активной категории или данных
   useEffect(() => {
     console.log('Активная категория:', activeCategory);
     console.log('Всего новостей:', newsData.length);
     console.log('Отфильтрованные новости:', filteredNews.length);
+    console.log('Отсортированные новости:', sortedFilteredNews.length);
     if (newsData.length > 0) {
       console.log('Примеры категорий новостей:', newsData.slice(0, 3).map(item => ({ id: item.id, category: item.category, title: item.title.substring(0, 30) + '...' })));
     }
-  }, [activeCategory, newsData.length, filteredNews.length]);
+  }, [activeCategory, newsData.length, filteredNews.length, sortedFilteredNews.length]);
 
-  // Разделение на рекомендованные и остальные новости
-  const recommendedNews = filteredNews.filter(item => item.is_recommended);
-  const regularNews = filteredNews.filter(item => !item.is_recommended);
+  // Разделение на рекомендованные и остальные новости (используем отсортированный список)
+  const recommendedNews = sortedFilteredNews.filter(item => item.is_recommended);
+  const regularNews = sortedFilteredNews.filter(item => !item.is_recommended);
 
   const navigateNews = useCallback((direction) => {
     if (recommendedNews.length === 0) return;
@@ -439,7 +462,7 @@ const UniversityNews = () => {
       )}
 
       {/* Все новости (карточки) */}
-      {filteredNews.length > 0 && (
+      {sortedFilteredNews.length > 0 && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -449,11 +472,11 @@ const UniversityNews = () => {
           >
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-3xl font-bold text-gray-800">{t('press.allNews', 'Все новости')}</h2>
-              <span className="text-gray-500">{filteredNews.length} {t('press.items', 'новостей')}</span>
+              <span className="text-gray-500">{sortedFilteredNews.length} {t('press.items', 'новостей')}</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-              {filteredNews.map((news, index) => (
+              {sortedFilteredNews.map((news, index) => (
                 <motion.div
                   key={news.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -514,7 +537,7 @@ const UniversityNews = () => {
       )}
 
       {/* No News Message */}
-      {filteredNews.length === 0 && !loading && (
+      {sortedFilteredNews.length === 0 && !loading && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg className="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
