@@ -1,17 +1,17 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!assets|api|_next|favicon.ico).*)",
       "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-cache"
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     }
