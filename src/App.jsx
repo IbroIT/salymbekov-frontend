@@ -279,8 +279,8 @@ const App = () => {
   return (
     <Router>
       {showSplash && (
-        <SplashScreen 
-          onFinish={handleSplashFinish} 
+        <SplashScreen
+          onFinish={handleSplashFinish}
           onAnimationStartExit={handleSplashExitStart}
         />
       )}
@@ -382,10 +382,11 @@ const App = () => {
             <Route path="/science/publications/journal" element={<ScientificJournal />} />
             <Route path="/science/events" element={<ScienceEvents />} />
             <Route path="/science/scholarships" element={<ScienceScholarships />} />
+            {/* <Route path="/science/centers" element={<Biology />} /> */}
             <Route path="/science/labs" element={<Labs />} />
             <Route path="/science/labs/anatomy" element={<Anatomy />} />
             <Route path="/science/labs/biochemistry" element={<Biochemistry />} />
-            <Route path="/science/labs/chemistry" element={<Chemistry />} />
+            {/* <Route path="/science/labs/chemistry" element={<Chemistry />} /> */}
             <Route path="/science/labs/biology" element={<Biology />} />
             <Route path="/science/labs/interactive" element={<Interactive />} />
             <Route path="/science/labs/computer" element={<Computer />} />

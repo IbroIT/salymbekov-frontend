@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { 
+import {
   FaGraduationCap,
   FaAward,
   FaGlobe,
@@ -61,102 +61,7 @@ const TeachersPage = () => {
         email: '#'
       }
     },
-    {
-      id: 3,
-      image: 'https://salymbekov.com/wp-content/uploads/2023/06/dr-yunus-emre.png',
-      name: t('teachers.teachers.teacher3.name'),
-      position: t('teachers.teachers.teacher3.position'),
-      text: t('teachers.teachers.teacher3.text'),
-      subjects: t('teachers.teachers.teacher3.subjects', { returnObjects: true }),
-      experience: t('teachers.teachers.teacher3.experience'),
-      category: "tech",
-      featured: false,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        email: '#'
-      }
-    },
-    {
-      id: 4,
-      image: 'https://salymbekov.com/wp-content/uploads/2023/06/ero-yeniaras.png',
-      name: t('teachers.teachers.teacher4.name'),
-      position: t('teachers.teachers.teacher4.position'),
-      text: t('teachers.teachers.teacher4.text'),
-      subjects: t('teachers.teachers.teacher4.subjects', { returnObjects: true }),
-      experience: t('teachers.teachers.teacher4.experience'),
-      category: "design",
-      featured: false,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        email: '#'
-      }
-    },
-    {
-      id: 5,
-      image: 'https://salymbekov.com/wp-content/uploads/2023/06/soji-omiwade.png',
-      name: t('teachers.teachers.teacher5.name'),
-      position: t('teachers.teachers.teacher5.position'),
-      text: t('teachers.teachers.teacher5.text'),
-      subjects: t('teachers.teachers.teacher5.subjects', { returnObjects: true }),
-      experience: t('teachers.teachers.teacher5.experience'),
-      category: "business",
-      featured: true,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        email: '#'
-      }
-    },
-    {
-      id: 6,
-      image: 'https://salymbekov.com/wp-content/uploads/2023/06/dr-alon-arad.png',
-      name: t('teachers.teachers.teacher6.name'),
-      position: t('teachers.teachers.teacher6.position'),
-      text: t('teachers.teachers.teacher6.text'),
-      subjects: t('teachers.teachers.teacher6.subjects', { returnObjects: true }),
-      experience: t('teachers.teachers.teacher6.experience'),
-      category: "tech",
-      featured: false,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        email: '#'
-      }
-    },
-    {
-      id: 7,
-      image: 'https://salymbekov.com/wp-content/uploads/2023/06/dogukan-erenel1.png',
-      name: t('teachers.teachers.teacher7.name'),
-      position: t('teachers.teachers.teacher7.position'),
-      text: t('teachers.teachers.teacher7.text'),
-      subjects: t('teachers.teachers.teacher7.subjects', { returnObjects: true }),
-      experience: t('teachers.teachers.teacher7.experience'),
-      category: "design",
-      featured: false,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        email: '#'
-      }
-    },
-    {
-      id: 8,
-      image: 'https://salymbekov.com/wp-content/uploads/2023/06/ilyas-photo.png',
-      name: t('teachers.teachers.teacher8.name'),
-      position: t('teachers.teachers.teacher8.position'),
-      text: t('teachers.teachers.teacher8.text'),
-      subjects: t('teachers.teachers.teacher8.subjects', { returnObjects: true }),
-      experience: t('teachers.teachers.teacher8.experience'),
-      category: "business",
-      featured: false,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        email: '#'
-      }
-    }
+
   ];
 
   const stats = [
@@ -192,8 +97,8 @@ const TeachersPage = () => {
   const filteredTeachers = teachers.filter(teacher => {
     const matchesFilter = activeFilter === "all" || teacher.category === activeFilter;
     const matchesSearch = teacher.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         teacher.position.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         teacher.subjects.some(subject => subject.toLowerCase().includes(searchTerm.toLowerCase()));
+      teacher.position.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      teacher.subjects.some(subject => subject.toLowerCase().includes(searchTerm.toLowerCase()));
     return matchesFilter && matchesSearch;
   });
 
@@ -330,11 +235,10 @@ const TeachersPage = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-2 ${
-                    activeFilter === filter.id
+                  className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-2 ${activeFilter === filter.id
                       ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-lg'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }`}
+                    }`}
                 >
                   <FaFilter className="text-sm" />
                   {filter.label}
@@ -373,12 +277,12 @@ const TeachersPage = () => {
                         whileHover={{ scale: 1.05 }}
                         className="relative group"
                       >
-                        <img 
-                          src={teacher.image} 
+                        <img
+                          src={teacher.image}
                           alt={teacher.name}
                           className="w-full h-auto rounded-2xl shadow-md group-hover:shadow-lg transition-all duration-300"
                         />
-                       
+
                       </motion.div>
 
                       <div className="text-center mt-6">
@@ -392,7 +296,7 @@ const TeachersPage = () => {
                           {teacher.experience}
                         </p>
 
-                       
+
                       </div>
                     </div>
 
@@ -405,7 +309,7 @@ const TeachersPage = () => {
                         </div>
                       </div>
 
-                     
+
                     </div>
                   </div>
                 </div>
@@ -455,7 +359,7 @@ const TeachersPage = () => {
           </div>
         </motion.div>
 
-        
+
       </div>
     </div>
   );

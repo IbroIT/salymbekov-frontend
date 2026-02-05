@@ -5684,7 +5684,7 @@
       "achievements": "Key achievements",
       "leaders": {
         "leader1": {
-          "name": "Zholdoshbek Salymbekov Salymbekovich",
+          "name": "Askar Salymbekov",
           "position": "Founder and President",
           "text": "Strategic vision and leadership in creating an advanced technological institute that combines education, research and innovation to prepare the next generation of IT specialists.",
           "achievements": [
@@ -5695,7 +5695,7 @@
           ]
         },
         "leader2": {
-          "name": "Chynara Asylbekova Toktogulovna",
+          "name": "Emil Bilgaziev",
           "position": "Institute Director",
           "text": "Experienced education manager specializing in developing innovative educational programs and creating world-class learning environment.",
           "achievements": [
@@ -5706,7 +5706,7 @@
           ]
         },
         "leader3": {
-          "name": "Temirlan Kyzylbekov",
+          "name": "Tolubaeva Munara Zholchuevna",
           "position": "Technical Director",
           "text": "Technical visionary with deep understanding of modern technology trends and practical experience in implementing large-scale IT projects.",
           "achievements": [
@@ -5717,7 +5717,7 @@
           ]
         },
         "leader4": {
-          "name": "Rysbek Aldagandaev",
+          "name": "Rysbek Aldagandaev Abdyldaev",
           "position": "Development Director",
           "text": "Strategic leader responsible for developing partnership relations, international cooperation and institute's growth on the global arena.",
           "achievements": [
@@ -5820,7 +5820,7 @@
       },
       "teachers": {
         "teacher1": {
-          "name": "Asylbekova Chinara Toktogulovna",
+          "name": "Emil Bilgaziev",
           "position": "Institute Director",
           "experience": "15+ years in education",
           "text": "<strong>Experienced education manager</strong>\nSpecializes in developing innovative educational programs and creating world-class educational environment. Under her leadership, the institute has achieved significant success in training IT specialists.",
@@ -5832,7 +5832,7 @@
           ]
         },
         "teacher2": {
-          "name": "Temirlan Kyzylbekov",
+          "name": "Tolubaeva Munara Zholchuevna",
           "position": "Technical Director",
           "experience": "10+ years in development",
           "text": "<strong>Technical visionary with deep understanding of modern technology trends</strong>\nPractical experience in implementing large-scale IT projects for international companies. Specializes in cloud architecture and microservices.",
@@ -5841,78 +5841,6 @@
             "Microservices and Docker",
             "DevOps practices",
             "System Design"
-          ]
-        },
-        "teacher3": {
-          "name": "Dr. Yunus Emre",
-          "position": "Professor of AI and Machine Learning",
-          "experience": "12+ years in AI research",
-          "text": "<strong>Expert in artificial intelligence and machine learning</strong>\nAuthor of numerous scientific publications and patents. Led research projects in leading technology companies.",
-          "subjects": [
-            "Machine Learning",
-            "Deep Learning",
-            "Computer Vision",
-            "Natural Language Processing"
-          ]
-        },
-        "teacher4": {
-          "name": "Ero Yeniaras",
-          "position": "Lead UX/UI Designer",
-          "experience": "8+ years in design",
-          "text": "<strong>User experience and interface specialist</strong>\nWorked on projects for Fortune 500 companies. Expert in creating intuitive and aesthetic digital products.",
-          "subjects": [
-            "UX Research",
-            "UI Design",
-            "Prototyping",
-            "Design Systems"
-          ]
-        },
-        "teacher5": {
-          "name": "Soji Omiwade",
-          "position": "Business Trainer",
-          "experience": "15+ years in business consulting",
-          "text": "<strong>Business strategy and entrepreneurship expert</strong>\nHelped over 100 startups achieve success. Specializes in business modeling and strategic planning.",
-          "subjects": [
-            "Business Strategy",
-            "Entrepreneurship",
-            "Product Management",
-            "Business Modeling"
-          ]
-        },
-        "teacher6": {
-          "name": "Dr. Alon Arad",
-          "position": "Professor of Data Science",
-          "experience": "10+ years in Data Science",
-          "text": "<strong>Data science and analytics specialist</strong>\nWorked in leading financial institutions and tech companies. Expert in building scalable data analysis systems.",
-          "subjects": [
-            "Data Analysis",
-            "Statistics",
-            "Big Data Technologies",
-            "Data Visualization"
-          ]
-        },
-        "teacher7": {
-          "name": "Dogukan Erenel",
-          "position": "Frontend Architect",
-          "experience": "8+ years in development",
-          "text": "<strong>Frontend solutions architect</strong>\nSpecializes in creating high-performance web applications. Expert in modern frameworks and development tools.",
-          "subjects": [
-            "React and ecosystem",
-            "Vue.js",
-            "TypeScript",
-            "Frontend Architecture"
-          ]
-        },
-        "teacher8": {
-          "name": "Ilyas Amanov",
-          "position": "Product Manager",
-          "experience": "7+ years in product management",
-          "text": "<strong>Digital product management specialist</strong>\nSuccessfully launched over 20 digital products. Expert in agile methodologies and customer development.",
-          "subjects": [
-            "Product Management",
-            "Agile and Scrum",
-            "Customer Development",
-            "Metrics and Analytics"
           ]
         }
       },
@@ -13454,7 +13382,17 @@
       "aboutJournal": "About the Journal",
       "fullDescription": "The scientific-theoretical journal 'Medicine and Education Bulletin' publishes original scientific articles, literature reviews and research results in the fields of medical, biological and pedagogical sciences.",
       "publishes": "The journal contributes to the development of scientific thought and serves as a platform for the exchange of experience between researchers, teachers and practitioners.",
-      "issue": "Issue",
+      "issue": {
+        "1": "Issue No. 1",
+        "2": "Issue No. 2",
+        "3": "Issue No. 3",
+        "4": "Issue No.4",
+        "5": "Issue No.5",
+        "6": "Issue No.6",
+        "7": "Issue No. 7",
+        "8": "Issue No. 8",
+        "9": "Issue No. 9"
+      },
       "openPdf": "Open PDF",
       "articlesList": "List of scientific articles",
       "pages": "Pages: {{from}}-{{to}}",

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { 
+import {
   FaAward,
   FaGraduationCap,
   FaBriefcase,
@@ -142,7 +142,7 @@ const Founder = () => {
                 className="lg:w-2/5"
               >
                 <div className="relative">
-                  <img 
+                  <img
                     src="https://cdn-1.aki.kg/st_runews/9/621649.1.1442234987.jpg"
                     alt={t('founder.founderImageAlt')}
                     className="w-full h-auto rounded-2xl shadow-lg"
@@ -263,7 +263,7 @@ const Founder = () => {
               <h3 className="text-3xl font-bold text-gray-800 mb-6">
                 {t('founder.biography.title')}
               </h3>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Основная информация */}
                 <div className="space-y-4">
@@ -274,7 +274,7 @@ const Founder = () => {
                       <p className="text-gray-700">{t('founder.biography.birthDateValue')}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-xl">
                     <FaBriefcase className="text-[#023E8A] text-xl" />
                     <div>
@@ -282,7 +282,7 @@ const Founder = () => {
                       <p className="text-gray-700">{t('founder.biography.birthPlaceValue')}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-xl">
                     <FaAward className="text-[#023E8A] text-xl" />
                     <div>

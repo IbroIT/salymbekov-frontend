@@ -15,7 +15,7 @@ const PartnersSection = () => {
       try {
         const response = await axios.get('https://salymbekov-backend-f4c797e9b169.herokuapp.com/api/partners/');
         console.log('Partners API response:', response.data);
-        
+
         // Проверяем структуру ответа
         if (response.data && response.data.results) {
           setPartners(response.data.results);
@@ -66,7 +66,7 @@ const PartnersSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6"
           >
-            {t('partners.sectionTitle', 'Наши партнеры')}
+            {t('home.partners.title')}
           </motion.h2>
 
           <motion.div
@@ -82,7 +82,7 @@ const PartnersSection = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
           >
-            {t('partners.sectionSubtitle', 'Мы сотрудничаем с ведущими организациями для достижения общих целей и развития региона')}
+            {t('home.partners.subtitle', 'Мы сотрудничаем с ведущими организациями для достижения общих целей и развития региона')}
           </motion.p>
         </motion.div>
 
@@ -118,10 +118,10 @@ const PartnersSection = () => {
                   style={{ minWidth: '240px', height: '160px' }}
                 >
                   <div className="group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-                    <img 
-                      src={company.logo} 
-                      alt={company.name} 
-                      className="max-w-[180px] max-h-[120px] object-contain transition-all duration-300" 
+                    <img
+                      src={company.logo}
+                      alt={company.name}
+                      className="max-w-[180px] max-h-[120px] object-contain transition-all duration-300"
                     />
                   </div>
                 </motion.div>

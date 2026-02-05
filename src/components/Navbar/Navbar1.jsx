@@ -222,8 +222,8 @@ const Navbar = ({ isSplashVisible = false }) => {
     },
     clinical: {
       items: [
-        { 
-          key: 'hospitals', 
+        {
+          key: 'hospitals',
           link: '/clinical/doc-clinic',
           subItems: [
             { key: 'docClinic', link: '/clinical/doc-clinic' },
@@ -251,11 +251,11 @@ const Navbar = ({ isSplashVisible = false }) => {
           link: '/science/labs',
           subItems: [
             { key: 'labs', link: '/science/labs' },
-            { key: 'centers', link: '/science/centers' }
+            // { key: 'centers', link: '/science/centers' }
           ]
         },
-        { 
-          key: 'journal', 
+        {
+          key: 'journal',
           link: '/science/publications/journal',
           subItems: [
             { key: 'journalInfo', link: '/science/publications/journal' }
@@ -323,8 +323,8 @@ const Navbar = ({ isSplashVisible = false }) => {
     return (
       <div
         className={`fixed left-0 right-0 z-40 transition-all duration-300 ease-out ${activeDropdown === menuKey
-            ? 'opacity-100 visible translate-y-0'
-            : 'opacity-0 invisible -translate-y-4'
+          ? 'opacity-100 visible translate-y-0'
+          : 'opacity-0 invisible -translate-y-4'
           }`}
         style={{ top: isScrolled ? '4rem' : '5rem' }}
         onMouseEnter={() => handleDropdownEnter(menuKey)}
@@ -332,8 +332,8 @@ const Navbar = ({ isSplashVisible = false }) => {
       >
         {/* Backdrop blur */}
         <div className={`absolute inset-0 ${isScrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-2xl shadow-blue-900/10'
-            : 'bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 backdrop-blur-lg'
+          ? 'bg-white/95 backdrop-blur-xl shadow-2xl shadow-blue-900/10'
+          : 'bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 backdrop-blur-lg'
           }`} />
 
         {/* Content */}
@@ -347,8 +347,8 @@ const Navbar = ({ isSplashVisible = false }) => {
                     <div
                       key={item.key}
                       className={`group rounded-2xl transition-all duration-300 ${isScrolled
-                          ? 'bg-gradient-to-br from-blue-50 to-white border border-blue-100/50 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100/50'
-                          : 'bg-blue-900/40 border border-blue-400/20 hover:bg-blue-900/60 hover:border-blue-400/40'
+                        ? 'bg-gradient-to-br from-blue-50 to-white border border-blue-100/50 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100/50'
+                        : 'bg-blue-900/40 border border-blue-400/20 hover:bg-blue-900/60 hover:border-blue-400/40'
                         }`}
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
@@ -360,16 +360,16 @@ const Navbar = ({ isSplashVisible = false }) => {
                           className={`flex items-center gap-3 mb-3 group/title hover:no-underline`}
                         >
                           <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${isScrolled
-                              ? 'bg-blue-500 group-hover/title:bg-blue-600 group-hover/title:scale-110'
-                              : 'bg-blue-400/20 group-hover/title:bg-blue-400/30'
+                            ? 'bg-blue-500 group-hover/title:bg-blue-600 group-hover/title:scale-110'
+                            : 'bg-blue-400/20 group-hover/title:bg-blue-400/30'
                             }`}>
                             <svg className={`w-5 h-5 ${isScrolled ? 'text-white' : 'text-blue-300'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                           </div>
                           <h3 className={`font-bold text-sm transition-colors ${isScrolled
-                              ? 'text-gray-800 group-hover/title:text-blue-600'
-                              : 'text-white group-hover/title:text-blue-200'
+                            ? 'text-gray-800 group-hover/title:text-blue-600'
+                            : 'text-white group-hover/title:text-blue-200'
                             }`}>
                             {t(`${menuKey}SUB.${item.key}`)}
                           </h3>
@@ -383,8 +383,8 @@ const Navbar = ({ isSplashVisible = false }) => {
                               to={subItem.link}
                               onClick={() => setActiveDropdown(null)}
                               className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 group/sub hover:no-underline ${isScrolled
-                                  ? 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                                  : 'text-blue-100/80 hover:text-white hover:bg-white/10'
+                                ? 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                                : 'text-blue-100/80 hover:text-white hover:bg-white/10'
                                 }`}
                             >
                               <span className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-transform group-hover/sub:scale-150 ${isScrolled ? 'bg-blue-400' : 'bg-blue-400/60'
@@ -405,11 +405,10 @@ const Navbar = ({ isSplashVisible = false }) => {
             {/* Quick links sidebar */}
             {itemsWithoutSubItems.length > 0 && (
               <div className="w-72 shrink-0">
-                <div className={`rounded-2xl p-2 ${
-                  isScrolled 
-                    ? 'bg-gradient-to-br from-blue-500 to-blue-600' 
+                <div className={`rounded-2xl p-2 ${isScrolled
+                    ? 'bg-gradient-to-br from-blue-500 to-blue-600'
                     : 'bg-white/10 backdrop-blur-sm border border-white/10'
-                }`}>
+                  }`}>
                   <h3 className="text-white font-bold mb-0 flex items-center gap-2">
                   </h3>
                   <div className="space-y-1">
@@ -435,8 +434,8 @@ const Navbar = ({ isSplashVisible = false }) => {
 
         {/* Bottom border decoration */}
         <div className={`absolute bottom-0 left-0 right-0 h-1 ${isScrolled
-            ? 'bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30'
-            : 'bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-50'
+          ? 'bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30'
+          : 'bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-50'
           }`} />
       </div>
     );
@@ -461,8 +460,8 @@ const Navbar = ({ isSplashVisible = false }) => {
           }`}
       >
         <div className={`h-full overflow-hidden flex flex-col ${isScrolled
-            ? 'bg-white'
-            : 'bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900'
+          ? 'bg-white'
+          : 'bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900'
           }`}>
           {/* Header */}
           <div className={`flex items-center justify-between p-5 border-b ${isScrolled ? 'border-gray-100' : 'border-white/10'
@@ -481,8 +480,8 @@ const Navbar = ({ isSplashVisible = false }) => {
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className={`p-2.5 rounded-xl transition-all duration-200 active:scale-90 ${isScrolled
-                  ? 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                  : 'text-white/70 hover:text-white hover:bg-white/10'
+                ? 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                : 'text-white/70 hover:text-white hover:bg-white/10'
                 }`}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -498,8 +497,8 @@ const Navbar = ({ isSplashVisible = false }) => {
                 <div
                   key={menuKey}
                   className={`rounded-2xl overflow-hidden transition-all duration-300 ${isScrolled
-                      ? 'bg-gray-50 hover:bg-gray-100'
-                      : 'bg-white/5 hover:bg-white/10'
+                    ? 'bg-gray-50 hover:bg-gray-100'
+                    : 'bg-white/5 hover:bg-white/10'
                     }`}
                   style={{
                     transitionDelay: isMobileMenuOpen ? `${menuIndex * 50}ms` : '0ms',
@@ -515,13 +514,13 @@ const Navbar = ({ isSplashVisible = false }) => {
                   >
                     <span className="font-semibold text-base">{t(`navbar.${menuKey}`)}</span>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${mobileActiveMenu === menuKey
-                        ? (isScrolled ? 'bg-blue-500 rotate-180' : 'bg-white/20 rotate-180')
-                        : (isScrolled ? 'bg-gray-200' : 'bg-white/10')
+                      ? (isScrolled ? 'bg-blue-500 rotate-180' : 'bg-white/20 rotate-180')
+                      : (isScrolled ? 'bg-gray-200' : 'bg-white/10')
                       }`}>
                       <svg
                         className={`w-4 h-4 transition-colors ${mobileActiveMenu === menuKey
-                            ? 'text-white'
-                            : (isScrolled ? 'text-gray-500' : 'text-white/70')
+                          ? 'text-white'
+                          : (isScrolled ? 'text-gray-500' : 'text-white/70')
                           }`}
                         fill="none"
                         stroke="currentColor"
@@ -545,8 +544,8 @@ const Navbar = ({ isSplashVisible = false }) => {
                               <button
                                 onClick={() => toggleItemExpansion(menuKey, item.key)}
                                 className={`w-full flex items-center justify-between p-3 transition-colors ${isScrolled
-                                    ? 'text-gray-700 hover:bg-blue-50'
-                                    : 'text-white/90 hover:bg-white/5'
+                                  ? 'text-gray-700 hover:bg-blue-50'
+                                  : 'text-white/90 hover:bg-white/5'
                                   }`}
                               >
                                 <span className="font-medium text-sm">{t(`${menuKey}SUB.${item.key}`)}</span>
@@ -570,8 +569,8 @@ const Navbar = ({ isSplashVisible = false }) => {
                                     to={item.link}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className={`flex items-center py-2.5 px-3 rounded-lg transition-colors hover:no-underline ${isScrolled
-                                        ? 'text-blue-600 font-medium hover:bg-blue-100'
-                                        : 'text-blue-300 hover:bg-white/10'
+                                      ? 'text-blue-600 font-medium hover:bg-blue-100'
+                                      : 'text-blue-300 hover:bg-white/10'
                                       }`}
                                   >
                                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -587,8 +586,8 @@ const Navbar = ({ isSplashVisible = false }) => {
                                       to={subItem.link}
                                       onClick={() => setIsMobileMenuOpen(false)}
                                       className={`flex items-center py-2.5 px-3 rounded-lg transition-colors hover:no-underline ${isScrolled
-                                          ? 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                                          : 'text-white/70 hover:text-white hover:bg-white/10'
+                                        ? 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                                        : 'text-white/70 hover:text-white hover:bg-white/10'
                                         }`}
                                     >
                                       <span className={`w-1.5 h-1.5 rounded-full mr-3 ${isScrolled ? 'bg-blue-400' : 'bg-blue-400/60'
@@ -604,8 +603,8 @@ const Navbar = ({ isSplashVisible = false }) => {
                               to={item.link}
                               onClick={() => setIsMobileMenuOpen(false)}
                               className={`flex items-center justify-between p-3 rounded-xl transition-colors hover:no-underline ${isScrolled
-                                  ? 'text-gray-700 hover:text-blue-600 bg-white shadow-sm hover:bg-blue-50'
-                                  : 'text-white/90 hover:text-white bg-white/5 hover:bg-white/10'
+                                ? 'text-gray-700 hover:text-blue-600 bg-white shadow-sm hover:bg-blue-50'
+                                : 'text-white/90 hover:text-white bg-white/5 hover:bg-white/10'
                                 }`}
                             >
                               <span className="font-medium text-sm">{t(`${menuKey}SUB.${item.key}`)}</span>
@@ -656,9 +655,8 @@ const Navbar = ({ isSplashVisible = false }) => {
                     className={`transition-all duration-500 ${isScrolled ? 'h-10' : 'h-12'} w-auto object-contain`}
                   />
                   {/* Glow effect on hover */}
-                  <div className={`absolute inset-0 rounded-lg transition-opacity duration-300 opacity-0 group-hover:opacity-100 ${
-                    isScrolled ? 'bg-blue-500/10' : 'bg-white/10'
-                  } blur-xl`} />
+                  <div className={`absolute inset-0 rounded-lg transition-opacity duration-300 opacity-0 group-hover:opacity-100 ${isScrolled ? 'bg-blue-500/10' : 'bg-white/10'
+                    } blur-xl`} />
                 </div>
               </Link>
             </div>
@@ -672,22 +670,20 @@ const Navbar = ({ isSplashVisible = false }) => {
                     <Link
                       key={menuKey}
                       to={items[0].link}
-                      className={`relative px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 group hover:no-underline ${
-                        isScrolled
+                      className={`relative px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 group hover:no-underline ${isScrolled
                           ? 'text-gray-600 hover:text-blue-600'
                           : 'text-white/90 hover:text-white'
-                      }`}
+                        }`}
                     >
                       <span className="relative z-10">{t(`navbar.${menuKey}`)}</span>
-                      
+
                       {/* Hover background */}
-                      <span className={`absolute inset-0 rounded-xl transition-all duration-300 opacity-0 group-hover:opacity-100 ${
-                        isScrolled ? 'bg-blue-50' : 'bg-white/10'
-                      }`} />
+                      <span className={`absolute inset-0 rounded-xl transition-all duration-300 opacity-0 group-hover:opacity-100 ${isScrolled ? 'bg-blue-50' : 'bg-white/10'
+                        }`} />
                     </Link>
                   );
                 }
-                
+
                 // Для остальных - дропдаун
                 return (
                   <div
@@ -697,27 +693,24 @@ const Navbar = ({ isSplashVisible = false }) => {
                     onMouseLeave={handleDropdownLeave}
                   >
                     <button
-                      className={`relative px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 group ${
-                        isScrolled
+                      className={`relative px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 group ${isScrolled
                           ? 'text-gray-600 hover:text-blue-600'
                           : 'text-white/90 hover:text-white'
-                      } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-600 bg-blue-50' : 'text-white bg-white/10') : ''}`}
+                        } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-600 bg-blue-50' : 'text-white bg-white/10') : ''}`}
                     >
                       <span className="relative z-10">{t(`navbar.${menuKey}`)}</span>
-                      
+
                       {/* Hover background */}
-                      <span className={`absolute inset-0 rounded-xl transition-all duration-300 ${
-                        activeDropdown === menuKey 
-                          ? 'opacity-100' 
+                      <span className={`absolute inset-0 rounded-xl transition-all duration-300 ${activeDropdown === menuKey
+                          ? 'opacity-100'
                           : 'opacity-0 group-hover:opacity-100'
-                      } ${isScrolled ? 'bg-blue-50' : 'bg-white/10'}`} />
-                      
+                        } ${isScrolled ? 'bg-blue-50' : 'bg-white/10'}`} />
+
                       {/* Bottom indicator */}
-                      <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
-                        activeDropdown === menuKey ? 'w-6' : 'w-0'
-                      } ${isScrolled ? 'bg-blue-500' : 'bg-white'}`} />
+                      <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${activeDropdown === menuKey ? 'w-6' : 'w-0'
+                        } ${isScrolled ? 'bg-blue-500' : 'bg-white'}`} />
                     </button>
-                    
+
                     {renderDesktopDropdown(menuKey, items)}
                   </div>
                 );
@@ -735,8 +728,8 @@ const Navbar = ({ isSplashVisible = false }) => {
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`lg:hidden relative w-12 h-12 rounded-xl transition-all duration-300 active:scale-90 ${isScrolled
-                    ? 'text-gray-700 hover:bg-gray-100'
-                    : 'text-white hover:bg-white/10'
+                  ? 'text-gray-700 hover:bg-gray-100'
+                  : 'text-white hover:bg-white/10'
                   }`}
                 aria-label="Toggle menu"
                 aria-expanded={isMobileMenuOpen}
