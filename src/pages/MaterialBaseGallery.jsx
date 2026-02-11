@@ -124,13 +124,13 @@ const MaterialBaseGallery = () => {
         {/* Основная галерея */}
         <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden animate-fade-in">
           {/* Главное изображение */}
-          <div className="relative h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
+          <div className="relative h-96 md:h-[500px] lg:h-[600px] overflow-hidden bg-black">
             <div 
               className="flex transition-transform duration-500 ease-in-out h-full"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {images.map((image, index) => (
-                <div key={image.id} className="w-full flex-shrink-0 relative">
+                <div key={image.id} className="w-full flex-shrink-0 relative flex items-center justify-center">
                   <img
                     src={image.url}
                     alt={image.title}
@@ -176,7 +176,7 @@ const MaterialBaseGallery = () => {
                   onClick={() => goToSlide(index)}
                   className={`flex-shrink-0 relative group transition-all duration-300 ${
                     index === currentIndex 
-                      ? 'ring-4 ring-blue-500 ring-offset-2 transform scale-105' 
+                      ? 'transform scale-105' 
                       : 'opacity-70 hover:opacity-100 hover:scale-105'
                   }`}
                 >
