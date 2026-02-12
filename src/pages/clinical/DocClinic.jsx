@@ -4,6 +4,7 @@ import { FiExternalLink, FiMapPin, FiPhone, FiGlobe, FiClock } from 'react-icons
 import { motion } from 'framer-motion';
 import MainImg from '../../assets/clinical/doc-university/main.jpg';
 
+
 const scrollingImages = Object.values(
   import.meta.glob('../../assets/clinical/doc-university/scrolling/*.{jpg,jpeg,png,webp}', { eager: true })
 ).map(m => m.default);
@@ -50,12 +51,8 @@ const DocClinic = () => {
         ))}
       </div>
       {/* HERO обновлён: высота, дополнительный градиент, акцентированный заголовок */}
-      <section className="relative overflow-hidden h-[85vh] min-h-[640px] flex items-center text-white">
-        <div className="absolute inset-0">
-          <img src={MainImg} alt="DOC University Clinic" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-linear-to-br from-indigo-900/70 via-blue-900/40 to-cyan-800/30 mix-blend-screen" />
-        </div>
+      <section className="relative overflow-hidden h-[50vh] min-h-[400px] flex items-center text-white">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#023E8A] via-[#0077B6] to-[#0096C7]" />
         <div className="relative container mx-auto px-6 lg:px-8">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -63,7 +60,7 @@ const DocClinic = () => {
             transition={{ duration: 0.7 }}
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6 max-w-5xl drop-shadow-xl"
           >
-            <span className="bg-linear-to-r from-indigo-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-[#00B4D8] via-[#0096C7] to-[#0077B6] bg-clip-text text-transparent">
               {t('clinical.docClinic.hero.titlePart1', 'Университетская клиника')}
             </span>{' '}
             {t('clinical.docClinic.hero.titlePart2', 'DOC University Clinic')}
@@ -89,14 +86,13 @@ const DocClinic = () => {
             ))}
           </div>
         </div>
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute bottom-0 w-full h-12 text-gray-100 fill-current"><path d="M0 0h1200v46.29c0 0-120 25.95-600 25.95S0 46.29 0 46.29V0z" /></svg>
       </section>
 
       <div className="container mx-auto px-6 lg:px-8 py-16 space-y-20">
 
         {/* ABOUT */}
         <section className="max-w-5xl mx-auto space-y-8">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight bg-linear-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
             {t('clinical.docClinic.about.title', 'О клинике')}
           </h2>
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-slate-200 p-8">
@@ -108,7 +104,7 @@ const DocClinic = () => {
 
         {/* DIRECTOR */}
         <section className="space-y-8">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight bg-linear-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
             {t('clinical.docClinic.director.title', 'Руководитель')}
           </h2>
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-slate-200 p-8">
@@ -137,7 +133,7 @@ const DocClinic = () => {
         {/* SCROLLING GALLERY */}
         {scrollingImages.length > 0 && (
           <section className="space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold bg-linear-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
               {t('clinical.docClinic.gallery.title', 'Атмосфера клиники')}
             </h2>
             <p className="text-slate-600 max-w-prose">
@@ -160,12 +156,12 @@ const DocClinic = () => {
         {/* CONTACTS */}
         <section className="grid md:grid-cols-2 gap-10 items-start bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-slate-200 shadow-lg">
           <div className="space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold bg-linear-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
               {t('clinical.docClinic.contacts.title', 'Контактные данные')}
             </h2>
             <div className="space-y-4 text-sm">
               <div className="flex items-start gap-3">
-                <FiMapPin className="text-indigo-600 mt-1" />
+                <FiMapPin className="text-[#023E8A] mt-1" />
                 <div>
                   <p className="font-semibold">{t('clinical.docClinic.contacts.address', 'Адрес')}</p>
                   <p className="text-slate-700">{t('clinical.docClinic.contacts.addressValue', 'г. Бишкек')}</p>
@@ -191,7 +187,7 @@ const DocClinic = () => {
                 href="https://maps.app.goo.gl/ewmr5ZDDRbf2yfZ69"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium bg-linear-to-r from-indigo-600 to-cyan-600 text-white px-4 py-2 rounded-full hover:from-indigo-700 hover:to-cyan-700 shadow-sm transition-transform hover:scale-105"
+                className="inline-flex items-center gap-2 text-sm font-medium bg-linear-to-r from-[#023E8A] to-[#0077B6] text-white px-4 py-2 rounded-full hover:from-[#01265F] hover:to-[#005A8D] shadow-sm transition-transform hover:scale-105"
               >
                 <span className="text-xs bg-black/20 backdrop-blur-sm px-2 py-0.5 rounded">GMaps</span>
                 <span className="font-semibold">Google Maps</span>

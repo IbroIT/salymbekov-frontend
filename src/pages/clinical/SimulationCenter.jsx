@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiMapPin, FiPhone } from 'react-icons/fi';
+import { FaFlask, FaHeartbeat, FaUsers } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import MainImg from '../../assets/clinical/doc-university/main.jpg';
 
 const SimulationCenter = () => {
   const { t } = useTranslation();
@@ -80,31 +80,25 @@ const SimulationCenter = () => {
       {/* Main Content */}
       <div className="relative z-10">
         {/* Hero Section */}
-        <div className="relative h-96 mb-12 rounded-2xl overflow-hidden">
-          <img 
-            src={MainImg} 
-            alt={t('clinicalSUB.simulationCenter')}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-blue-900/60 to-transparent flex items-center px-6 sm:px-12">
-            <div className="max-w-3xl">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-3xl sm:text-5xl font-bold text-white mb-4"
-              >
-                {simulationData.title}
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-lg text-blue-100"
-              >
-                {simulationData.description}
-              </motion.p>
-            </div>
+        <div className="relative h-[50vh] min-h-[400px] flex items-center justify-center mb-12">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#023E8A] via-[#0077B6] to-[#0096C7]" />
+          <div className="relative max-w-3xl px-6 sm:px-12 text-center">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl sm:text-6xl font-bold text-white mb-4"
+            >
+              {simulationData.title}
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-lg sm:text-xl text-white/90"
+            >
+              {simulationData.description}
+            </motion.p>
           </div>
         </div>
 
@@ -117,7 +111,7 @@ const SimulationCenter = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="bg-white rounded-xl shadow-lg p-6 sm:p-12 mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-blue-900 mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#023E8A] mb-6">
               {simulationData.title}
             </h2>
             {simulationData.descriptions.map((desc, idx) => (
@@ -137,8 +131,12 @@ const SimulationCenter = () => {
                 transition={{ duration: 0.8, delay: 0.4 + index * 0.1 }}
                 className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow"
               >
-                <div className="text-4xl mb-4">🏥</div>
-                <h3 className="text-lg font-semibold text-blue-900 mb-3">{feature.title}</h3>
+                <div className="text-4xl mb-4">
+                  {index === 0 && <FaFlask className="text-[#023E8A] mx-auto" />}
+                  {index === 1 && <FaHeartbeat className="text-[#0077B6] mx-auto" />}
+                  {index === 2 && <FaUsers className="text-[#0096C7] mx-auto" />}
+                </div>
+                <h3 className="text-lg font-semibold text-[#023E8A] mb-3">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
               </motion.div>
             ))}
@@ -151,11 +149,11 @@ const SimulationCenter = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="bg-white rounded-xl shadow-lg p-6 sm:p-12 mb-12"
           >
-            <h3 className="text-2xl font-bold text-blue-900 mb-6">Оборудование и материалы</h3>
+            <h3 className="text-2xl font-bold text-[#023E8A] mb-6">Оборудование и материалы</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {simulationData.equipment.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-blue-600 mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#0077B6] mt-2 flex-shrink-0"></div>
                   <p className="text-gray-700">{item}</p>
                 </div>
               ))}
@@ -167,7 +165,7 @@ const SimulationCenter = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-xl p-8 text-white"
+            className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-xl p-8 text-white"
           >
             <h3 className="text-2xl font-bold mb-6">Контактная информация</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
