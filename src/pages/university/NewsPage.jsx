@@ -1,21 +1,58 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { apiRequest } from '../../api';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { fetchNewsList, fetchCategories, fetchNewsById, newsKeys } from '../../queries/newsQueries';
 
-const UniversityNews = () => {
+const NewsPage = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  
   const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [newsData, setNewsData] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState('all');
-  const [sortType, setSortType] = useState('date_desc'); // Новое состояние для сортировки
+  const [sortType, setSortType] = useState('date_desc');
+
+  // Загрузка новостей с использованием React Query
+  const { 
+    data: newsData = [], 
+    isLoading: newsLoading,
+    error: newsError 
+  } = useQuery({
+    queryKey: newsKeys.list(i18n.language),
+    queryFn: fetchNewsList,
+    staleTime: 5 * 60 * 1000, // 5 минут
+  });
+
+  // Загрузка категорий с использованием React Query
+  const { 
+    data: categories = [], 
+    isLoading: categoriesLoading 
+  } = useQuery({
+    queryKey: newsKeys.categories(i18n.language),
+    queryFn: fetchCategories,
+    staleTime: 5 * 60 * 1000, // 5 минут
+  });
+
+  const loading = newsLoading || categoriesLoading;
+
+  /**
+   * Prefetch функция для предварительной загрузки новости при наведении
+   * Это обеспечивает мгновенное открытие страницы новости
+   */
+  const prefetchPost = useCallback((newsId) => {
+    if (!newsId) return;
+    
+    queryClient.prefetchQuery({
+      queryKey: newsKeys.detail(newsId, i18n.language),
+      queryFn: fetchNewsById,
+      staleTime: 5 * 60 * 1000,
+    });
+  }, [queryClient, i18n.language]);
+
   // Функция сортировки новостей
   const sortNews = (newsArray, sortType) => {
     const sortedNews = [...newsArray];
@@ -54,182 +91,33 @@ const UniversityNews = () => {
     }
   };
 
-  // Функция для загрузки всех новостей с пагинацией
-  const fetchAllNews = async (language) => {
-    let allNews = [];
-    let nextUrl = `/presscentre/news/?lang=${language}&limit=100`;
-    
-    while (nextUrl) {
-      const response = await apiRequest(nextUrl);
-      const currentNews = response.results || response || [];
-      allNews = [...allNews, ...currentNews];
-      
-      // Правильно обрабатываем URL для следующей страницы
-      if (response.next) {
-        // Извлекаем только относительный путь из полного URL
-        try {
-          const url = new URL(response.next);
-          // Убираем базовый /api путь, если он есть в начале pathname
-          let path = url.pathname + url.search;
-          if (path.startsWith('/api')) {
-            path = path.substring(4);
-          }
-          nextUrl = path;
-        } catch {
-          // Если это уже относительный URL
-          nextUrl = response.next.startsWith('/api') ? response.next.substring(4) : response.next;
-        }
-      } else {
-        nextUrl = null;
-      }
-      
-      // Защита от бесконечного цикла
-      if (allNews.length > 10000) {
-        console.warn('Слишком много новостей, прерываем загрузку');
-        break;
-      }
+  // Фильтрация новостей по категории
+  // Если activeCategory === 'all', показываем все новости
+  // Если выбрана конкретная категория, фильтруем по ней
+  // НО: если у новостей нет категорий вообще (category === null), показываем их всегда
+  const filteredNews = newsData.filter(item => {
+    // Если выбраны "Все категории", показываем все новости
+    if (activeCategory === 'all') {
+      return true;
     }
     
-    console.log('Загружено новостей всего:', allNews.length);
-    return allNews;
-  };
-
-  // Загрузка данных
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        // Загрузка категорий
-        const categoriesData = await apiRequest(`/presscentre/categories/?lang=${i18n.language}`);
-        
-        // Загрузка всех новостей с пагинацией
-        const newsArray = await fetchAllNews(i18n.language);
-
-        // Преобразование данных категорий
-        const categoriesArray = categoriesData.results || categoriesData || [];
-        const transformedCategories = [
-          { id: 'all', name: t('press.categories.all'), color: 'gray' },
-          ...categoriesArray.map(cat => ({
-            id: cat.id.toString(),
-            name: cat.title,
-            color: 'blue'
-          }))
-        ];
-
-        // Преобразование данных новостей с улучшенной обработкой
-        const transformedNews = Array.isArray(newsArray) ? newsArray.map(item => {
-          // Более надежная обработка категории
-          let categoryId = null;
-          if (item.category) {
-            categoryId = typeof item.category === 'object' ? item.category.id : item.category;
-          } else if (item.category_id) {
-            categoryId = item.category_id;
-          }
-          
-          return {
-            id: item.id,
-            title: item.title || 'Без заголовка',
-            date: new Date(item.published_at || item.created_at).toLocaleDateString(i18n.language, {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            }),
-            category: categoryId ? categoryId.toString() : null,
-            category_name: (item.category?.title || item.category?.name) || 'Без категории',
-            image_url: item.image || null,
-            gallery: item.gallery || [],
-            aspect_ratio: item.aspect_ratio || 'wide',
-            description: item.short_description || (item.description ? item.description.substring(0, 200) + '...' : 'Нет описания'),
-            full_description: item.description || '',
-            is_recommended: Boolean(item.is_recommended),
-            created_at: item.published_at || item.created_at
-          };
-        }) : [];
-        
-        console.log('Преобразованные новости:', transformedNews.length);
-        if (transformedNews.length > 0) {
-          console.log('Пример новости:', {
-            id: transformedNews[0].id,
-            title: transformedNews[0].title.substring(0, 50) + '...',
-            category: transformedNews[0].category,
-            category_name: transformedNews[0].category_name
-          });
-        }
-
-        // Сортировка новостей по дате (новые первыми)
-        transformedNews.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-
-        setCategories(transformedCategories);
-        setNewsData(transformedNews);
-      } catch (err) {
-        console.error('Ошибка при загрузке данных:', err);
-        console.error('Детали ошибки:', err.message, err.stack);
-        setError(t('press.error.loading'));
-        
-        // Расширенные демонстрационные данные для отладки
-        setCategories([
-          { id: 'all', name: t('press.categories.all'), color: 'gray' },
-          { id: '1', name: 'Пресс-релизы', color: 'blue' },
-          { id: '2', name: 'События', color: 'green' },
-          { id: '3', name: 'Достижения', color: 'purple' }
-        ]);
-        
-        const fallbackNews = [];
-        for (let i = 1; i <= 10; i++) {
-          fallbackNews.push({
-            id: i,
-            title: `Демо новость ${i}`,
-            date: new Date(Date.now() - i * 86400000).toLocaleDateString(i18n.language),
-            category: ((i % 3) + 1).toString(),
-            category_name: ['Пресс-релизы', 'События', 'Достижения'][i % 3],
-            image_url: null,
-            description: `Описание демонстрационной новости номер ${i}`,
-            full_description: `Полный текст демонстрационной новости номер ${i}`,
-            is_recommended: i <= 3,
-            created_at: new Date(Date.now() - i * 86400000).toISOString()
-          });
-        }
-        
-        setNewsData(fallbackNews.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)));
-        console.log('Использованы демонстрационные данные:', fallbackNews.length, 'новостей');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [i18n.language, t]);
-
-  // Улучшенная фильтрация новостей по категории
-  const filteredNews = activeCategory === 'all' 
-    ? newsData 
-    : newsData.filter(item => {
-        // Проверяем различные варианты сравнения категории
-        const itemCategory = item.category;
-        if (!itemCategory) return false;
-        
-        return itemCategory === activeCategory || 
-               itemCategory.toString() === activeCategory ||
-               parseInt(itemCategory) === parseInt(activeCategory);
-      });
+    const itemCategory = item.category;
+    
+    // Если у новости нет категории, пропускаем её при выборе конкретной категории
+    if (!itemCategory || itemCategory === null) {
+      return false;
+    }
+    
+    // Проверяем соответствие категории
+    return itemCategory === activeCategory || 
+           itemCategory.toString() === activeCategory ||
+           parseInt(itemCategory) === parseInt(activeCategory);
+  });
 
   // Применяем сортировку к отфильтрованным новостям
   const sortedFilteredNews = sortNews(filteredNews, sortType);
-      
-  // Логирование только при изменении активной категории или данных
-  useEffect(() => {
-    console.log('Активная категория:', activeCategory);
-    console.log('Всего новостей:', newsData.length);
-    console.log('Отфильтрованные новости:', filteredNews.length);
-    console.log('Отсортированные новости:', sortedFilteredNews.length);
-    if (newsData.length > 0) {
-      console.log('Примеры категорий новостей:', newsData.slice(0, 3).map(item => ({ id: item.id, category: item.category, title: item.title.substring(0, 30) + '...' })));
-    }
-  }, [activeCategory, newsData.length, filteredNews.length, sortedFilteredNews.length]);
 
-  // Разделение на рекомендованные и остальные новости (используем отсортированный список)
+  // Разделение на рекомендованные и остальные новости
   const recommendedNews = sortedFilteredNews.filter(item => item.is_recommended);
   const regularNews = sortedFilteredNews.filter(item => !item.is_recommended);
 
@@ -249,7 +137,7 @@ const UniversityNews = () => {
     }, 300);
   }, [recommendedNews.length]);
 
-  // Автоматическая смена новостей (только для рекомендованных)
+  // Автоматическая смена новостей
   useEffect(() => {
     if (!isAutoPlaying || recommendedNews.length === 0) return;
 
@@ -272,7 +160,39 @@ const UniversityNews = () => {
   if (loading) {
     return (
       <div className="min-h-[600px] flex items-center justify-center">
-        <div className="text-blue-600 text-xl">{t('press.loading')}</div>
+        <div className="text-center">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-4"
+          />
+          <p className="text-blue-600 text-xl font-medium">{t('press.loading', 'Загрузка новостей...')}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (newsError) {
+    return (
+      <div className="min-h-[600px] flex items-center justify-center px-4">
+        <div className="text-center max-w-md">
+          <div className="text-6xl mb-4">⚠️</div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            {t('press.error.title', 'Ошибка загрузки')}
+          </h2>
+          <p className="text-red-600 mb-4">
+            {t('press.error.loading', 'Не удалось загрузить новости')}
+          </p>
+          <p className="text-gray-600 text-sm mb-6">
+            {newsError.message || 'Проверьте подключение к интернету и попробуйте снова'}
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 font-semibold shadow-lg"
+          >
+            {t('press.error.retry', 'Попробовать снова')}
+          </button>
+        </div>
       </div>
     );
   }
@@ -318,7 +238,7 @@ const UniversityNews = () => {
                   : 'bg-white text-gray-700 border border-gray-200 hover:border-blue-300 hover:shadow-md'
               }`}
             >
-              {category.name}
+              {category.name || category.title}
             </button>
           ))}
         </div>
@@ -337,6 +257,7 @@ const UniversityNews = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100"
+            onMouseEnter={() => prefetchPost(recommendedNews[currentNewsIndex]?.id)}
           >
             {/* Navigation Arrows */}
             <button
@@ -378,12 +299,15 @@ const UniversityNews = () => {
               {/* Image Section */}
               <div className="relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 z-10" />
-                {recommendedNews[currentNewsIndex]?.image_url ? (
-                  <motion.div
-                    className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 ${
+                {recommendedNews[currentNewsIndex]?.image ? (
+                  <motion.img
+                    key={recommendedNews[currentNewsIndex]?.id}
+                    src={recommendedNews[currentNewsIndex].image}
+                    alt={recommendedNews[currentNewsIndex].title}
+                    loading="lazy"
+                    className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ${
                       isVisible ? 'scale-110' : 'scale-100'
                     }`}
-                    style={{ backgroundImage: `url(${recommendedNews[currentNewsIndex].image_url})` }}
                   />
                 ) : (
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-cyan-50 flex items-center justify-center">
@@ -486,14 +410,16 @@ const UniversityNews = () => {
                     news.is_recommended ? 'ring-2 ring-blue-500 ring-opacity-50' : ''
                   }`}
                   onClick={() => handleReadMore(news.id)}
+                  onMouseEnter={() => prefetchPost(news.id)} // Prefetch при наведении
                 >
                   <div className="relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 z-10" />
-                    {news.image_url ? (
+                    {news.image || news.previewImage ? (
                       <div className={getAspectRatioClasses(news.aspect_ratio)}>
                         <img
-                          src={news.image_url}
+                          src={news.image || news.previewImage}
                           alt={news.title}
+                          loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         />
                       </div>
@@ -562,4 +488,4 @@ const UniversityNews = () => {
   );
 };
 
-export default UniversityNews;
+export default NewsPage;

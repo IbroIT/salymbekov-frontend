@@ -2,57 +2,82 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { apiRequest } from '../../api';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { fetchNewsById, fetchNewsList, newsKeys } from '../../queries/newsQueries';
 
-const NewsDetailPage = () => {
+const NewsDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
-  const [newsData, setNewsData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const queryClient = useQueryClient();
+  
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [imageLoaded, setImageLoaded] = useState({});
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [relatedNews, setRelatedNews] = useState([]);
 
-  // Функция для загрузки всех новостей с пагинацией
-  const fetchAllNews = async (language) => {
-    let allNews = [];
-    let nextUrl = `/presscentre/news/?lang=${language}&limit=100`;
-    
-    while (nextUrl) {
-      const response = await apiRequest(nextUrl);
-      const currentNews = response.results || response || [];
-      allNews = [...allNews, ...currentNews];
-      
-      // Правильно обрабатываем URL для следующей страницы
-      if (response.next) {
-        // Извлекаем только относительный путь из полного URL
-        try {
-          const url = new URL(response.next);
-          let path = url.pathname + url.search;
-          if (path.startsWith('/api')) {
-            path = path.substring(4);
-          }
-          nextUrl = path;
-        } catch {
-          nextUrl = response.next.startsWith('/api') ? response.next.substring(4) : response.next;
-        }
-      } else {
-        nextUrl = null;
-      }
-      
-      // Защита от бесконечного цикла
-      if (allNews.length > 10000) {
-        console.warn('Слишком много новостей, прерываем загрузку');
-        break;
-      }
+  /**
+   * Получаем initialData из кэша списка новостей
+   * Это обеспечивает мгновенное отображение основных данных (заголовок, превью)
+   */
+  const getInitialNewsData = useCallback(() => {
+    const cachedNewsList = queryClient.getQueryData(newsKeys.list(i18n.language));
+    if (cachedNewsList) {
+      return cachedNewsList.find(news => news.id.toString() === id);
     }
-    
-    return allNews;
-  };
+    return undefined;
+  }, [queryClient, i18n.language, id]);
+
+  /**
+   * Загрузка полных данных новости с использованием React Query
+   * Использует initialData для мгновенного отображения
+   */
+  const { 
+    data: newsData, 
+    isLoading, 
+    error,
+    isPlaceholderData 
+  } = useQuery({
+    queryKey: newsKeys.detail(id, i18n.language),
+    queryFn: fetchNewsById,
+    staleTime: 5 * 60 * 1000, // 5 минут
+    initialData: getInitialNewsData, // Используем данные из кэша списка
+    enabled: !!id, // Запускаем запрос только если есть id
+  });
+
+  /**
+   * Загрузка связанных новостей
+   */
+  const { data: allNewsList = [] } = useQuery({
+    queryKey: newsKeys.list(i18n.language),
+    queryFn: fetchNewsList,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  // Получаем связанные новости той же категории
+  const relatedNews = allNewsList
+    .filter(item => {
+      if (!newsData || item.id === newsData.id) return false;
+      
+      const itemCategoryId = item.category;
+      const currentCategoryId = newsData.category;
+      
+      return itemCategoryId && currentCategoryId && 
+             (itemCategoryId === currentCategoryId || 
+              itemCategoryId.toString() === currentCategoryId.toString());
+    })
+    .slice(0, 3);
+
+  /**
+   * Prefetch связанных новостей при наведении
+   */
+  const prefetchRelatedNews = useCallback((newsId) => {
+    queryClient.prefetchQuery({
+      queryKey: newsKeys.detail(newsId, i18n.language),
+      queryFn: fetchNewsById,
+      staleTime: 5 * 60 * 1000,
+    });
+  }, [queryClient, i18n.language]);
 
   // Прокрутка к верху при загрузке
   useEffect(() => {
@@ -69,150 +94,6 @@ const NewsDetailPage = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Загрузка деталей новости
-  useEffect(() => {
-    const fetchNewsDetail = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        let newsItem = null;
-        
-        // Сначала пробуем прямой запрос по ID
-        try {
-          const directResponse = await apiRequest(`/presscentre/news/${id}/?lang=${i18n.language}`);
-          if (directResponse && directResponse.id) {
-            newsItem = directResponse;
-            console.log('Новость получена прямым запросом:', newsItem);
-          }
-        } catch (directError) {
-          console.log('Прямой запрос не удался, ищем в списке:', directError.message);
-        }
-        
-        // Если прямой запрос не удался, ищем в списке всех новостей
-        if (!newsItem) {
-          const allNews = await fetchAllNews(i18n.language);
-          newsItem = allNews.find(item => item.id.toString() === id);
-          console.log('Поиск в списке всех новостей. Найдено:', !!newsItem);
-        }
-
-        if (!newsItem) {
-          throw new Error('Новость не найдена');
-        }
-
-        // Формируем массив изображений
-        const galleryImages = [];
-        
-        console.log('News item data:', newsItem); // Для отладки
-        
-        // Основное изображение новости всегда первое
-        if (newsItem.image) {
-          galleryImages.push({
-            url: newsItem.image,
-            order: -1, // Основное изображение идёт первым
-            isMain: true,
-          });
-        }
-        
-        // Обработка photos из нового API (приоритет)
-        if (newsItem.photos && Array.isArray(newsItem.photos)) {
-          console.log('Found photos array:', newsItem.photos); // Для отладки
-          newsItem.photos.forEach((photo) => {
-            if (photo.image) {
-              galleryImages.push({
-                url: photo.image,
-                order: photo.order || 0,
-                isMain: false,
-              });
-            }
-          });
-        }
-        // Обработка галереи из вложенного объекта gallery
-        else if (newsItem.gallery && Array.isArray(newsItem.gallery)) {
-          console.log('Found gallery array:', newsItem.gallery); // Для отладки
-          newsItem.gallery.forEach((photo) => {
-            if (photo.image) {
-              galleryImages.push({
-                url: photo.image,
-                order: photo.order || 0,
-                isMain: false,
-              });
-            }
-          });
-        }
-        // Для обратной совместимости - старое поле gallery_images
-        else if (newsItem.gallery_images && Array.isArray(newsItem.gallery_images)) {
-          console.log('Found gallery_images array:', newsItem.gallery_images); // Для отладки
-          newsItem.gallery_images.forEach((img) => {
-            if (img.image) {
-              galleryImages.push({
-                url: img.image,
-                order: img.order || 0,
-                isMain: false,
-              });
-            }
-          });
-        }
-        
-        // Сортируем по порядку (основное изображение будет первым из-за order: -1)
-        galleryImages.sort((a, b) => (a.order || 0) - (b.order || 0));
-        newsItem.images_url = galleryImages.map(img => img.url);
-        
-        console.log('Final gallery images:', galleryImages); // Для отладки
-        console.log('Images URL array:', newsItem.images_url); // Для отладки
-        
-        setNewsData(newsItem);
-        
-        // Загружаем все новости для связанных
-        await fetchRelatedNews(newsItem);
-      } catch (err) {
-        console.error('Error fetching news:', err);
-        setError(t('newsDetail.errors.loading'));
-        // Используем fallback данные
-        setNewsData(getFallbackData());
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (id) {
-      fetchNewsDetail();
-    } else {
-      setError(t('newsDetail.errors.noId'));
-      setLoading(false);
-    }
-  }, [id, i18n.language, t]);
-
-  // Загрузка связанных новостей
-  const fetchRelatedNews = async (currentNews) => {
-    try {
-      // Загружаем все новости для поиска связанных
-      const allNews = await fetchAllNews(i18n.language);
-      
-      console.log('Загружено для связанных новостей:', allNews.length); // Для отладки
-      
-      // Получаем идентификатор категории текущей новости
-      const currentCategoryId = currentNews.category?.id || currentNews.category_id || currentNews.category;
-      
-      // Фильтруем связанные новости (той же категории, исключая текущую)
-      const related = allNews
-        .filter(item => {
-          if (item.id === currentNews.id) return false;
-          
-          const itemCategoryId = item.category?.id || item.category_id || item.category;
-          return itemCategoryId && currentCategoryId && 
-                 (itemCategoryId === currentCategoryId || 
-                  itemCategoryId.toString() === currentCategoryId.toString());
-        })
-        .slice(0, 3);
-      
-      console.log('Найдено связанных новостей:', related.length);
-      setRelatedNews(related);
-    } catch (err) {
-      console.error('Ошибка при загрузке связанных новостей:', err);
-    }
-  };
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -225,7 +106,7 @@ const NewsDetailPage = () => {
 
     const shareData = {
       title: newsData.title,
-      text: newsData.description || newsData.short_description,
+      text: newsData.description || newsData.summary,
       url: window.location.href,
     };
 
@@ -234,15 +115,15 @@ const NewsDetailPage = () => {
         await navigator.share(shareData);
       } else {
         await navigator.clipboard.writeText(window.location.href);
-        alert(t('newsDetail.share.copied'));
+        alert(t('newsDetail.share.copied', 'Ссылка скопирована'));
       }
     } catch (err) {
-      console.log(t('newsDetail.share.error'), err);
+      console.log(t('newsDetail.share.error', 'Ошибка при копировании'), err);
     }
   };
 
   const formatDate = (dateString) => {
-    if (!dateString) return t('newsDetail.date.unknown');
+    if (!dateString) return t('newsDetail.date.unknown', 'Дата неизвестна');
     return new Date(dateString).toLocaleDateString(i18n.language, {
       year: 'numeric',
       month: 'long',
@@ -257,23 +138,36 @@ const NewsDetailPage = () => {
       return imagePath;
     }
     
-    // Базовый URL
-    const API_BASE_URL = import.meta.env.VITE_API_URL || "https://dordoi-backend-f6584db3b47e.herokuapp.com";
+    const API_BASE_URL = import.meta.env.VITE_API_URL || "https://salymbekov-backend-f4c797e9b169.herokuapp.com";
     return `${API_BASE_URL}${imagePath}`;
   };
 
   const getImagesArray = (data) => {
     if (!data) return [];
     
-    if (data.images_url && Array.isArray(data.images_url)) {
-      return data.images_url;
+    const images = [];
+    
+    // Основное изображение
+    if (data.image || data.previewImage) {
+      images.push(data.image || data.previewImage);
     }
     
-    if (data.image) {
-      return [data.image];
+    // Дополнительные фото из галереи
+    if (data.photos && Array.isArray(data.photos)) {
+      data.photos.forEach(photo => {
+        if (photo.image) {
+          images.push(photo.image);
+        }
+      });
+    } else if (data.gallery && Array.isArray(data.gallery)) {
+      data.gallery.forEach(photo => {
+        if (photo.image) {
+          images.push(photo.image);
+        }
+      });
     }
     
-    return [];
+    return images;
   };
 
   const handleImageLoad = (index) => {
@@ -299,7 +193,7 @@ const NewsDetailPage = () => {
     setCurrentImageIndex(prev => (prev - 1 + images.length) % images.length);
   }, [newsData]);
 
-  // Обработка клавиатуры
+  // Обработка клавиатуры для lightbox
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isLightboxOpen) return;
@@ -323,21 +217,8 @@ const NewsDetailPage = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isLightboxOpen, prevImage, nextImage]);
 
-  const getFallbackData = () => ({
-    id: parseInt(id),
-    title: t('newsDetail.fallback.title'),
-    description: t('newsDetail.fallback.description'),
-    content: t('newsDetail.fallback.content'),
-    image: null,
-    images_url: [],
-    category_name: t('newsDetail.fallback.category'),
-    created_at: new Date().toISOString(),
-    tags: [],
-    read_time: t('newsDetail.fallback.readTime'),
-    views: 0,
-  });
-
-  if (loading) {
+  // Показываем загрузку только если нет никаких данных (даже из кэша)
+  if (isLoading && !newsData) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
         <div className="text-center">
@@ -346,7 +227,7 @@ const NewsDetailPage = () => {
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
             className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-4"
           />
-          <p className="text-blue-600 text-lg font-medium">{t('newsDetail.loading')}</p>
+          <p className="text-blue-600 text-lg font-medium">{t('newsDetail.loading', 'Загрузка...')}</p>
         </div>
       </div>
     );
@@ -358,23 +239,23 @@ const NewsDetailPage = () => {
         <div className="text-center max-w-md w-full">
           <div className="text-6xl mb-4">😕</div>
           <h1 className="text-2xl font-bold text-gray-800 mb-2">
-            {t('newsDetail.error.title')}
+            {t('newsDetail.error.title', 'Новость не найдена')}
           </h1>
           <p className="text-gray-600 mb-6">
-            {error || t('newsDetail.error.notFound')}
+            {t('newsDetail.error.notFound', 'К сожалению, эта новость не найдена или была удалена.')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
-              onClick={() => navigate('/press')}
+              onClick={() => navigate('/press/news')}
               className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 font-semibold"
             >
-              {t('newsDetail.error.homeButton')}
+              {t('newsDetail.error.homeButton', 'Все новости')}
             </button>
             <button
               onClick={() => window.location.reload()}
               className="px-6 py-3 border border-gray-300 text-gray-600 rounded-xl hover:border-blue-400 hover:text-blue-600 transition-all duration-300 font-semibold"
             >
-              {t('newsDetail.error.retryButton')}
+              {t('newsDetail.error.retryButton', 'Попробовать снова')}
             </button>
           </div>
         </div>
@@ -382,20 +263,8 @@ const NewsDetailPage = () => {
     );
   }
 
-  const data = newsData || getFallbackData();
-  const images = getImagesArray(data);
-
-  console.log('Final data object:', data); // Для отладки
-  console.log('Images array:', images); // Для отладки
-  console.log('Images length:', images.length); // Для отладки
-
-  // Получаем контент для отображения
-  const getContent = () => {
-    if (data.content) return data.content;
-    if (data.full_description) return data.full_description;
-    if (data.description) return data.description;
-    return t('newsDetail.content.soon');
-  };
+  const images = getImagesArray(newsData);
+  const content = newsData?.fullText || newsData?.full_description || newsData?.description || newsData?.summary;
 
   return (
     <div className="min-h-screen bg-white">
@@ -414,7 +283,7 @@ const NewsDetailPage = () => {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              <span>{t('newsDetail.header.back')}</span>
+              <span>{t('newsDetail.header.back', 'Назад к новостям')}</span>
             </button>
 
             <div className="flex items-center gap-4">
@@ -425,7 +294,7 @@ const NewsDetailPage = () => {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                 </svg>
-                <span>{t('newsDetail.header.share')}</span>
+                <span>{t('newsDetail.header.share', 'Поделиться')}</span>
               </button>
             </div>
           </div>
@@ -452,20 +321,14 @@ const NewsDetailPage = () => {
               <div className="aspect-w-16 aspect-h-9">
                 <img
                   src={getImageUrl(images[0])}
-                  alt={data.title}
+                  alt={newsData.title}
+                  loading="lazy"
                   className={`w-full h-96 object-cover transition-all duration-500 hover:scale-105 ${
                     imageLoaded[0] ? 'opacity-100' : 'opacity-0'
                   }`}
                   onLoad={() => handleImageLoad(0)}
                   onError={(e) => {
                     e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = `
-                      <div class="w-full h-full bg-gradient-to-r from-blue-50 to-cyan-50 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                        </svg>
-                      </div>
-                    `;
                   }}
                 />
               </div>
@@ -476,12 +339,12 @@ const NewsDetailPage = () => {
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="text-white">
                     <span className="inline-block px-4 py-2 bg-blue-600 rounded-full text-sm font-semibold mb-3">
-                      {data.category_name || data.category?.title || t('newsDetail.defaultCategory')}
+                      {newsData.category_name || t('newsDetail.defaultCategory', 'Новости')}
                     </span>
-                    <h1 className="text-4xl font-bold leading-tight mb-3">{data.title}</h1>
+                    <h1 className="text-4xl font-bold leading-tight mb-3">{newsData.title}</h1>
                     {images.length > 1 && (
                       <p className="text-blue-100 text-lg opacity-90">
-                        {t('newsDetail.photoCounter', { count: images.length })}
+                        {t('newsDetail.photoCounter', { count: images.length })} фото: {images.length}
                       </p>
                     )}
                   </div>
@@ -501,8 +364,16 @@ const NewsDetailPage = () => {
               <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <span>{formatDate(data.created_at || data.published_at)}</span>
+              <span>{formatDate(newsData.created_at)}</span>
             </div>
+            {isPlaceholderData && (
+              <div className="flex items-center gap-2 text-blue-600">
+                <svg className="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                <span className="text-sm">{t('newsDetail.loading', 'Загрузка полной версии...')}</span>
+              </div>
+            )}
           </motion.div>
 
           {/* Content */}
@@ -512,17 +383,19 @@ const NewsDetailPage = () => {
             transition={{ delay: 0.4 }}
             className="prose prose-lg max-w-none bg-white rounded-3xl p-8 shadow-xl mb-12"
           >
-            <p className="text-xl text-gray-700 leading-relaxed mb-8 font-medium border-l-4 border-blue-500 pl-4 bg-blue-50 py-4 rounded-r-lg">
-              {data.short_description || data.description || getContent()}
-            </p>
+            {newsData.summary && (
+              <p className="text-xl text-gray-700 leading-relaxed mb-8 font-medium border-l-4 border-blue-500 pl-4 bg-blue-50 py-4 rounded-r-lg">
+                {newsData.summary}
+              </p>
+            )}
 
-            <div className="space-y-6 text-gray-600 leading-8">
-              {getContent() && (
+            {content && (
+              <div className="space-y-6 text-gray-600 leading-8">
                 <div className="text-gray-700 whitespace-pre-line">
-                  {getContent()}
+                  {content}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </motion.div>
 
           {/* Gallery */}
@@ -531,12 +404,12 @@ const NewsDetailPage = () => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="mb-8"
+              className="mb-12"
             >
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                {t('newsDetail.gallery.title')}
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                {t('newsDetail.gallery.title', 'Фотогалерея')}
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {images.slice(1).map((image, index) => (
                   <motion.div
                     key={index + 1}
@@ -548,43 +421,15 @@ const NewsDetailPage = () => {
                   >
                     <img
                       src={getImageUrl(image)}
-                      alt={`${data.title} ${index + 2}`}
+                      alt={`${newsData.title} ${index + 2}`}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       onLoad={() => handleImageLoad(index + 1)}
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.parentElement.innerHTML = `
-                          <div class="w-full h-full bg-gradient-to-r from-blue-50 to-cyan-50 flex items-center justify-center">
-                            <svg class="w-8 h-8 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                            </svg>
-                          </div>
-                        `;
-                      }}
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
-          )}
-
-          {/* Tags */}
-          {data.tags && data.tags.length > 0 && (
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-wrap gap-2 mb-8"
-            >
-              {data.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full text-sm font-medium"
-                >
-                  #{tag}
-                </span>
-              ))}
             </motion.div>
           )}
 
@@ -594,10 +439,10 @@ const NewsDetailPage = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="mt-12"
+              className="mt-16"
             >
               <h2 className="text-3xl font-bold text-gray-800 mb-8">
-                {t('newsDetail.related')}
+                {t('newsDetail.related', 'Похожие новости')}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {relatedNews.map((news, index) => (
@@ -608,13 +453,16 @@ const NewsDetailPage = () => {
                     transition={{ delay: 0.9 + index * 0.1 }}
                     className="group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500 cursor-pointer"
                     onClick={() => navigate(`/press/news/${news.id}`)}
+                    onMouseEnter={() => prefetchRelatedNews(news.id)}
                   >
                     <div className="relative overflow-hidden h-48">
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 z-10" />
-                      {news.image ? (
-                        <div
-                          className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
-                          style={{ backgroundImage: `url(${getImageUrl(news.image)})` }}
+                      {news.image || news.previewImage ? (
+                        <img
+                          src={getImageUrl(news.image || news.previewImage)}
+                          alt={news.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-r from-blue-50 to-cyan-50 flex items-center justify-center">
@@ -628,10 +476,10 @@ const NewsDetailPage = () => {
                     <div className="p-6">
                       <div className="flex items-center justify-between mb-3">
                         <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">
-                          {news.category_name || news.category?.title || 'General'}
+                          {news.category_name}
                         </span>
                         <span className="text-gray-400 text-xs">
-                          {formatDate(news.created_at || news.published_at)}
+                          {formatDate(news.created_at)}
                         </span>
                       </div>
 
@@ -639,10 +487,12 @@ const NewsDetailPage = () => {
                         {news.title}
                       </h3>
 
-                      <p className="text-gray-600 text-sm line-clamp-2 mb-4">{news.short_description || news.description}</p>
+                      <p className="text-gray-600 text-sm line-clamp-2 mb-4">
+                        {news.summary || news.description}
+                      </p>
 
                       <div className="flex items-center text-blue-600 text-sm font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                        {t('newsDetail.readMore')}
+                        {t('newsDetail.readMore', 'Читать далее')}
                         <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -655,6 +505,23 @@ const NewsDetailPage = () => {
           )}
         </motion.article>
       </div>
+
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 z-40 hover:-translate-y-1"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* Lightbox */}
       <AnimatePresence>
@@ -690,18 +557,9 @@ const NewsDetailPage = () => {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   src={getImageUrl(images[currentImageIndex])}
-                  alt={`${data.title} ${currentImageIndex + 1}`}
+                  alt={`${newsData.title} ${currentImageIndex + 1}`}
+                  loading="lazy"
                   className="w-full max-h-[80vh] object-contain"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = `
-                      <div class="w-full h-full flex items-center justify-center bg-black">
-                        <svg class="w-32 h-32 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                        </svg>
-                      </div>
-                    `;
-                  }}
                 />
 
                 {images.length > 1 && (
@@ -749,4 +607,4 @@ const NewsDetailPage = () => {
   );
 };
 
-export default NewsDetailPage;
+export default NewsDetail;

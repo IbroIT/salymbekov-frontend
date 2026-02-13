@@ -3,7 +3,9 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://salymbekov-backend
 
 // Helper function for making API requests
 export const apiRequest = async (endpoint, options = {}) => {
-  const url = `${API_BASE_URL}${endpoint}`;
+  // Убеждаемся, что endpoint начинается с /
+  const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const url = `${API_BASE_URL}${normalizedEndpoint}`;
 
   const defaultOptions = {
     headers: {
@@ -24,12 +26,15 @@ export const apiRequest = async (endpoint, options = {}) => {
     const response = await fetch(url, config);
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorText = await response.text();
+      console.error('API Error Response:', errorText);
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+    return data;
   } catch (error) {
-    console.error('API request failed:', error);
+    console.error('API request failed:', error.message);
     throw error;
   }
 };
