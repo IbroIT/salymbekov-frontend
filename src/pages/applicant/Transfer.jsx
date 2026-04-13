@@ -60,7 +60,14 @@ const Transfer = () => {
       duration: 3 + Math.random() * 2,
       delay: Math.random() * 1
     }));
-  }, []);
+  }, []); 3
+
+
+
+
+
+
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { 
+import {
   FaUsers,
   FaUserTie,
   FaGraduationCap,
@@ -164,7 +164,7 @@ const DevelopmentCouncilPage = () => {
           <h2 className="text-4xl font-bold text-gray-800 mb-6">
             {t('developmentCouncil.mainTitle')}
           </h2>
-          
+
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
             {t('developmentCouncil.firstParagraph')}
           </p>
@@ -188,8 +188,8 @@ const DevelopmentCouncilPage = () => {
                 className="lg:w-1/3"
               >
                 <div className="relative">
-                  <img 
-                    src="https://salymbekov.com/wp-content/uploads/2021/02/salymbekov-askar-maatkabylovich-main.jpg" 
+                  <img
+                    src="https://salymbekov.com/wp-content/uploads/2021/02/salymbekov-askar-maatkabylovich-main.jpg"
                     alt={t('developmentCouncil.chairmanName')}
                     className="w-full h-auto rounded-2xl shadow-lg"
                   />
@@ -213,12 +213,12 @@ const DevelopmentCouncilPage = () => {
                 <h3 className="text-3xl font-bold text-gray-800 mb-6">
                   {t('developmentCouncil.chairmanTitle')}
                 </h3>
-                
+
                 <div className="space-y-4 text-lg leading-relaxed">
                   <p className="text-gray-700">
                     {t('developmentCouncil.chairmanText1')}
-                    <a 
-                      href="https://fpi.kg/?lang=ru" 
+                    <a
+                      href="https://fpi.kg/?lang=ru"
                       className="text-[#023E8A] hover:text-[#0077B6] font-semibold hover:underline"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -256,8 +256,8 @@ const DevelopmentCouncilPage = () => {
                 className="lg:w-1/3"
               >
                 <div className="relative">
-                  <img 
-                    src="https://salymbekov.com/wp-content/uploads/2021/03/batyraliev-talant.jpg" 
+                  <img
+                    src="https://salymbekov.com/wp-content/uploads/2021/03/batyraliev-talant.jpg"
                     alt={t('developmentCouncil.memberName')}
                     className="w-full h-auto rounded-2xl shadow-lg"
                   />
@@ -325,8 +325,8 @@ const DevelopmentCouncilPage = () => {
                     {/* Фото члена совета */}
                     <div className="lg:w-1/4">
                       <div className="relative">
-                        <img 
-                          src={member.image} 
+                        <img
+                          src={member.image}
                           alt={member.name}
                           className="w-full h-auto rounded-2xl shadow-lg"
                         />
@@ -346,19 +346,19 @@ const DevelopmentCouncilPage = () => {
                         <h4 className="text-2xl font-bold text-gray-800">
                           {member.name}
                         </h4>
-                        
-                         
+
+
                       </div>
 
-                     
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          className="text-gray-700 leading-relaxed text-lg"
-                        >
-                          {member.text}
-                        </motion.div>
-                      
+
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        className="text-gray-700 leading-relaxed text-lg"
+                      >
+                        {member.text}
+                      </motion.div>
+
                     </div>
                   </div>
                 </div>

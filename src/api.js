@@ -59,3 +59,7 @@ export const getBanners = async () => {
 export const getAcademicCouncil = async (lang = 'ru') => {
   return apiRequest(`/academic-council/?lang=${lang}`);
 };
+
+export const getDevelopmentCouncil = async (lang = 'ru') => {
+  return apiRequest(`/development-council/?lang=${lang}`);
+}

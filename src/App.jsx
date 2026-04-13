@@ -12,6 +12,7 @@ import FounderMessage from './pages/FounderMessage'
 import MaterialBaseGallery from './pages/MaterialBaseGallery'
 import Footer from './pages/Footer'
 import ApplicantBase from './pages/applicant/ApplicantBase'
+import smth from './pages/vue-pretend/smth.vue'
 
 
 // Lazy imports for university
