@@ -13,6 +13,7 @@ import MaterialBaseGallery from './pages/MaterialBaseGallery'
 import Footer from './pages/Footer'
 import ApplicantBase from './pages/applicant/ApplicantBase'
 import smth from './pages/vue-pretend/smth.vue'
+import ManagedPageRoute from './components/cms/ManagedPageRoute'
 
 
 // Lazy imports for university
@@ -277,6 +278,10 @@ const App = () => {
     setIsContentHidden(false); // На всякий случай дублируем
   };
 
+  const managedPage = (path, fallback) => (
+    <ManagedPageRoute path={path} fallback={fallback} />
+  );
+
   return (
     <Router>
       {showSplash && (
@@ -292,114 +297,114 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home isSplashVisible={isContentHidden} />} />
             <Route path='/press/news' element={<NewsPage />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path='/founderMessege' element={<FounderMessage />} />
-            <Route path='/MaterialBaseGallery' element={<MaterialBaseGallery />} />
+            <Route path="/about" element={managedPage('/about', <About />)} />
+            <Route path="/services" element={managedPage('/services', <Services />)} />
+            <Route path="/contact" element={managedPage('/contact', <Contact />)} />
+            <Route path='/founderMessege' element={managedPage('/founderMessege', <FounderMessage />)} />
+            <Route path='/MaterialBaseGallery' element={managedPage('/MaterialBaseGallery', <MaterialBaseGallery />)} />
             <Route path='/news/NewsHome' element={<NewsHome />} />
             <Route path="/press/news/:id" element={<NewsDetail />} />
-            <Route path="/university/mission" element={<Mission />} />
-            <Route path="/university/structure" element={<Structure />} />
-            <Route path="/university/structure/university-main" element={<UniversityMain />} />
-            <Route path="/university/structure/international-faculty" element={<InternationalFaculty />} />
-            <Route path="/university/structure/it-college" element={<ITCollege />} />
-            <Route path="/university/management" element={<Management />} />
-            <Route path="/university/management/founder" element={<Founder />} />
-            <Route path="/university/management/rectorate" element={<Rectorate />} />
-            <Route path="/university/management/public-councils" element={<PublicCouncils />} />
-            <Route path="/university/normative-docs" element={<NormativeDocs />} />
-            <Route path="/university/normative-docs/kr-acts" element={<KRActs />} />
-            <Route path="/university/normative-docs/internal-acts" element={<InternalActs />} />
-            <Route path="/university/councils/academic-council" element={<AcadCouncil />} />
-            <Route path="/university/councils/admissions-committee" element={<AdmisCommittee />} />
-            <Route path="/university/councils/bioethics-committee" element={<BioethicsCommittee />} />
-            <Route path="/university/councils/commission-support" element={<CommissionSupport />} />
-            <Route path="/university/councils/council-scients" element={<CouncilScients />} />
-            <Route path="/university/councils/development-council" element={<DevCouncil />} />
-            <Route path="/university/councils/editorial-board" element={<EditBoard />} />
-            <Route path="/university/councils/educational-council" element={<EduCouncil />} />
-            <Route path="/university/councils/employers-council" element={<EmployersCouncil />} />
-            <Route path="/university/councils/scientific-council" element={<Sciencouncil />} />
-            <Route path="/university/councils/student-councils" element={<UniversityStudentCouncil />} />
-            <Route path="/university/councils/technical-council" element={<TechnicalCouncil />} />
-            <Route path="/university/councils/parents-council" element={<ParentsCouncil />} />
-            <Route path="/university/quality-management-system/quality-monitoring" element={<QualityMonitoring />} />
-            <Route path="/university/quality-management-system/quality-policy" element={<QualityPolity />} />
+            <Route path="/university/mission" element={managedPage('/university/mission', <Mission />)} />
+            <Route path="/university/structure" element={managedPage('/university/structure', <Structure />)} />
+            <Route path="/university/structure/university-main" element={managedPage('/university/structure/university-main', <UniversityMain />)} />
+            <Route path="/university/structure/international-faculty" element={managedPage('/university/structure/international-faculty', <InternationalFaculty />)} />
+            <Route path="/university/structure/it-college" element={managedPage('/university/structure/it-college', <ITCollege />)} />
+            <Route path="/university/management" element={managedPage('/university/management', <Management />)} />
+            <Route path="/university/management/founder" element={managedPage('/university/management/founder', <Founder />)} />
+            <Route path="/university/management/rectorate" element={managedPage('/university/management/rectorate', <Rectorate />)} />
+            <Route path="/university/management/public-councils" element={managedPage('/university/management/public-councils', <PublicCouncils />)} />
+            <Route path="/university/normative-docs" element={managedPage('/university/normative-docs', <NormativeDocs />)} />
+            <Route path="/university/normative-docs/kr-acts" element={managedPage('/university/normative-docs/kr-acts', <KRActs />)} />
+            <Route path="/university/normative-docs/internal-acts" element={managedPage('/university/normative-docs/internal-acts', <InternalActs />)} />
+            <Route path="/university/councils/academic-council" element={managedPage('/university/councils/academic-council', <AcadCouncil />)} />
+            <Route path="/university/councils/admissions-committee" element={managedPage('/university/councils/admissions-committee', <AdmisCommittee />)} />
+            <Route path="/university/councils/bioethics-committee" element={managedPage('/university/councils/bioethics-committee', <BioethicsCommittee />)} />
+            <Route path="/university/councils/commission-support" element={managedPage('/university/councils/commission-support', <CommissionSupport />)} />
+            <Route path="/university/councils/council-scients" element={managedPage('/university/councils/council-scients', <CouncilScients />)} />
+            <Route path="/university/councils/development-council" element={managedPage('/university/councils/development-council', <DevCouncil />)} />
+            <Route path="/university/councils/editorial-board" element={managedPage('/university/councils/editorial-board', <EditBoard />)} />
+            <Route path="/university/councils/educational-council" element={managedPage('/university/councils/educational-council', <EduCouncil />)} />
+            <Route path="/university/councils/employers-council" element={managedPage('/university/councils/employers-council', <EmployersCouncil />)} />
+            <Route path="/university/councils/scientific-council" element={managedPage('/university/councils/scientific-council', <Sciencouncil />)} />
+            <Route path="/university/councils/student-councils" element={managedPage('/university/councils/student-councils', <UniversityStudentCouncil />)} />
+            <Route path="/university/councils/technical-council" element={managedPage('/university/councils/technical-council', <TechnicalCouncil />)} />
+            <Route path="/university/councils/parents-council" element={managedPage('/university/councils/parents-council', <ParentsCouncil />)} />
+            <Route path="/university/quality-management-system/quality-monitoring" element={managedPage('/university/quality-management-system/quality-monitoring', <QualityMonitoring />)} />
+            <Route path="/university/quality-management-system/quality-policy" element={managedPage('/university/quality-management-system/quality-policy', <QualityPolity />)} />
 
 
 
             {/* Lazy Education */}
-            <Route path="/education/ait" element={<AIT />} />
-            <Route path="/education/ait/about" element={<AboutAIT />} />
-            <Route path="/education/ait/leadership" element={<LeadershipAIT />} />
-            <Route path="/education/ait/disciplines" element={<DisciplinesAIT />} />
-            <Route path="/education/ait/teachers" element={<TeachersAIT />} />
-            <Route path="/education/ait/contacts" element={<ContactsAIT />} />
-            <Route path="/education/mfm" element={<MFM />} />
-            <Route path="/education/it-college" element={<ITCollegeEdu />} />
-            <Route path="/education/postgrad" element={<Postgrad />} />
-            <Route path="/education/center" element={<Center />} />
-            <Route path="/education/mfm/about" element={<Aboutmfm />} />
-            <Route path="/education/mfm/dekanat/dean" element={<Dean />} />
-            <Route path="/education/mfm/dekanat/curriculum" element={<Curriculum />} />
-            <Route path="/education/mfm/dekanat/departments" element={<DepartmentsMFM />} />
-            <Route path="/education/mfm/programs/five-years" element={<FiveYears />} />
-            <Route path="/education/mfm/programs/six-years" element={<SixYears />} />
-            <Route path="/education/it-college/departments/general" element={<GeneralDepartaments />} />
-            <Route path="/education/it-college/departments/information" element={<DepartamentsInformation />} />
-            <Route path="/education/it-college/specialties/diplom-computational-sciences" element={<DiplomComSients />} />
-            <Route path="/education/it-college/specialties/diplom-mobile-computing" element={<DiplomMobComputing />} />
-            <Route path="/education/it-college/specialties/diplom-multimedia-applications" element={<DiplomMultiApplications />} />
-            <Route path="/education/it-college/director" element={<DirectoritCollage />} />
-            <Route path="/education/it-college/double-diploma" element={<DoubleDiploma />} />
-            <Route path="/education/it-college/pedagogical-council" element={<PedagogicalCouncil />} />
+            <Route path="/education/ait" element={managedPage('/education/ait', <AIT />)} />
+            <Route path="/education/ait/about" element={managedPage('/education/ait/about', <AboutAIT />)} />
+            <Route path="/education/ait/leadership" element={managedPage('/education/ait/leadership', <LeadershipAIT />)} />
+            <Route path="/education/ait/disciplines" element={managedPage('/education/ait/disciplines', <DisciplinesAIT />)} />
+            <Route path="/education/ait/teachers" element={managedPage('/education/ait/teachers', <TeachersAIT />)} />
+            <Route path="/education/ait/contacts" element={managedPage('/education/ait/contacts', <ContactsAIT />)} />
+            <Route path="/education/mfm" element={managedPage('/education/mfm', <MFM />)} />
+            <Route path="/education/it-college" element={managedPage('/education/it-college', <ITCollegeEdu />)} />
+            <Route path="/education/postgrad" element={managedPage('/education/postgrad', <Postgrad />)} />
+            <Route path="/education/center" element={managedPage('/education/center', <Center />)} />
+            <Route path="/education/mfm/about" element={managedPage('/education/mfm/about', <Aboutmfm />)} />
+            <Route path="/education/mfm/dekanat/dean" element={managedPage('/education/mfm/dekanat/dean', <Dean />)} />
+            <Route path="/education/mfm/dekanat/curriculum" element={managedPage('/education/mfm/dekanat/curriculum', <Curriculum />)} />
+            <Route path="/education/mfm/dekanat/departments" element={managedPage('/education/mfm/dekanat/departments', <DepartmentsMFM />)} />
+            <Route path="/education/mfm/programs/five-years" element={managedPage('/education/mfm/programs/five-years', <FiveYears />)} />
+            <Route path="/education/mfm/programs/six-years" element={managedPage('/education/mfm/programs/six-years', <SixYears />)} />
+            <Route path="/education/it-college/departments/general" element={managedPage('/education/it-college/departments/general', <GeneralDepartaments />)} />
+            <Route path="/education/it-college/departments/information" element={managedPage('/education/it-college/departments/information', <DepartamentsInformation />)} />
+            <Route path="/education/it-college/specialties/diplom-computational-sciences" element={managedPage('/education/it-college/specialties/diplom-computational-sciences', <DiplomComSients />)} />
+            <Route path="/education/it-college/specialties/diplom-mobile-computing" element={managedPage('/education/it-college/specialties/diplom-mobile-computing', <DiplomMobComputing />)} />
+            <Route path="/education/it-college/specialties/diplom-multimedia-applications" element={managedPage('/education/it-college/specialties/diplom-multimedia-applications', <DiplomMultiApplications />)} />
+            <Route path="/education/it-college/director" element={managedPage('/education/it-college/director', <DirectoritCollage />)} />
+            <Route path="/education/it-college/double-diploma" element={managedPage('/education/it-college/double-diploma', <DoubleDiploma />)} />
+            <Route path="/education/it-college/pedagogical-council" element={managedPage('/education/it-college/pedagogical-council', <PedagogicalCouncil />)} />
 
-            <Route path="/education/postgrad/internship" element={<Internship />} />
-            <Route path="/education/postgrad/phd" element={<Phd />} />
-            <Route path="/education/postgrad/postgraduate" element={<Postgraduate />} />
-            <Route path="/education/postgrad/residency" element={<Residency />} />
-            <Route path="/education/center/about" element={<AboutCenterEducation />} />
-
-
+            <Route path="/education/postgrad/internship" element={managedPage('/education/postgrad/internship', <Internship />)} />
+            <Route path="/education/postgrad/phd" element={managedPage('/education/postgrad/phd', <Phd />)} />
+            <Route path="/education/postgrad/postgraduate" element={managedPage('/education/postgrad/postgraduate', <Postgraduate />)} />
+            <Route path="/education/postgrad/residency" element={managedPage('/education/postgrad/residency', <Residency />)} />
+            <Route path="/education/center/about" element={managedPage('/education/center/about', <AboutCenterEducation />)} />
 
 
-            <Route path="/clinical/doc-clinic" element={<DocClinic />} />
-            <Route path="/clinical/doc-hospital" element={<DocHospital />} />
-            <Route path="/clinical/simulation-center" element={<SimulationCenter />} />
-            <Route path="/clinical/startups" element={<Startups />} />
+
+
+            <Route path="/clinical/doc-clinic" element={managedPage('/clinical/doc-clinic', <DocClinic />)} />
+            <Route path="/clinical/doc-hospital" element={managedPage('/clinical/doc-hospital', <DocHospital />)} />
+            <Route path="/clinical/simulation-center" element={managedPage('/clinical/simulation-center', <SimulationCenter />)} />
+            <Route path="/clinical/startups" element={managedPage('/clinical/startups', <Startups />)} />
 
             {/* Lazy Science */}
-            <Route path="/science/management" element={<ManagementScience />} />
-            <Route path="/science/management/scientific-council" element={<ScientificCouncil />} />
-            <Route path="/science/management/scientific-technical-council" element={<ScientificTechnicalCouncil />} />
-            <Route path="/science/management/bioethics" element={<Bioethics />} />
-            <Route path="/science/management/young-scientists" element={<YoungScientists />} />
-            <Route path="/science/management/department" element={<ScienceDepartmentMng />} />
-            <Route path="/science/department" element={<ScienceDepartment />} />
+            <Route path="/science/management" element={managedPage('/science/management', <ManagementScience />)} />
+            <Route path="/science/management/scientific-council" element={managedPage('/science/management/scientific-council', <ScientificCouncil />)} />
+            <Route path="/science/management/scientific-technical-council" element={managedPage('/science/management/scientific-technical-council', <ScientificTechnicalCouncil />)} />
+            <Route path="/science/management/bioethics" element={managedPage('/science/management/bioethics', <Bioethics />)} />
+            <Route path="/science/management/young-scientists" element={managedPage('/science/management/young-scientists', <YoungScientists />)} />
+            <Route path="/science/management/department" element={managedPage('/science/management/department', <ScienceDepartmentMng />)} />
+            <Route path="/science/department" element={managedPage('/science/department', <ScienceDepartment />)} />
             <Route path="/science/events/conferences" element={<Conferences />} />
             <Route path="/science/events/conferences/:id" element={<ConferenceDetail />} />
-            <Route path="/science/publications" element={<Publications />} />
-            <Route path="/science/publications/journal" element={<ScientificJournal />} />
-            <Route path="/science/events" element={<ScienceEvents />} />
-            <Route path="/science/scholarships" element={<ScienceScholarships />} />
+            <Route path="/science/publications" element={managedPage('/science/publications', <Publications />)} />
+            <Route path="/science/publications/journal" element={managedPage('/science/publications/journal', <ScientificJournal />)} />
+            <Route path="/science/events" element={managedPage('/science/events', <ScienceEvents />)} />
+            <Route path="/science/scholarships" element={managedPage('/science/scholarships', <ScienceScholarships />)} />
             {/* <Route path="/science/centers" element={<Biology />} /> */}
-            <Route path="/science/labs" element={<Labs />} />
-            <Route path="/science/labs/anatomy" element={<Anatomy />} />
-            <Route path="/science/labs/biochemistry" element={<Biochemistry />} />
+            <Route path="/science/labs" element={managedPage('/science/labs', <Labs />)} />
+            <Route path="/science/labs/anatomy" element={managedPage('/science/labs/anatomy', <Anatomy />)} />
+            <Route path="/science/labs/biochemistry" element={managedPage('/science/labs/biochemistry', <Biochemistry />)} />
             {/* <Route path="/science/labs/chemistry" element={<Chemistry />} /> */}
-            <Route path="/science/labs/biology" element={<Biology />} />
-            <Route path="/science/labs/interactive" element={<Interactive />} />
-            <Route path="/science/labs/computer" element={<Computer />} />
-            <Route path="/science/labs/study" element={<Study />} />
-            <Route path="/science/projects" element={<Projects />} />
-            <Route path="/cooperation/international-partners" element={<Universities />} />
-            <Route path="/cooperation/local-partners" element={<Clinics />} />
+            <Route path="/science/labs/biology" element={managedPage('/science/labs/biology', <Biology />)} />
+            <Route path="/science/labs/interactive" element={managedPage('/science/labs/interactive', <Interactive />)} />
+            <Route path="/science/labs/computer" element={managedPage('/science/labs/computer', <Computer />)} />
+            <Route path="/science/labs/study" element={managedPage('/science/labs/study', <Study />)} />
+            <Route path="/science/projects" element={managedPage('/science/projects', <Projects />)} />
+            <Route path="/cooperation/international-partners" element={managedPage('/cooperation/international-partners', <Universities />)} />
+            <Route path="/cooperation/local-partners" element={managedPage('/cooperation/local-partners', <Clinics />)} />
             <Route path="/news" element={<NewsPage />} />
-            <Route path="/contacts" element={<Contacts />} />
-            <Route path="/vacancies" element={<Vacancies />} />
-            <Route path="/infrastructure/locations" element={<Locations />} />
-            <Route path="/infrastructure/partners" element={<Partners />} />
+            <Route path="/contacts" element={managedPage('/contacts', <Contacts />)} />
+            <Route path="/vacancies" element={managedPage('/vacancies', <Vacancies />)} />
+            <Route path="/infrastructure/locations" element={managedPage('/infrastructure/locations', <Locations />)} />
+            <Route path="/infrastructure/partners" element={managedPage('/infrastructure/partners', <Partners />)} />
             <Route path="/infrastructure/*" element={<Home />} />
             <Route path="*" element={<Home />} />
           </Routes>

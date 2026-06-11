@@ -1,5 +1,19 @@
 // API configuration and request helper
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://salymbekov-backend-f4c797e9b169.herokuapp.com/api';
+const DEFAULT_API_BASE_URL = import.meta.env.DEV
+  ? 'http://127.0.0.1:8000/api'
+  : 'https://salymbekov-backend-f4c797e9b169.herokuapp.com/api';
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || DEFAULT_API_BASE_URL;
+
+export const normalizeLanguage = (lang = 'ru') => {
+  const baseLang = `${lang}`.toLowerCase().split('-')[0];
+
+  if (baseLang === 'ky') {
+    return 'kg';
+  }
+
+  return ['ru', 'en', 'kg'].includes(baseLang) ? baseLang : 'ru';
+};
 
 // Helper function for making API requests
 export const apiRequest = async (endpoint, options = {}) => {
@@ -56,10 +70,24 @@ export const getBanners = async () => {
   return apiRequest('/banners/');
 };
 
+export const getPartners = async () => {
+  return apiRequest('/partners/');
+};
+
 export const getAcademicCouncil = async (lang = 'ru') => {
   return apiRequest(`/academic-council/?lang=${lang}`);
 };
 
 export const getDevelopmentCouncil = async (lang = 'ru') => {
-  return apiRequest(`/development-council/?lang=${lang}`);
-}
+  return apiRequest(`/development-council/?lang=${normalizeLanguage(lang)}`);
+};
+
+export const getScientificTechnicalCouncil = async (lang = 'ru') => {
+  return apiRequest(`/scientific-technical-council/?lang=${normalizeLanguage(lang)}`);
+};
+
+export const getPageContentByPath = async (path, lang = 'ru') => {
+  const normalizedPath = path?.startsWith('/') ? path : `/${path || ''}`;
+  const encodedPath = encodeURIComponent(normalizedPath);
+  return apiRequest(`/pages/by-path/?path=${encodedPath}&lang=${normalizeLanguage(lang)}`);
+};

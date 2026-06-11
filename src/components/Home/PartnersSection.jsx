@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
+import { getPartners } from '../../api';
 
 const PartnersSection = () => {
   const ref = useRef(null);
@@ -13,21 +13,18 @@ const PartnersSection = () => {
   useEffect(() => {
     const fetchPartners = async () => {
       try {
-        const response = await axios.get('https://salymbekov-backend-f4c797e9b169.herokuapp.com/api/partners/');
-        console.log('Partners API response:', response.data);
+        const response = await getPartners();
 
-        // Проверяем структуру ответа
-        if (response.data && response.data.results) {
-          setPartners(response.data.results);
-        } else if (Array.isArray(response.data)) {
-          setPartners(response.data);
+        if (response && response.results) {
+          setPartners(response.results);
+        } else if (Array.isArray(response)) {
+          setPartners(response);
         } else {
-          console.warn('Unexpected partners data structure:', response.data);
+          console.warn('Unexpected partners data structure:', response);
           setPartners([]);
         }
       } catch (error) {
         console.error('Error fetching partners:', error);
-        // Fallback пустой массив при ошибке
         setPartners([]);
       } finally {
         setLoading(false);
@@ -37,7 +34,6 @@ const PartnersSection = () => {
     fetchPartners();
   }, []);
 
-  // Если партнеры не загружены, показываем загрузку или пусто
   const companiesArray = partners && partners.length > 0 ? partners : [];
 
   return (

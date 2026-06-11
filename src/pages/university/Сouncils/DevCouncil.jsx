@@ -1,28 +1,26 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react"; // Добавил useEffect
+import { useState, useEffect } from "react";
 import { FaUsers } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
 import { getDevelopmentCouncil } from "../../../api";
 
 const DevelopmentCouncilPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [loading, setLoading] = useState(true);
-
   const [councilMembers, setCouncilMembers] = useState([]); // is_council_member === true
   const [experts, setExperts] = useState([]);               // is_council_member === false
 
   useEffect(() => {
     const getCouncilData = async () => {
-      const url = getDevelopmentCouncil();
       try {
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
+        const data = await getDevelopmentCouncil(i18n.language);
 
-          if (Array.isArray(data)) {
-            setCouncilMembers(data.filter(item => item.is_council_member === true));
-            setExperts(data.filter(item => item.is_council_member === false));
-          }
+        if (Array.isArray(data)) {
+          setCouncilMembers(data.filter((item) => item.is_council_member === true));
+          setExperts(data.filter((item) => item.is_council_member === false));
+        } else {
+          setCouncilMembers([]);
+          setExperts([]);
         }
       } catch (error) {
         console.error("Ошибка при загрузке:", error);
@@ -32,15 +30,11 @@ const DevelopmentCouncilPage = () => {
     };
 
     getCouncilData();
-  }, []);
+  }, [i18n.language]);
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Загрузка...</div>;
   }
-
-
-
-
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">
 
@@ -74,19 +68,20 @@ const DevelopmentCouncilPage = () => {
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
                   <div className="lg:w-1/4">
                     <img
-                      src={member.image || member.photo}
-                      alt={member.name}
+                      src={member.photo}
+                      alt={member.full_name}
                       className="w-full h-auto rounded-2xl shadow-md object-cover"
                     />
                     <div className="mt-4 text-center">
-                      <h3 className="text-xl font-bold text-gray-800">{member.name}</h3>
-                      <p className="text-blue-600">{member.role || member.position}</p>
+                      <h3 className="text-xl font-bold text-gray-800">{member.full_name}</h3>
+                      <p className="text-blue-600">{member.role}</p>
                     </div>
                   </div>
                   <div className="lg:w-3/4">
-                    <p className="text-gray-700 leading-relaxed text-lg italic mb-4">
-                      "{member.text || member.bio}"
-                    </p>
+                    <div
+                      className="text-gray-700 leading-relaxed text-lg italic mb-4 prose max-w-none"
+                      dangerouslySetInnerHTML={{ __html: member.description || '' }}
+                    />
                   </div>
                 </div>
               </motion.div>
@@ -112,13 +107,13 @@ const DevelopmentCouncilPage = () => {
                   className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex items-center gap-4"
                 >
                   <img
-                    src={expert.image || expert.photo}
+                    src={expert.photo}
                     className="w-16 h-16 rounded-full object-cover border-2 border-blue-100"
-                    alt={expert.name}
+                    alt={expert.full_name}
                   />
                   <div>
-                    <h4 className="font-bold text-gray-800">{expert.name}</h4>
-                    <p className="text-sm text-gray-500">{expert.role || expert.position}</p>
+                    <h4 className="font-bold text-gray-800">{expert.full_name}</h4>
+                    <p className="text-sm text-gray-500">{expert.role}</p>
                   </div>
                 </motion.div>
               ))}
