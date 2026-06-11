@@ -763,7 +763,7 @@ const Navbar = ({ isSplashVisible = false }) => {
       {/* Spacer */}
       <div className={`transition-all duration-500 ${isScrolled ? 'h-16' : 'h-20'}`} />
 
-      <style jsx global>{`
+      <style>{`
         /* Custom scrollbar for dropdowns */
         .custom-scrollbar {
           scrollbar-width: thin;

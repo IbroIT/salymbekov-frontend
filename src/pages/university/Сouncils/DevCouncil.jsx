@@ -3,9 +3,10 @@ import { useState, useEffect } from "react"; // Добавил useEffect
 import { FaUsers } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
 import { getDevelopmentCouncil } from "../../../api";
+import StaticDevelopmentCouncilPage from "../temp_councils/DevCouncil";
 
 const DevelopmentCouncilPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [loading, setLoading] = useState(true);
 
   const [councilMembers, setCouncilMembers] = useState([]); // is_council_member === true
@@ -13,16 +14,13 @@ const DevelopmentCouncilPage = () => {
 
   useEffect(() => {
     const getCouncilData = async () => {
-      const url = getDevelopmentCouncil();
       try {
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
+        const response = await getDevelopmentCouncil(i18n.language);
+        const data = response?.results || response;
 
-          if (Array.isArray(data)) {
-            setCouncilMembers(data.filter(item => item.is_council_member === true));
-            setExperts(data.filter(item => item.is_council_member === false));
-          }
+        if (Array.isArray(data)) {
+          setCouncilMembers(data.filter(item => item.is_council_member === true));
+          setExperts(data.filter(item => item.is_council_member === false));
         }
       } catch (error) {
         console.error("Ошибка при загрузке:", error);
@@ -32,7 +30,7 @@ const DevelopmentCouncilPage = () => {
     };
 
     getCouncilData();
-  }, []);
+  }, [i18n.language]);
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Загрузка...</div>;
@@ -40,6 +38,10 @@ const DevelopmentCouncilPage = () => {
 
 
 
+
+  if (councilMembers.length === 0 && experts.length === 0) {
+    return <StaticDevelopmentCouncilPage />;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">

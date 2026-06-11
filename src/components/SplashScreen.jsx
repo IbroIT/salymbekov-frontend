@@ -290,7 +290,7 @@ const SplashScreen = ({ onFinish, onAnimationStartExit }) => {
       )}
 
       {/* Стили для анимаций */}
-      <style jsx>{`
+      <style>{`
         @keyframes collapse-center {
           0% {
             transform: scale(1);
@@ -347,7 +347,7 @@ const SplashScreen = ({ onFinish, onAnimationStartExit }) => {
 
       {/* Анимация пульсации */}
       {animationStage >= 4 && !isExiting && (
-        <style jsx>{`
+        <style>{`
           .absolute.inset-0.-m-12 {
             animation: pulse-glow 2s ease-in-out infinite;
           }
@@ -359,7 +359,7 @@ const SplashScreen = ({ onFinish, onAnimationStartExit }) => {
 
       {/* Анимация появления колец */}
       {animationStage >= 2 && (
-        <style jsx>{`
+        <style>{`
           .absolute.border.rounded-full {
             opacity: 0.15 !important;
           }

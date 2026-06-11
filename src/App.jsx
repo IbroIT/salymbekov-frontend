@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar1'
 import ScrollToTop from './components/ScrollToTop'
 import SplashScreen from './components/SplashScreen'
+import BackendPageGate from './components/BackendPageGate'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -289,6 +290,7 @@ const App = () => {
       <div className="min-h-screen bg-gray-100">
         <Navbar isSplashVisible={isContentHidden} />
         <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div>Загрузка...</div></div>}>
+          <BackendPageGate>
           <Routes>
             <Route path="/" element={<Home isSplashVisible={isContentHidden} />} />
             <Route path='/press/news' element={<NewsPage />} />
@@ -403,6 +405,7 @@ const App = () => {
             <Route path="/infrastructure/*" element={<Home />} />
             <Route path="*" element={<Home />} />
           </Routes>
+          </BackendPageGate>
         </Suspense>
         <Footer />
       </div>
