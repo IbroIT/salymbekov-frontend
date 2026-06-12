@@ -3,6 +3,20 @@ import { motion, useInView } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { getPartners } from '../../api';
 
+// Запасной список партнёров (логотипы хранятся локально в /public/partners)
+const FALLBACK_PARTNERS = [
+  { id: 'lincoln', name: 'Lincoln University College', logo: '/partners/lincoln.webp' },
+  { id: 'inti', name: 'INTI International University', logo: '/partners/inti.png' },
+  { id: 'spbpu', name: 'Санкт-Петербургский политехнический университет Петра Великого', logo: '/partners/spbpu.jpg' },
+  { id: 'paichai', name: 'Pai Chai University', logo: '/partners/paichai.png' },
+  { id: 'chungang', name: 'Chung-Ang University', logo: '/partners/chungang.png' },
+  { id: 'vision-jeonju', name: 'Vision College of Jeonju', logo: '/partners/vision-jeonju.png' },
+  { id: 'kyungdong', name: 'Kyungdong University', logo: '/partners/kyungdong.png' },
+  { id: 'kicb', name: 'KICB', logo: '/partners/kicb.png' },
+  { id: 'bai-tushum', name: 'Банк Бай-Тушум', logo: '/partners/bai-tushum.jpeg' },
+  { id: 'rkdf', name: 'Российско-Кыргызский фонд развития', logo: '/partners/rkdf.png' },
+];
+
 const PartnersSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.2 });
@@ -15,17 +29,21 @@ const PartnersSection = () => {
       try {
         const response = await getPartners();
 
-        if (response && response.results) {
-          setPartners(response.results);
+        let list = [];
+        if (response && Array.isArray(response.results)) {
+          list = response.results;
         } else if (Array.isArray(response)) {
-          setPartners(response);
+          list = response;
         } else {
           console.warn('Unexpected partners data structure:', response);
-          setPartners([]);
         }
+
+        // Оставляем только партнёров с логотипом
+        const withLogos = list.filter((p) => p && p.logo);
+        setPartners(withLogos.length > 0 ? withLogos : FALLBACK_PARTNERS);
       } catch (error) {
         console.error('Error fetching partners:', error);
-        setPartners([]);
+        setPartners(FALLBACK_PARTNERS);
       } finally {
         setLoading(false);
       }
@@ -34,7 +52,7 @@ const PartnersSection = () => {
     fetchPartners();
   }, []);
 
-  const companiesArray = partners && partners.length > 0 ? partners : [];
+  const companiesArray = partners && partners.length > 0 ? partners : FALLBACK_PARTNERS;
 
   return (
     <section ref={ref} className="relative py-20 overflow-hidden">

@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { getBanners } from '../../api';
 
+// Запасные баннеры (su-medical-school.com), если бэкенд не вернул изображения
+const FALLBACK_PHOTOS = [
+  '/banners/banner1.jpg',
+  '/banners/banner2.jpg',
+];
+
 const SimplePhotoSlider = ({ isSplashVisible = false }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [banners, setBanners] = useState([]);
 
-  const photos = banners.map(banner => banner.image);
+  const apiPhotos = banners
+    .map(banner => banner.image)
+    .filter(Boolean);
+  const photos = apiPhotos.length > 0 ? apiPhotos : FALLBACK_PHOTOS;
 
   const nextSlide = () => {
     if (isTransitioning) return;
@@ -31,7 +40,7 @@ const SimplePhotoSlider = ({ isSplashVisible = false }) => {
     const fetchBanners = async () => {
       try {
         const data = await getBanners();
-        setBanners(data.results);
+        setBanners(Array.isArray(data?.results) ? data.results : []);
       } catch (error) {
         console.error('Failed to fetch banners:', error);
       }
