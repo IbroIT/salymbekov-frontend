@@ -116,7 +116,7 @@ const Navbar = ({ isSplashVisible = false }) => {
         },
         {
           key: 'councils',
-          link: '/university/Councils',
+          link: '/university/councils/development-council',
           subItems: [
             { key: 'devCouncil', link: '/university/councils/development-council' },
             { key: 'acadCouncil', link: '/university/councils/academic-council' },
@@ -143,7 +143,7 @@ const Navbar = ({ isSplashVisible = false }) => {
         },
         {
           key: 'qualityManagement',
-          link: '/university/quality-management-system',
+          link: '/university/quality-management-system/quality-policy',
           subItems: [
             { key: 'qualityPolicy', link: '/university/quality-management-system/quality-policy' },
             { key: 'qualityMonitoring', link: '/university/quality-management-system/quality-monitoring' }
@@ -181,12 +181,12 @@ const Navbar = ({ isSplashVisible = false }) => {
             { key: 'departments', link: '/education/mfm/dekanat/departments' },
             { key: 'medicine5Years', link: '/education/mfm/programs/five-years' },
             { key: 'medicine6Years', link: '/education/mfm/programs/six-years' },
-            { key: 'contacts', link: '/university/contacts' }
+            { key: 'contacts', link: '/contacts' }
           ]
         },
         {
           key: 'itCollege',
-          link: '/education/itCollege',
+          link: '/education/it-college',
           subItems: [
             { key: 'aboutIt', link: '/university/structure/it-college' },
             { key: 'director', link: '/education/it-college/director' },
@@ -197,7 +197,7 @@ const Navbar = ({ isSplashVisible = false }) => {
             { key: 'generalDisciplines', link: '/education/it-college/departments/general' },
             { key: 'itDepartment', link: '/education/it-college/departments/information' },
             { key: 'pedagogicalCouncil', link: '/education/it-college/pedagogical-council' },
-            { key: 'contacts', link: '/university/contacts' }
+            { key: 'contacts', link: '/contacts' }
           ]
         },
         {
@@ -215,7 +215,7 @@ const Navbar = ({ isSplashVisible = false }) => {
           link: '/education/center',
           subItems: [
             { key: 'aboutCenter', link: '/education/center/about' },
-            { key: 'contacts', link: '/university/contacts' }
+            { key: 'contacts', link: '/contacts' }
           ]
         }
       ]
