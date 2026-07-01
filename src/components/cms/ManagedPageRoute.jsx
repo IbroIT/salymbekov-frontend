@@ -2,6 +2,17 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
 
+// CMS "raw_html" bodies are static snapshots of the React pages captured while
+// framer-motion's enter animations were at their `initial` state. That bakes
+// hiding styles (opacity:0, scale(0), translateY offsets) into the HTML with no
+// JS to animate them back, so the content stays permanently invisible. Reset
+// those baked animation styles to their visible/final values before rendering.
+const neutralizeBakedAnimations = (html) =>
+  (html || '')
+    .replace(/opacity:\s*0(?![.\d])/g, 'opacity:1')
+    .replace(/scale\(\s*0(?:\.\d+)?\s*\)/g, 'scale(1)')
+    .replace(/translate([XYZ]?)\(\s*-?\d+(?:\.\d+)?px\s*\)/g, 'translate$1(0px)');
+
 const hasMeaningfulCmsContent = (pageContent) => {
   if (!pageContent) {
     return false;
@@ -32,7 +43,7 @@ const renderRichText = (html, className = '') => {
   return (
     <div
       className={`prose prose-lg max-w-none prose-headings:text-slate-900 prose-p:text-slate-700 prose-li:text-slate-700 ${className}`}
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={{ __html: neutralizeBakedAnimations(html) }}
     />
   );
 };
@@ -53,7 +64,7 @@ const CmsPageRenderer = ({ pageContent }) => {
       <div className="min-h-screen bg-slate-50">
         <div
           className="[&_img]:h-auto [&_img]:max-w-full [&_a]:break-words"
-          dangerouslySetInnerHTML={{ __html: pageContent?.body || '' }}
+          dangerouslySetInnerHTML={{ __html: neutralizeBakedAnimations(pageContent?.body) }}
         />
       </div>
     );
