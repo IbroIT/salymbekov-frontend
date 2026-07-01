@@ -1,5 +1,5 @@
 
-import React, { lazy, Suspense, useState, useEffect } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar1'
 import ScrollToTop from './components/ScrollToTop'
@@ -13,7 +13,7 @@ import FounderMessage from './pages/FounderMessage'
 import MaterialBaseGallery from './pages/MaterialBaseGallery'
 import Footer from './pages/Footer'
 import ApplicantBase from './pages/applicant/ApplicantBase'
-import smth from './pages/vue-pretend/smth.vue'
+
 
 
 // Lazy imports for university

@@ -16,7 +16,9 @@ const isLegacyFrontendPath = (path) => (
 
 const hasRenderableContent = (content) => {
   if (!content) return false;
-  if (content.data?.render_as_page === false) return false;
+  // Keep the existing static page until an editor explicitly opts into
+  // replacing the whole route with CMS content.
+  if (content.data?.render_as_page !== true) return false;
 
   const sections = Array.isArray(content.data?.sections) ? content.data.sections : [];
   const media = Array.isArray(content.media) ? content.media : [];

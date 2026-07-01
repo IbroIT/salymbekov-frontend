@@ -1,6 +1,6 @@
 // API configuration and request helper
 const DEFAULT_API_BASE_URL = import.meta.env.DEV
-  ? 'http://127.0.0.1:8000/api'
+  ? '/api'
   : 'https://salymbekov-backend-f4c797e9b169.herokuapp.com/api';
 
 const LEGACY_API_BASE_URL = import.meta.env.DEV

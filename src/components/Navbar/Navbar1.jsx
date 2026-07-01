@@ -28,11 +28,15 @@ const Navbar = ({ isSplashVisible = false }) => {
 
   // Закрытие при смене роута
   useEffect(() => {
-    setIsMobileMenuOpen(false);
-    setActiveDropdown(null);
-    setExpandedItems({});
-    setMobileActiveMenu(null);
-  }, [location]);
+    const closeTimer = window.setTimeout(() => {
+      setIsMobileMenuOpen(false);
+      setActiveDropdown(null);
+      setExpandedItems({});
+      setMobileActiveMenu(null);
+    }, 0);
+
+    return () => window.clearTimeout(closeTimer);
+  }, [location.pathname]);
 
   // Клик вне навбара
   useEffect(() => {
@@ -116,7 +120,7 @@ const Navbar = ({ isSplashVisible = false }) => {
         },
         {
           key: 'councils',
-          link: '/university/Councils',
+          link: '/university/councils',
           subItems: [
             { key: 'devCouncil', link: '/university/councils/development-council' },
             { key: 'acadCouncil', link: '/university/councils/academic-council' },
@@ -186,7 +190,7 @@ const Navbar = ({ isSplashVisible = false }) => {
         },
         {
           key: 'itCollege',
-          link: '/education/itCollege',
+          link: '/education/it-college',
           subItems: [
             { key: 'aboutIt', link: '/university/structure/it-college' },
             { key: 'director', link: '/education/it-college/director' },
