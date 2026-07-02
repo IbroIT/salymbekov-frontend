@@ -1,6 +1,6 @@
 
 import React, { lazy, Suspense, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar1'
 import ScrollToTop from './components/ScrollToTop'
 import SplashScreen from './components/SplashScreen'
@@ -20,22 +20,8 @@ const NewsPage = lazy(() => import('./pages/university/NewsPage'))
 const NewsDetail = lazy(() => import('./pages/university/NewsDetail'))
 
 // Science lazy imports
-const ScientificCouncil = lazy(() => import('./pages/science/management/ScientificCouncil'))
-const ScientificTechnicalCouncil = lazy(() => import('./pages/science/management/ScientificTechnicalCouncil'))
-const Bioethics = lazy(() => import('./pages/science/management/Bioethics'))
-const YoungScientists = lazy(() => import('./pages/science/management/YoungScientists'))
-const ScienceDepartmentMng = lazy(() => import('./pages/science/management/Department'))
-const ScienceDepartment = lazy(() => import('./pages/science/Department'))
-const Publications = lazy(() => import('./pages/science/Publications'))
-const ScientificJournal = lazy(() => import('./pages/science/ScientificJournal'))
-const ScienceEvents = lazy(() => import('./pages/science/Events'))
 const StudentScience = lazy(() => import('./pages/science/StudentScience'))
 const StudentSociety = lazy(() => import('./pages/science/StudentSociety'))
-const Projects = lazy(() => import('./pages/science/Projects'))
-const ManagementScience = lazy(() => import('./pages/science/Management'))
-const Conferences = lazy(() => import('./pages/science/Conferences'))
-const ConferenceDetail = lazy(() => import('./pages/science/ConferenceDetail'))
-const ScienceScholarships = lazy(() => import('./pages/science/Scholarships'))
 const Pendharkar = lazy(() => import('./pages/science/professors/Pendharkar'))
 const Potapova = lazy(() => import('./pages/science/professors/Potapova'))
 const Osmonov = lazy(() => import('./pages/science/professors/Osmonov'))
@@ -144,6 +130,11 @@ const OnlineReg = lazy(() => import('./pages/applicant/extrapages/OnlineReg'))
 
 
 
+const DynamicCmsPageRoute = ({ basePath }) => {
+  const { id } = useParams()
+  return <ManagedPageRoute path={`${basePath}/${id}`} fallback={null} />
+}
+
 const App = () => {
   const [showSplash, setShowSplash] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -183,6 +174,7 @@ const App = () => {
     path === '/about' ||
     path === '/contact' ||
     path === '/contacts' ||
+    path.startsWith('/science/') ||
     path.startsWith('/university/') ||
     path.startsWith('/clinical/') ||
     path.startsWith('/infrastructure/') ||
@@ -283,19 +275,19 @@ const App = () => {
             <Route path="/clinical/startups" element={cmsOnlyPage('/clinical/startups')} />
 
             {/* Lazy Science */}
-            <Route path="/science/management" element={managedPage('/science/management', <ManagementScience />)} />
-            <Route path="/science/management/scientific-council" element={managedPage('/science/management/scientific-council', <ScientificCouncil />)} />
-            <Route path="/science/management/scientific-technical-council" element={managedPage('/science/management/scientific-technical-council', <ScientificTechnicalCouncil />)} />
-            <Route path="/science/management/bioethics" element={managedPage('/science/management/bioethics', <Bioethics />)} />
-            <Route path="/science/management/young-scientists" element={managedPage('/science/management/young-scientists', <YoungScientists />)} />
-            <Route path="/science/management/department" element={managedPage('/science/management/department', <ScienceDepartmentMng />)} />
-            <Route path="/science/department" element={managedPage('/science/department', <ScienceDepartment />)} />
-            <Route path="/science/events/conferences" element={<Conferences />} />
-            <Route path="/science/events/conferences/:id" element={<ConferenceDetail />} />
-            <Route path="/science/publications" element={managedPage('/science/publications', <Publications />)} />
-            <Route path="/science/publications/journal" element={managedPage('/science/publications/journal', <ScientificJournal />)} />
-            <Route path="/science/events" element={managedPage('/science/events', <ScienceEvents />)} />
-            <Route path="/science/scholarships" element={managedPage('/science/scholarships', <ScienceScholarships />)} />
+            <Route path="/science/management" element={cmsOnlyPage('/science/management')} />
+            <Route path="/science/management/scientific-council" element={cmsOnlyPage('/science/management/scientific-council')} />
+            <Route path="/science/management/scientific-technical-council" element={cmsOnlyPage('/science/management/scientific-technical-council')} />
+            <Route path="/science/management/bioethics" element={cmsOnlyPage('/science/management/bioethics')} />
+            <Route path="/science/management/young-scientists" element={cmsOnlyPage('/science/management/young-scientists')} />
+            <Route path="/science/management/department" element={cmsOnlyPage('/science/management/department')} />
+            <Route path="/science/department" element={cmsOnlyPage('/science/department')} />
+            <Route path="/science/events/conferences" element={cmsOnlyPage('/science/events/conferences')} />
+            <Route path="/science/events/conferences/:id" element={<DynamicCmsPageRoute basePath="/science/events/conferences" />} />
+            <Route path="/science/publications" element={cmsOnlyPage('/science/publications')} />
+            <Route path="/science/publications/journal" element={cmsOnlyPage('/science/publications/journal')} />
+            <Route path="/science/events" element={cmsOnlyPage('/science/events')} />
+            <Route path="/science/scholarships" element={cmsOnlyPage('/science/scholarships')} />
             <Route path="/science/labs" element={cmsOnlyPage('/science/labs')} />
             <Route path="/science/labs/anatomy" element={cmsOnlyPage('/science/labs/anatomy')} />
             <Route path="/science/labs/biochemistry" element={cmsOnlyPage('/science/labs/biochemistry')} />
@@ -303,7 +295,7 @@ const App = () => {
             <Route path="/science/labs/interactive" element={cmsOnlyPage('/science/labs/interactive')} />
             <Route path="/science/labs/computer" element={cmsOnlyPage('/science/labs/computer')} />
             <Route path="/science/labs/study" element={cmsOnlyPage('/science/labs/study')} />
-            <Route path="/science/projects" element={managedPage('/science/projects', <Projects />)} />
+            <Route path="/science/projects" element={cmsOnlyPage('/science/projects')} />
             <Route path="/cooperation/international-partners" element={cmsOnlyPage('/cooperation/international-partners')} />
             <Route path="/cooperation/local-partners" element={cmsOnlyPage('/cooperation/local-partners')} />
             <Route path="/news" element={<NewsPage />} />
