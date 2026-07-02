@@ -31,14 +31,6 @@ const ScientificJournal = lazy(() => import('./pages/science/ScientificJournal')
 const ScienceEvents = lazy(() => import('./pages/science/Events'))
 const StudentScience = lazy(() => import('./pages/science/StudentScience'))
 const StudentSociety = lazy(() => import('./pages/science/StudentSociety'))
-const Labs = lazy(() => import('./pages/science/Labs'))
-const Anatomy = lazy(() => import('./pages/science/labs/Anatomy'))
-const Biochemistry = lazy(() => import('./pages/science/labs/Biochemistry'))
-const Chemistry = lazy(() => import('./pages/science/labs/Chemistry'))
-const Biology = lazy(() => import('./pages/science/labs/Biology'))
-const Interactive = lazy(() => import('./pages/science/labs/Interactive'))
-const Computer = lazy(() => import('./pages/science/labs/Computer'))
-const Study = lazy(() => import('./pages/science/labs/Study'))
 const Projects = lazy(() => import('./pages/science/Projects'))
 const ManagementScience = lazy(() => import('./pages/science/Management'))
 const Conferences = lazy(() => import('./pages/science/Conferences'))
@@ -304,15 +296,13 @@ const App = () => {
             <Route path="/science/publications/journal" element={managedPage('/science/publications/journal', <ScientificJournal />)} />
             <Route path="/science/events" element={managedPage('/science/events', <ScienceEvents />)} />
             <Route path="/science/scholarships" element={managedPage('/science/scholarships', <ScienceScholarships />)} />
-            {/* <Route path="/science/centers" element={<Biology />} /> */}
-            <Route path="/science/labs" element={managedPage('/science/labs', <Labs />)} />
-            <Route path="/science/labs/anatomy" element={managedPage('/science/labs/anatomy', <Anatomy />)} />
-            <Route path="/science/labs/biochemistry" element={managedPage('/science/labs/biochemistry', <Biochemistry />)} />
-            {/* <Route path="/science/labs/chemistry" element={<Chemistry />} /> */}
-            <Route path="/science/labs/biology" element={managedPage('/science/labs/biology', <Biology />)} />
-            <Route path="/science/labs/interactive" element={managedPage('/science/labs/interactive', <Interactive />)} />
-            <Route path="/science/labs/computer" element={managedPage('/science/labs/computer', <Computer />)} />
-            <Route path="/science/labs/study" element={managedPage('/science/labs/study', <Study />)} />
+            <Route path="/science/labs" element={cmsOnlyPage('/science/labs')} />
+            <Route path="/science/labs/anatomy" element={cmsOnlyPage('/science/labs/anatomy')} />
+            <Route path="/science/labs/biochemistry" element={cmsOnlyPage('/science/labs/biochemistry')} />
+            <Route path="/science/labs/biology" element={cmsOnlyPage('/science/labs/biology')} />
+            <Route path="/science/labs/interactive" element={cmsOnlyPage('/science/labs/interactive')} />
+            <Route path="/science/labs/computer" element={cmsOnlyPage('/science/labs/computer')} />
+            <Route path="/science/labs/study" element={cmsOnlyPage('/science/labs/study')} />
             <Route path="/science/projects" element={managedPage('/science/projects', <Projects />)} />
             <Route path="/cooperation/international-partners" element={cmsOnlyPage('/cooperation/international-partners')} />
             <Route path="/cooperation/local-partners" element={cmsOnlyPage('/cooperation/local-partners')} />
