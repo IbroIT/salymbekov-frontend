@@ -222,6 +222,16 @@ const ManagedPageRoute = ({ path, fallback }) => {
     return <CmsPageRenderer pageContent={data} />;
   }
 
+  if (!fallback) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center px-4">
+        <div className="max-w-xl rounded-3xl bg-white px-8 py-6 text-center text-slate-600 shadow-lg ring-1 ring-slate-200/70">
+          Content is temporarily unavailable.
+        </div>
+      </div>
+    );
+  }
+
   return fallback;
 };
 
