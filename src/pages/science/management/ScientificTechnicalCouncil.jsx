@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { 
@@ -8,10 +8,42 @@ import {
   FaFileAlt,
   FaDownload 
 } from 'react-icons/fa';
+import { getScientificTechnicalCouncil } from '../../../api';
 import heroImage from '../../../assets/science/management/science-hero.jpg';
 
 const ScientificTechnicalCouncil = () => {
   const { t, i18n } = useTranslation();
+  const [backendMembers, setBackendMembers] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchCouncilMembers = async () => {
+      try {
+        const data = await getScientificTechnicalCouncil(i18n.language);
+        const membersData = Array.isArray(data?.results)
+          ? data.results
+          : Array.isArray(data)
+            ? data
+            : [];
+
+        if (isMounted) {
+          setBackendMembers(membersData);
+        }
+      } catch (error) {
+        console.error('Failed to fetch scientific technical council:', error);
+        if (isMounted) {
+          setBackendMembers([]);
+        }
+      }
+    };
+
+    fetchCouncilMembers();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [i18n.language]);
 
   // Получение данных из переводов
   const title = t('science.management.scientificCouncil.title');
@@ -24,7 +56,8 @@ const ScientificTechnicalCouncil = () => {
   const tasksTitle = t('science.management.scientificCouncil.tasksTitle');
   const tasks = t('science.management.scientificCouncil.tasks', { returnObjects: true });
   const compositionTitle = t('science.management.scientificCouncil.compositionTitle');
-  const members = t('science.management.scientificCouncil.members', { returnObjects: true });
+  const staticMembers = t('science.management.scientificCouncil.members', { returnObjects: true });
+  const members = backendMembers.length > 0 ? backendMembers : staticMembers;
   const downloadTitle = t('science.management.scientificCouncil.downloadTitle');
   const downloadDesc = t('science.management.scientificCouncil.downloadDesc');
   const downloadBtn = t('science.management.scientificCouncil.downloadBtn');
@@ -194,7 +227,7 @@ const ScientificTechnicalCouncil = () => {
           
           <div className="grid md:grid-cols-2 gap-6">
             {Array.isArray(members) && members.map((member, index) => {
-              const memberName = typeof member === 'string' ? member : member.name || member.title;
+              const memberName = typeof member === 'string' ? member : member.full_name || member.name || member.title;
               const memberRole = typeof member === 'string' ? 'Member' : member.role || 'Member';
               
               return (

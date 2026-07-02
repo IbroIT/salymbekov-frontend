@@ -2,19 +2,19 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { fetchNews as fetchSalymbekovNews, getNewsCategories } from '../../services/newsService';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { fetchNewsList, fetchCategories, fetchNewsById, newsKeys } from '../../queries/newsQueries';
 
 const NewsPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   
   const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [activeCategory, setActiveCategory] = useState('all');
   const [sortType, setSortType] = useState('date_desc');
-  const [failedImages, setFailedImages] = useState({});
 
   // Загрузка новостей с использованием React Query
   const { 
@@ -22,29 +22,8 @@ const NewsPage = () => {
     isLoading: newsLoading,
     error: newsError 
   } = useQuery({
-    queryKey: ['salymbekov-news', 'all'],
-    queryFn: async () => {
-      const items = await fetchSalymbekovNews();
-
-      return items.map((item, index) => {
-        const categoryName = item.categories?.[0] || t('news.categories.general', 'Новости');
-
-        return {
-          id: item.id || item.url || index,
-          title: item.title,
-          description: item.excerpt || '',
-          date: item.date,
-          created_at: item.dateIso || item.date,
-          category: categoryName,
-          category_name: categoryName,
-          image: item.image || null,
-          previewImage: item.image || null,
-          aspect_ratio: 'wide',
-          is_recommended: index < 3,
-          url: item.url,
-        };
-      });
-    },
+    queryKey: newsKeys.list(i18n.language),
+    queryFn: fetchNewsList,
     staleTime: 5 * 60 * 1000, // 5 минут
   });
 
@@ -53,11 +32,8 @@ const NewsPage = () => {
     data: categories = [], 
     isLoading: categoriesLoading 
   } = useQuery({
-    queryKey: ['salymbekov-news', 'categories', newsData.length],
-    queryFn: () => getNewsCategories(newsData).map((category) => ({
-      id: category,
-      name: category,
-    })),
+    queryKey: newsKeys.categories(i18n.language),
+    queryFn: fetchCategories,
     staleTime: 5 * 60 * 1000, // 5 минут
   });
 
@@ -69,7 +45,13 @@ const NewsPage = () => {
    */
   const prefetchPost = useCallback((newsId) => {
     if (!newsId) return;
-  }, []);
+    
+    queryClient.prefetchQuery({
+      queryKey: newsKeys.detail(newsId, i18n.language),
+      queryFn: fetchNewsById,
+      staleTime: 5 * 60 * 1000,
+    });
+  }, [queryClient, i18n.language]);
 
   // Функция сортировки новостей
   const sortNews = (newsArray, sortType) => {
@@ -167,12 +149,6 @@ const NewsPage = () => {
   }, [isAutoPlaying, navigateNews, recommendedNews.length]);
 
   const handleReadMore = (newsId) => {
-    const selectedNews = newsData.find(item => item.id === newsId);
-    if (selectedNews?.url) {
-      window.open(selectedNews.url, '_blank', 'noopener,noreferrer');
-      return;
-    }
-
     navigate(`/press/news/${newsId}`);
   };
 
@@ -323,13 +299,12 @@ const NewsPage = () => {
               {/* Image Section */}
               <div className="relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 z-10" />
-                {recommendedNews[currentNewsIndex]?.image && !failedImages[recommendedNews[currentNewsIndex]?.id] ? (
+                {recommendedNews[currentNewsIndex]?.image ? (
                   <motion.img
                     key={recommendedNews[currentNewsIndex]?.id}
                     src={recommendedNews[currentNewsIndex].image}
                     alt={recommendedNews[currentNewsIndex].title}
                     loading="lazy"
-                    onError={() => setFailedImages(prev => ({ ...prev, [recommendedNews[currentNewsIndex]?.id]: true }))}
                     className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ${
                       isVisible ? 'scale-110' : 'scale-100'
                     }`}
@@ -439,13 +414,12 @@ const NewsPage = () => {
                 >
                   <div className="relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 z-10" />
-                    {(news.image || news.previewImage) && !failedImages[news.id] ? (
+                    {news.image || news.previewImage ? (
                       <div className={getAspectRatioClasses(news.aspect_ratio)}>
                         <img
                           src={news.image || news.previewImage}
                           alt={news.title}
                           loading="lazy"
-                          onError={() => setFailedImages(prev => ({ ...prev, [news.id]: true }))}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         />
                       </div>

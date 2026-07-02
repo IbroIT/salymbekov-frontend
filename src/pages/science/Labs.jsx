@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
@@ -15,7 +15,7 @@ import photo5 from '../../assets/science/management/bc0b3948-300x200.jpg';
 import photo6 from '../../assets/science/management/bc0b2371-300x200.jpg';
 
 const Labs = () => {
-  const [activeLab, setActiveLab] = useState('anatomy');
+  const activeLab = 'anatomy';
   const { t } = useTranslation();
 
   const labSections = [
@@ -475,8 +475,8 @@ const Labs = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <button
-                        onClick={() => setActiveLab(section.id)}
+                      <Link
+                        to={`/science/labs/${section.id}`}
                         className={`flex items-center w-full text-left px-4 py-3 rounded-lg mb-1 transition-all ${
                           activeLab === section.id
                             ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
@@ -485,7 +485,7 @@ const Labs = () => {
                       >
                         <SectionIcon className="mr-3 text-lg" />
                         <span className="font-medium">{section.name}</span>
-                      </button>
+                      </Link>
                     </motion.div>
                   );
                 })}

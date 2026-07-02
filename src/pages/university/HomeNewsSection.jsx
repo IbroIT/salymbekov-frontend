@@ -2,46 +2,70 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { fetchNews as fetchSalymbekovNews } from '../../services/newsService';
+import { apiRequest } from '../../api';
 
 const NewsAndEventsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.2 });
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [failedImages, setFailedImages] = useState({});
 
   // Загрузка новостей из API
   useEffect(() => {
     const fetchNews = async () => {
       try {
         setLoading(true);
-        const newsArray = await fetchSalymbekovNews({ limit: 3 });
-
-        const transformedNews = newsArray.map(item => ({
+        const lang = i18n.language === 'kg' ? 'kg' : i18n.language === 'en' ? 'en' : 'ru';
+        const data = await apiRequest(`/presscentre/news/?lang=${lang}&limit=3`);
+        
+        const newsArray = data.results || data || [];
+        
+        // Sort by date (most recent first)
+        const sortedNews = newsArray.sort((a, b) => {
+          const dateA = new Date(a.published_at || a.created_at);
+          const dateB = new Date(b.published_at || b.created_at);
+          return dateB - dateA; // Most recent first
+        });
+        
+        const transformedNews = sortedNews.slice(0, 3).map(item => ({
           id: item.id,
           title: item.title,
-          description: item.excerpt || '',
-          date: item.date,
-          category: item.categories?.[0] || 'news',
-          categoryName: item.categories?.[0] || t('news.categories.general', 'Новости'),
+          description: item.short_description || item.description?.substring(0, 150) + '...' || '',
+          date: new Date(item.published_at || item.created_at).toLocaleDateString(lang, {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          }),
+          category: item.category?.id?.toString() || 'news',
+          categoryName: item.category?.title || t('news.categories.general', 'Новости'),
           image: item.image || null,
-          path: item.url,
-          url: item.url,
+          path: `/press/news/${item.id}`
         }));
         
         setNews(transformedNews);
       } catch (error) {
         console.error('Error fetching news:', error);
-        setNews([]);
+        // Fallback data
+        setNews([
+          {
+            id: 1,
+            title: t('news.fallback.title', 'Новости компании'),
+            description: t('news.fallback.description', 'Актуальные новости и события компании Дордой'),
+            date: new Date().toLocaleDateString(i18n.language),
+            category: 'news',
+            categoryName: t('news.categories.general', 'Новости'),
+            image: null,
+            path: '/press/news'
+          }
+        ]);
       } finally {
         setLoading(false);
       }
     };
 
     fetchNews();
-  }, [t]);
+  }, [i18n.language, t]);
 
   const categoryColors = {
     sport: { bg: 'bg-green-100', text: 'text-green-600', border: 'border-green-200' },
@@ -193,11 +217,10 @@ const NewsAndEventsSection = () => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.4 }}
                   >
-                    {newsItem.image && !failedImages[newsItem.id] ? (
+                    {newsItem.image ? (
                       <img
                         src={newsItem.image}
                         alt={newsItem.title}
-                        onError={() => setFailedImages(prev => ({ ...prev, [newsItem.id]: true }))}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     ) : (
@@ -252,8 +275,6 @@ const NewsAndEventsSection = () => {
                     >
                       <Link
                         to={newsItem.path}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300 group/btn"
                       >
                         <span>{t('news.learnMore')}</span>

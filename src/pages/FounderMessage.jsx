@@ -1,9 +1,30 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FaArrowRight, FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
+import { usePageContent } from "../hooks/usePageContent";
 
 const FounderMessage = () => {
   const { t } = useTranslation();
+  const fallbackContent = {
+    title: t('founderMessage.title'),
+    data: {
+      badge: t('founderMessage.badge'),
+      founderName: t('founderMessage.founderName'),
+      founderPosition: t('founderMessage.founderPosition'),
+      founderQuote: t('founderMessage.founderQuote'),
+      readMore: t('founderMessage.readMore'),
+      readMoreUrl: '/university/Appeal',
+      paragraphs: [
+        t('founderMessage.paragraph1'),
+        t('founderMessage.paragraph2'),
+        t('founderMessage.paragraph3'),
+      ],
+    },
+  };
+  const { content, mediaByKey } = usePageContent('home-founder-message', fallbackContent);
+  const data = content?.data || fallbackContent.data;
+  const paragraphs = data.paragraphs || fallbackContent.data.paragraphs;
+  const founderPhoto = mediaByKey.founder_photo?.url || data.photo_url || "/askar.jpg";
 
   return (
     <section className="py-20 relative overflow-hidden ">
@@ -25,12 +46,12 @@ const FounderMessage = () => {
             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6 shadow-lg"
           >
             <FaQuoteLeft className="text-lg" />
-            <span className="font-semibold text-sm uppercase tracking-wide">{t('founderMessage.badge')}</span>
+            <span className="font-semibold text-sm uppercase tracking-wide">{data.badge}</span>
             <FaQuoteRight className="text-lg" />
           </motion.div>
 
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] via-[#0077B6] to-[#023E8A] bg-clip-text text-transparent leading-tight">
-            {t('founderMessage.title')}
+            {content?.title || fallbackContent.title}
           </h2>
           <motion.div
             initial={{ width: 0 }}
@@ -69,8 +90,8 @@ const FounderMessage = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <img
-                    src="/askar.jpg"
-                    alt={t('founderMessage.founderName')}
+                    src={founderPhoto}
+                    alt={data.founderName}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:brightness-110"
                     onError={(e) => {
                       e.target.style.display = 'none';
@@ -87,8 +108,8 @@ const FounderMessage = () => {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                           </svg>
                         </motion.div>
-                        <p class="text-lg font-bold">${t('founderMessage.founderName')}</p>
-                        <p class="text-sm text-gray-500 mt-2 text-center px-4">${t('founderMessage.founderPosition')}</p>
+                        <p class="text-lg font-bold">${data.founderName}</p>
+                        <p class="text-sm text-gray-500 mt-2 text-center px-4">${data.founderPosition}</p>
                       `;
                       e.target.parentNode.appendChild(fallback);
                     }}
@@ -102,7 +123,7 @@ const FounderMessage = () => {
                     className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   >
                     <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <p className="text-sm font-medium">{t('founderMessage.founderQuote')}</p>
+                      <p className="text-sm font-medium">{data.founderQuote}</p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -116,10 +137,10 @@ const FounderMessage = () => {
                 className="mt-6 text-center"
               >
                 <h3 className="text-xl font-bold text-gray-800 mb-2">
-                  {t('founderMessage.founderName')}
+                  {data.founderName}
                 </h3>
                 <p className="text-[#0077B6] font-semibold text-sm">
-                  {t('founderMessage.founderPosition')}
+                  {data.founderPosition}
                 </p>
                 <div className="mt-3 flex justify-center">
                   <div className="w-12 h-0.5 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full"></div>
@@ -147,9 +168,14 @@ const FounderMessage = () => {
                 <FaQuoteLeft />
               </div>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed pl-8">
-                <p className="font-medium text-gray-800">{t('founderMessage.paragraph1')}</p>
-                <p>{t('founderMessage.paragraph2')}</p>
-                <p className="text-[#0077B6] font-semibold italic">{t('founderMessage.paragraph3')}</p>
+                {paragraphs.map((paragraph, index) => (
+                  <p
+                    key={`${paragraph}-${index}`}
+                    className={index === 0 ? "font-medium text-gray-800" : index === paragraphs.length - 1 ? "text-[#0077B6] font-semibold italic" : undefined}
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </div>
               <div className="absolute -right-4 bottom-0 text-4xl text-[#023E8A] opacity-20">
                 <FaQuoteRight />
@@ -167,11 +193,11 @@ const FounderMessage = () => {
                 boxShadow: "0 20px 40px rgba(2, 62, 138, 0.3)"
               }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.location.href = '/university/Appeal'}
+              onClick={() => window.location.href = data.readMoreUrl || '/university/Appeal'}
               className="inline-flex items-center gap-4 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#0077B6] to-[#023E8A] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <span className="relative z-10">{t('founderMessage.readMore')}</span>
+              <span className="relative z-10">{data.readMore}</span>
               <motion.div
                 className="relative z-10"
                 whileHover={{ x: 4 }}
