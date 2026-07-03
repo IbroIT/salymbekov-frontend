@@ -5,8 +5,8 @@ import Hero from './Hero';
 import PartnersSection from '../Home/PartnersSection';
 import VideoSection from '../Home/VideoSection';
 import EmbeddedCmsBlock from './EmbeddedCmsBlock';
+import HomeFounderSection from './HomeFounderSection';
 import HomeNews from '../../pages/university/HomeNewsSection';
-import FounderMessage from '../../pages/FounderMessage';
 import MaterialBaseGallery from '../../pages/MaterialBaseGallery';
 
 const pickLocalized = (value, language, fallback = '') => {
@@ -81,7 +81,7 @@ const HomeCmsPage = ({ fallback, isSplashVisible = false }) => {
           </section>
         ) : null}
 
-        <EmbeddedCmsBlock path={founderPagePath} fallback={<FounderMessage />} />
+        <HomeFounderSection path={founderPagePath} />
         {homeData.show_news !== false ? <HomeNews /> : null}
         {homeData.show_partners !== false ? (
           <PartnersSection
