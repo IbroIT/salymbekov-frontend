@@ -17,7 +17,7 @@ const FALLBACK_PARTNERS = [
   { id: 'rkdf', name: 'Российско-Кыргызский фонд развития', logo: '/partners/rkdf.png' },
 ];
 
-const PartnersSection = () => {
+const PartnersSection = ({ badge, title, subtitle }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.2 });
   const { t } = useTranslation();
@@ -71,7 +71,7 @@ const PartnersSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-flex items-center px-4 py-2 rounded-full bg-green-50 border border-green-200 mb-6"
           >
-            <span className="text-green-600 text-sm font-semibold">{t('partners.badge', 'Партнеры')}</span>
+            <span className="text-green-600 text-sm font-semibold">{badge || t('partners.badge', 'Партнеры')}</span>
           </motion.div>
 
           <motion.h2
@@ -80,7 +80,7 @@ const PartnersSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6"
           >
-            {t('home.partners.title')}
+            {title || t('home.partners.title')}
           </motion.h2>
 
           <motion.div
@@ -96,7 +96,7 @@ const PartnersSection = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
           >
-            {t('home.partners.subtitle', 'Мы сотрудничаем с ведущими организациями для достижения общих целей и развития региона')}
+            {subtitle || t('home.partners.subtitle', 'Мы сотрудничаем с ведущими организациями для достижения общих целей и развития региона')}
           </motion.p>
         </motion.div>
 

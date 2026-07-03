@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Play, Youtube } from 'lucide-react';
 
-const VideoSection = () => {
+const VideoSection = ({ videoUrl, platformLabel }) => {
   const { t, i18n } = useTranslation();
 
   // Debug: проверим текущий язык и переводы
@@ -13,8 +13,7 @@ const VideoSection = () => {
   }, [i18n.language, t]);
 
   // YouTube video ID из ссылки
-  const videoId = 'SdluvCyzd6M';
-  const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+  const embedUrl = videoUrl || 'https://www.youtube.com/embed/SdluvCyzd6M';
 
   return (
     <section className="py-16 ">
@@ -54,7 +53,7 @@ const VideoSection = () => {
             <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
               <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
                 <Youtube className="w-4 h-4 text-red-500" />
-                {t('home.video.platform', 'YouTube')}
+                {platformLabel || t('home.video.platform', 'YouTube')}
               </div>
             </div>
           </div>

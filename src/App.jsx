@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-
 import Navbar from './components/Navbar/Navbar1'
 import ScrollToTop from './components/ScrollToTop'
 import SplashScreen from './components/SplashScreen'
+import HomeCmsPage from './components/home/HomeCmsPage'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import FounderMessage from './pages/FounderMessage'
@@ -195,7 +196,7 @@ const App = () => {
         <Navbar isSplashVisible={isContentHidden} />
         <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div>Загрузка...</div></div>}>
           <Routes>
-            <Route path="/" element={<Home isSplashVisible={isContentHidden} />} />
+            <Route path="/" element={<HomeCmsPage isSplashVisible={isContentHidden} fallback={<Home isSplashVisible={isContentHidden} />} />} />
             <Route path='/press/news' element={<NewsPage />} />
             <Route path="/about" element={cmsOnlyPage('/about')} />
             <Route path="/services" element={managedPage('/services', <Services />)} />
