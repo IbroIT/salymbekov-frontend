@@ -300,7 +300,7 @@ const App = () => {
             <Route path="/cooperation/local-partners" element={cmsOnlyPage('/cooperation/local-partners')} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/contacts" element={cmsOnlyPage('/contacts')} />
-            <Route path="/vacancies" element={managedPage('/vacancies', <Vacancies />)} />
+            <Route path="/vacancies" element={cmsOnlyPage('/vacancies')} />
             <Route path="/infrastructure/locations" element={cmsOnlyPage('/infrastructure/locations')} />
             <Route path="/infrastructure/partners" element={cmsOnlyPage('/infrastructure/partners')} />
             <Route path="/infrastructure/*" element={<Home />} />
