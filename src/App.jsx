@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-
 import Navbar from './components/Navbar/Navbar1'
 import ScrollToTop from './components/ScrollToTop'
 import SplashScreen from './components/SplashScreen'
-import HomeCmsPage from './components/home/HomeCmsPage'
+import HomeCmsPage from './components/Home/HomeCmsPage'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import FounderMessage from './pages/FounderMessage'
