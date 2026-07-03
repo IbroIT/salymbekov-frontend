@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 import { getAcademicCouncil } from '../../../api';
-import StaticAcademicCouncilPage from '../temp_councils/AcadCouncil';
 import { 
   FaUsers,
   FaGraduationCap,
@@ -17,58 +16,23 @@ import {
 const AcademicCouncilPage = () => {
   const { t, i18n } = useTranslation();
   const [members, setMembers] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let isMounted = true;
-
     const fetchMembers = async () => {
-      setLoading(true);
       try {
         const data = await getAcademicCouncil(i18n.language);
-        const membersData = Array.isArray(data?.results)
-          ? data.results
-          : Array.isArray(data)
-            ? data
-            : [];
-
-        if (isMounted) {
-          setMembers(membersData);
-        }
+        setMembers(data.results);
       } catch (error) {
         console.error('Failed to fetch academic council:', error);
-        if (isMounted) {
-          setMembers([]);
-        }
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
       }
     };
 
     fetchMembers();
-
-    return () => {
-      isMounted = false;
-    };
   }, [i18n.language]);
 
   // Статистика совета
   const stats = [
   ];
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-[#023E8A] text-xl font-semibold">{t('common.loading', 'Loading...')}</div>
-      </div>
-    );
-  }
-
-  if (members.length === 0) {
-    return <StaticAcademicCouncilPage />;
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">

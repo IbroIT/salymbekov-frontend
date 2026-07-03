@@ -1,31 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { getBanners } from '../../api';
 
+// Запасные баннеры (su-medical-school.com), если бэкенд не вернул изображения
+const FALLBACK_PHOTOS = [
+  '/banners/banner1.jpg',
+  '/banners/banner2.jpg',
+];
+
 const SimplePhotoSlider = ({ isSplashVisible = false }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [banners, setBanners] = useState([]);
 
-  const fallbackPhotos = ['/images/slide1.jpg', '/images/slide2.jpg', '/images/slide3.jpg'];
-  const bannerPhotos = banners.map(banner => banner.image).filter(Boolean);
-  const photos = bannerPhotos.length > 0 ? bannerPhotos : fallbackPhotos;
-  const canNavigate = photos.length > 1;
+  const apiPhotos = banners
+    .map(banner => banner.image)
+    .filter(Boolean);
+  const photos = apiPhotos.length > 0 ? apiPhotos : FALLBACK_PHOTOS;
 
   const nextSlide = () => {
-    if (isTransitioning || !canNavigate) return;
+    if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentSlide((prev) => (prev === photos.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    if (isTransitioning || !canNavigate) return;
+    if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentSlide((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
   };
 
   const goToSlide = (index) => {
-    if (isTransitioning || !canNavigate || index === currentSlide) return;
+    if (isTransitioning || index === currentSlide) return;
     setIsTransitioning(true);
     setCurrentSlide(index);
   };
@@ -34,7 +40,7 @@ const SimplePhotoSlider = ({ isSplashVisible = false }) => {
     const fetchBanners = async () => {
       try {
         const data = await getBanners();
-        setBanners(Array.isArray(data?.results) ? data.results : Array.isArray(data) ? data : []);
+        setBanners(Array.isArray(data?.results) ? data.results : []);
       } catch (error) {
         console.error('Failed to fetch banners:', error);
       }
@@ -44,18 +50,12 @@ const SimplePhotoSlider = ({ isSplashVisible = false }) => {
   }, []);
 
   useEffect(() => {
-    if (currentSlide >= photos.length) {
-      setCurrentSlide(0);
-    }
-  }, [currentSlide, photos.length]);
-
-  useEffect(() => {
     const timer = setTimeout(() => {
       setIsTransitioning(false);
     }, 500);
 
     const autoSlide = setInterval(() => {
-      if (!isPaused && canNavigate) {
+      if (!isPaused) {
         nextSlide();
       }
     }, 4000);
@@ -64,7 +64,7 @@ const SimplePhotoSlider = ({ isSplashVisible = false }) => {
       clearTimeout(timer);
       clearInterval(autoSlide);
     };
-  }, [currentSlide, isPaused, canNavigate]);
+  }, [currentSlide, isPaused]);
 
   return (
     <div 
@@ -111,49 +111,43 @@ const SimplePhotoSlider = ({ isSplashVisible = false }) => {
       </div>
 
       {/* Навигационные стрелки */}
-      {canNavigate && (
-        <>
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full transition-all duration-300 hover:scale-110 group"
-          >
-            <svg className="w-6 h-6 text-white group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full transition-all duration-300 hover:scale-110 group"
+      >
+        <svg className="w-6 h-6 text-white group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
 
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full transition-all duration-300 hover:scale-110 group"
-          >
-            <svg className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </>
-      )}
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full transition-all duration-300 hover:scale-110 group"
+      >
+        <svg className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
 
       {/* Индикаторы слайдов внизу */}
-      {canNavigate && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {photos.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`relative w-10 h-1 rounded-full transition-all duration-300 ${
-                index === currentSlide 
-                  ? 'bg-white w-16' 
-                  : 'bg-white/50 hover:bg-white/70'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            >
-              {index === currentSlide && (
-                <div className="absolute inset-0 rounded-full bg-white animate-pulse" />
-              )}
-            </button>
-          ))}
-        </div>
-      )}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {photos.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`relative w-10 h-1 rounded-full transition-all duration-300 ${
+              index === currentSlide 
+                ? 'bg-white w-16' 
+                : 'bg-white/50 hover:bg-white/70'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          >
+            {index === currentSlide && (
+              <div className="absolute inset-0 rounded-full bg-white animate-pulse" />
+            )}
+          </button>
+        ))}
+      </div>
 
       {/* Счетчик слайдов в правом нижнем углу */}
       <div className="absolute bottom-6 right-6 z-20">

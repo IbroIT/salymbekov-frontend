@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { 
@@ -37,11 +37,7 @@ import Vypusk from '../../assets/science/publications/vypusk-1i-vmio-2021g.pdf';
 
 const ScientificJournal = () => {
   const { t } = useTranslation();
-  const [searchParams] = useSearchParams();
-  const requestedIssue = Number(searchParams.get('issue'));
-  const activeIssue = Number.isInteger(requestedIssue) && requestedIssue >= 1 && requestedIssue <= 9
-    ? requestedIssue
-    : 1;
+  const [activeIssue, setActiveIssue] = useState(1);
 
   // Возвращает название выпуска, если ключ journal.issues.{n} существует — используем его,
   // иначе делаем fallback: "Выпуск №n" (или соответствующий перевод journal.issue)
@@ -343,18 +339,19 @@ const ScientificJournal = () => {
               </div>
               <nav className="p-2">
                 {issues.map((issue) => (
-                  <motion.div key={issue} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    <Link
-                      to={`?issue=${issue}`}
-                      className={`block w-full px-4 py-3 rounded-lg mb-1 transition-all ${
-                        activeIssue === issue
-                          ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
-                          : 'text-gray-700 hover:bg-gray-50'
-                      }`}
-                    >
-                      {getIssueTitle(issue)}
-                    </Link>
-                  </motion.div>
+                  <motion.button
+                    key={issue}
+                    onClick={() => setActiveIssue(issue)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`w-full text-left px-4 py-3 rounded-lg mb-1 transition-all ${
+                      activeIssue === issue
+                        ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
+                        : 'text-gray-700 hover:bg-gray-50'
+                    }`}
+                  >
+                    {getIssueTitle(issue)}
+                  </motion.button>
                 ))}
               </nav>
             </div>

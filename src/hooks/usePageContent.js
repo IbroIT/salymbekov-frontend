@@ -1,61 +1,19 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { getPageContent } from '../api';
+import { useQuery } from '@tanstack/react-query';
+import { getPageContentByPath, normalizeLanguage } from '../api';
 
-const normalizeResponse = (response) => {
-  if (!response) return null;
-  return response.results ? response.results : response;
+export const pageContentKeys = {
+  all: ['page-content'],
+  byPath: (path, language) => [...pageContentKeys.all, normalizeLanguage(language), path],
 };
 
-export const usePageContent = (slug, fallback = null) => {
-  const { i18n } = useTranslation();
-  const [content, setContent] = useState(fallback);
-  const [loading, setLoading] = useState(Boolean(slug));
-  const [error, setError] = useState(null);
+export const usePageContent = (path, language, options = {}) => {
+  const normalizedLanguage = normalizeLanguage(language);
 
-  useEffect(() => {
-    let ignore = false;
-
-    const fetchContent = async () => {
-      if (!slug) return;
-
-      setLoading(true);
-      setError(null);
-
-      try {
-        const response = await getPageContent(slug, i18n.language || 'ru');
-        const data = normalizeResponse(response);
-
-        if (!ignore) {
-          setContent(data || fallback);
-        }
-      } catch (err) {
-        console.error(`Failed to fetch page content: ${slug}`, err);
-        if (!ignore) {
-          setContent(fallback);
-          setError(err);
-        }
-      } finally {
-        if (!ignore) {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchContent();
-
-    return () => {
-      ignore = true;
-    };
-  }, [slug, i18n.language]);
-
-  const mediaByKey = useMemo(() => {
-    const media = content?.media || [];
-    return media.reduce((acc, item) => {
-      if (item.key) acc[item.key] = item;
-      return acc;
-    }, {});
-  }, [content]);
-
-  return { content, mediaByKey, loading, error };
+  return useQuery({
+    queryKey: pageContentKeys.byPath(path, normalizedLanguage),
+    queryFn: () => getPageContentByPath(path, normalizedLanguage),
+    enabled: Boolean(path) && options.enabled !== false,
+    retry: false,
+    ...options,
+  });
 };

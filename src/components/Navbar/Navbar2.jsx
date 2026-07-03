@@ -672,7 +672,7 @@ const Navbar = () => {
 
       <div className="ml-64" />
 
-      <style>{`
+      <style jsx global>{`
         .navbar-scrollbar {
           scrollbar-width: thin;
         }

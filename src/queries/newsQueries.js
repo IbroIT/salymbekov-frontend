@@ -4,17 +4,15 @@ import { apiRequest } from '../api';
  * Функция для загрузки всех новостей с пагинацией
  * Загружает все страницы до конца
  */
-const fetchAllNewsPages = async (language, limit = 100, maxPages = 5) => {
+const fetchAllNewsPages = async (language, limit = 100) => {
   let allNews = [];
   let nextUrl = `/presscentre/news/?lang=${language}&limit=${limit}`;
-  let pageCount = 0;
   
-  while (nextUrl && pageCount < maxPages) {
+  while (nextUrl) {
     try {
       const response = await apiRequest(nextUrl);
       const currentNews = response.results || response || [];
       allNews = [...allNews, ...currentNews];
-      pageCount += 1;
       
       // Обрабатываем URL для следующей страницы
       if (response.next) {

@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { usePageContent } from '../hooks/usePageContent';
 
 const MaterialBaseGallery = () => {
   const { t } = useTranslation();
@@ -35,7 +34,7 @@ const MaterialBaseGallery = () => {
   );
 
   // Заглушки для изображений
-  const fallbackImages = [
+  const images = [
     {
       id: 1,
       url: "https://salymbekov.com/wp-content/uploads/2022/07/bc0b2745.jpg",
@@ -79,20 +78,6 @@ const MaterialBaseGallery = () => {
       category: "Ресурсы"
     }
   ];
-  const { content } = usePageContent('material-base-gallery', {
-    title: t('materialBase.title'),
-    subtitle: t('materialBase.description'),
-    data: {
-      images: fallbackImages,
-    },
-  });
-  const mediaImages = content?.media?.map((item) => ({
-    id: item.id,
-    url: item.url,
-    title: item.title,
-    category: item.key,
-  })).filter((item) => item.url) || [];
-  const images = mediaImages.length > 0 ? mediaImages : (content?.data?.images || fallbackImages);
 
   // Автопрокрутка
   useEffect(() => {
@@ -129,10 +114,10 @@ const MaterialBaseGallery = () => {
         {/* Заголовок и описание */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            {content?.title || t('materialBase.title')}
+            {t('materialBase.title')}
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            {content?.subtitle || t('materialBase.description')}
+            {t('materialBase.description')}
           </p>
         </div>
 
