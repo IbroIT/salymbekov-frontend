@@ -217,6 +217,8 @@ const App = () => {
             <Route path="/university/normative-docs" element={cmsOnlyPage('/university/normative-docs')} />
             <Route path="/university/normative-docs/kr-acts" element={cmsOnlyPage('/university/normative-docs/kr-acts')} />
             <Route path="/university/normative-docs/internal-acts" element={cmsOnlyPage('/university/normative-docs/internal-acts')} />
+            <Route path="/university/normative-docs/licenses" element={cmsOnlyPage('/university/normative-docs/licenses')} />
+            <Route path="/university/normative-docs/logo" element={cmsOnlyPage('/university/normative-docs/logo')} />
             <Route path="/university/councils/academic-council" element={cmsOnlyPage('/university/councils/academic-council')} />
             <Route path="/university/councils/admissions-committee" element={cmsOnlyPage('/university/councils/admissions-committee')} />
             <Route path="/university/councils/bioethics-committee" element={cmsOnlyPage('/university/councils/bioethics-committee')} />
