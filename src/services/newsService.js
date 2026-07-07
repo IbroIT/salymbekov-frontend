@@ -1,19 +1,58 @@
-export const fetchNews = async ({ limit } = {}) => {
-  const params = new URLSearchParams();
+import { apiRequest, normalizeLanguage } from '../api';
 
-  if (limit) {
-    params.set('limit', String(limit));
+const fetchAllNewsPages = async (language = 'ru', limit = 100) => {
+  const items = [];
+  let nextUrl = `/presscentre/news/?lang=${normalizeLanguage(language)}&limit=${limit}`;
+
+  while (nextUrl) {
+    const response = await apiRequest(nextUrl);
+    const pageItems = response.results || response || [];
+    items.push(...pageItems);
+
+    if (!response.next) {
+      break;
+    }
+
+    if (response.next.startsWith('http')) {
+      const url = new URL(response.next);
+      nextUrl = `${url.pathname}${url.search}`.replace(/^\/api/, '');
+    } else {
+      nextUrl = response.next.replace(/^\/api/, '');
+    }
   }
 
-  const endpoint = `/api/news${params.toString() ? `?${params.toString()}` : ''}`;
-  const response = await fetch(endpoint);
+  return items;
+};
 
-  if (!response.ok) {
-    throw new Error('Unable to load news');
-  }
+const formatDate = (dateString, language) => {
+  if (!dateString) return '';
 
-  const data = await response.json();
-  return Array.isArray(data.items) ? data.items : [];
+  return new Date(dateString).toLocaleDateString(language, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
+const transformNewsItem = (item, language) => ({
+  id: item.id,
+  title: item.title,
+  excerpt: item.short_description || '',
+  date: formatDate(item.published_at || item.created_at, language),
+  dateIso: item.published_at || item.created_at,
+  categories: item.category?.title ? [item.category.title] : [],
+  image: item.image || null,
+  gallery: item.gallery || [],
+  sourceUrl: item.source_url || '',
+});
+
+export const fetchNews = async ({ limit, language = 'ru' } = {}) => {
+  const items = await fetchAllNewsPages(language);
+  const sortedItems = items
+    .map((item) => transformNewsItem(item, language))
+    .sort((a, b) => new Date(b.dateIso || 0) - new Date(a.dateIso || 0));
+
+  return limit ? sortedItems.slice(0, limit) : sortedItems;
 };
 
 export const getNewsCategories = (items = []) => {

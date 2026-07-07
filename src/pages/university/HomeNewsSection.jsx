@@ -7,7 +7,7 @@ import { fetchNews as fetchSalymbekovNews } from '../../services/newsService';
 const NewsAndEventsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.2 });
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [failedImages, setFailedImages] = useState({});
@@ -17,7 +17,7 @@ const NewsAndEventsSection = () => {
     const fetchNews = async () => {
       try {
         setLoading(true);
-        const newsArray = await fetchSalymbekovNews({ limit: 3 });
+        const newsArray = await fetchSalymbekovNews({ limit: 3, language: i18n.language });
 
         const transformedNews = newsArray.map(item => ({
           id: item.id,
@@ -27,8 +27,7 @@ const NewsAndEventsSection = () => {
           category: item.categories?.[0] || 'news',
           categoryName: item.categories?.[0] || t('news.categories.general', 'Новости'),
           image: item.image || null,
-          path: item.url,
-          url: item.url,
+          path: `/press/news/${item.id}`,
         }));
         
         setNews(transformedNews);
@@ -41,7 +40,7 @@ const NewsAndEventsSection = () => {
     };
 
     fetchNews();
-  }, [t]);
+  }, [t, i18n.language]);
 
   const categoryColors = {
     sport: { bg: 'bg-green-100', text: 'text-green-600', border: 'border-green-200' },
@@ -252,8 +251,6 @@ const NewsAndEventsSection = () => {
                     >
                       <Link
                         to={newsItem.path}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300 group/btn"
                       >
                         <span>{t('news.learnMore')}</span>

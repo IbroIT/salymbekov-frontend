@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchNews as fetchSalymbekovNews, getNewsCategories } from '../../services/newsService';
 
 const NewsPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   
   const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
@@ -22,9 +22,9 @@ const NewsPage = () => {
     isLoading: newsLoading,
     error: newsError 
   } = useQuery({
-    queryKey: ['salymbekov-news', 'all'],
+    queryKey: ['salymbekov-news', 'all', i18n.language],
     queryFn: async () => {
-      const items = await fetchSalymbekovNews();
+      const items = await fetchSalymbekovNews({ language: i18n.language });
 
       return items.map((item, index) => {
         const categoryName = item.categories?.[0] || t('news.categories.general', 'Новости');
@@ -41,7 +41,6 @@ const NewsPage = () => {
           previewImage: item.image || null,
           aspect_ratio: 'wide',
           is_recommended: index < 3,
-          url: item.url,
         };
       });
     },
@@ -167,12 +166,6 @@ const NewsPage = () => {
   }, [isAutoPlaying, navigateNews, recommendedNews.length]);
 
   const handleReadMore = (newsId) => {
-    const selectedNews = newsData.find(item => item.id === newsId);
-    if (selectedNews?.url) {
-      window.open(selectedNews.url, '_blank', 'noopener,noreferrer');
-      return;
-    }
-
     navigate(`/press/news/${newsId}`);
   };
 
