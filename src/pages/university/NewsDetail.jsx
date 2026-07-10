@@ -143,31 +143,25 @@ const NewsDetail = () => {
     return `${API_BASE_URL}${imagePath}`;
   };
 
+  const getGalleryImages = (data) => {
+    if (!data) return [];
+
+    const gallery = Array.isArray(data.gallery) ? data.gallery : data.photos || [];
+    return gallery.map((photo) => photo?.image).filter(Boolean);
+  };
+
   const getImagesArray = (data) => {
     if (!data) return [];
-    
-    const images = [];
-    
-    // Основное изображение
-    if (data.image || data.previewImage) {
-      images.push(data.image || data.previewImage);
-    }
-    
-    // Дополнительные фото из галереи
-    if (data.photos && Array.isArray(data.photos)) {
-      data.photos.forEach(photo => {
-        if (photo.image) {
-          images.push(photo.image);
-        }
-      });
-    } else if (data.gallery && Array.isArray(data.gallery)) {
-      data.gallery.forEach(photo => {
-        if (photo.image) {
-          images.push(photo.image);
-        }
-      });
-    }
-    
+
+    const primaryImage = data.image || data.previewImage;
+    const images = primaryImage ? [primaryImage] : [];
+
+    getGalleryImages(data).forEach((image) => {
+      if (!images.includes(image)) {
+        images.push(image);
+      }
+    });
+
     return images;
   };
 
@@ -265,6 +259,7 @@ const NewsDetail = () => {
   }
 
   const images = getImagesArray(newsData);
+  const galleryImages = getGalleryImages(newsData);
   const content = newsData?.fullText || newsData?.full_description || newsData?.description || newsData?.summary;
 
   return (
@@ -343,15 +338,60 @@ const NewsDetail = () => {
                       {newsData.category_name || t('newsDetail.defaultCategory', 'Новости')}
                     </span>
                     <h1 className="text-4xl font-bold leading-tight mb-3">{newsData.title}</h1>
-                    {images.length > 1 && (
+                    {galleryImages.length > 0 && (
                       <p className="text-blue-100 text-lg opacity-90">
-                        {t('newsDetail.photoCounter', { count: images.length })} фото: {images.length}
+                        {t('newsDetail.photoCounter', { count: galleryImages.length })} фото: {galleryImages.length}
                       </p>
                     )}
                   </div>
                 </div>
               </div>
             </motion.div>
+          )}
+
+          {/* Gallery */}
+          {galleryImages.length > 0 && (
+            <motion.section
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.25 }}
+              className="bg-white rounded-3xl p-6 shadow-xl mb-8"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  {t('newsDetail.gallery.title', 'Фотогалерея')}
+                </h2>
+                <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold">
+                  {galleryImages.length} фото
+                </span>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {galleryImages.map((image, index) => {
+                  const lightboxIndex = images.indexOf(image);
+
+                  return (
+                    <motion.button
+                      type="button"
+                      key={`${image}-${index}`}
+                      initial={{ scale: 0.96, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.3 + index * 0.05 }}
+                      className="relative rounded-xl overflow-hidden shadow-lg cursor-pointer group aspect-square"
+                      onClick={() => openLightbox(lightboxIndex >= 0 ? lightboxIndex : index)}
+                    >
+                      <img
+                        src={getImageUrl(image)}
+                        alt={`${newsData.title} ${index + 1}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onLoad={() => handleImageLoad(index + 1)}
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
+                    </motion.button>
+                  );
+                })}
+              </div>
+            </motion.section>
           )}
 
           {/* Meta Info */}
@@ -398,41 +438,6 @@ const NewsDetail = () => {
               </div>
             )}
           </motion.div>
-
-          {/* Gallery */}
-          {images.length > 1 && (
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="mb-12"
-            >
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                {t('newsDetail.gallery.title', 'Фотогалерея')}
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {images.slice(1).map((image, index) => (
-                  <motion.div
-                    key={index + 1}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                    className="relative rounded-xl overflow-hidden shadow-lg cursor-pointer group aspect-square"
-                    onClick={() => openLightbox(index + 1)}
-                  >
-                    <img
-                      src={getImageUrl(image)}
-                      alt={`${newsData.title} ${index + 2}`}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      onLoad={() => handleImageLoad(index + 1)}
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
 
           {/* Related News */}
           {relatedNews.length > 0 && (
