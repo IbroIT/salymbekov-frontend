@@ -1,4 +1,4 @@
-import { apiRequest } from '../api';
+import { apiRequest, normalizeLanguage } from '../api';
 
 /**
  * Функция для загрузки всех новостей с пагинацией
@@ -6,7 +6,8 @@ import { apiRequest } from '../api';
  */
 const fetchAllNewsPages = async (language, limit = 100) => {
   let allNews = [];
-  let nextUrl = `/presscentre/news/?lang=${language}&limit=${limit}`;
+  const normalizedLanguage = normalizeLanguage(language);
+  let nextUrl = `/presscentre/news/?lang=${normalizedLanguage}&limit=${limit}`;
   
   while (nextUrl) {
     try {
@@ -111,9 +112,10 @@ const transformNewsItem = (item, language) => {
 export const fetchNewsList = async ({ queryKey }) => {
   // queryKey имеет структуру: ['news', 'list', language]
   const [, , language] = queryKey; // Берем третий элемент!
+  const normalizedLanguage = normalizeLanguage(language);
   
   try {
-    const newsArray = await fetchAllNewsPages(language);
+    const newsArray = await fetchAllNewsPages(normalizedLanguage);
     
     if (!newsArray || newsArray.length === 0) {
       return [];
@@ -121,7 +123,7 @@ export const fetchNewsList = async ({ queryKey }) => {
     
     // Трансформируем каждую новость и фильтруем null значения
     const transformedNews = newsArray
-      .map(item => transformNewsItem(item, language))
+      .map(item => transformNewsItem(item, normalizedLanguage))
       .filter(item => item !== null);
     
     // Сортируем по дате (новые первые)
@@ -138,26 +140,27 @@ export const fetchNewsList = async ({ queryKey }) => {
 export const fetchNewsById = async ({ queryKey }) => {
   // queryKey имеет структуру: ['news', 'detail', id, language]
   const [, , id, language] = queryKey; // Берем третий и четвертый элементы!
+  const normalizedLanguage = normalizeLanguage(language);
   
   try {
     // Пробуем прямой запрос по ID
-    const directResponse = await apiRequest(`/presscentre/news/${id}/?lang=${language}`);
+    const directResponse = await apiRequest(`/presscentre/news/${id}/?lang=${normalizedLanguage}`);
     if (directResponse && directResponse.id) {
-      return transformNewsItem(directResponse, language);
+      return transformNewsItem(directResponse, normalizedLanguage);
     }
   } catch (directError) {
     console.log('Прямой запрос не удался, ищем в списке:', directError.message);
   }
   
   // Если прямой запрос не удался, ищем в списке всех новостей
-  const allNews = await fetchAllNewsPages(language);
+  const allNews = await fetchAllNewsPages(normalizedLanguage);
   const newsItem = allNews.find(item => item.id.toString() === id.toString());
   
   if (!newsItem) {
     throw new Error('Новость не найдена');
   }
   
-  return transformNewsItem(newsItem, language);
+  return transformNewsItem(newsItem, normalizedLanguage);
 };
 
 /**
@@ -166,9 +169,10 @@ export const fetchNewsById = async ({ queryKey }) => {
 export const fetchCategories = async ({ queryKey }) => {
   // queryKey имеет структуру: ['categories', language]
   const [, language] = queryKey; // Берем второй элемент
+  const normalizedLanguage = normalizeLanguage(language);
   
   try {
-    const categoriesData = await apiRequest(`/presscentre/categories/?lang=${language}`);
+    const categoriesData = await apiRequest(`/presscentre/categories/?lang=${normalizedLanguage}`);
     
     const categoriesArray = categoriesData.results || categoriesData || [];
     
@@ -182,8 +186,8 @@ export const fetchCategories = async ({ queryKey }) => {
     return [
       { 
         id: 'all', 
-        name: allCategoriesText[language] || 'All categories', 
-        title: allCategoriesText[language] || 'All categories', 
+        name: allCategoriesText[normalizedLanguage] || 'All categories', 
+        title: allCategoriesText[normalizedLanguage] || 'All categories', 
         color: 'gray' 
       },
       ...categoriesArray.map(cat => ({
@@ -204,8 +208,8 @@ export const fetchCategories = async ({ queryKey }) => {
     return [
       { 
         id: 'all', 
-        name: allCategoriesText[language] || 'All categories', 
-        title: allCategoriesText[language] || 'All categories', 
+        name: allCategoriesText[normalizedLanguage] || 'All categories', 
+        title: allCategoriesText[normalizedLanguage] || 'All categories', 
         color: 'gray' 
       }
     ];
