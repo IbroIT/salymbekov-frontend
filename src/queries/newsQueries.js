@@ -72,6 +72,9 @@ const transformNewsItem = (item, language) => {
   } else if (item.category_id) {
     categoryId = item.category_id;
   }
+
+  const gallery = item.gallery || [];
+  const image = item.image || gallery.find((photo) => photo?.image)?.image || null;
   
   try {
     return {
@@ -84,9 +87,9 @@ const transformNewsItem = (item, language) => {
       }),
       category: categoryId ? categoryId.toString() : null,
       category_name: (item.category?.title || item.category?.name) || 'Без категории',
-      image: item.image || null,
-      previewImage: item.image || null, // для совместимости
-      gallery: item.gallery || [],
+      image,
+      previewImage: image, // для совместимости
+      gallery,
       photos: item.photos || [],
       aspect_ratio: item.aspect_ratio || 'wide',
       description: item.short_description || (item.description ? item.description.substring(0, 200) + '...' : 'Нет описания'),

@@ -34,17 +34,25 @@ const formatDate = (dateString, language) => {
   });
 };
 
-const transformNewsItem = (item, language) => ({
-  id: item.id,
-  title: item.title,
-  excerpt: item.short_description || '',
-  date: formatDate(item.published_at || item.created_at, language),
-  dateIso: item.published_at || item.created_at,
-  categories: item.category?.title ? [item.category.title] : [],
-  image: item.image || null,
-  gallery: item.gallery || [],
-  sourceUrl: item.source_url || '',
-});
+const getNewsImage = (item) => (
+  item.image || item.gallery?.find((photo) => photo?.image)?.image || null
+);
+
+const transformNewsItem = (item, language) => {
+  const gallery = item.gallery || [];
+
+  return {
+    id: item.id,
+    title: item.title,
+    excerpt: item.short_description || '',
+    date: formatDate(item.published_at || item.created_at, language),
+    dateIso: item.published_at || item.created_at,
+    categories: item.category?.title ? [item.category.title] : [],
+    image: getNewsImage(item),
+    gallery,
+    sourceUrl: item.source_url || '',
+  };
+};
 
 export const fetchNews = async ({ limit, language = 'ru' } = {}) => {
   const items = await fetchAllNewsPages(language);
