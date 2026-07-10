@@ -1,4 +1,4 @@
-import { apiRequest, normalizeLanguage } from '../api';
+import { apiRequest, getDateLocale, normalizeLanguage } from '../api';
 
 const fetchAllNewsPages = async (language = 'ru', limit = 100) => {
   const items = [];
@@ -27,7 +27,7 @@ const fetchAllNewsPages = async (language = 'ru', limit = 100) => {
 const formatDate = (dateString, language) => {
   if (!dateString) return '';
 
-  return new Date(dateString).toLocaleDateString(language, {
+  return new Date(dateString).toLocaleDateString(getDateLocale(language), {
     year: 'numeric',
     month: 'long',
     day: 'numeric',

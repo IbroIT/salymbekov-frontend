@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { getDateLocale } from '../../api';
 import { fetchNewsById, fetchNewsList, newsKeys } from '../../queries/newsQueries';
 
 const NewsDetail = () => {
@@ -124,7 +125,7 @@ const NewsDetail = () => {
 
   const formatDate = (dateString) => {
     if (!dateString) return t('newsDetail.date.unknown', 'Дата неизвестна');
-    return new Date(dateString).toLocaleDateString(i18n.language, {
+    return new Date(dateString).toLocaleDateString(getDateLocale(i18n.language), {
       year: 'numeric',
       month: 'long',
       day: 'numeric',

@@ -1,4 +1,4 @@
-import { apiRequest, normalizeLanguage } from '../api';
+import { apiRequest, getDateLocale, normalizeLanguage } from '../api';
 
 /**
  * Функция для загрузки всех новостей с пагинацией
@@ -81,7 +81,7 @@ const transformNewsItem = (item, language) => {
     return {
       id: item.id,
       title: item.title || 'Без заголовка',
-      date: new Date(item.published_at || item.created_at).toLocaleDateString(language || 'ru', {
+      date: new Date(item.published_at || item.created_at).toLocaleDateString(getDateLocale(language), {
         year: 'numeric',
         month: 'long',
         day: 'numeric'

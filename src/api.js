@@ -15,6 +15,20 @@ export const normalizeLanguage = (lang = 'ru') => {
   return ['ru', 'en', 'kg'].includes(baseLang) ? baseLang : 'ru';
 };
 
+export const getDateLocale = (lang = 'ru') => {
+  const normalizedLanguage = normalizeLanguage(lang);
+
+  if (normalizedLanguage === 'kg') {
+    return 'ky-KG';
+  }
+
+  if (normalizedLanguage === 'en') {
+    return 'en-US';
+  }
+
+  return 'ru-RU';
+};
+
 // Helper function for making API requests
 export const apiRequest = async (endpoint, options = {}) => {
   // Убеждаемся, что endpoint начинается с /
